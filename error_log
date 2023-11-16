@@ -1,0 +1,15 @@
+[10-Aug-2023 13:41:29 America/Mexico_City] PHP Warning:  require(wp-blog-header.php): Failed to open stream: No such file or directory in /home4/ceunemco/public_html/sapp-wp-signon.php on line 40
+[10-Aug-2023 13:41:29 America/Mexico_City] PHP Fatal error:  Uncaught Error: Failed opening required 'wp-blog-header.php' (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home4/ceunemco/public_html/sapp-wp-signon.php:40
+Stack trace:
+#0 {main}
+  thrown in /home4/ceunemco/public_html/sapp-wp-signon.php on line 40
+[07-Sep-2023 09:41:30 America/Mexico_City] PHP Warning:  require(wp-blog-header.php): Failed to open stream: No such file or directory in /home4/ceunemco/public_html/sapp-wp-signon.php on line 40
+[07-Sep-2023 09:41:30 America/Mexico_City] PHP Fatal error:  Uncaught Error: Failed opening required 'wp-blog-header.php' (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home4/ceunemco/public_html/sapp-wp-signon.php:40
+Stack trace:
+#0 {main}
+  thrown in /home4/ceunemco/public_html/sapp-wp-signon.php on line 40
+[07-Sep-2023 09:44:22 America/Mexico_City] PHP Warning:  require(wp-blog-header.php): Failed to open stream: No such file or directory in /home4/ceunemco/public_html/sapp-wp-signon.php on line 40
+[07-Sep-2023 09:44:22 America/Mexico_City] PHP Fatal error:  Uncaught Error: Failed opening required 'wp-blog-header.php' (include_path='.:/opt/cpanel/ea-php80/root/usr/share/pear') in /home4/ceunemco/public_html/sapp-wp-signon.php:40
+Stack trace:
+#0 {main}
+  thrown in /home4/ceunemco/public_html/sapp-wp-signon.php on line 40
