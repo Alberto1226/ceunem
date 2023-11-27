@@ -3,6 +3,12 @@ class View{
     public $mensaje; 
     public array $articulos = [];
     public $articulo;
+    public array $licenciaturas = [];
+    public $licenciatura;
+    public array $maestrias = [];
+    public $maestria;
+    public array $continuas = [];
+    public $continua;
     function __construct()
     {
         //echo "Vista base";
@@ -12,9 +18,5 @@ class View{
         require 'views/'. $nombre . '.php';
     }
 
-    function getMensaje($mensaje){
-        $this->mensaje = $mensaje;
-        return $this;
-    }
 }
 ?>

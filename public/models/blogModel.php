@@ -10,7 +10,7 @@ class BlogModel extends Model{
     public function getAllArticulos(){
         $items = [];
         try {
-            $query = $this->db->connect()->query("SELECT*FROM blog");
+            $query = $this->db->connect()->query("SELECT*FROM blog WHERE estado=1");
 
             while ($row = $query->fetch()) {
                 $item = new Articulo();
@@ -27,6 +27,16 @@ class BlogModel extends Model{
             return $items;
         } catch (PDOException $th) {
             return [];
+        }
+    }
+
+    public function countRowsContinuas(){
+        try {
+            $query = $this->db->connect()->query("SELECT * FROM blog");
+            $filas=$query->rowCount();
+            return $filas;
+        } catch (PDOException $th) {
+           return 0;
         }
     }
 

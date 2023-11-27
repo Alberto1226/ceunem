@@ -1,16 +1,16 @@
 <?php
 require_once 'libs/controller.php';
-class Continua extends Controller{
+class Continua extends Controller
+{
     function __construct()
     {
         parent::__construct();
     }
 
-    function render(){
+    function render()
+    {
+        $continuas = $this->model->getAllContinuas();
+        $this->view->continuas = $continuas;
         $this->view->render('continua/index');
-
     }
-
 }
-
-?>

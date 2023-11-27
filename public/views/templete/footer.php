@@ -20,10 +20,10 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-light mb-4">Accesos rápidos</h5>
-                    <a class="btn btn-link" href="nosotros.html">Nosotros</a>
-                    <a class="btn btn-link" href="contacto.html">Contacto</a>
-                    <a class="btn btn-link" href="licenciaturas.html">Oferta Educativa</a>
-                    <a class="btn btn-link" href="aviso.html">Aviso de Privacidad</a>
+                    <a class="btn btn-link" href="<?php echo constant('URL') ?>nosotros">Nosotros</a>
+                    <a class="btn btn-link" href="<?php echo constant('URL') ?>contacto">Contacto</a>
+                    <a class="btn btn-link" href="<?php echo constant('URL') ?>licenciatura">Oferta Educativa</a>
+                    <a class="btn btn-link" href="<?php echo constant('URL') ?>aviso">Aviso de Privacidad</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-light mb-4">Noticias</h5>

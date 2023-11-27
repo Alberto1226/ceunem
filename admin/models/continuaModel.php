@@ -1,0 +1,98 @@
+<?php
+include_once 'models/continuas.php';
+
+class ContinuaModel extends Model
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function getAllContinuas()
+    {
+        $items = [];
+        try {
+            $query = $this->db->connect()->query("SELECT * FROM continua");
+            while ($row = $query->fetch()) {
+                $item = new Continuas();
+
+                $item->id_ec = $row['id_ec'];
+                $item->nom_ec = $row['nom_ec'];
+                $item->descripcion = $row['descripcion'];
+                $item->img_url = $row['img_url'];
+                $item->pdf_url = $row['pdf_url'];
+                $item->estado = $row['estado'];
+
+                array_push($items, $item);
+            }
+            return $items;
+        } catch (PDOException $th) {
+            return [];
+        }
+    }
+
+    public function insert($datos)
+    {
+        try {
+            $query = $this->db->connect()->prepare(
+                'INSERT INTO continua (nom_ec, descripcion, img_url, pdf_url, estado)
+                VALUES(:nom_ec, :descripcion, :img_url, :pdf_url, :estado)'
+            );
+            $query->execute([
+                'nom_ec' => $datos['nom_ec'],
+                'descripcion' => $datos['descripcion'],
+                'img_url' => $datos['img_url'],
+                'pdf_url' => $datos['pdf_url'],
+                'estado' => $datos['estado']
+            ]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+
+    public function update($item){
+        $query= $this->db->connect()->prepare("UPDATE continua 
+        SET nom_ec = :nom_ec, descripcion = :descripcion, 
+        img_url = :img_url, pdf_url = :pdf_url 
+        WHERE id_ec = :id_ec");
+        try {
+            $query->execute([
+                'id_ec' => $item['id_ec'],
+                'nom_ec' => $item['nom_ec'],
+                'descripcion' => $item['descripcion'],
+                'img_url' => $item['img_url'],
+                'pdf_url' => $item['pdf_url']
+            ]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+
+    public function delete($id){
+        $query = $this->db->connect()->prepare(
+            "DELETE FROM continua WHERE id_ec = :id");
+        try {
+            $query->execute(['id' => $id]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+
+    public function estado($item){
+        $query = $this->db->connect()->prepare("UPDATE continua
+        SET estado = :estado
+        WHERE id_ec = :id_ec");
+        try {
+            $query->execute([
+                'id_ec' => $item['id_ec'],
+                'estado' => $item['estado']
+            ]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+}

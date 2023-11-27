@@ -13,7 +13,7 @@
                                 <div class="col-lg-7 pt-5">
                                     <h1 class="display-4 text-white mb-3 animated slideInDown">Creando líderes y emprendedores</h1>
                                     <p class="fs-5 text-white-50 mb-5 animated slideInDown">Nuestro objetivo principal es empoderar académicamente a nuestros estudiantes a través de la formación de conocimientos y competencias profesionales en disciplinas de corte humanista, académico-administrativo y de comunicación.</p>
-                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="nosotros.html">
+                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo constant('URL') ?>nosotros">
                                         Más información
                                         <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
                                             <i class="fa fa-arrow-right"></i>
@@ -32,7 +32,7 @@
                                 <div class="col-lg-7 pt-5">
                                     <h1 class="display-4 text-white mb-3 animated slideInDown">Crea tu futuro profesional 100% online</h1>
                                     <p class="fs-5 text-white-50 mb-5 animated slideInDown">Becas de hasta el 70%</p>
-                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="contacto.html">
+                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo constant('URL') ?>contacto">
                                         Más Información
                                         <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
                                             <i class="fa fa-arrow-right"></i>
@@ -73,13 +73,13 @@
                     </div>
                     <h1 class="display-6 mb-5">Programas de Calidad</h1>
                     <p class="mb-5">Como una institución acreditada, CEUNEM proporciona a sus estudiantes una educación de la más alta calidad en un ambiente flexible. Nuestros reconocidos programas en línea incluyen instrucción en tiempo real y materiales prácticos para asegurar que cada estudiante no solo enfrente un desafío sino que también sienta el apoyo durante todo el curso. Contáctenos hoy mismo para obtener más información sobre lo que tenemos para ofrecer. Nos esforzamos por brindar educación de alta calidad, flexible y personalizada. Contamos con becas del 100% en inscripción y reinscripción así como becas del 50% en colegiaturas únicamente por ser alumno fundador CEUNEM.&nbsp;</p>
-                    <a class="btn btn-primary py-2 px-3 me-3" href="nosotros.html">
+                    <a class="btn btn-primary py-2 px-3 me-3" href="<?php echo constant('URL') ?>nosotros">
                         Conocer más
                         <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
                             <i class="fa fa-arrow-right"></i>
                         </div>
                     </a>
-                    <a class="btn btn-outline-primary py-2 px-3" href="contacto.html">
+                    <a class="btn btn-outline-primary py-2 px-3" href="<?php echo constant('URL') ?>contacto">
                         Contáctanos
                         <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                             <i class="fa fa-arrow-right"></i>
@@ -186,7 +186,7 @@
                         <img class="img-fluid mb-4" src="<?php echo constant('URL') ?>assets/img/licenciaturas.png" alt="">
                         <h4 class="mb-3">Licenciaturas</h4>
                         <p class="mb-4">En CEUNEM cubrimos una variedad completa de cursos en todos los niveles de creatividad y educación. Como Universidad en línea con experiencia, enseñamos una variedad de clases que abarcan los niveles licenciatura y posgrado enfocados en el ámbito de negocios.</p>
-                        <a class="btn btn-outline-primary px-3" href="licenciaturas.html">
+                        <a class="btn btn-outline-primary px-3" href="<?php echo constant('URL') ?>licenciatura">
                             Ver oferta académica
                             <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                 <i class="fa fa-arrow-right"></i>
@@ -199,7 +199,7 @@
                         <img class="img-fluid mb-4" src="<?php echo constant('URL') ?>assets/img/maestrias.png" alt="">
                         <h4 class="mb-3">Maestrías</h4>
                         <p class="mb-4">En CEUNEM cubrimos una variedad completa de cursos en todos los niveles de creatividad y educación. Como Universidad en línea con experiencia, enseñamos una variedad de clases que abarcan los niveles licenciatura y posgrado enfocados en el ámbito de negocios.</p>
-                        <a class="btn btn-outline-primary px-3" href="maestrias.html">
+                        <a class="btn btn-outline-primary px-3" href="<?php echo constant('URL') ?>maestria">
                             Ver oferta académica
                             <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                 <i class="fa fa-arrow-right"></i>
@@ -212,7 +212,7 @@
                         <img class="img-fluid mb-4" src="<?php echo constant('URL') ?>assets/img/educacion.png" alt="">
                         <h4 class="mb-3">Educación continua</h4>
                         <p class="mb-4">Sabemos que quieres ver la nueva oferta educativa, pero deberás ser paciente un tiempo más. Suscríbete a nuestra lista de contacto para que te notifiquen cuando tengamos disponibles nuevos planes de estudios.</p>
-                        <a class="btn btn-outline-primary px-3" href="contacto.html">
+                        <a class="btn btn-outline-primary px-3" href="<?php echo constant('URL') ?>contacto">
                             Sucríbete
                             <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                 <i class="fa fa-arrow-right"></i>

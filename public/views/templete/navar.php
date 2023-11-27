@@ -13,7 +13,7 @@
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-dark py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-            <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+            <a href="<?php echo constant('URL') ?>home" class="navbar-brand ms-4 ms-lg-0">
                 <img src="<?php echo constant('URL') ?>assets/img/LOGO CEUNEM.png" width="136" height="46" alt="" />
             </a>
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -21,21 +21,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.html" class="nav-item nav-link active">Inicio&nbsp;</a>
-                    <a href="nosotros.html" class="nav-item nav-link">Nosotros&nbsp;</a>
+                    <a href="<?php echo constant('URL') ?>home" class="nav-item nav-link active">Inicio&nbsp;</a>
+                    <a href="<?php echo constant('URL') ?>nosotros" class="nav-item nav-link">Nosotros&nbsp;</a>
                     <a href="<?php echo constant('URL') ?>blog" class="nav-item nav-link">Blog&nbsp;</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Oferta Educativa&nbsp;</a>
                         <div class="dropdown-menu m-0">
-                            <a href="licenciaturas.html" class="dropdown-item">Licenciaturas</a>
-                            <a href="maestrias.html" class="dropdown-item">Maestrías</a>
-                            <a href="educacion.html" class="dropdown-item">Educación Continua</a>
+                            <a href="<?php echo constant('URL') ?>licenciatura" class="dropdown-item">Licenciaturas</a>
+                            <a href="<?php echo constant('URL') ?>maestria" class="dropdown-item">Maestrías</a>
+                            <a href="<?php echo constant('URL') ?>continua" class="dropdown-item">Educación Continua</a>
                         </div>
                     </div>
-                    <a href="contacto.html" class="nav-item nav-link">Contacto</a>
+                    <a href="<?php echo constant('URL') ?>contacto" class="nav-item nav-link">Contacto</a>
                 </div>
                 <div class="d-none d-lg-flex ms-2">
-                    <a class="btn btn-outline-primary py-2 px-3" href="admision.html">
+                    <a class="btn btn-outline-primary py-2 px-3" href="<?php echo constant('URL') ?>admision">
                         Admisión
                         <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
                             <i class="fa fa-arrow-right"></i>

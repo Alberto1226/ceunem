@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="<?php echo constant('URL') ?>libs/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="<?php echo constant('URL') ?>libs/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini">
