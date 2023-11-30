@@ -11,7 +11,7 @@
         <div class="card card-success border border-success">
           <div class="card-body">
             <!-- form start -->
-            <form id="addCon" action="<?php echo constant('URL'); ?>continua/insertCarrera" method="POST" enctype="multipart/form-data">
+            <form id="addCon" action="<?php echo constant('URL'); ?>continua/addPrograma" method="POST" enctype="multipart/form-data">
               <div class="card-body">
                 <div class="form-group">
                   <label for="nom_ec">Nombre del Prrograma</label>

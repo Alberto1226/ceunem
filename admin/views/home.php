@@ -14,13 +14,11 @@
     <link rel="stylesheet" href="<?php echo constant('URL') ?>libs/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo constant('URL') ?>libs/dist/css/adminlte.min.css">
+    
 </head>
 
 <body class="hold-transition login-page">
     <div class="login-box">
-        <div class="container d-flex justify-content-center align-items-center">
-            <img src="<?php echo constant('URL') ?>assets/image/LOGO_CEUNEM.png" style="width: 60vh; padding:20px;">
-        </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">

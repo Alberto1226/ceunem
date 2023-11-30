@@ -14,7 +14,7 @@ class Licenciatura extends Controller
         $this->view->render('licenciatura/index');
     }
 
-    function insertCarrera()
+    function addLicenciatura()
     {
         $nom_lic = $_POST['nom_lic'];
         $descripcion = $_POST['descripcion'];

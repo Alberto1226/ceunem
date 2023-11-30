@@ -12,6 +12,8 @@
 <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<!-- libreria de axios -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <!-- jQuery -->
 <script src="<?php echo constant('URL') ?>libs/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -35,6 +37,10 @@
 <script src="<?php echo constant('URL') ?>libs/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- bs-custom-file-input -->
 <script src="<?php echo constant('URL') ?>libs/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="<?php echo constant('URL') ?>libs/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Toastr -->
+<script src="<?php echo constant('URL') ?>libs/plugins/toastr/toastr.min.js"></script>
 <!-- Page specific script -->
 <script>
     $(function() {

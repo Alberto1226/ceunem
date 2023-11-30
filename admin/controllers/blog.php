@@ -14,7 +14,7 @@ class Blog extends Controller
         $this->view->render('blog/index');
     }
 
-    function insertArticulo()
+    function addArticulo()
     {
         $categoria = $_POST['categoria'];
         $titulo = $_POST['titulo'];

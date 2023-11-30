@@ -9,6 +9,8 @@ class View{
     public $maestria;
     public array $continuas = [];
     public $continua;
+    public $secMisions = [];
+    public $secMision;
     function __construct()
     {
         //echo "Vista base";
@@ -18,9 +20,5 @@ class View{
         require 'views/'. $nombre . '.php';
     }
 
-    function getMensaje($mensaje){
-        $this->mensaje = $mensaje;
-        return $this;
-    }
 }
 ?>

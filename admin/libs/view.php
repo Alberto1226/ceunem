@@ -1,6 +1,8 @@
 <?php
 class View{   
-    public $mensaje; 
+    public $mensaje;
+    public array $tablas =[];
+    public $tabla;
     public array $articulos = [];
     public $articulo;
     public array $licenciaturas = [];

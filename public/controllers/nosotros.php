@@ -7,8 +7,9 @@ class Nosotros extends Controller{
     }
 
     function render(){
+        $secMisions = $this->model->getMision();
+        $this->view->secMisions = $secMisions;
         $this->view->render('nosotros/index');
-
     }
 
 }

@@ -12,7 +12,7 @@ class Maestria extends Controller{
         $this->view->render('maestria/index');
     }
 
-    function insertCarrera()
+    function addMaestria()
     {
         $nom_mas = $_POST['nom_mas'];
         $descripcion = $_POST['descripcion'];

@@ -11,7 +11,7 @@
         <div class="card card-success border border-success">
           <div class="card-body">
             <!-- form start -->
-            <form id="addLic" action="<?php echo constant('URL'); ?>licenciatura/insertCarrera" method="POST" enctype="multipart/form-data">
+            <form id="addLic" action="<?php echo constant('URL'); ?>licenciatura/addLicenciatura" method="POST" enctype="multipart/form-data">
               <div class="card-body">
                 <div class="form-group">
                   <label for="nom_lic">Nombre Licenciatura</label>
@@ -39,24 +39,30 @@
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-6">
-                    <div class="custom-control custom-radio">
-                      <input class="custom-control-input custom-control-input-success form-control" value="1" type="radio" id="activo" name="estado" checked>
-                      <label for="activo" class="custom-control-label">Activo</label>
-                    </div>
+                <div class="form-group custom-control custom-radio">
+                  <div style="display: flex;">
+                    <label for="estado" style="margin-right: 10px;">Estado del Artículo </label>
+                    <p>Esta opción es para que se muestre al público</p>
                   </div>
-                  <div class="col-6">
-                    <div class="custom-control custom-radio">
-                      <input class="custom-control-input custom-control-input-danger form-control" value="0" type="radio" id="inactivo" name="estado">
-                      <label for="inactivo" class="custom-control-label">Inactivo</label>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="custom-control custom-radio">
+                        <input class="custom-control-input custom-control-input-success form-control" value="1" type="radio" id="activo" name="estado" checked>
+                        <label for="activo" class="custom-control-label">Activo</label>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="custom-control custom-radio">
+                        <input class="custom-control-input custom-control-input-danger form-control" value="0" type="radio" id="inactivo" name="estado">
+                        <label for="inactivo" class="custom-control-label">Inactivo</label>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-              <button type="submit" class="btn btn-success btn block" id="btn-add">Agregar Licenciatura</button>
+              <button type="submit" class="btn btn-success btn-block" id="btn-add">Agregar Licenciatura</button>
               </div>
             </form>
           </div>

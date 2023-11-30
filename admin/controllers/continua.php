@@ -14,7 +14,7 @@ class Continua extends Controller
         $this->view->render('continua/index');
     }
 
-    function insertCarrera()
+    function addPrograma()
     {
         $nom_ec = $_POST['nom_ec'];
         $descripcion = $_POST['descripcion'];
