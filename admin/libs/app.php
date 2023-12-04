@@ -14,9 +14,9 @@ class App
 
         //cuando se ingresa sin definir un controlador
         if (empty($url[0])) {
-            $archivoController = 'controllers/home.php';
+            $archivoController = 'controllers/login.php';
             require_once $archivoController;
-            $controller = new Home();
+            $controller = new Login();
             $controller->render();
             $controller->loadModel('home');
             return false;

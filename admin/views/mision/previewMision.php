@@ -1,18 +1,4 @@
 <style>
-    .imgHeader {
-        display: flex;
-        position: relative;
-        z-index: 5;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .titSec {
-        position: absolute;
-        z-index: 10;
-        display: none;
-    }
-
     .border-5 {
         border-width: 5px !important;
     }
@@ -52,10 +38,6 @@
         <!-- Nosotros Start -->
         <div class="container-xxl py-5">
             <div class="container">
-                <div id="imgHeader" class="border imgHeader">
-                    <img class="card-img-top imgMision" id="imgMision">
-                    <h1 id="titSec" class="display-4 text-white animated slideInDown mb-4 titSec">NOSOTROS</h1>
-                </div>
                 <div class="row g-5">
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="position-relative overflow-hidden h-100" style="min-height: 400px;">

@@ -1,4 +1,4 @@
-<?php
+ <?php
 include_once 'models/articulo.php';
 
 class BlogModel extends Model{

@@ -11,6 +11,7 @@ class View{
     public $maestria;
     public array $continuas = [];
     public $continua;
+    
     function __construct()
     {
         //echo "Vista base";

@@ -18,7 +18,6 @@ class NosotrosModel extends Model{
                 $item->frase = $row['frase'];
                 $item->autor = $row['autor'];
                 $item->mision = $row['mision'];
-                $item->img_header = $row['img_header'];
                 $item->img_body = $row['img_body'];
 
                 array_push($items, $item);

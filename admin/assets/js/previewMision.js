@@ -1,40 +1,23 @@
 function imageHeader(event, querySelector) {
     const input = event.target;
-    $imgHeader = document.querySelector(querySelector);
+    
     $imgBody = document.querySelector(querySelector);
-
-    if ($imgHeader.name === "img_header") {
-        if (!input.files.length) return
-        file = input.files[0];
-        objectURL = URL.createObjectURL(file);
-        showImgHeader(objectURL, "HEADER");
-    }
-    else if ($imgBody.name === "img_body") {
-        if (!input.files.length) return
-        file = input.files[0];
-        objectURL = URL.createObjectURL(file);
-        showImgHeader(objectURL, "BODY");
-    }
+    if (!input.files.length) return
+    file = input.files[0];
+    objectURL = URL.createObjectURL(file);
+    showImgHeader(objectURL);
 }
 
-function showImgHeader(url, name) {
-    const imgMision = document.getElementById('imgMision');
-    const titSec = document.getElementById('titSec');
-    const imgBodyMision = document.getElementById('imgBodyMision');
+function showImgHeader(url) {
 
-    if (name === "HEADER") {
-        imgMision.src = url;
-        titSec.style.color = "white";
-        titSec.style.display = "inline";
-    } else if (name === "BODY") {
-        imgBodyMision.src = url;
-        imgBodyMision.style.display = "inline";
-    }
+    const imgBodyMision = document.getElementById('imgBodyMision');
+    imgBodyMision.src = url;
+    imgBodyMision.style.display = "inline";
 
 }
 
 function showInputs(input) {
- 
+
     var divFrase = document.getElementById('divFrase');
     var autorFrase = document.getElementById('autorFrase');
     var titMision = document.getElementById('titMision');
@@ -44,7 +27,7 @@ function showInputs(input) {
 
     if (input.value.trim() === '') {
         console.log("campo vacio")
-        
+
     } else {
         if (input.name === "frase") {
             titMision.style.display = "block";

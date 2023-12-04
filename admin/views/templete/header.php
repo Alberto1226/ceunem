@@ -51,9 +51,8 @@
                         <img src="<?php echo constant('URL') ?>assets/image/favicon.ico" class="user-image">
                     </a>
                     <ul class="dropdown-menu">
-                        <a href="" class="btn"><i class="fas fa-sign-out-alt fa-fw"></i>
+                    <a class="btn" href="<?php echo constant('URL') ?>logout"><i class="fas fa-sign-out-alt fa-fw"></i>
                             Cerrar sesión</a>
-
                     </ul>
                 </li>
             </ul>

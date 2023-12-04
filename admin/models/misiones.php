@@ -4,8 +4,8 @@ class Misiones{
     public $frase;
     public $autor;
     public $mision;
-    public $img_header;
     public $img_body;
     public $estado;
+    public $id_usu;
 } 
 ?>
