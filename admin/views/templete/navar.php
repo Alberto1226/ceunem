@@ -75,19 +75,19 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?php echo constant('URL') ?>licenciatura" class="nav-link">
+                  <a href="<?php echo constant('URL') ?>vision" class="nav-link">
                     <i class="fas fa-arrow-circle-right nav-icon"></i>
                     <p>Visión</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="<?php echo constant('URL') ?>maestria" class="nav-link">
+                  <a href="<?php echo constant('URL') ?>objetivo" class="nav-link">
                     <i class="fas fa-arrow-circle-right nav-icon"></i>
                     <p>Objetivos</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="<?php echo constant('URL') ?>continua" class="nav-link">
+                  <a href="<?php echo constant('URL') ?>valor" class="nav-link">
                     <i class="fas fa-arrow-circle-right nav-icon"></i>
                     <p>Valores</p>
                   </a>
@@ -95,19 +95,19 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="<?php echo constant('URL') ?>licenciatura" class="nav-link">
+              <a href="<?php echo constant('URL') ?>equipo" class="nav-link">
                 <i class="fas fa-people-carry nav-icon"></i>
                 <p>Equipo de trabajo</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo constant('URL') ?>licenciatura" class="nav-link">
+              <a href="<?php echo constant('URL') ?>servicioCñiente" class="nav-link">
                 <i class="fas fa-business-time nav-icon"></i>
                 <p>Servico al cliente</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo constant('URL') ?>licenciatura" class="nav-link">
+              <a href="<?php echo constant('URL') ?>nuestraHistoria" class="nav-link">
                 <i class="fas fa-university nav-icon"></i>
                 <p>Nuestra Historia</p>
               </a>

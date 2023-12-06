@@ -1,8 +1,51 @@
-<?php require 'views/templete/header.php'; ?>
-<?php require 'views/templete/navar.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="content-wrapper">
-    <h1>Panel</h1>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Registration Page (v2)</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="<?php echo constant('URL') ?>libs/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="<?php echo constant('URL') ?>libs/dist/css/adminlte.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="<?php echo constant('URL') ?>libs/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <nav class="navbar navbar-expand navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                    <i class="fas fa-th-large"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </a>
+            </li>
+
+            <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="<?php echo constant('URL') ?>assets/image/favicon.ico" class="user-image">
+                </a>
+                <ul class="dropdown-menu">
+                    <a class="btn" href="<?php echo constant('URL') ?>logout"><i class="fas fa-sign-out-alt fa-fw"></i>
+                        Cerrar sesión</a>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <h1 class="text-center mt-2">Panel</h1>
     <!-- Oferta Educativa Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -10,79 +53,156 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Licenciaturas</h3>
+                            <h3 class="card-title">Oferta Educativa</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="card-body">
-                            <img class="img-fluid mb-4" src="<?php echo constant('URL') ?>assets/image/licenciaturas.png" alt="">
-                        </div>
-                        <div class="card-footer">
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>licenciatura">
-                                Agrear Licenciatura
-                                <div class="d-inline-flex btn-sm-square bg-success text-white rounded-circle ms-2">
-                                    <i class="fa fa-arrow-right"></i>
-                                </div>
+                                Licenciaturas
                             </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Maestrías</h3>
-                        </div>
-                        <div class="card-body">
-                            <img class="img-fluid mb-4" src="<?php echo constant('URL') ?>assets/image/maestrias.png" alt="">
-                        </div>
-                        <div class=" card-footer">
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>maestria">
-                                Agrear Maestría
-                                <div class="d-inline-flex btn-sm-square bg-success text-white rounded-circle ms-2">
-                                    <i class="fa fa-arrow-right"></i>
-                                </div>
+                                Maestrías
                             </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Educación Continua</h3>
-                        </div>
-                        <div class="card-body">
-                            <img class="img-fluid mb-4" src="<?php echo constant('URL') ?>assets/image/educacion.png" alt="">
-                        </div>
-                        <div class=" card-footer">
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>continua">
-                                Agrear Programa
-                                <div class="d-inline-flex btn-sm-square bg-success text-white rounded-circle ms-2">
-                                    <i class="fa fa-arrow-right"></i>
-                                </div>
+                                Educación Continua
                             </a>
                         </div>
+                        <!-- /.card-body -->
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Blog</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="card-body">
-                            <img class="img-fluid mb-4" src="<?php echo constant('URL') ?>assets/image/administracion.png" alt="">
-                        </div>
-                        <div class=" card-footer">
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>blog">
                                 Agrear Artículo
-                                <div class="d-inline-flex btn-sm-square bg-success text-white rounded-circle ms-2">
-                                    <i class="fa fa-arrow-right"></i>
-                                </div>
                             </a>
                         </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Misión</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>mision">
+                                Agregar/Editar
+                            </a>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Filosofía</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>vision">
+                                Visión
+                            </a>
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>objetivo">
+                                Objetios
+                            </a>
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>Valor">
+                                Valores
+                            </a>
+                        </div>
+                        <!-- /.card-body -->
                     </div>
                 </div>
             </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Equipo de trabajo</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>equipo">
+                                Agregar/Editar
+                            </a>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Servicio al cliente</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>servicioCñiente">
+                                Agregar/Editar
+                            </a>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Nuestra Historia</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>nuestraHistoria">
+                                Agregar/Editar
+                            </a>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-    <!-- Oferta Educativa End -->
-</div>
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- libreria de axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- jQuery -->
+    <script src="<?php echo constant('URL') ?>libs/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="<?php echo constant('URL') ?>libs/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="<?php echo constant('URL') ?>libs/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="<?php echo constant('URL') ?>libs/dist/js/demo.js"></script>
+    <!-- bs-custom-file-input -->
+    <script src="<?php echo constant('URL') ?>libs/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 
-<?php require 'views/templete/footer.php'; ?>
+</body>
+
+</html>

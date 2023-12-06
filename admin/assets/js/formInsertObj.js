@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("formInsertMision").addEventListener('submit', insert);
+    document.getElementById("formInsertObj").addEventListener('submit', insert);
     const inputs = document.querySelectorAll('input');
     inputs.forEach((input) => {
         input.addEventListener('keyup', validInsert);
@@ -10,21 +10,15 @@ document.addEventListener("DOMContentLoaded", function () {
         input.addEventListener('keyup', validInsert);
         input.addEventListener('blur', validInsert);
     })
-    const formInsertMision = document.getElementById('formInsertMision');
+    const formInsertObj = document.getElementById('formInsertObj');
 });
 
 const validInsert = (e) => {
     switch (e.target.name) {
-        case "frase":
+        case "desc_sec":
             validarCampos(e.target, e.target.name)
             break;
-        case "autor":
-            validarCampos(e.target, e.target.name)
-            break;
-        case "mision":
-            validarCampos(e.target, e.target.name)
-            break;
-        case "img_body":
+        case "img_sec":
             validarImg(e.target, e.target.name)
             break;
         default:
@@ -33,17 +27,8 @@ const validInsert = (e) => {
 }
 
 const campos = {
-    frase: false,
-    autor: false,
-    mision: false,
-    img_body: false,
-}
-
-const data = {
-    frase: "",
-    autor: "",
-    mision: "",
-    img_body: "",
+    desc_sec: false,
+    img_sec: false,
 }
 
 const validarCampos = (input, campo) => {
@@ -63,7 +48,6 @@ const validarCampos = (input, campo) => {
         document.getElementById(`${campo}`).classList.remove('border-danger');
         document.getElementById(`${campo}`).classList.remove('is-invalid');
         campos[campo] = true;
-        data[campo] = input.value;
     }
 }
 
@@ -92,7 +76,6 @@ const validarImg = (input, campo) => {
             document.getElementById(`${campo}`).classList.add('is-valid');
             document.getElementById(`${campo}`).classList.remove('is-warning');
             campos[campo] = true;
-            data[campo] = input.value;
         }
     }
 }
@@ -101,57 +84,52 @@ function showToastr(accion, mensaje, titulo) {
     Command: toastr[accion](mensaje, titulo);
 }
 
-function showSwal(icono, titulo, mensaje) {
+function showSwal(icono, titulo, mensaje, url) {
     Swal.fire({
         icon: icono,
         title: titulo,
         text: mensaje,
-    });
+        confirmButtonText: "OK"
+    }).then(resultado =>{
+        if(resultado.value){
+            window.location.href = url
+        }
+    })
 }
 
 function vaciar() {
-    campos.autor = false;
-    campos.frase = false;
-    campos.mision = false;
-    campos.img_body = false;
-    formMision.reset();
+    campos.desc_sec = false;
+    campos.img_sec = false;
+    formInsertObj.reset();
 }
 
 function vaciarPreview() {
-    var imgBodyMision = document.getElementById('imgBodyMision');//se oculta y se limpia
-    var divFrase = document.getElementById('divFrase'); //se oculta
-    var autorFrase = document.getElementById('autorFrase');//se ocula y limpia
-    var titMision = document.getElementById('titMision');//se oculta
-    var titFrase = document.getElementById('titFrase');//se oculta y limpia
-    var descMision = document.getElementById('descMision');//se oculta  limpia
-    var btnMision = document.getElementById('btnMision');//se oculta
+    const imgObj = document.getElementById('imgObj'); //se oculta y se limpia
+    const cardBodyObj = document.getElementById('cardBodyObj'); //se oculta
+    const titObj = document.getElementById('titObj'); //se oculta
+    const desObj = document.getElementById('desObj');//se oculta y se limpia
 
-    imgBodyMision.src = '';
-    imgBodyMision.style.display = "none";
-    divFrase.style.display = "none";
-    autorFrase.style.display = "none";
-    autorFrase.innerHTML = '';
-    titMision.style.display = "none";
-    titFrase.style.display = "none";
-    titFrase.innerHTML = '';
-    descMision.style.display = "none";
-    descMision.innerHTML = '';
-    btnMision.style.display = "none";
+    imgObj.src = '';
+    imgObj.style.display = "none";
+    cardBodyObj.style.display = "none";
+    desObj.style.display = "none";
+    desObj.innerHTML = '';
+    titObj.style.display = "none";
 }
 
 function insert(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/mision/addMision';
+    var baseURL = 'http://localhost/proyectos/ceunem/admin/objetivo/addObj';
     let datos = new FormData(this);
     let encabezados = new Headers();
-    if (campos.frase && campos.autor && campos.img_body && campos.mision) {
+    if (campos.desc_sec && campos.img_sec) {
         axios.post(baseURL, datos, { encabezados }).then((response) => {
             console.log(response.data);
-            if (response.data.status === false) {
-                showToastr("error", response.data.msg, "Error");
-            } else {
-                showSwal("success", "Envio exitoso", "Se enviaron los datos con exito")
+            if(response.data.status){
+                showSwal("success", "Actualización exitosa", "Se enviaron los datos con exito", response.data.url)
                 vaciar();
+            }else{
+                showToastr("error", response.data.msg, "Error");
             }
             vaciarPreview();
         });

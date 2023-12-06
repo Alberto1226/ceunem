@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-12-2023 a las 22:00:36
+-- Tiempo de generación: 06-12-2023 a las 19:07:33
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -37,6 +37,13 @@ CREATE TABLE `blog` (
   `estado` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `blog`
+--
+
+INSERT INTO `blog` (`id_blog`, `categoria`, `titulo`, `descripcion`, `img_url`, `link_url`, `estado`) VALUES
+(1, 'Salud', '5 Maneras para Apoyar la Salud Mental de los Estudiantes', 'Muchos estudiantes pasan aproximadamente una sexta parte de sus horas de vigilia en la escuela, por lo que apoyar la salud mental de los estudiantes cae sobre los hombros de los docentes.', 'public/img/blog/20231124_193809_blog-1.jpg', 'https://ceunem.edu.mx/nosotros.html', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -51,6 +58,13 @@ CREATE TABLE `continua` (
   `pdf_url` varchar(255) NOT NULL,
   `estado` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `continua`
+--
+
+INSERT INTO `continua` (`id_ec`, `nom_ec`, `descripcion`, `img_url`, `pdf_url`, `estado`) VALUES
+(1, 'Maestría en Derecho Corporativo', 'La formación va dirigida a profesionales que deseen adquirir una maestría a su profesión en Derecho Corporativo, al estudiar esta rama el estudiante adquirirá conocimientos que lo ayudarán a desempeñarse actividades de sustento jurídico para las empresas de acuerdo a teorías, instituciones, principios, normativos, en etc.', 'public/img/continua/maestriaderecho.png', 'public/docs/continua/PLAN_MAESTRIA_DERECHO.pdf', 0);
 
 -- --------------------------------------------------------
 
@@ -67,6 +81,13 @@ CREATE TABLE `licenciaturas` (
   `estado` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `licenciaturas`
+--
+
+INSERT INTO `licenciaturas` (`id_lic`, `nom_lic`, `descripcion`, `img_url`, `pdf_url`, `estado`) VALUES
+(1, 'Lic. en Admiistración', 'La formación va dirigida a personas que deseen adquirir una licenciatura enfocada a la Administración, al estudiar esta carrera. adquirirás el desarrollo integral de las áreas administrativas de empresas y negocios.', 'public/img/licenciatura/administracion.png', 'public/docs/licenciatura/PLAN LICENCIATURA_ADMINISTRACION.pdf', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -81,6 +102,13 @@ CREATE TABLE `maestrias` (
   `pdf_url` varchar(255) NOT NULL,
   `estado` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `maestrias`
+--
+
+INSERT INTO `maestrias` (`id_mas`, `nom_mas`, `descripcion`, `img_url`, `pdf_url`, `estado`) VALUES
+(1, 'Maestría en Administración de Negocios', 'La formación va dirigida a profesionales que deseen adquirir una maestría a su profesión en Administración de Negocios con la finalidad de formar profesionales con una visión estratégica, emprendedora en innovadora, con conocimientos y habilidades relacionados a los procesos administrativos de los negocios.', 'public/img/maestria/maestriaadministracion.png', 'public/docs/maestria/PLAN_MAESTRIA_ADMINISTRACION.pdf', 1);
 
 -- --------------------------------------------------------
 
@@ -98,6 +126,35 @@ CREATE TABLE `mision` (
   `id_usu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `mision`
+--
+
+INSERT INTO `mision` (`id_mis`, `frase`, `autor`, `mision`, `img_body`, `estado`, `id_usu`) VALUES
+(1, '“Lo maravilloso de aprender algo, es que nadie puede arrebatárnoslo”', 'B. B. King', 'CEUNEM es una Institución de Educación Superior inspirada en el emprendimiento, buscando la profesionalización de manera digital de toda persona en pos de una oportunidad para potencializar su talento y capacidades tanto profesionales como personales, tomando en cuenta sus necesidades de movilidad social y laboral, brindándole la oportunidad de replantear su prospectiva como una persona productivamente exitosa, capaz de emprender y desarrollar modelos de negocios exitosos y rentables, respaldadas en el conocimiento de disciplinas formales.', 'public/img/mision/20231204_215909_nosotros-3.jpg', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `objetivos`
+--
+
+CREATE TABLE `objetivos` (
+  `id_obj` int(11) NOT NULL,
+  `nom_sec` varchar(100) NOT NULL,
+  `img_sec` varchar(255) NOT NULL,
+  `desc_sec` text NOT NULL,
+  `estado` int(2) NOT NULL,
+  `id_usu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `objetivos`
+--
+
+INSERT INTO `objetivos` (`id_obj`, `nom_sec`, `img_sec`, `desc_sec`, `estado`, `id_usu`) VALUES
+(1, 'Objetivos', 'public/img/filosofia/OBJ_20231206_174623_objetivos.png', 'Empoderar académicamente a nuestros estudiantes asociados a través de la formación de conocimientos y competencias profesionales en disciplinas de corte humanista, académico-administrativo y de comunicación. Impulsar en nuestros estudiantes asociados una actitud emprendedora para superar los retos actuales de la competencia profesional laboral. Estimular en nuestros estudiantes asociados un comportamiento de responsabilidad profesional y liderazgo con carácter duradero.', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -111,6 +168,57 @@ CREATE TABLE `usuarios` (
   `pass` varchar(255) NOT NULL,
   `estado` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usu`, `nombre`, `email`, `pass`, `estado`) VALUES
+(1, 'Diana Gonzalez', 'dianaegonzalezperez@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `valores`
+--
+
+CREATE TABLE `valores` (
+  `id_val` int(11) NOT NULL,
+  `nom_sec` varchar(100) NOT NULL,
+  `img_sec` varchar(255) NOT NULL,
+  `desc_sec` text NOT NULL,
+  `estado` int(2) NOT NULL,
+  `id_usu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `valores`
+--
+
+INSERT INTO `valores` (`id_val`, `nom_sec`, `img_sec`, `desc_sec`, `estado`, `id_usu`) VALUES
+(1, 'Valores', 'public/img/filosofia/VAL_20231206_185310_valores.png', 'Emprendimiento\r\n\r\nLiderazgo\r\n\r\nDisciplina\r\n\r\nInnovación', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vision`
+--
+
+CREATE TABLE `vision` (
+  `id_vis` int(11) NOT NULL,
+  `nom_sec` varchar(100) NOT NULL,
+  `img_sec` varchar(255) NOT NULL,
+  `desc_sec` text NOT NULL,
+  `estado` int(2) NOT NULL,
+  `id_usu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `vision`
+--
+
+INSERT INTO `vision` (`id_vis`, `nom_sec`, `img_sec`, `desc_sec`, `estado`, `id_usu`) VALUES
+(1, 'Visión', 'public/img/filosofia/VIS_20231206_003241_vision.png', 'Ser la mejor opción dentro de las Instituciones de educación Universitaria, al sobresalir en el mercado de los servicios educativos digitales que otorga un valor agregado a la enseñanza profesional, empoderando académicamente a nuestros estudiantes en el desarrollo de conocimientos, capacidades y habilidades profesionales, así como en el desarrollo de estrategias de emprendimiento para establecer proyectos de negocio exitosos y rentables.', 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -148,10 +256,31 @@ ALTER TABLE `mision`
   ADD UNIQUE KEY `id_usu` (`id_usu`);
 
 --
+-- Indices de la tabla `objetivos`
+--
+ALTER TABLE `objetivos`
+  ADD PRIMARY KEY (`id_obj`),
+  ADD UNIQUE KEY `id_usu` (`id_usu`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usu`);
+
+--
+-- Indices de la tabla `valores`
+--
+ALTER TABLE `valores`
+  ADD PRIMARY KEY (`id_val`),
+  ADD UNIQUE KEY `id_usu` (`id_usu`);
+
+--
+-- Indices de la tabla `vision`
+--
+ALTER TABLE `vision`
+  ADD PRIMARY KEY (`id_vis`),
+  ADD UNIQUE KEY `id_usu` (`id_usu`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -161,37 +290,55 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id_blog` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_blog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `continua`
 --
 ALTER TABLE `continua`
-  MODIFY `id_ec` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ec` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `licenciaturas`
 --
 ALTER TABLE `licenciaturas`
-  MODIFY `id_lic` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_lic` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `maestrias`
 --
 ALTER TABLE `maestrias`
-  MODIFY `id_mas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `mision`
 --
 ALTER TABLE `mision`
-  MODIFY `id_mis` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `objetivos`
+--
+ALTER TABLE `objetivos`
+  MODIFY `id_obj` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usu` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `valores`
+--
+ALTER TABLE `valores`
+  MODIFY `id_val` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `vision`
+--
+ALTER TABLE `vision`
+  MODIFY `id_vis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
@@ -202,6 +349,24 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `mision`
   ADD CONSTRAINT `mision_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
+
+--
+-- Filtros para la tabla `objetivos`
+--
+ALTER TABLE `objetivos`
+  ADD CONSTRAINT `objetivos_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
+
+--
+-- Filtros para la tabla `valores`
+--
+ALTER TABLE `valores`
+  ADD CONSTRAINT `valores_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
+
+--
+-- Filtros para la tabla `vision`
+--
+ALTER TABLE `vision`
+  ADD CONSTRAINT `vision_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

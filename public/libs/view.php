@@ -11,6 +11,7 @@ class View{
     public $continua;
     public $secMisions = [];
     public $secMision;
+    public $fila;
     function __construct()
     {
         //echo "Vista base";

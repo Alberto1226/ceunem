@@ -1,5 +1,5 @@
 <?php
-include_once 'models/maestrias.php';
+include_once 'models/clases/maestrias.php';
 
 class MaestriaModel extends Model
 {

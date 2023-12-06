@@ -1,23 +1,15 @@
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("formEditMis").addEventListener('submit', update);
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("formEditval").addEventListener('submit', update);
 
-
-    /*recuperar los elementos y mandarlos a las funciones de preview
-    recupremos la imagen*/
     const imgBD = document.getElementById('img_bd');
     baseURL = 'http://localhost/proyectos/ceunem/admin/';
     urlImg = imgBD.value;
     url = baseURL+urlImg;
-    showImgHeader(url);
-    
-    /*ecupremos los imputs de texto*/
-    const frase = document.getElementById('frase');
-    showInputs(frase);
-    const autor = document.getElementById('autor');
-    showInputs(autor);
-    const mision = document.getElementById('mision');
-    showInputs(mision);
-    
+    showImgVal(url);
+
+    const desc_sec = document.getElementById('desc_sec');
+    showInput(desc_sec);
+
     const inputs = document.querySelectorAll('input');
     inputs.forEach((input) => {
         input.addEventListener('keyup', validEdit);
@@ -28,20 +20,14 @@ document.addEventListener("DOMContentLoaded", function () {
         input.addEventListener('keyup', validEdit);
         input.addEventListener('blur', validEdit);
     });
-});
+})
 
 const validEdit = (e) => {
     switch (e.target.name) {
-        case "frase":
+        case "desc_sec":
             validarCampos(e.target, e.target.name)
             break;
-        case "autor":
-            validarCampos(e.target, e.target.name)
-            break;
-        case "mision":
-            validarCampos(e.target, e.target.name)
-            break;
-        case "img_body":
+        case "img_sec":
             validarImg(e.target, e.target.name)
             break;
         default:
@@ -51,15 +37,15 @@ const validEdit = (e) => {
 
 function update(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/mision/upMision';
+    var baseURL = 'http://localhost/proyectos/ceunem/admin/valor/upValores';
     let datos = new FormData(this);
     let encabezados = new Headers();
     axios.post(baseURL, datos, { encabezados }).then((response) => {
         console.log(response.data)
-        if (response.data.status === false) {
+        if(response.data.status){
+            showSwal("success", "Actualización exitosa", "Se enviaron los datos con exito", response.data.url)
+        }else{
             showToastr("error", response.data.msg, "Error");
-        } else {
-            showSwal("success", "Envio exitoso", "Se enviaron los datos con exito")
         }
     });
 }

@@ -1,5 +1,5 @@
 <?php
-include_once 'models/continuas.php';
+include_once 'models/clases/continuas.php';
 
 class ContinuaModel extends Model
 {

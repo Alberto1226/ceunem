@@ -1,5 +1,5 @@
 <?php
-include_once 'models/articulo.php';
+include_once 'models/clases/articulo.php';
 
 class BlogModel extends Model{
     public function __construct()

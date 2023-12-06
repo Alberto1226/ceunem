@@ -1,5 +1,5 @@
 <?php
-include_once 'models/misiones.php';
+include_once 'models/clases/misiones.php';
 
 class MisionModel extends Model
 {
@@ -56,7 +56,7 @@ class MisionModel extends Model
         }
     }
 
-    function update($item)
+    public function update($item)
     {
         $query = $this->db->connect()->prepare("UPDATE mision
         SET frase = :frase, autor = :autor, mision = :mision, img_body =  :img_body
@@ -73,7 +73,7 @@ class MisionModel extends Model
             ]);
             return true;
         } catch (PDOException $th) {
-          echo $th;
+          return  $th;
         }
     }
 }
