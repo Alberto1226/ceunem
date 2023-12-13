@@ -38,7 +38,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        include_once 'models/continuas.php';
+                        include_once 'models/clases/continuas.php';
                         foreach ($this->continuas as $row) {
                             $continua = new Continuas();
                             $continua = $row;

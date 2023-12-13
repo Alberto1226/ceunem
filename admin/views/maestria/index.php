@@ -38,7 +38,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        include_once 'models/maestrias.php';
+                        include_once 'models/clases/maestrias.php';
                         foreach ($this->maestrias as $row) {
                             $maestria = new Maestrias();
                             $maestria = $row;

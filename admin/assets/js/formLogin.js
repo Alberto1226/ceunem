@@ -26,7 +26,6 @@ const data = {
 }
 
 const validando = (e) => {
-    console.log();
     switch (e.target.name) {
         case "email":
             validarCampos(exp.correo, e.target, e.target.name);
@@ -90,14 +89,11 @@ function validarLogin(event) {
         axios.post(baseURL, datos, { encabezados }).then((response) => {
             if(response.data.status == false){
                 showSwal("error", "Oops...", response.data.msg);
-                
             }else{
                 showSwal("success", "Envio exitoso", "Se enviaron los datos con exito")
                 vaciar();
                 window.location.replace(urlRedirect);
             }
-            
-
         });
     } else {
         showSwal("error", "Oops...", "No podemos enviar un formulario vacio")

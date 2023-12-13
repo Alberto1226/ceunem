@@ -124,7 +124,6 @@ function insert(event) {
     let encabezados = new Headers();
     if (campos.desc_sec && campos.img_sec) {
         axios.post(baseURL, datos, { encabezados }).then((response) => {
-            console.log(response.data);
             if(response.data.status){
                 showSwal("success", "Actualización exitosa", "Se enviaron los datos con exito", response.data.url)
                 vaciar();

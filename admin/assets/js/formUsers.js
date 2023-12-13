@@ -30,7 +30,6 @@ const data = {
 }
 
 const validando = (e) => {
-    console.log();
     switch (e.target.name) {
         case "nameFull":
             validarCampos(exp.nombre, e.target, e.target.name);

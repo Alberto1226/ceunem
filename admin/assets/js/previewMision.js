@@ -1,6 +1,6 @@
 function imageHeader(event, querySelector) {
     const input = event.target;
-    
+
     $imgBody = document.querySelector(querySelector);
     if (!input.files.length) return
     file = input.files[0];
@@ -25,24 +25,17 @@ function showInputs(input) {
     var descMision = document.getElementById('descMision');
     var btnMision = document.getElementById('btnMision');
 
-    if (input.value.trim() === '') {
-        console.log("campo vacio")
-
-    } else {
-        if (input.name === "frase") {
-            titMision.style.display = "block";
-            divFrase.style.display = "block";
-            titFrase.style.display = "block"
-            titFrase.textContent = input.value;
-        } else if (input.name === "autor") {
-            autorFrase.style.display = "block"
-            autorFrase.textContent = input.value;
-        } else if (input.name === "mision") {
-            descMision.textContent = input.value;
-            descMision.style.display = "block";
-            btnMision.style.display = "inline";
-        }
+    if (input.name === "frase") {
+        titMision.style.display = "block";
+        divFrase.style.display = "block";
+        titFrase.style.display = "block"
+        titFrase.textContent = input.value;
+    } else if (input.name === "autor") {
+        autorFrase.style.display = "block"
+        autorFrase.textContent = input.value;
+    } else if (input.name === "mision") {
+        descMision.textContent = input.value;
+        descMision.style.display = "block";
+        btnMision.style.display = "inline";
     }
-
-
 }

@@ -41,7 +41,6 @@ function update(event) {
     let datos = new FormData(this);
     let encabezados = new Headers();
     axios.post(baseURL, datos, { encabezados }).then((response) => {
-        console.log(response.data)
         if(response.data.status){
             showSwal("success", "Actualización exitosa", "Se enviaron los datos con exito", response.data.url)
         }else{

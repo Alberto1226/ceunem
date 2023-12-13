@@ -1,6 +1,6 @@
 function imgObj(event, querySelector) {
     const input = event.target;
-    
+
     $img_sec = document.querySelector(querySelector);
     if (!input.files.length) return
     file = input.files[0];
@@ -23,14 +23,8 @@ function showImgObj(url) {
 function showInput(input) {
     const desVision = document.getElementById('desObj');
 
-    if (input.value.trim() === '') {
-        console.log("campo vacio")
-
-    } else {
-        if (input.name === "desc_sec") {
-            desVision.style.display = "block"
-            desVision.textContent = input.value;
-        }
+    if (input.name === "desc_sec") {
+        desVision.style.display = "block"
+        desVision.textContent = input.value;
     }
-
 }

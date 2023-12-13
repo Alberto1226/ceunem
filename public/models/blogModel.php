@@ -1,5 +1,5 @@
  <?php
-include_once 'models/articulo.php';
+include_once 'models/clases/articulo.php';
 
 class BlogModel extends Model{
     public function __construct()
@@ -30,7 +30,7 @@ class BlogModel extends Model{
         }
     }
 
-    public function countRowsContinuas(){
+    public function countRows(){
         try {
             $query = $this->db->connect()->query("SELECT * FROM blog");
             $filas=$query->rowCount();

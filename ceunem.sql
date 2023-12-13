@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-12-2023 a las 19:07:33
+-- Tiempo de generación: 13-12-2023 a las 17:56:28
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -65,6 +65,81 @@ CREATE TABLE `continua` (
 
 INSERT INTO `continua` (`id_ec`, `nom_ec`, `descripcion`, `img_url`, `pdf_url`, `estado`) VALUES
 (1, 'Maestría en Derecho Corporativo', 'La formación va dirigida a profesionales que deseen adquirir una maestría a su profesión en Derecho Corporativo, al estudiar esta rama el estudiante adquirirá conocimientos que lo ayudarán a desempeñarse actividades de sustento jurídico para las empresas de acuerdo a teorías, instituciones, principios, normativos, en etc.', 'public/img/continua/maestriaderecho.png', 'public/docs/continua/PLAN_MAESTRIA_DERECHO.pdf', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `equipo`
+--
+
+CREATE TABLE `equipo` (
+  `id_eq` int(11) NOT NULL,
+  `nombre` varchar(150) NOT NULL,
+  `puesto` varchar(60) NOT NULL,
+  `img_url` varchar(250) NOT NULL,
+  `rFace` text NOT NULL,
+  `rTw` text NOT NULL,
+  `rIns` text NOT NULL,
+  `estado` int(2) NOT NULL,
+  `id_usu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `equipo`
+--
+
+INSERT INTO `equipo` (`id_eq`, `nombre`, `puesto`, `img_url`, `rFace`, `rTw`, `rIns`, `estado`, `id_usu`) VALUES
+(2, 'Martha', 'Dirección', 'public/img/equipo/20231208_063348_team-2.jpg', 'https://es-la.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/', 1, 1),
+(7, 'Profesionista 2', 'Dirección', 'public/img/equipo/20231208_065634_team-1.jpg', 'https://es-la.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/', 1, 1),
+(8, 'Profesionista 3', 'Dirección', 'public/img/equipo/20231208_065905_team-3.jpg', 'https://es-la.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/', 1, 1),
+(9, 'Profesionista 4', 'Dirección', 'public/img/equipo/20231208_065920_team-4.jpg', 'https://es-la.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `formulario`
+--
+
+CREATE TABLE `formulario` (
+  `id_form` int(11) NOT NULL,
+  `nCompleto` int(2) NOT NULL,
+  `nombre` int(2) NOT NULL,
+  `apellidos` int(2) NOT NULL,
+  `email` int(2) NOT NULL,
+  `tel` int(2) NOT NULL,
+  `face` int(2) NOT NULL,
+  `mensaje` int(2) NOT NULL,
+  `asunto` int(2) NOT NULL,
+  `live` int(2) NOT NULL,
+  `id_usu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `formulario`
+--
+
+INSERT INTO `formulario` (`id_form`, `nCompleto`, `nombre`, `apellidos`, `email`, `tel`, `face`, `mensaje`, `asunto`, `live`, `id_usu`) VALUES
+(1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inicio`
+--
+
+CREATE TABLE `inicio` (
+  `id_ini` int(11) NOT NULL,
+  `vid_url` varchar(255) NOT NULL,
+  `estado` int(2) NOT NULL,
+  `id_usu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `inicio`
+--
+
+INSERT INTO `inicio` (`id_ini`, `vid_url`, `estado`, `id_usu`) VALUES
+(1, 'public/vid/inicio/VIDEO_20231211_233147.mp4', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -158,6 +233,22 @@ INSERT INTO `objetivos` (`id_obj`, `nom_sec`, `img_sec`, `desc_sec`, `estado`, `
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `smtp`
+--
+
+CREATE TABLE `smtp` (
+  `id_smtp` int(11) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `pass` varchar(150) NOT NULL,
+  `portServer` int(11) NOT NULL,
+  `conect` int(11) NOT NULL,
+  `nombre` varchar(150) NOT NULL,
+  `id_usu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -237,6 +328,26 @@ ALTER TABLE `continua`
   ADD PRIMARY KEY (`id_ec`);
 
 --
+-- Indices de la tabla `equipo`
+--
+ALTER TABLE `equipo`
+  ADD PRIMARY KEY (`id_eq`);
+
+--
+-- Indices de la tabla `formulario`
+--
+ALTER TABLE `formulario`
+  ADD PRIMARY KEY (`id_form`),
+  ADD UNIQUE KEY `id_usu` (`id_usu`);
+
+--
+-- Indices de la tabla `inicio`
+--
+ALTER TABLE `inicio`
+  ADD PRIMARY KEY (`id_ini`),
+  ADD UNIQUE KEY `id_usu` (`id_usu`);
+
+--
 -- Indices de la tabla `licenciaturas`
 --
 ALTER TABLE `licenciaturas`
@@ -260,6 +371,13 @@ ALTER TABLE `mision`
 --
 ALTER TABLE `objetivos`
   ADD PRIMARY KEY (`id_obj`),
+  ADD UNIQUE KEY `id_usu` (`id_usu`);
+
+--
+-- Indices de la tabla `smtp`
+--
+ALTER TABLE `smtp`
+  ADD PRIMARY KEY (`id_smtp`),
   ADD UNIQUE KEY `id_usu` (`id_usu`);
 
 --
@@ -299,6 +417,24 @@ ALTER TABLE `continua`
   MODIFY `id_ec` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `equipo`
+--
+ALTER TABLE `equipo`
+  MODIFY `id_eq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `formulario`
+--
+ALTER TABLE `formulario`
+  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `inicio`
+--
+ALTER TABLE `inicio`
+  MODIFY `id_ini` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `licenciaturas`
 --
 ALTER TABLE `licenciaturas`
@@ -323,6 +459,12 @@ ALTER TABLE `objetivos`
   MODIFY `id_obj` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `smtp`
+--
+ALTER TABLE `smtp`
+  MODIFY `id_smtp` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -345,6 +487,24 @@ ALTER TABLE `vision`
 --
 
 --
+-- Filtros para la tabla `equipo`
+--
+ALTER TABLE `equipo`
+  ADD CONSTRAINT `equipo_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
+
+--
+-- Filtros para la tabla `formulario`
+--
+ALTER TABLE `formulario`
+  ADD CONSTRAINT `formulario_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
+
+--
+-- Filtros para la tabla `inicio`
+--
+ALTER TABLE `inicio`
+  ADD CONSTRAINT `inicio_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
+
+--
 -- Filtros para la tabla `mision`
 --
 ALTER TABLE `mision`
@@ -355,6 +515,12 @@ ALTER TABLE `mision`
 --
 ALTER TABLE `objetivos`
   ADD CONSTRAINT `objetivos_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
+
+--
+-- Filtros para la tabla `smtp`
+--
+ALTER TABLE `smtp`
+  ADD CONSTRAINT `smtp_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
 
 --
 -- Filtros para la tabla `valores`

@@ -38,7 +38,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        include_once 'models/licenciaturas.php';
+                        include_once 'models/clases/licenciaturas.php';
                         foreach ($this->licenciaturas as $row) {
                             $licenciatura = new Licenciaturas();
                             $licenciatura = $row;

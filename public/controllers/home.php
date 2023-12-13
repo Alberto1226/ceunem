@@ -8,8 +8,9 @@ class Home extends Controller{
     }
 
     function render(){
+        $inis = $this->model->getVideo();
+        $this->view->inis = $inis;
         $this->view->render('home');
-
     }
 
 }

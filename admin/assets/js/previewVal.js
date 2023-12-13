@@ -22,16 +22,10 @@ function showImgVal(url) {
 
 function showInput(input) {
     const desVal = document.getElementById('desVal');
-
-    if (input.value.trim() === '') {
-        console.log("campo vacio")
-
-    } else {
         if (input.name === "desc_sec") {
             desVal.style.display = "block";
             desVal.style.whiteSpace = "pre-wrap";
             desVal.textContent = input.value;
         }
-    }
 
 }

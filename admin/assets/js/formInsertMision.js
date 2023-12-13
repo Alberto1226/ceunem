@@ -146,7 +146,6 @@ function insert(event) {
     let encabezados = new Headers();
     if (campos.frase && campos.autor && campos.img_body && campos.mision) {
         axios.post(baseURL, datos, { encabezados }).then((response) => {
-            console.log(response.data);
             if (response.data.status === false) {
                 showToastr("error", response.data.msg, "Error");
             } else {

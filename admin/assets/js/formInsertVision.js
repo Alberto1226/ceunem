@@ -97,6 +97,14 @@ function showSwal(icono, titulo, mensaje, url) {
     })
 }
 
+function showSwal2(icono, titulo, mensaje) {
+    Swal.fire({
+        icon: icono,
+        title: titulo,
+        text: mensaje,
+    });
+}
+
 function vaciar() {
     campos.desc_sec = false;
     campos.img_sec = false;
@@ -124,9 +132,8 @@ function insert(event) {
     let encabezados = new Headers();
     if (campos.desc_sec && campos.img_sec) {
         axios.post(baseURL, datos, { encabezados }).then((response) => {
-            console.log(response.data);
             if(response.data.status){
-                showSwalEdit("success", "Actualización exitosa", "Se enviaron los datos con exito", response.data.url)
+                showSwal("success", "Actualización exitosa", "Se enviaron los datos con exito", response.data.url)
                 vaciar();
             }else{
                 showToastr("error", response.data.msg, "Error");
@@ -134,6 +141,6 @@ function insert(event) {
             vaciarPreview();
         });
     } else {
-        showSwal("error", "Oops...", "No podemos enviar un formulario vacio")
+        showSwal2("error", "Oops...", "No podemos enviar un formulario vacio")
     }
 }

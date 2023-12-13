@@ -17,40 +17,54 @@
                 <div class="d-inline-block rounded-pill bg-secondary text-white px-3 mb-3">¡Contáctanos!</div>
                 <h1 class="display-6 mb-5">Comunícate con nosotros</h1>
                 <p class="mb-4">Nos esforzamos por brindar educación de alta calidad, flexible y personalizada. Para unirse a nuestra gran comunidad, ingrese sus datos a continuación para poder recibir información sobre la carrera de su interés y comience el proceso de inscripción hoy mismo.</p>
-                <form>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                <label for="name">Nombre Completo</label>
+                <form action="<?php echo constant('URL'); ?>contacto/sendEmail" method="post">
+                    <?php
+                    include_once 'models/clases/formulario.php';
+                    foreach ($this->inputs as $row) {
+                        $input = new Formulario();
+                        $input = $row;
+                    ?>
+                    <div class="form-group">
+                        <input type="text" class="form-control inform" id="nCompleto" placeholder="Ingresa Nombre Completo" name="nCompleto" style="display: <?php echo $input->nCompleto === 1 ? "inline" : "none"; ?>;">
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control inform" id="nombre" placeholder="Ingresa Nombre(s)" name="nombre" style="display: <?php echo $input->nombre === 1 ? "inline" : "none"; ?>;">
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                <label for="email">Correo Electrónico</label>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control inform" id="apellidos" placeholder="Ingresa Apellidos" name="apellidos" style="display: <?php echo $input->apellidos === 1 ? "inline" : "none"; ?>;">
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                <label for="subject">Asunto</label>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control inform" id="email" placeholder="Ingrese su Email" name="email" style="display: <?php echo $input->email === 1 ? "inline" : "none"; ?>;">
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control inform" id="tel" placeholder="Ingrese su Teléfono" name="tel" style="display: <?php echo $input->tel === 1 ? "inline" : "none"; ?>;">
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control inform" id="face" placeholder="Ingrese su link de Facebook" name="face" style="display: <?php echo $input->face === 1 ? "inline" : "none"; ?>;">
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control inform" id="live" placeholder="Ingrese el estado de donde se comunica" name="live" style="display: <?php echo $input->live === 1 ? "inline" : "none"; ?>;">
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control inform" id="asunto" placeholder="Ingrese el Asunto" name="asunto" style="display: <?php echo $input->asunto === 1 ? "inline" : "none"; ?>;">
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea class="form-control inform" rows="3" id="mensaje" placeholder="Ingrese su mensaje" name="mensaje" style="display: <?php echo $input->mensaje === 1 ? "inline" : "none"; ?>;"></textarea>
+                    </div>
+                    <?php } ?>
+                    <div class="form-group mt-3">
+                        <button class="btn btn-primary py-2 px-3 me-3">
+                            Envíar
+                            <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                <i class="fa fa-arrow-right"></i>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                <label for="message">Mensaje</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary py-2 px-3 me-3">
-                                Envíar
-                                <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                    <i class="fa fa-arrow-right"></i>
-                                </div>
-                            </button>
-                        </div>
+                        </button>
                     </div>
                 </form>
             </div>

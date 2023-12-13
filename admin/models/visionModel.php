@@ -80,7 +80,7 @@ class VisionModel extends Model
             ]);
             return true;
         } catch (PDOException $th) {
-            echo $th;
+            return false;
         }
     }
 }

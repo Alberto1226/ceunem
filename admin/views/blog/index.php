@@ -40,7 +40,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        include_once 'models/articulo.php';
+                        include_once 'models/clases/articulo.php';
                         foreach ($this->articulos as $row) {
                             $articulo = new Articulo();
                             $articulo = $row;

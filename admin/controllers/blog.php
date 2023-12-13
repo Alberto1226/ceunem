@@ -151,29 +151,23 @@ class Blog extends Controller
     {
         $id_blog = $_POST['id_estado'];
         $estado = $_POST['estado'];
+        $estado2=0;
 
-        if ($estado == 1) {
-            $new = 0;
+            if($estado == 0){
+                $estado2=1;
+            }else{
+                $estado2=0;
+            }
+        
             if ($this->model->estado([
                 'id_blog' => $id_blog,
-                'estado' => $new,
+                'estado' => $estado2,
             ])) {
                 header('location: ' . URL . 'blog');
             } else {
                 $this->view->mensaje = "Error al cambiar Status";
                 header('location: ' . URL . 'blog');
             }
-        } else {
-            $new = 1;
-            if ($this->model->estado([
-                'id_blog' => $id_blog,
-                'estado' => $new,
-            ])) {
-                header('location: ' . URL . 'blog');
-            } else {
-                $this->view->mensaje = "Error al cambiar Status";
-                header('location: ' . URL . 'blog');
-            }
-        }
+        
     }
 }

@@ -12,6 +12,13 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+        <!-- Inicio -->
+        <li class="nav-item">
+          <a href="<?php echo constant('URL') ?>inicio" class="nav-link">
+            <i class="nav-icon fas fa-home"></i>
+            <p>Inicio</p>
+          </a>
+        </li>
         <!-- Blog -->
         <li class="nav-item">
           <a href="<?php echo constant('URL') ?>blog" class="nav-link">
@@ -100,16 +107,28 @@
                 <p>Equipo de trabajo</p>
               </a>
             </li>
+          </ul>
+        </li>
+        <!-- Contacto -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-envelope"></i>
+            <p>
+              Contacto
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="<?php echo constant('URL') ?>servicioCñiente" class="nav-link">
-                <i class="fas fa-business-time nav-icon"></i>
-                <p>Servico al cliente</p>
+              <a href="<?php echo constant('URL') ?>servidor" class="nav-link">
+                <i class="fas fa-server nav-icon"></i>
+                <p>Servidor</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo constant('URL') ?>nuestraHistoria" class="nav-link">
-                <i class="fas fa-university nav-icon"></i>
-                <p>Nuestra Historia</p>
+              <a href="<?php echo constant('URL') ?>contacto" class="nav-link">
+                <i class="fas fa-list-ul nav-icon"></i>
+                <p>Formulario</p>
               </a>
             </li>
           </ul>

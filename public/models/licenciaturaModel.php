@@ -1,5 +1,5 @@
 <?php
-include_once 'models/licenciaturas.php';
+include_once 'models/clases/licenciaturas.php';
 
 class LicenciaturaModel extends Model{
     public function __construct()

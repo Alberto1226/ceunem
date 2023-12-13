@@ -92,9 +92,6 @@ class Vision extends Controller
             $fecha = date('Ymd_His');
             $r_v = $dir . "VIS_" . $fecha . "_" . $img_s;
 
-
-            $img_s = $_FILES['img_sec']['name'];
-
             if (is_file($img_sec)) {
                 if ($t_s == "jpg" or $t_s == "jpeg" or $t_s == "png") {
                     if (unlink($img_bd)) {
