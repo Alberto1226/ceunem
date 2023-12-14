@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("formEditTel").addEventListener('submit', insert);
+    obtenerTel();
+    document.getElementById("formEditTel").addEventListener('submit', editar);
     const inputs = document.querySelectorAll('input');
     inputs.forEach((input) => {
         input.addEventListener('keyup', validInsert);
@@ -40,14 +41,14 @@ const validarNum = (input, campo) => {
     const regex = /^[0-9]{10,12}$/;
 
     if (regex.test(input.value)) {
-        document.getElementById(`${campo+"2"}`).classList.add('border-success');
-        document.getElementById(`${campo+"2"}`).classList.remove('border-danger');
-        document.getElementById(`${campo+"2"}`).classList.remove('is-invalid');
+        document.getElementById(`${campo + "2"}`).classList.add('border-success');
+        document.getElementById(`${campo + "2"}`).classList.remove('border-danger');
+        document.getElementById(`${campo + "2"}`).classList.remove('is-invalid');
         campos[campo] = true;
     } else {
-        document.getElementById(`${campo+"2"}`).classList.remove('border-success');
-        document.getElementById(`${campo+"2"}`).classList.add('border-danger');
-        document.getElementById(`${campo+"2"}`).classList.add('is-invalid');
+        document.getElementById(`${campo + "2"}`).classList.remove('border-success');
+        document.getElementById(`${campo + "2"}`).classList.add('border-danger');
+        document.getElementById(`${campo + "2"}`).classList.add('is-invalid');
         showToastr("error", "Verifique el campo", `${titulo}`);
         campos[campo] = false;
     }
@@ -60,15 +61,15 @@ const validarMensaje = (input, campo) => {
     var titulo = lCapital + restName;
 
     if (input.value.trim() === '') {
-        document.getElementById(`${campo+"2"}`).classList.remove('border-success');
-        document.getElementById(`${campo+"2"}`).classList.add('border-danger');
-        document.getElementById(`${campo+"2"}`).classList.add('is-invalid');
+        document.getElementById(`${campo + "2"}`).classList.remove('border-success');
+        document.getElementById(`${campo + "2"}`).classList.add('border-danger');
+        document.getElementById(`${campo + "2"}`).classList.add('is-invalid');
         showToastr("error", "Verifique el campo", `${titulo}`);
         campos[campo] = false;
     } else {
-        document.getElementById(`${campo+"2"}`).classList.add('border-success');
-        document.getElementById(`${campo+"2"}`).classList.remove('border-danger');
-        document.getElementById(`${campo+"2"}`).classList.remove('is-invalid');
+        document.getElementById(`${campo + "2"}`).classList.add('border-success');
+        document.getElementById(`${campo + "2"}`).classList.remove('border-danger');
+        document.getElementById(`${campo + "2"}`).classList.remove('is-invalid');
         campos[campo] = true;
     }
 }
@@ -98,13 +99,23 @@ function showSwal2(icono, titulo, mensaje) {
     })
 }
 
-function insert(event) {
+function obtenerTel() {
+    var baseURL = 'http://localhost/proyectos/ceunem/admin/telefono/getWhats';
+    axios.post(baseURL).then((response) => {
+        for (const key in response.data) {
+            campos[key] = response.data[key];
+            const input = document.getElementById(key + "2");
+            input.value = response.data[key];
+        }
+    })
+}
+
+function editar(event) {
     event.preventDefault();
-    showSwal2("error", "Oops...", "No podemos enviar un formulario vacio");
-    /*if (campos.dirServer && campos.email && campos.pass
-        && campos.portServer && campos.conect && campos.nombre) {
-            var baseURL = 'http://localhost/proyectos/ceunem/admin/telefono/addWhats';
-            let datos = new FormData(this);
+    const formEditTel= document.getElementById("formEditTel");
+    if (campos.numero && campos.mensaje) {
+            var baseURL = 'http://localhost/proyectos/ceunem/admin/telefono/upWhats';
+            let datos = new FormData(formEditTel);
             let encabezados = new Headers();
             axios.post(baseURL, datos, { encabezados }).then((response) => {
                 if (response.data.status) {
@@ -115,5 +126,5 @@ function insert(event) {
             })
     } else {
         showSwal2("error", "Oops...", "No podemos enviar un formulario vacio");
-    }*/
+    }
 }

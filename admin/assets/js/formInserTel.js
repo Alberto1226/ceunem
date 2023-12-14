@@ -100,10 +100,10 @@ function showSwal2(icono, titulo, mensaje) {
 
 function insert(event) {
     event.preventDefault();
-    if (campos.dirServer && campos.email && campos.pass
-        && campos.portServer && campos.conect && campos.nombre) {
+    const formInserTel = document.getElementById("formInserTel");
+    if (campos.numero && campos.mensaje) {
             var baseURL = 'http://localhost/proyectos/ceunem/admin/telefono/addWhats';
-            let datos = new FormData(this);
+            let datos = new FormData(formInserTel);
             let encabezados = new Headers();
             axios.post(baseURL, datos, { encabezados }).then((response) => {
                 if (response.data.status) {

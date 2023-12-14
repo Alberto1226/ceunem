@@ -38,7 +38,7 @@ class ServidorModel extends Model
             ]);
             return true;
         } catch (PDOException $th) {
-            return false;
+            echo $th;
         }
     }
 

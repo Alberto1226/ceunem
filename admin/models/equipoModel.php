@@ -79,8 +79,8 @@ class EquipoModel extends Model
                 $item->id_usu = $row['id_usu'];
             }
             return $item;
-        } catch (\Throwable $th) {
-            return null;
+        } catch (PDOException $th) {
+            return [];
         }
     }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-12-2023 a las 01:28:38
+-- Tiempo de generación: 14-12-2023 a las 18:31:15
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -31,7 +31,7 @@ CREATE TABLE `blog` (
   `id_blog` int(11) NOT NULL,
   `categoria` varchar(50) NOT NULL,
   `titulo` varchar(100) NOT NULL,
-  `descripcion` text NOT NULL,
+  `descripcion` mediumtext NOT NULL,
   `img_url` varchar(255) NOT NULL,
   `link_url` varchar(255) NOT NULL,
   `estado` int(1) NOT NULL
@@ -53,7 +53,7 @@ INSERT INTO `blog` (`id_blog`, `categoria`, `titulo`, `descripcion`, `img_url`, 
 CREATE TABLE `continua` (
   `id_ec` int(11) NOT NULL,
   `nom_ec` varchar(100) NOT NULL,
-  `descripcion` text NOT NULL,
+  `descripcion` mediumtext NOT NULL,
   `img_url` varchar(255) NOT NULL,
   `pdf_url` varchar(255) NOT NULL,
   `estado` int(2) NOT NULL
@@ -238,6 +238,7 @@ INSERT INTO `objetivos` (`id_obj`, `nom_sec`, `img_sec`, `desc_sec`, `estado`, `
 
 CREATE TABLE `smtp` (
   `id_smtp` int(11) NOT NULL,
+  `dirServer` varchar(255) NOT NULL,
   `email` varchar(150) NOT NULL,
   `pass` varchar(150) NOT NULL,
   `portServer` int(11) NOT NULL,
@@ -254,10 +255,17 @@ CREATE TABLE `smtp` (
 
 CREATE TABLE `telefono` (
   `id_tel` int(11) NOT NULL,
-  `numero` int(15) NOT NULL,
-  `mensaje` int(150) NOT NULL,
+  `numero` varchar(15) NOT NULL,
+  `mensaje` varchar(150) NOT NULL,
   `id_usu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `telefono`
+--
+
+INSERT INTO `telefono` (`id_tel`, `numero`, `mensaje`, `id_usu`) VALUES
+(1, '4271123008', 'Solicito  informes.', 1);
 
 -- --------------------------------------------------------
 
@@ -398,7 +406,8 @@ ALTER TABLE `smtp`
 --
 ALTER TABLE `telefono`
   ADD PRIMARY KEY (`id_tel`),
-  ADD UNIQUE KEY `id_usu` (`id_usu`);
+  ADD UNIQUE KEY `id_tel` (`id_tel`,`id_usu`),
+  ADD KEY `id_usu` (`id_usu`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -488,7 +497,7 @@ ALTER TABLE `smtp`
 -- AUTO_INCREMENT de la tabla `telefono`
 --
 ALTER TABLE `telefono`
-  MODIFY `id_tel` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

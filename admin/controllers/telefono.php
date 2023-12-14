@@ -48,4 +48,39 @@ class Telefono extends Controller
             }
         }
     }
+
+    function getWhats(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_usu = $this->id = $_SESSION['id_usu'];
+            $tabla = $this->model->getWhatsaap($id_usu);
+            echo json_encode($tabla);
+        }
+    }
+
+    function upWhats(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $numero = $_POST['numero'];
+            $mensaje = $_POST['mensaje'];
+            $id_usu = $_POST['id_usu'];
+            $id_tel = $_POST['id_tel'];
+
+            if ($this->model->update([
+                'numero' => $numero,
+                'mensaje' => $mensaje,
+                'id_usu' => $id_usu,
+                'id_tel' => $id_tel
+            ])) {
+                $arrResponse = array(
+                    'status' => true, 'msg' => 'ok',
+                    'url' => 'http://localhost/proyectos/ceunem/admin/telefono'
+                );
+                echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+            } else {
+                $arrResponse = array(
+                    'status' => false, 'msg' => 'Error al guardar los datos'
+                );
+                echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+            }
+        }
+    }
 }

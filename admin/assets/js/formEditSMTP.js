@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("formEditSMTP").addEventListener('submit', editar);
+    obterSmtp();
     const inputs = document.querySelectorAll('input');
     inputs.forEach((input) => {
         input.addEventListener('keyup', validar);

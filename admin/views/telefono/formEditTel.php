@@ -3,11 +3,11 @@
 <input type="hidden" id="id_usu2" name="id_usu">
     <div class="form-group">
         <label for="numero">Número de Whatsapp</label>
-        <input type="text" class="form-control border border-success" id="numero2" placeholder="Ingrese el nombre de la Licenciatura" name="numero">
+        <input type="text" class="form-control border border-success" id="numero2" placeholder="Ingrese tu número" name="numero">
     </div>
     <div class="form-group">
         <label for="mensaje">Mensaje</label>
-        <textarea class="form-control border border-success" rows="2" id="mensaje2" placeholder="Ingresa la Descripción" name="mensaje"></textarea>
+        <textarea class="form-control border border-success" rows="2" id="mensaje2" placeholder="Ingresa el mensaje" name="mensaje"></textarea>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-warning btn-block" id="btn-tel">Agregar Telefono</button>

@@ -11,7 +11,7 @@ class View{
     public array $maestrias = [];
     public $maestria;
 
-    public array $continuas = [];
+    public $continuas = [];
     public $continua;
 
     public $secMisions = [];
@@ -31,11 +31,16 @@ class View{
     
     public $fila;
 
-    public $videos = [];
-    public $video;
-
     public $inputs = [];
     public $input;
+
+    public $ini1 = [];
+    public $ini2;
+
+    public $tel =[];
+    public $tel1;
+
+    public $data;
     
     function __construct()
     {

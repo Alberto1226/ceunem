@@ -7,9 +7,15 @@ class Home extends Controller{
     }
 
     function render(){
-        $this->view->render('home');
+        $ini1 = $this->model->getVideo();
+        $this->view->ini1 = $ini1;
+
+        $tel = $this->model->getWhats();
+        $this->view->tel = $tel;
+        
+
+        $this->view->render('home/index');
     }
 
 }
-
 ?>
