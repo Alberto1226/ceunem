@@ -23,16 +23,22 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                    <?php
+                        <?php
                         if (empty($this->fila)) {
                             require 'views/valor/formInsertValor.php';
+                        ?>
+                            <script src="<?php echo constant('URL') ?>assets/js/formInsertVal.js"></script>
+                        <?php
                         } else {
-                           require 'views/valor/formEditValor.php';
+                            require 'views/valor/formEditValor.php';
+                        ?>
+                            <script src="<?php echo constant('URL') ?>assets/js/formEditVal.js"></script>
+                        <?php
                         }
-                    ?>
+                        ?>
                     </div>
                     <div class="col-md-6">
-                    <?php require 'views/valor/previewValor.php' ?>
+                        <?php require 'views/valor/previewValor.php' ?>
                     </div>
                 </div>
             </div>
@@ -41,5 +47,3 @@
 </div>
 <?php require 'views/templete/footer.php'; ?>
 <script src="<?php echo constant('URL') ?>assets/js/previewVal.js"></script>
-<script src="<?php echo constant('URL') ?>assets/js/formInsertVal.js"></script>
-<script src="<?php echo constant('URL') ?>assets/js/formEditVal.js"></script>

@@ -9,6 +9,18 @@ class MisionModel extends Model
         parent::__construct();
     }
 
+    public function countIni($id)
+    {
+        try {
+            $query = $this->db->connect()->prepare("SELECT * FROM mision WHERE id_usu = :id_usu");
+            $query->execute(['id_usu' => $id]);
+            $filas = $query->rowCount();
+            return $filas;
+        } catch (PDOException $th) {
+            return 0;
+        }
+    }
+
     public function insert($datos)
     {
         try {
@@ -73,7 +85,7 @@ class MisionModel extends Model
             ]);
             return true;
         } catch (PDOException $th) {
-          return  $th;
+            return  $th;
         }
     }
 }

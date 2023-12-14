@@ -26,8 +26,14 @@
                         <?php
                         if (empty($this->fila)) {
                             require 'views/vision/formInsertVision.php';
+                        ?>
+                            <script src="<?php echo constant('URL') ?>assets/js/formInsertVision.js"></script>
+                        <?php
                         } else {
-                           require 'views/vision/formEditVision.php';
+                            require 'views/vision/formEditVision.php';
+                        ?>
+                            <script src="<?php echo constant('URL') ?>assets/js/formEditVision.js"></script>
+                        <?php
                         }
                         ?>
                     </div>
@@ -41,5 +47,3 @@
 </div>
 <?php require 'views/templete/footer.php'; ?>
 <script src="<?php echo constant('URL') ?>assets/js/previewVision.js"></script>
-<script src="<?php echo constant('URL') ?>assets/js/formInsertVision.js"></script>
-<script src="<?php echo constant('URL') ?>assets/js/formEditVision.js"></script>

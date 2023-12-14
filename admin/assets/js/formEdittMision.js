@@ -49,6 +49,76 @@ const validEdit = (e) => {
     }
 }
 
+const campos = {
+    frase: false,
+    autor: false,
+    mision: false,
+    img_body: false,
+}
+
+const validarCampos = (input, campo) => {
+    var nameCampo = campo;
+    var lCapital = nameCampo[0].toUpperCase()
+    var restName = nameCampo.slice(1);
+    var titulo = lCapital + restName;
+
+    if (input.value.trim() === '') {
+        document.getElementById(`${campo}`).classList.remove('border-success');
+        document.getElementById(`${campo}`).classList.add('border-danger');
+        document.getElementById(`${campo}`).classList.add('is-invalid');
+        showToastr("error", "Verifique el campo", `${titulo}`);
+        campos[campo] = false;
+    } else {
+        document.getElementById(`${campo}`).classList.add('border-success');
+        document.getElementById(`${campo}`).classList.remove('border-danger');
+        document.getElementById(`${campo}`).classList.remove('is-invalid');
+        campos[campo] = true;
+        data[campo] = input.value;
+    }
+}
+
+const validarImg = (input, campo) => {
+    var nameCampo = campo;
+    var lCapital = nameCampo[0].toUpperCase()
+    var restName = nameCampo.slice(1);
+    var titulo = lCapital + restName;
+    if (input.value.trim() === null) {
+        document.getElementById(`${campo}`).classList.remove('is-valid');
+        document.getElementById(`${campo}`).classList.add('is-invalid');
+        showToastr("error", "Verifique el campo", `${titulo}`);
+        campos[campo] = false;
+    } else {
+        var url = input.value;
+        var ext = ['jpg', 'jpeg', 'png'];
+        var filext = url.split(".").pop();
+        var img = ext.includes(filext)
+
+        if (img === false) {
+            document.getElementById(`${campo}`).classList.remove('is-valid');
+            document.getElementById(`${campo}`).classList.add('is-warning');
+            showToastr("warning", "Formato no valido", "Solo jpg, jpeg, png");
+            campos[campo] = false;
+        } else {
+            document.getElementById(`${campo}`).classList.add('is-valid');
+            document.getElementById(`${campo}`).classList.remove('is-warning');
+            campos[campo] = true;
+            data[campo] = input.value;
+        }
+    }
+}
+
+function showToastr(accion, mensaje, titulo) {
+    Command: toastr[accion](mensaje, titulo);
+}
+
+function showSwal(icono, titulo, mensaje) {
+    Swal.fire({
+        icon: icono,
+        title: titulo,
+        text: mensaje,
+    });
+}
+
 function update(event) {
     event.preventDefault();
     var baseURL = 'http://localhost/proyectos/ceunem/admin/mision/upMision';

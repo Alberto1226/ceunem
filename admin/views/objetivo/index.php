@@ -23,16 +23,22 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                    <?php
+                        <?php
                         if (empty($this->fila)) {
                             require 'views/objetivo/formInsertObj.php';
+                        ?>
+                            <script src="<?php echo constant('URL') ?>assets/js/formInsertObj.js"></script>
+                        <?php
                         } else {
-                           require 'views/objetivo/formEditObj.php';
+                            require 'views/objetivo/formEditObj.php';
+                        ?>
+                            <script src="<?php echo constant('URL') ?>assets/js/formEditObj.js"></script>
+                        <?php
                         }
-                    ?>
+                        ?>
                     </div>
                     <div class="col-md-6">
-                    <?php require 'views/objetivo/previewObj.php' ?>
+                        <?php require 'views/objetivo/previewObj.php' ?>
                     </div>
                 </div>
             </div>
@@ -41,5 +47,3 @@
 </div>
 <?php require 'views/templete/footer.php'; ?>
 <script src="<?php echo constant('URL') ?>assets/js/previewObj.js"></script>
-<script src="<?php echo constant('URL') ?>assets/js/formInsertObj.js"></script>
-<script src="<?php echo constant('URL') ?>assets/js/formEditObj.js"></script>

@@ -21,8 +21,8 @@
     <div class="container text-center">
         <div class="row justify-content-center">
             <?php
-            include_once 'models/continuas.php';
-            if (isset($this->fila)) {
+            include_once 'models/clases/continuas.php';
+            if (empty($this->fila)) {
             ?>
                 <div class="col-lg-6">
                     <h1 class="display-1">Proximamente</h1>

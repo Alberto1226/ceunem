@@ -32,7 +32,7 @@ class ContinuaModel extends Model
 
     public function countRowsContinuas(){
         try {
-            $query = $this->db->connect()->query("SELECT * FROM continuas");
+            $query = $this->db->connect()->query("SELECT * FROM continua");
             $filas=$query->rowCount();
             return $filas;
         } catch (PDOException $th) {

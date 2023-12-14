@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2023 a las 17:56:28
+-- Tiempo de generación: 14-12-2023 a las 01:28:38
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -64,7 +64,7 @@ CREATE TABLE `continua` (
 --
 
 INSERT INTO `continua` (`id_ec`, `nom_ec`, `descripcion`, `img_url`, `pdf_url`, `estado`) VALUES
-(1, 'Maestría en Derecho Corporativo', 'La formación va dirigida a profesionales que deseen adquirir una maestría a su profesión en Derecho Corporativo, al estudiar esta rama el estudiante adquirirá conocimientos que lo ayudarán a desempeñarse actividades de sustento jurídico para las empresas de acuerdo a teorías, instituciones, principios, normativos, en etc.', 'public/img/continua/maestriaderecho.png', 'public/docs/continua/PLAN_MAESTRIA_DERECHO.pdf', 0);
+(1, 'Maestría en Derecho Corporativo', 'La formación va dirigida a profesionales que deseen adquirir una maestría a su profesión en Derecho Corporativo, al estudiar esta rama el estudiante adquirirá conocimientos que lo ayudarán a desempeñarse actividades de sustento jurídico para las empresas de acuerdo a teorías, instituciones, principios, normativos, en etc.', 'public/img/continua/maestriaderecho.png', 'public/docs/continua/PLAN_MAESTRIA_DERECHO.pdf', 1);
 
 -- --------------------------------------------------------
 
@@ -249,6 +249,19 @@ CREATE TABLE `smtp` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `telefono`
+--
+
+CREATE TABLE `telefono` (
+  `id_tel` int(11) NOT NULL,
+  `numero` int(15) NOT NULL,
+  `mensaje` int(150) NOT NULL,
+  `id_usu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -381,6 +394,13 @@ ALTER TABLE `smtp`
   ADD UNIQUE KEY `id_usu` (`id_usu`);
 
 --
+-- Indices de la tabla `telefono`
+--
+ALTER TABLE `telefono`
+  ADD PRIMARY KEY (`id_tel`),
+  ADD UNIQUE KEY `id_usu` (`id_usu`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -465,6 +485,12 @@ ALTER TABLE `smtp`
   MODIFY `id_smtp` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `telefono`
+--
+ALTER TABLE `telefono`
+  MODIFY `id_tel` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -521,6 +547,12 @@ ALTER TABLE `objetivos`
 --
 ALTER TABLE `smtp`
   ADD CONSTRAINT `smtp_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
+
+--
+-- Filtros para la tabla `telefono`
+--
+ALTER TABLE `telefono`
+  ADD CONSTRAINT `telefono_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
 
 --
 -- Filtros para la tabla `valores`

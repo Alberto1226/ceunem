@@ -23,7 +23,7 @@
         </div>
         <div class="row g-4 justify-content-center">
             <?php
-            include_once 'models/licenciaturas.php';
+            include_once 'models/clases/licenciaturas.php';
             if (isset($this->fila)) {
             ?>
                 <div class="col-lg-6">

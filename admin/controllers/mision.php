@@ -6,8 +6,9 @@ class Mision extends Controller
 
     function __construct()
     {
-        parent::__construct();
         session_start();
+        parent::__construct();
+        
         if (empty($_SESSION['login'])) {
             header('Location: ' . URL . 'login');
             die();
@@ -19,6 +20,8 @@ class Mision extends Controller
         $id_usu = $this->id = $_SESSION['id_usu'];
         $tabla = $this->model->getM($id_usu);
         $this->view->tabla = $tabla;
+        $fila = $this->model->countIni($id_usu);
+        $this->view->fila = $fila;
         $this->view->render('mision/index');
     }
 

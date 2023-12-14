@@ -27,16 +27,16 @@
                         <?php
                         if (empty($this->tabla)) {
                         ?>
-                        <h3 class="card-title">Configuración de la sección</h3>
+                            <h3 class="card-title">Configuración de la sección</h3>
                         <?php
                         } else {
                         ?>
-                        <h3 class="card-title">Edición de la sección</h3>
+                            <h3 class="card-title">Edición de la sección</h3>
                         <?php
                         }
-                         
+
                         ?>
-                        
+
                         <div class="card-tools">
                             <button type="submit" class="btn btn-tools" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
@@ -45,11 +45,17 @@
                     </div>
                     <div class="card-body">
                         <?php
-                        if(empty($this->tabla)){
+                        if (empty($this->fila)) {
                             require 'views/mision/formInsertMision.php';
-                        }else{
+                        ?>
+                            <script src="<?php echo constant('URL') ?>assets/js/formInsertMision.js"></script>
+                        <?php
+                        } else {
                             require 'views/mision/formEditMis.php';
-                        } 
+                        ?>
+                            <script src="<?php echo constant('URL') ?>assets/js/formEdittMision.js"></script>
+                        <?php
+                        }
                         ?>
                     </div>
                 </div>
@@ -62,5 +68,3 @@
 </div>
 <?php require 'views/templete/footer.php'; ?>
 <script src="<?php echo constant('URL') ?>assets/js/previewMision.js"></script>
-<script src="<?php echo constant('URL') ?>assets/js/formInsertMision.js"></script>
-<script src="<?php echo constant('URL') ?>assets/js/formEdittMision.js"></script>

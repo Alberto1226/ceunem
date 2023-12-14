@@ -131,6 +131,12 @@
                 <p>Formulario</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="<?php echo constant('URL') ?>telefono" class="nav-link">
+                <i class="fab fa-whatsapp nav-icon"></i>
+                <p>Whatsapp</p>
+              </a>
+            </li>
           </ul>
         </li>
       </ul>

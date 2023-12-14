@@ -1,3 +1,17 @@
+<style>
+    .whatsapp {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 100px;
+    right: 25px;
+    z-index: 100;
+}
+
+.whatsapp-icon {
+    margin-top: 13px;
+}
+</style>
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-white-50 footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -50,11 +64,15 @@
         </div>
     </div>
     <!-- Footer End -->
-
+    <a href="#" target="_blank" class="whatsapp">
+		<img class="whatsapp-icon" 
+			src="<?php echo constant('URL').'assets/img/whatsapp.png'; ?>" 
+			alt="">
+	</a>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
+    
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

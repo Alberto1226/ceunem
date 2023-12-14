@@ -56,18 +56,8 @@
 </div>
 <!-- Carousel End -->
 
-<?php
-include_once 'models/clases/video.php';
-foreach ($this->inis as $row) {
-    $ini = new Video();
-    $ini = $row;
-?>
-<div class="container-fluid text-center">
-    <video autoplay loop control muted src="<?php echo constant('ARCHIVOS') . $ini->vid_url;?>"></video>
-</div>
-<?php
-}
-?>
+
+
 <!-- Nosotros Start -->
 <div class="container-xxl py-5">
     <div class="container">

@@ -31,8 +31,8 @@ class View{
     
     public $fila;
 
-    public $inis = [];
-    public $ini;
+    public $videos = [];
+    public $video;
 
     public $inputs = [];
     public $input;
