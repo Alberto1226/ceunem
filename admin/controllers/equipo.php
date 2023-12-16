@@ -58,7 +58,7 @@ class Equipo extends Controller
 
                         $arrResponse = array(
                             'status' => true, 'msg' => 'ok',
-                            'url' => 'http://localhost/proyectos/ceunem/admin/equipo'
+                            'url' => URL.'equipo'
                         );
                         echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                     } else {
@@ -128,7 +128,8 @@ class Equipo extends Controller
                                 $tabla->rFace = $rFace;
                                 $tabla->rTw = $rTw;
                                 $tabla->rIns = $rIns;
-                                $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => 'http://localhost/proyectos/ceunem/admin/equipo');
+                                $arrResponse = array('status' => true, 'msg' => 'ok', 
+                                'url' => URL.'equipo');
                                 echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                             } else {
                                 $arrResponse = array('status' => false, 'msg' => 'Error al guardar la información');
@@ -166,7 +167,7 @@ class Equipo extends Controller
                     $tabla->rFace = $rFace;
                     $tabla->rTw = $rTw;
                     $tabla->rIns = $rIns;
-                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => 'http://localhost/proyectos/ceunem/admin/equipo');
+                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL.'equipo');
                     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                 } else {
                     $arrResponse = array('status' => false, 'msg' => 'Error al guardar la información');
@@ -188,7 +189,7 @@ class Equipo extends Controller
                     'id_eq' => $id_eq,
                     'id_usu' => $id_usu
                 ])) {
-                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => 'http://localhost/proyectos/ceunem/admin/equipo');
+                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL.'equipo');
                     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                 } else {
                     $arrResponse = array('status' => false, 'msg' => 'Error al eliminar los datos');
@@ -220,7 +221,7 @@ class Equipo extends Controller
                 'id_usu' => $id_usu,
                 'estado' => $estado2
             ])) {
-                $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => 'http://localhost/proyectos/ceunem/admin/equipo');
+                $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL.'equipo');
                 echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
             } else {
                 $arrResponse = array('status' => false, 'msg' => 'Error al cambiar el status');

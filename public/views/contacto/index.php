@@ -78,6 +78,4 @@
 </div>
 <!-- Contacto End -->
 
-<?php
-require 'views/templete/footer.php';
-?>
+<?php require 'views/templete/footer.php'; ?>

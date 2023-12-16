@@ -18,11 +18,11 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="nombre">Nombre</label>
-                                            <input type="text" class="form-control border border-success" id="nombre" placeholder="Ingrese la Categoría" name="nombre">
+                                            <input type="text" class="form-control border border-success" id="nombre" placeholder="Ingrese nombre completo" name="nombre">
                                         </div>
                                         <div class="form-group">
                                             <label for="puesto">Puesto</label>
-                                            <input type="text" class="form-control border border-success" id="puesto" placeholder="Ingresa el Título" name="puesto">
+                                            <input type="text" class="form-control border border-success" id="puesto" placeholder="Ingresa el puesto" name="puesto">
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="rFace">Facebook</label>
-                                            <input type="text" class="form-control border border-success" id="rFace" placeholder="Ingresa el Título" name="rFace">
+                                            <input type="text" class="form-control border border-success" id="rFace" placeholder="Ingresa el Link" name="rFace">
                                         </div>
                                     </div>
                                 </div>
@@ -45,13 +45,13 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="rTw">Twitter</label>
-                                            <input type="text" class="form-control border border-success" id="rTw" placeholder="Ingresa el Título" name="rTw">
+                                            <input type="text" class="form-control border border-success" id="rTw" placeholder="Ingresa el Link" name="rTw">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="rIns">Instagram</label>
-                                            <input type="text" class="form-control border border-success" id="rIns" placeholder="Ingresa el Título" name="rIns">
+                                            <input type="text" class="form-control border border-success" id="rIns" placeholder="Ingresa el Link" name="rIns">
                                         </div>
                                     </div>
                                 </div>

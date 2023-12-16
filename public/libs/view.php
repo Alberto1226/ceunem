@@ -40,7 +40,8 @@ class View{
     public $tel =[];
     public $tel1;
 
-    public $data;
+    public $imgs = [];
+    public $img;
     
     function __construct()
     {

@@ -61,4 +61,5 @@
     </div>
 </div>
 <!-- Admision End -->
+
 <?php require 'views/templete/footer.php'; ?>

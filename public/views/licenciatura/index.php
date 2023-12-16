@@ -61,6 +61,5 @@
     </div>
 </div>
 <!-- Licenciaturas End -->
-<?php
-require 'views/templete/footer.php';
-?>
+
+<?php require 'views/templete/footer.php';?>

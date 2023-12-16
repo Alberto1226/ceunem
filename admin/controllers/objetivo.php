@@ -55,7 +55,7 @@ class Objetivo extends Controller
                     ])) {
                         $arrResponse = array(
                             'status' => true, 'msg' => 'ok',
-                            'url' => 'http://localhost/proyectos/ceunem/admin/objetivo'
+                            'url' => URL.'objetivo'
                         );
                         echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                     } else {
@@ -112,7 +112,7 @@ class Objetivo extends Controller
                                 $tabla->img_sec = $img_bd;
                                 $tabla->desc_sec = $desc_sec;
                                 $tabla->id_usu = $id_usu;
-                                $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => 'http://localhost/proyectos/ceunem/admin/objetivo');
+                                $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL.'objetivo');
                                 echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                             } else {
                                 $arrResponse = array('status' => false, 'msg' => 'Error al guardar la información');
@@ -147,7 +147,7 @@ class Objetivo extends Controller
                     $tabla->img_sec = $img_bd;
                     $tabla->desc_sec = $desc_sec;
                     $tabla->id_usu = $id_usu;
-                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => 'http://localhost/proyectos/ceunem/admin/objetivo');
+                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL.'objetivo');
                     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                 } else {
                     $arrResponse = array('status' => false, 'msg' => 'Error al cargar los datos');

@@ -1,5 +1,4 @@
 <?php require 'views/templete/header.php'; ?>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <?php require 'views/templete/navar.php'; ?>
 <!-- Page Header Start -->
 <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
@@ -178,18 +177,4 @@ foreach ($this->secMisions as $row) {
     </div>
 </div>
 <!-- Equipo End -->
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 3,
-        spaceBetween: 30,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-    });
-</script>
-<?php
-require 'views/templete/footer.php';
-?>
+<?php require 'views/templete/footer.php'; ?>

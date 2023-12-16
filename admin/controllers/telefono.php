@@ -37,7 +37,7 @@ class Telefono extends Controller
             ])) {
                 $arrResponse = array(
                     'status' => true, 'msg' => 'ok',
-                    'url' => 'http://localhost/proyectos/ceunem/admin/telefono'
+                    'url' => URL.'telefono'
                 );
                 echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
             } else {
@@ -72,7 +72,7 @@ class Telefono extends Controller
             ])) {
                 $arrResponse = array(
                     'status' => true, 'msg' => 'ok',
-                    'url' => 'http://localhost/proyectos/ceunem/admin/telefono'
+                    'url' => URL.'telefono'
                 );
                 echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
             } else {

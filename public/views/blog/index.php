@@ -22,7 +22,7 @@
         <div class="row g-4 justify-content-center">
             <?php
             include_once 'models/clases/articulo.php';
-            if (isset($this->fila)) {
+            if (empty($this->fila)) {
             ?>
                 <div class="col-lg-6">
                     <h1 class="display-1">Proximamente</h1>
@@ -67,6 +67,5 @@
         </div>
     </div>
 </div>
-<?php
-require 'views/templete/footer.php';
-?>
+
+<?php require 'views/templete/footer.php'; ?>

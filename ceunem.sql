@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-12-2023 a las 18:31:15
+-- Tiempo de generación: 16-12-2023 a las 19:36:53
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -43,6 +43,21 @@ CREATE TABLE `blog` (
 
 INSERT INTO `blog` (`id_blog`, `categoria`, `titulo`, `descripcion`, `img_url`, `link_url`, `estado`) VALUES
 (1, 'Salud', '5 Maneras para Apoyar la Salud Mental de los Estudiantes', 'Muchos estudiantes pasan aproximadamente una sexta parte de sus horas de vigilia en la escuela, por lo que apoyar la salud mental de los estudiantes cae sobre los hombros de los docentes.', 'public/img/blog/20231124_193809_blog-1.jpg', 'https://ceunem.edu.mx/nosotros.html', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `colores`
+--
+
+CREATE TABLE `colores` (
+  `id_color` int(11) NOT NULL,
+  `fondo_hf` varchar(100) NOT NULL,
+  `fondo_slider` varchar(100) NOT NULL,
+  `btn_fondo` varchar(100) NOT NULL,
+  `btn_hover` varchar(100) NOT NULL,
+  `id_usu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -188,6 +203,25 @@ INSERT INTO `maestrias` (`id_mas`, `nom_mas`, `descripcion`, `img_url`, `pdf_url
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `menu`
+--
+
+CREATE TABLE `menu` (
+  `id_menu` int(11) NOT NULL,
+  `menu1` varchar(150) NOT NULL,
+  `menu2` varchar(150) NOT NULL,
+  `menu3` varchar(150) NOT NULL,
+  `menu4` varchar(150) NOT NULL,
+  `submenu1` varchar(150) NOT NULL,
+  `submenu2` varchar(150) NOT NULL,
+  `submenu3` varchar(150) NOT NULL,
+  `menu5` varchar(150) NOT NULL,
+  `id_usu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `mision`
 --
 
@@ -229,6 +263,34 @@ CREATE TABLE `objetivos` (
 
 INSERT INTO `objetivos` (`id_obj`, `nom_sec`, `img_sec`, `desc_sec`, `estado`, `id_usu`) VALUES
 (1, 'Objetivos', 'public/img/filosofia/OBJ_20231206_174623_objetivos.png', 'Empoderar académicamente a nuestros estudiantes asociados a través de la formación de conocimientos y competencias profesionales en disciplinas de corte humanista, académico-administrativo y de comunicación. Impulsar en nuestros estudiantes asociados una actitud emprendedora para superar los retos actuales de la competencia profesional laboral. Estimular en nuestros estudiantes asociados un comportamiento de responsabilidad profesional y liderazgo con carácter duradero.', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sliders`
+--
+
+CREATE TABLE `sliders` (
+  `id_slider` int(11) NOT NULL,
+  `img1` varchar(255) NOT NULL,
+  `tit1` varchar(100) NOT NULL,
+  `desc1` text NOT NULL,
+  `link1` varchar(255) NOT NULL,
+  `img2` varchar(255) NOT NULL,
+  `tit2` varchar(100) NOT NULL,
+  `desc2` text NOT NULL,
+  `link2` varchar(255) NOT NULL,
+  `id_usu` int(11) NOT NULL,
+  `tUrl1` int(2) NOT NULL,
+  `tUrl2` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `sliders`
+--
+
+INSERT INTO `sliders` (`id_slider`, `img1`, `tit1`, `desc1`, `link1`, `img2`, `tit2`, `desc2`, `link2`, `id_usu`, `tUrl1`, `tUrl2`) VALUES
+(1, 'public/img/sliders/IMG20231216_181529carousel-1.jpg', 'Creando líderes y emprendedores', 'Nuestro objetivo principal es empoderar académicamente a nuestros estudiantes a través de la formación de conocimientos y competencias profesionales en disciplinas de corte humanista, académico-administrativo y de comunicación.', 'nosotros', 'public/img/sliders/IMG20231216_181529carousel-2.jpg', 'Crea tu futuro profesional 100% online', 'Becas de hasta el 70%', 'contacto', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -343,6 +405,13 @@ ALTER TABLE `blog`
   ADD PRIMARY KEY (`id_blog`);
 
 --
+-- Indices de la tabla `colores`
+--
+ALTER TABLE `colores`
+  ADD PRIMARY KEY (`id_color`),
+  ADD UNIQUE KEY `id_usu` (`id_usu`);
+
+--
 -- Indices de la tabla `continua`
 --
 ALTER TABLE `continua`
@@ -381,6 +450,13 @@ ALTER TABLE `maestrias`
   ADD PRIMARY KEY (`id_mas`);
 
 --
+-- Indices de la tabla `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id_menu`),
+  ADD UNIQUE KEY `id_usu` (`id_usu`);
+
+--
 -- Indices de la tabla `mision`
 --
 ALTER TABLE `mision`
@@ -393,6 +469,13 @@ ALTER TABLE `mision`
 ALTER TABLE `objetivos`
   ADD PRIMARY KEY (`id_obj`),
   ADD UNIQUE KEY `id_usu` (`id_usu`);
+
+--
+-- Indices de la tabla `sliders`
+--
+ALTER TABLE `sliders`
+  ADD PRIMARY KEY (`id_slider`),
+  ADD KEY `id_usu` (`id_usu`);
 
 --
 -- Indices de la tabla `smtp`
@@ -440,6 +523,12 @@ ALTER TABLE `blog`
   MODIFY `id_blog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `colores`
+--
+ALTER TABLE `colores`
+  MODIFY `id_color` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `continua`
 --
 ALTER TABLE `continua`
@@ -476,6 +565,12 @@ ALTER TABLE `maestrias`
   MODIFY `id_mas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `mision`
 --
 ALTER TABLE `mision`
@@ -486,6 +581,12 @@ ALTER TABLE `mision`
 --
 ALTER TABLE `objetivos`
   MODIFY `id_obj` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `sliders`
+--
+ALTER TABLE `sliders`
+  MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `smtp`
@@ -522,6 +623,12 @@ ALTER TABLE `vision`
 --
 
 --
+-- Filtros para la tabla `colores`
+--
+ALTER TABLE `colores`
+  ADD CONSTRAINT `colores_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
+
+--
 -- Filtros para la tabla `equipo`
 --
 ALTER TABLE `equipo`
@@ -540,6 +647,12 @@ ALTER TABLE `inicio`
   ADD CONSTRAINT `inicio_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
 
 --
+-- Filtros para la tabla `menu`
+--
+ALTER TABLE `menu`
+  ADD CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
+
+--
 -- Filtros para la tabla `mision`
 --
 ALTER TABLE `mision`
@@ -550,6 +663,13 @@ ALTER TABLE `mision`
 --
 ALTER TABLE `objetivos`
   ADD CONSTRAINT `objetivos_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
+
+--
+-- Filtros para la tabla `sliders`
+--
+ALTER TABLE `sliders`
+  ADD CONSTRAINT `sliders_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`),
+  ADD CONSTRAINT `sliders_ibfk_2` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
 
 --
 -- Filtros para la tabla `smtp`

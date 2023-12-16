@@ -13,7 +13,7 @@
 </div>
 <!-- ./wrapper -->
 <!-- libreria de axios -->
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="<?php echo constant('URL') ?>assets/js/axios.min.js"></script>
 <!-- jQuery -->
 <script src="<?php echo constant('URL') ?>libs/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

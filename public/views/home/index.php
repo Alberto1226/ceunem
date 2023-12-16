@@ -2,47 +2,59 @@
 <?php require 'views/templete/navar.php'; ?>
 
 <!-- Carousel Start -->
+
 <div class="container-fluid p-0 mb-5">
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="w-100" src="<?php echo constant('URL') ?>assets/img/carousel-1.jpg" alt="Image">
-                <div class="carousel-caption">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-7 pt-5">
-                                <h1 class="display-4 text-white mb-3 animated slideInDown">Creando líderes y emprendedores</h1>
-                                <p class="fs-5 text-white-50 mb-5 animated slideInDown">Nuestro objetivo principal es empoderar académicamente a nuestros estudiantes a través de la formación de conocimientos y competencias profesionales en disciplinas de corte humanista, académico-administrativo y de comunicación.</p>
-                                <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo constant('URL') ?>nosotros">
-                                    Más información
-                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </div>
-                                </a>
+            <?php
+            include_once 'models/clases/imagen.php';
+            foreach ($this->imgs as $row) {
+                $img = new Imagen();
+                $img = $row;
+                $url1 = $img->tUrl1 == 2 ? $img->link1 : constant('URL') . $img->link1;
+                $url2 = $img->tUrl2 == 2 ? $img->link2 : constant('URL') . $img->link2;
+            ?>
+                <div class="carousel-item active">
+                    <img class="w-100" src="<?php echo constant('ARCHIVOS').$img->img1; ?>" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 pt-5">
+                                    <h1 class="display-4 text-white mb-3 animated slideInDown"><?= $img->tit1 ?></h1>
+                                    <p class="fs-5 text-white-50 mb-5 animated slideInDown"><?= $img->desc1 ?></p>
+                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo $url1 ?>">
+                                        Más información
+                                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <img class="w-100" src="<?php echo constant('URL') ?>assets/img/carousel-2.jpg" alt="Image">
-                <div class="carousel-caption">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-7 pt-5">
-                                <h1 class="display-4 text-white mb-3 animated slideInDown">Crea tu futuro profesional 100% online</h1>
-                                <p class="fs-5 text-white-50 mb-5 animated slideInDown">Becas de hasta el 70%</p>
-                                <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo constant('URL') ?>contacto">
-                                    Más Información
-                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </div>
-                                </a>
+                <div class="carousel-item">
+                    <img class="w-100" src="<?php echo constant('ARCHIVOS').$img->img2; ?>" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 pt-5">
+                                    <h1 class="display-4 text-white mb-3 animated slideInDown"><?= $img->tit2 ?></h1>
+                                    <p class="fs-5 text-white-50 mb-5 animated slideInDown"><?= $img->desc2 ?></p>
+                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo $url2 ?>">
+                                        Más Información
+                                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php
+            }
+            ?>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -54,6 +66,9 @@
         </button>
     </div>
 </div>
+
+
+
 <!-- Carousel End -->
 <?php
 include_once 'models/clases/video.php';
@@ -61,9 +76,9 @@ foreach ($this->ini1 as $row) {
     $ini2 = new Video();
     $ini2 = $row;
 ?>
-<div class="container-fluid text-center">
-    <video autoplay loop control muted src="<?php echo constant('ARCHIVOS') . $ini2->vid_url;?>"></video>
-</div>
+    <div class="container-fluid text-center">
+        <video autoplay loop control muted src="<?php echo constant('ARCHIVOS') . $ini2->vid_url; ?>"></video>
+    </div>
 <?php
 }
 ?>
@@ -110,72 +125,44 @@ foreach ($this->ini1 as $row) {
             <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3">Blog&nbsp;</div>
             <h1 class="display-6 mb-5">Mantente actualizado sobre todo lo referente al mundo universitario en México y el mundo&nbsp;</h1>
         </div>
-        <div class="row g-4 justify-content-center">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="causes-item d-flex flex-column bg-white border-top border-5 border-primary rounded-top overflow-hidden h-100">
-                    <div class="text-center p-4 pt-0">
-                        <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
-                            <small>Salud</small>
-                        </div>
-                        <h5 class="mb-3">5 Maneras para Apoyar la Salud Mental de los Estudiantes</h5>
-                        <p>Muchos estudiantes pasan aproximadamente una sexta parte de sus horas de vigilia en la escuela, por lo que apoyar la salud mental de los estudiantes cae sobre los hombros de los docentes. &nbsp;</p>
-                    </div>
-                    <div class="position-relative mt-auto">
-                        <img class="img-fluid" src="<?php echo constant('URL') ?>assets/img/blog-1.jpg" alt="">
-                        <div class="causes-overlay">
-                            <a class="btn btn-outline-primary" href="">
-                                Leer más
-                                <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                                    <i class="fa fa-arrow-right"></i>
+        <div class="row g-4">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <?php
+                    include_once 'models/clases/articulo.php';
+                    foreach ($this->articulos as $row) {
+                        $articulo = new Articulo();
+                        $articulo = $row;
+                    ?>
+                        <div class="swiper-slide">
+                            <div class="wow fadeInUp" data-wow-delay="0.1s">
+                                <div class="causes-item d-flex flex-column bg-white border-top border-5 border-primary rounded-top overflow-hidden h-100">
+                                    <div class="text-center p-4 pt-0">
+                                        <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
+                                            <small><?php echo $articulo->categoria; ?></small>
+                                        </div>
+                                        <h5 class="mb-3"><?php echo $articulo->titulo; ?></h5>
+                                        <p><?php echo $articulo->descripcion; ?></p>
+                                    </div>
+                                    <div class="position-relative mt-auto">
+                                        <img class="img-fluid" src="<?php echo constant('ARCHIVOS') . $articulo->img_url; ?>" alt="">
+                                        <div class="causes-overlay">
+                                            <a class="btn btn-outline-primary" href="<?php echo $articulo->link_url; ?>" target="_blank">
+                                                Leer más
+                                                <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </a>
+                            </div>
                         </div>
-                    </div>
+                    <?php
+                    }
+                    ?>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="causes-item d-flex flex-column bg-white border-top border-5 border-primary rounded-top overflow-hidden h-100">
-                    <div class="text-center p-4 pt-0">
-                        <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
-                            <small>Administración</small>
-                        </div>
-                        <h5 class="mb-3">Tips para Retener a los Docentes&nbsp;</h5>
-                        <p>Los docentes abandonan los puestos y la profesión docente por muchas razones. En nuestra región, los docentes son difíciles de encontrar y los puestos son a menudo difíciles de cubrir.</p>
-                    </div>
-                    <div class="position-relative mt-auto">
-                        <img class="img-fluid" src="<?php echo constant('URL') ?>assets/img/blog-2.jpg" alt="">
-                        <div class="causes-overlay">
-                            <a class="btn btn-outline-primary" href="">
-                                Leer más
-                                <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                                    <i class="fa fa-arrow-right"></i>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="causes-item d-flex flex-column bg-white border-top border-5 border-primary rounded-top overflow-hidden h-100">
-                    <div class="text-center p-4 pt-0">
-                        <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
-                            <small>Tecnología</small>
-                        </div>
-                        <h5 class="mb-3">Seis Recursos Digitales para el Aprendizaje</h5>
-                        <p>Llevar a los estudiantes a excursiones a museos puede ser invaluable para su educación, pero si no vives en la misma localidad o cerca de una ciudad importante, puede ser difícil encontrar museos locales para visitar.</p>
-                    </div>
-                    <div class="position-relative mt-auto">
-                        <img class="img-fluid" src="<?php echo constant('URL') ?>assets/img/blog-3.jpg" alt="">
-                        <div class="causes-overlay">
-                            <a class="btn btn-outline-primary" href="">
-                                Leer más
-                                <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                                    <i class="fa fa-arrow-right"></i>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </div>
@@ -247,33 +234,57 @@ foreach ($this->ini1 as $row) {
             </div>
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                 <div class="h-100 bg-white p-5">
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control bg-light border-0" id="name" placeholder="Your Name">
-                                    <label for="name">Nombre</label>
+                    <form action="<?php echo constant('URL'); ?>contacto/sendEmail" method="post">
+                        <?php
+                        include_once 'models/clases/formulario.php';
+                        foreach ($this->inputs as $row) {
+                            $input = new Formulario();
+                            $input = $row;
+                        ?>
+                            <div class="form-group">
+                                <input type="text" class="form-control inform" id="nCompleto" placeholder="Ingresa Nombre Completo" name="nCompleto" style="display: <?php echo $input->nCompleto === 1 ? "inline" : "none"; ?>;">
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control inform" id="nombre" placeholder="Ingresa Nombre(s)" name="nombre" style="display: <?php echo $input->nombre === 1 ? "inline" : "none"; ?>;">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control inform" id="apellidos" placeholder="Ingresa Apellidos" name="apellidos" style="display: <?php echo $input->apellidos === 1 ? "inline" : "none"; ?>;">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control bg-light border-0" id="email" placeholder=" Email">
-                                    <label for="email">Correo</label>
-                                </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control inform" id="email" placeholder="Ingrese su Email" name="email" style="display: <?php echo $input->email === 1 ? "inline" : "none"; ?>;">
                             </div>
-                            <div class="col-12">
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control inform" id="tel" placeholder="Ingrese su Teléfono" name="tel" style="display: <?php echo $input->tel === 1 ? "inline" : "none"; ?>;">
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary px-5" style="height: 60px;">
-                                Enviar
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control inform" id="face" placeholder="Ingrese su link de Facebook" name="face" style="display: <?php echo $input->face === 1 ? "inline" : "none"; ?>;">
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control inform" id="live" placeholder="Ingrese el estado de donde se comunica" name="live" style="display: <?php echo $input->live === 1 ? "inline" : "none"; ?>;">
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control inform" id="asunto" placeholder="Ingrese el Asunto" name="asunto" style="display: <?php echo $input->asunto === 1 ? "inline" : "none"; ?>;">
+                            </div>
+                            <div class="form-group mt-3">
+                                <textarea class="form-control inform" rows="3" id="mensaje" placeholder="Ingrese su mensaje" name="mensaje" style="display: <?php echo $input->mensaje === 1 ? "inline" : "none"; ?>;"></textarea>
+                            </div>
+                        <?php } ?>
+                        <div class="form-group mt-3">
+                            <button class="btn btn-primary py-2 px-3 me-3">
+                                Envíar
                                 <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
                                     <i class="fa fa-arrow-right"></i>
                                 </div>
                             </button>
                         </div>
+                    </form>
                 </div>
-                </form>
             </div>
         </div>
     </div>
@@ -290,41 +301,52 @@ foreach ($this->ini1 as $row) {
             <h1 class="display-6 mb-5">Su dedicación es vital para el éxito de nuestra Universidad&nbsp;</h1>
         </div>
         <div class="row g-4">
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="team-item position-relative rounded overflow-hidden">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="" alt="">
-                    </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <?php
+                    include_once 'models/clases/profesionista.php';
+                    foreach ($this->secEqs as $row) {
+                        $secEq = new Profesionista();
+                        $secEq = $row;
+
+                    ?>
+                        <div class="swiper-slide">
+                            <div class="wow fadeInUp" data-wow-delay="0.1s">
+                                <div class="team-item position-relative rounded overflow-hidden">
+                                    <div class="overflow-hidden">
+                                        <img class="img-fluid" src="<?php echo constant('ARCHIVOS') . $secEq->img_url; ?>" alt="">
+                                    </div>
+                                    <div class="team-text bg-light text-center p-4">
+                                        <h5><?php echo $secEq->nombre; ?></h5>
+                                        <p class="text-primary"><?php echo $secEq->puesto; ?></p>
+                                        <div class="team-social text-center">
+                                            <?php
+                                            if (!empty($secEq->rFace)) {
+                                            ?>
+                                                <a class="btn btn-square" href="<?php echo $secEq->rFace; ?>"><i class="fab fa-facebook-f"></i></a>
+                                            <?php
+                                            }
+                                            if (!empty($secEq->rTw)) {
+                                            ?>
+                                                <a class="btn btn-square" href="<?php echo $secEq->rTw; ?>"><i class="fab fa-twitter"></i></a>
+                                            <?php
+                                            }
+                                            if (!empty($secEq->rIns)) {
+                                            ?>
+                                                <a class="btn btn-square" href="<?php echo $secEq->rIns; ?>"><i class="fab fa-instagram"></i></a>
+                                            <?php
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="team-item position-relative rounded overflow-hidden">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="<?php echo constant('URL') ?>assets/img/team-1.jpg" alt="">
-                    </div>
-                    <div class="team-text bg-light text-center p-4">
-                        <h5>Mtro. Carlos Rosales</h5>
-                        <p class="text-primary">Departamento de Comunicación y Medios</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="team-item position-relative rounded overflow-hidden">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="<?php echo constant('URL') ?>assets/img/team-2.jpg" alt="">
-                    </div>
-                    <div class="team-text bg-light text-center p-4">
-                        <h5>Lic. Elda Flores</h5>
-                        <p class="text-primary">Coordinadora de Control Escolar</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="team-item position-relative rounded overflow-hidden">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="" alt="">
-                    </div>
-                </div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </div>
@@ -369,4 +391,5 @@ foreach ($this->ini1 as $row) {
 </div>
 
 <!-- Testimonios End -->
+<?php require 'views/templete/whatsapp.php'; ?>
 <?php require 'views/templete/footer.php'; ?>

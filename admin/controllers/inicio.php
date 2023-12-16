@@ -46,7 +46,7 @@ class Inicio extends Controller
                     ])) {
                         $arrResponse = array(
                             'status' => true, 'msg' => 'ok',
-                            'url' => 'http://localhost/proyectos/ceunem/admin/inicio'
+                            'url' => URL.'inicio'
                         );
                         echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                     } else {
@@ -100,7 +100,7 @@ class Inicio extends Controller
                                 $arrResponse = array(
                                     'status' => true, 
                                     'msg' => 'ok', 
-                                    'url' => 'http://localhost/proyectos/ceunem/admin/inicio');
+                                    'url' => URL.'inicio');
                                 echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                             } else {
                                 $arrResponse = array('status' => false, 'msg' => 'Error al guardar la información');
@@ -127,7 +127,7 @@ class Inicio extends Controller
                     $arrResponse = array(
                         'status' => true, 
                         'msg' => 'ok', 
-                        'url' => 'http://localhost/proyectos/ceunem/admin/inicio');
+                        'url' => URL.'inicio');
                     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                 } else {
                     $arrResponse = array('status' => false, 'msg' => 'Error al guardar la información');

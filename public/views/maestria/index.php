@@ -63,6 +63,5 @@
     </div>
 </div>
 <!-- Maestrías End -->
-<?php
-require 'views/templete/footer.php';
-?>
+
+<?php require 'views/templete/footer.php'; ?>

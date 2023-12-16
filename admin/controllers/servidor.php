@@ -45,7 +45,7 @@ class Servidor extends Controller
             ])) {
                 $arrResponse = array(
                     'status' => true, 'msg' => 'ok',
-                    'url' => 'http://localhost/proyectos/ceunem/admin/servidor'
+                    'url' => URL.'servidor'
                 );
                 echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
             } else {
@@ -90,7 +90,7 @@ class Servidor extends Controller
             ])) {
                 $arrResponse = array(
                     'status' => true, 'msg' => 'ok',
-                    'url' => 'http://localhost/proyectos/ceunem/admin/servidor'
+                    'url' => URL.'servidor'
                 );
                 echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
             } else {
