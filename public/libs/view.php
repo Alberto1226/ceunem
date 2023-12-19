@@ -41,14 +41,17 @@ class View{
     public $tel1;
 
     public $imgs = [];
-    public $img;
-    
+    public $imgs1;
+
+    public $data = [];
+
     function __construct()
     {
         //echo "Vista base";
     }
 
-    function render($nombre){
+    function render($nombre, $data = []){
+        $this->data = $data;
         require 'views/'. $nombre . '.php';
     }
 

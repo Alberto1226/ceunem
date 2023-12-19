@@ -19,7 +19,7 @@ class HomeModel extends Model
 
         try {
             $query = $this->db->connect()->query(
-                "SELECT * FROM inicio WHERE estado = 1"
+                "SELECT * FROM inicio WHERE estado = 1 AND id_usu = 1"
             );
 
             while ($row = $query->fetch()) {
@@ -84,7 +84,7 @@ class HomeModel extends Model
     {
         $items = [];
         try {
-            $query = $this->db->connect()->query("SELECT * FROM equipo WHERE estado=1");
+            $query = $this->db->connect()->query("SELECT * FROM equipo WHERE estado=1 AND id_usu");
             while ($row = $query->fetch()) {
                 $item = new Profesionista();
 
@@ -136,23 +136,18 @@ class HomeModel extends Model
 
         try {
             $query = $this->db->connect()->query(
-                "SELECT * FROM sliders");
+                "SELECT * FROM sliders WHERE id_usu = 1");
 
             while ($row = $query->fetch()) {
                 $item = new Imagen();
 
                 $item->id_slider = $row['id_slider'];
-                $item->img1 = $row['img1'];
-                $item->tit1 = $row['tit1'];
-                $item->desc1 = $row['desc1'];
-                $item->link1 = $row['link1'];
-                $item->img2 = $row['img2'];
-                $item->tit2 = $row['tit2'];
-                $item->desc2 = $row['desc2'];
-                $item->link2 = $row['link2'];
+                $item->img = $row['img'];
+                $item->tit = $row['tit'];
+                $item->descripcion = $row['descripcion'];
+                $item->link = $row['link'];
+                $item->tUrl = $row['tUrl'];
                 $item->id_usu = $row['id_usu'];
-                $item->tUrl1 = $row['tUrl1'];
-                $item->tUrl2 = $row['tUrl2'];
                 
                 array_push($items, $item);
             }

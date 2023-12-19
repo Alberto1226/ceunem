@@ -11,15 +11,14 @@
              </div>
              <div class="card-body">
                  <form action="#" method="post" enctype="multipart/form-data" id="formEditImg">
-                     <input type="hidden" id="id_usuUp" name="id_usu">
-                     <input type="hidden" id="id_sliderUp" name="id_slider">
+                     <input type="hidden" id="id_usu1Up" name="id_usu1">
+                     <input type="hidden" id="id_slider1Up" name="id_slider1">
                      <input type="hidden" id="img1Bd" name="img1Bd">
-                     <input type="hidden" id="img2Bd" name="img2Bd">
                      <div class="form-group">
                          <label for="img1Up">Imagen principal</label>
                          <div class="input-group">
                              <div class="custom-file">
-                                 <input type="file" class="custom-file-input is-valid inform" id="img1Up" name="img1">
+                                 <input type="file" class="custom-file-input is-valid inform" id="img1Up" name="img1" onchange="imgSlider(event, '#img1Up')">
                                  <label class="custom-file-label" for="img1Up">Seleccione la imagen</label>
                              </div>
                          </div>
@@ -35,8 +34,8 @@
                          <input type="text" class="form-control border border-success" id="tit1Up" placeholder="Ingrese el título" name="tit1">
                      </div>
                      <div class="form-group">
-                         <label for="desc1Up">Descripción</label>
-                         <input type="text" class="form-control border border-success" id="desc1Up" placeholder="Ingrese descripción" name="desc1">
+                         <label for="descripcion1Up">Descripción</label>
+                         <input type="text" class="form-control border border-success" id="descripcion1Up" placeholder="Ingrese descripción" name="descripcion1">
                      </div>
                      <div class="form-group">
                          <label>Link del botón</label>
@@ -57,11 +56,14 @@
                          <input type="text" class="form-control border border-success" id="link1Up" placeholder="Ingrese el link" name="link1">
                      </div>
                      <hr class="mt-4">
+                     <input type="hidden" id="id_usu2Up" name="id_usu2">
+                     <input type="hidden" id="id_slider2Up" name="id_slider2">
+                     <input type="hidden" id="img2Bd" name="img2Bd">
                      <div class="form-group">
                          <label for="img2Up">Imagen secundaria</label>
                          <div class="input-group">
                              <div class="custom-file">
-                                 <input type="file" class="custom-file-input is-valid inform" id="img2Up" name="img2">
+                                 <input type="file" class="custom-file-input is-valid inform" id="img2Up" name="img2" onchange="imgSlider(event, '#img2Up')">
                                  <label class="custom-file-label" for="img2Up">Seleccione la imagen</label>
                              </div>
                          </div>
@@ -77,8 +79,8 @@
                          <input type="text" class="form-control border border-success" id="tit2Up" placeholder="Ingrese el título" name="tit2">
                      </div>
                      <div class="form-group">
-                         <label for="desc2Up">Descripción</label>
-                         <input type="text" class="form-control border border-success" id="desc2Up" placeholder="Ingrese descripción" name="desc2">
+                         <label for="descripcion2Up">Descripción</label>
+                         <input type="text" class="form-control border border-success" id="descripcion2Up" placeholder="Ingrese descripción" name="descripcion2">
                      </div>
                      <div class="form-group">
                          <label>Link del botón</label>

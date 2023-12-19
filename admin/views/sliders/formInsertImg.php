@@ -16,7 +16,7 @@
                         <label for="img1">Imagen principal</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input is-valid inform" id="img1" name="img1">
+                                <input type="file" class="custom-file-input is-valid inform" id="img1" name="img1" onchange="imgSlider(event, '#img1')">
                                 <label class="custom-file-label" for="img1">Seleccione la imagen</label>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                         <label for="img2">Imagen secundaria</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input is-valid inform" id="img2" name="img2">
+                                <input type="file" class="custom-file-input is-valid inform" id="img2" name="img2" onchange="imgSlider(event, '#img2')">
                                 <label class="custom-file-label" for="img2">Seleccione la imagen</label>
                             </div>
                         </div>

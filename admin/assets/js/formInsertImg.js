@@ -24,11 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
 const campos = {
     img1: false,
     tit1: false,
-    desc1: false,
+    descripcion1: false,
     link1: false,
     img2: false,
     tit2: false,
-    desc2: false,
+    descripcion2: false,
     link2: false,
 }
 const valSelect = (e) => {
@@ -165,6 +165,11 @@ function showSwal2(icono, titulo, mensaje) {
 function vaciar() {
     Object.values(campos).forEach(value => value = false)
     formInsertImg.reset();
+    let imgPrin = document.getElementById('imgPrincipal');
+    let imgSec = document.getElementById('imgSecundaria');
+    imgPrin.src = "";
+    imgSec.src = "";
+
 }
 
 function insert(event) {

@@ -22,22 +22,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 const campos = {
     tit1: false,
-    desc1: false,
+    descripcion1: false,
     link1: false,
     tit2: false,
-    desc2: false,
+    descripcion2: false,
     link2: false,
-}
-
-const camposImg = {
-    img1: false,
-    img2: false,
 }
 
 const valSelect = (e) => {
     var campo = e.target.name + "Up";
     var link = campo === 'sLink1' ? 'link1' : 'link2';
-    console.log(campo)
+
+
     if (e.target.value === 'Seleccione una opción') {
         showToastr("error", "Seleccione una opción", "Link del botón");
         document.getElementById(`${campo}`).classList.remove('border-success');
@@ -99,10 +95,9 @@ const validImg = (e) => {
 }
 
 const validText = (e) => {
-    var campo = e.target.name + "UP";
+    var campo = e.target.name + "Up";
     var input = e.target;
     var titulo = '';
-
     if (campo === 'tit1Up') {
         titulo = "Título Imagen Principal";
     }
@@ -161,67 +156,84 @@ function showSwal2(icono, titulo, mensaje) {
     });
 }
 
-var campo1;
+var campo1 = false;
 
 function obtnerDatos() {
 
     var baseURL = 'http://localhost/proyectos/ceunem/admin/sliders/getImgs';
-
+    var url = 'http://localhost/proyectos/ceunem/admin/';
     axios.post(baseURL).then((response) => {
-        const entries = Object.entries(response.data);
+        const sliders = response.data;
+        const slider1 = sliders[0];
+        const slider2 = sliders[1];
+        const entries1 = Object.entries(slider1);
+        const entries2 = Object.entries(slider2);
+
         let s1 = document.getElementById("sLink1Up");
         let s2 = document.getElementById("sLink2Up");
         let int1 = document.getElementById("otroLink1Up");
         let int2 = document.getElementById("otroLink2Up");
 
-        entries.forEach(([key, value]) => {
-            const input = document.getElementById(key + "Up");
-            const label = document.getElementById(key + "Tit");
-            const imgBd = document.getElementById(key +"Bd");
 
-            let tipo1 = response.data['tUrl1'] = 1 ? 1 : 2;
-            let tipo2 = response.data['tUrl2'] = 1 ? 1 : 2;
-
-            if (key !== "img1" && key !== "img2" &&
-                key !== 'link1' && key !== 'link2' &&
-                key !== 'tUrl1' && key !== 'tUrl2') {
-                campos[key] = true;
+        entries1.forEach(([key, value]) => {
+            const input = document.getElementById(key + "1Up");
+            const label = document.getElementById(key + "1Tit");
+            const imgBd = document.getElementById(key + "1Bd");
+            let tipo = response.data['tUrl'] = 1 ? 1 : 2;
+            let keyCampo = key + "1";
+            if (key !== "img" && key !== 'link' && key !== 'tUrl') {
+                campos[keyCampo] = true;
                 input.value = value;
-            } else if (key !== 'link1' && key !== 'link2' &&
-                key !== 'tUrl1' && key !== 'tUrl2') {
+            } else if (key !== 'link' && key !== 'tUrl') {
                 const img = value;
                 const file = img.split("/").pop().split(".")[0];
                 label.textContent = "Imagen Actual: " + file;
                 imgBd.value = img;
-            } else if (key === 'tUrl1') {
-                const tUrl1 = value;
-                if (tUrl1 === 1) {
-                    s1.value = response.data.link1;
+                urlImg = url + img;
+                showSlider(urlImg, imgBd.id);
+                campos[keyCampo] = true;
+            } else if (key === 'tUrl') {
+                if (tipo === 1) {
+                    s1.value = slider1.link;
                     campos['link1'] = true;
-                }else{
+                } else {
                     s1.value = 'otro';
                     int1.style.display = 'block';
-                    int1.value = response.data.link1;
-                    campos['link1'] = true;
-                }
-            }else if (key === 'tUrl2') {
-                const tUrl2 = value;
-                if (tUrl2 === 1) {
-                    s2.value = response.data.link2;
-                    campos['link1'] = true;
-                }else{
-                    s2.value = 'otro';
-                    int2.style.display = 'block';
-                    int2.value = response.data.link2;
+                    int1.value = slider1.link;
                     campos['link1'] = true;
                 }
             }
         });
 
-        entries.forEach(([key, value]) => {
-            campos[key] = true;
-          });
-
+        entries2.forEach(([key, value]) => {
+            const input = document.getElementById(key + "2Up");
+            const label = document.getElementById(key + "2Tit");
+            const imgBd = document.getElementById(key + "2Bd");
+            let tipo = response.data['tUrl'] = 1 ? 1 : 2;
+            let keyCampo = key + "2";
+            if (key !== "img" && key !== 'link' && key !== 'tUrl') {
+                campos[keyCampo] = true;
+                input.value = value;
+            } else if (key !== 'link' && key !== 'tUrl') {
+                const img = value;
+                const file = img.split("/").pop().split(".")[0];
+                label.textContent = "Imagen Actual: " + file;
+                imgBd.value = img;
+                urlImg = url + img;
+                showSlider(urlImg, imgBd.id);
+                campos[keyCampo] = true;
+            } else if (key === 'tUrl') {
+                if (tipo === 1) {
+                    s2.value = slider2.link;
+                    campos['link2'] = true;
+                } else {
+                    s2.value = 'otro';
+                    int2.style.display = 'block';
+                    int2.value = slider2.link;
+                    campos['link2'] = true;
+                }
+            }
+        });
         campo1 = Object.values(campos).every(value => value === true);
     });
 }
@@ -231,11 +243,8 @@ function editar(event) {
     var baseURL = 'http://localhost/proyectos/ceunem/admin/sliders/upImgs';
     let datos = new FormData(this);
     let encabezados = new Headers();
-    let campo2 = Object.values(camposImg).some(value => value === true)
-    console.log("Fuera del ciclo if \nCampos: "+campo1+"\nCampos Imagen: "+campo2)
-    if (campo1 && campo2) {
-        console.log("Dentro del if \nCampos: "+campo1+"\nCampos Imagen: "+campo2)
-         axios.post(baseURL, datos, { encabezados }).then((response) => {
+    if (campo1) {
+        axios.post(baseURL, datos, { encabezados }).then((response) => {
             if (response.data.status) {
                 showSwal("success", "Actualización exitosa", "Se enviaron los datos con exito", response.data.url)
             } else {
@@ -243,7 +252,6 @@ function editar(event) {
             }
         });
     } else {
-        console.log("Dentro del else \nCampos: "+campo1+"\nCampos Imagen: "+campo2)
         showSwal2("error", "Oops...", "Seleccione almenos una imagen, favor de no dejar datos a mostrar vacios")
     }
 }

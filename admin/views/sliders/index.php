@@ -22,7 +22,7 @@
             </div>
             <div class="card-body">
                 <?php
-                if (empty($this->fila)) {
+                if (empty($this->fila) && $this->fila < 2) {
                     require 'views/sliders/formInsertImg.php';
                 ?>
                     <script src="<?php echo constant('URL') ?>assets/js/formInsertImg.js"></script>
@@ -30,13 +30,15 @@
                 } else {
                     require 'views/sliders/formEditImg.php';
                 ?>
-                    <script src="<?php echo constant('URL') ?>assets/js/formEditImg.js"></script>
+                   <script src="<?php echo constant('URL') ?>assets/js/formEditImg.js"></script>
                 <?php
                 }
+
+                require 'views/sliders/previewImg.php';
                 ?>
             </div>
         </div>
     </div>
 </div>
-
+<script src="<?php echo constant('URL') ?>assets/js/previewImg.js"></script>
 <?php require 'views/templete/footer.php'; ?>

@@ -4,67 +4,62 @@
 <!-- Carousel Start -->
 
 <div class="container-fluid p-0 mb-5">
-    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <?php
-            include_once 'models/clases/imagen.php';
-            foreach ($this->imgs as $row) {
-                $img = new Imagen();
-                $img = $row;
-                $url1 = $img->tUrl1 == 2 ? $img->link1 : constant('URL') . $img->link1;
-                $url2 = $img->tUrl2 == 2 ? $img->link2 : constant('URL') . $img->link2;
-            ?>
-                <div class="carousel-item active">
-                    <img class="w-100" src="<?php echo constant('ARCHIVOS').$img->img1; ?>" alt="Image">
-                    <div class="carousel-caption">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-7 pt-5">
-                                    <h1 class="display-4 text-white mb-3 animated slideInDown"><?= $img->tit1 ?></h1>
-                                    <p class="fs-5 text-white-50 mb-5 animated slideInDown"><?= $img->desc1 ?></p>
-                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo $url1 ?>">
-                                        Más información
-                                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                            <i class="fa fa-arrow-right"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="w-100" src="<?php echo constant('ARCHIVOS').$img->img2; ?>" alt="Image">
-                    <div class="carousel-caption">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-7 pt-5">
-                                    <h1 class="display-4 text-white mb-3 animated slideInDown"><?= $img->tit2 ?></h1>
-                                    <p class="fs-5 text-white-50 mb-5 animated slideInDown"><?= $img->desc2 ?></p>
-                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo $url2 ?>">
-                                        Más Información
-                                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                            <i class="fa fa-arrow-right"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php
-            }
-            ?>
+  <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="w-100" src="<?php echo constant('ARCHIVOS') . $this->imgs[0]->img; ?>" alt="Image">
+        <div class="carousel-caption">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-7 pt-5">
+                <h1 class="display-4 text-white mb-3 animated slideInDown"><?php echo $this->imgs[0]->tit ?></h1>
+                <p class="fs-5 text-white-50 mb-5 animated slideInDown"><?php echo $this->imgs[0]->descripcion ?></p>
+                <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo $this->imgs[0]->link ?>">
+                  Más información
+                  <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                    <i class="fa fa-arrow-right"></i>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+      </div>
+      <?php
+      for ($i = 1; $i < count($this->imgs); $i++) {
+        $imgs1 = $this->imgs[$i];
+        $url = $imgs1->tUrl == 2 ? $imgs1->link : constant('URL') . $imgs1->link;
+      ?>
+        <div class="carousel-item">
+          <img class="w-100" src="<?php echo constant('ARCHIVOS') . $imgs1->img; ?>" alt="Image">
+          <div class="carousel-caption">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-lg-7 pt-5">
+                  <h1 class="display-4 text-white mb-3 animated slideInDown"><?php echo $imgs1->tit ?></h1>
+                  <p class="fs-5 text-white-50 mb-5 animated slideInDown"><?php echo $imgs1->descripcion ?></p>
+                  <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo $url ?>">
+                    Más información
+                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                      <i class="fa fa-arrow-right"></i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php } ?>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </div>
 
 
@@ -82,6 +77,7 @@ foreach ($this->ini1 as $row) {
 <?php
 }
 ?>
+
 <!-- Nosotros Start -->
 <div class="container-xxl py-5">
     <div class="container">

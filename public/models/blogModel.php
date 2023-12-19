@@ -30,9 +30,9 @@ class BlogModel extends Model{
         }
     }
 
-    public function countRows(){
+    public function countBlog(){
         try {
-            $query = $this->db->connect()->query("SELECT * FROM blog");
+            $query = $this->db->connect()->query("SELECT * FROM blog WHERE estado=1");
             $filas=$query->rowCount();
             return $filas;
         } catch (PDOException $th) {

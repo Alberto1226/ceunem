@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-12-2023 a las 19:36:53
+-- Tiempo de generación: 19-12-2023 a las 16:39:29
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -52,12 +52,24 @@ INSERT INTO `blog` (`id_blog`, `categoria`, `titulo`, `descripcion`, `img_url`, 
 
 CREATE TABLE `colores` (
   `id_color` int(11) NOT NULL,
-  `fondo_hf` varchar(100) NOT NULL,
-  `fondo_slider` varchar(100) NOT NULL,
-  `btn_fondo` varchar(100) NOT NULL,
-  `btn_hover` varchar(100) NOT NULL,
+  `let_hf` varchar(10) NOT NULL,
+  `let_hover` varchar(10) NOT NULL,
+  `btn_font` varchar(10) NOT NULL,
+  `font` varchar(10) NOT NULL,
+  `btn_hfont` varchar(10) NOT NULL,
+  `fondo_hf` varchar(10) NOT NULL,
+  `btn_color` varchar(10) NOT NULL,
+  `btn_hover` varchar(10) NOT NULL,
+  `background` varchar(10) NOT NULL,
   `id_usu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `colores`
+--
+
+INSERT INTO `colores` (`id_color`, `let_hf`, `let_hover`, `btn_font`, `font`, `btn_hfont`, `fondo_hf`, `btn_color`, `btn_hover`, `background`, `id_usu`) VALUES
+(1, '#000000', '#e61919', '#c45a5a', '#100f0f', '#b17c7c', '#ea4848', '#e02929', '#c91313', '#d8cfcf', 1);
 
 -- --------------------------------------------------------
 
@@ -272,25 +284,21 @@ INSERT INTO `objetivos` (`id_obj`, `nom_sec`, `img_sec`, `desc_sec`, `estado`, `
 
 CREATE TABLE `sliders` (
   `id_slider` int(11) NOT NULL,
-  `img1` varchar(255) NOT NULL,
-  `tit1` varchar(100) NOT NULL,
-  `desc1` text NOT NULL,
-  `link1` varchar(255) NOT NULL,
-  `img2` varchar(255) NOT NULL,
-  `tit2` varchar(100) NOT NULL,
-  `desc2` text NOT NULL,
-  `link2` varchar(255) NOT NULL,
-  `id_usu` int(11) NOT NULL,
-  `tUrl1` int(2) NOT NULL,
-  `tUrl2` int(2) NOT NULL
+  `img` varchar(255) NOT NULL,
+  `tit` varchar(255) NOT NULL,
+  `descripcion` text NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `tUrl` int(2) NOT NULL,
+  `id_usu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `sliders`
 --
 
-INSERT INTO `sliders` (`id_slider`, `img1`, `tit1`, `desc1`, `link1`, `img2`, `tit2`, `desc2`, `link2`, `id_usu`, `tUrl1`, `tUrl2`) VALUES
-(1, 'public/img/sliders/IMG20231216_181529carousel-1.jpg', 'Creando líderes y emprendedores', 'Nuestro objetivo principal es empoderar académicamente a nuestros estudiantes a través de la formación de conocimientos y competencias profesionales en disciplinas de corte humanista, académico-administrativo y de comunicación.', 'nosotros', 'public/img/sliders/IMG20231216_181529carousel-2.jpg', 'Crea tu futuro profesional 100% online', 'Becas de hasta el 70%', 'contacto', 1, 1, 1);
+INSERT INTO `sliders` (`id_slider`, `img`, `tit`, `descripcion`, `link`, `tUrl`, `id_usu`) VALUES
+(1, 'public/img/sliders/IMG1_20231218_171413_carousel-1.jpg', 'Creando líderes y emprendedores', 'Nuestro objetivo principal es empoderar académicamente a nuestros estudiantes a través de la formación de conocimientos y competencias profesionales en disciplinas de corte humanista, académico-administrativo y de comunicación.', 'nosotros', 1, 1),
+(2, 'public/img/sliders/IMG2_20231218_171425_carousel-2.jpg', 'Crea tu futuro profesional 100% online', 'Becas de hasta el 70%', 'contacto', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -474,8 +482,7 @@ ALTER TABLE `objetivos`
 -- Indices de la tabla `sliders`
 --
 ALTER TABLE `sliders`
-  ADD PRIMARY KEY (`id_slider`),
-  ADD KEY `id_usu` (`id_usu`);
+  ADD PRIMARY KEY (`id_slider`);
 
 --
 -- Indices de la tabla `smtp`
@@ -526,7 +533,7 @@ ALTER TABLE `blog`
 -- AUTO_INCREMENT de la tabla `colores`
 --
 ALTER TABLE `colores`
-  MODIFY `id_color` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_color` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `continua`
@@ -586,7 +593,7 @@ ALTER TABLE `objetivos`
 -- AUTO_INCREMENT de la tabla `sliders`
 --
 ALTER TABLE `sliders`
-  MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `smtp`
@@ -626,7 +633,8 @@ ALTER TABLE `vision`
 -- Filtros para la tabla `colores`
 --
 ALTER TABLE `colores`
-  ADD CONSTRAINT `colores_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
+  ADD CONSTRAINT `colores_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`),
+  ADD CONSTRAINT `colores_ibfk_2` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
 
 --
 -- Filtros para la tabla `equipo`
@@ -663,13 +671,6 @@ ALTER TABLE `mision`
 --
 ALTER TABLE `objetivos`
   ADD CONSTRAINT `objetivos_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
-
---
--- Filtros para la tabla `sliders`
---
-ALTER TABLE `sliders`
-  ADD CONSTRAINT `sliders_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`),
-  ADD CONSTRAINT `sliders_ibfk_2` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
 
 --
 -- Filtros para la tabla `smtp`

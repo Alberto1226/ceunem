@@ -25,7 +25,7 @@ class Home extends Controller{
         $imgs = $this->model->getImgs();
         $this->view->imgs = $imgs;
 
-        $this->view->render('home/index');
+        $this->view->render('home/index', $tel);
     }
 
 }

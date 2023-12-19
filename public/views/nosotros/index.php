@@ -178,3 +178,4 @@ foreach ($this->secMisions as $row) {
 </div>
 <!-- Equipo End -->
 <?php require 'views/templete/footer.php'; ?>
+<?php require 'views/templete/whatsapp.php'; ?>

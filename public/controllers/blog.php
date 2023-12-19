@@ -7,7 +7,9 @@ class Blog extends Controller{
     }
 
     function render(){
-        
+        $fila = $this->model->countBlog();
+        $this->view->fila = $fila;
+
         $articulos = $this->model->getAllArticulos();
         $this->view->articulos = $articulos;
         $this->view->render('blog/index');
