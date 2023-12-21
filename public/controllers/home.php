@@ -7,9 +7,6 @@ class Home extends Controller{
     }
 
     function render(){
-       $imgs = $this->model->getImgs();
-        $this->view->imgs = $imgs;
-
         $ini1 = $this->model->getVideo();
         $this->view->ini1 = $ini1;
 
