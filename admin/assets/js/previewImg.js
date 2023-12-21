@@ -1,23 +1,47 @@
-var baseURL = 'http://localhost/proyectos/ceunem/admin/';
+document.addEventListener("DOMContentLoaded", function () {
+
+    const select = document.getElementById('sName');
+    select.addEventListener('keyup', showSelect);
+    select.addEventListener('blur', showSelect);
+
+
+    const texto = document.getElementById('tit');
+    texto.addEventListener('keyup', showText);
+    texto.addEventListener('blur', showText);
+
+
+    const txtAreas = document.getElementById('descripcion');
+    txtAreas.addEventListener('keyup', showText);
+    txtAreas.addEventListener('blur', showText);
+
+});
+
 function imgSlider(event, querySelector) {
     const input = event.target;
     $img = document.querySelector(querySelector);
-    let idInput = $img.id;
-
     if (!input.files.length) return
     file = input.files[0];
     url = URL.createObjectURL(file);
-    showSlider(url, idInput);
+    $img.src = url;
 }
 
-function showSlider(url, idInput) {
-    let imgPrin = document.getElementById('imgPrincipal');
-    let imgSec = document.getElementById('imgSecundaria');
-   
-    if (idInput === 'img1' || idInput === 'img1Up' || idInput === 'img1Bd') {
-        imgPrin.src = url;
-    } 
-    if(idInput === 'img2' || idInput === 'img2Up'|| idInput === 'img2Bd') {
-        imgSec.src = url;
+function showSelect(e) {
+    const select = e.target;
+    const opcion = select.options[select.selectedIndex];
+    const texto = opcion.textContent;
+    if(texto !== 'Seleccione una opción'){
+        document.getElementById('btnTit').textContent = texto;
+        document.getElementById('linkImg').style.display = 'inline'
+    }
+}
+
+function showText(e) {
+    const input = e.target.name;
+    const contenido = e.target.value
+
+    if (input == 'tit') {
+        document.getElementById('titImg').textContent = contenido;
+    } else if (input == 'descripcion') {
+        document.getElementById('descImg').textContent = contenido;
     }
 }

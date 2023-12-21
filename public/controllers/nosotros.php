@@ -6,7 +6,7 @@ class Nosotros extends Controller{
         parent::__construct();
     }
 
-    function render(){
+    function render(){      
         $secMisions = $this->model->getMision();
         $this->view->secMisions = $secMisions;
 

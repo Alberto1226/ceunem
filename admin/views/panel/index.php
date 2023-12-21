@@ -50,18 +50,24 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-4 justify-content-center">
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Configuración</h3>
+                            <h3 class="card-title">Inicio</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
                                 </button>
                             </div>
                         </div>
                         <div class="card-body">
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>colores">
-                                Paleta de colores
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider1">
+                                Imágen Slider 1
+                            </a>
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider2">
+                                Imágen Slider 2
+                            </a>
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider3">
+                                Imágen Slider 3
                             </a>
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>sliders">
                                 Imagenes encabezados
@@ -73,15 +79,56 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Inicio</h3>
+                            <h3 class="card-title">Nosotros</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
                                 </button>
                             </div>
                         </div>
                         <div class="card-body">
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>inicio">
-                                Agregar/Editar
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>programaCalidad">
+                                Programa de Calidad
+                            </a>
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>mision">
+                                Misión
+                            </a>
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>vision">
+                                Visión
+                            </a>
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>objetivo">
+                                Objetivos
+                            </a>
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>Valor">
+                                Valores
+                            </a>
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>equipo">
+                                Equipo de trabajo
+                            </a>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Oferta Educativa</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <a class="btn btn-block btn-outline-success px-3" href="#">
+                                Descripción
+                            </a>
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>licenciatura">
+                                Licenciaturas
+                            </a>
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>maestria">
+                                Maestrías
+                            </a>
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>continua">
+                                Educación Continua
                             </a>
                         </div>
                         <!-- /.card-body -->
@@ -104,42 +151,8 @@
                         <!-- /.card-body -->
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Misión</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>mision">
-                                Agregar/Editar
-                            </a>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                </div>
             </div>
             <div class="row g-4 justify-content-center">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Equipo de trabajo</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>equipo">
-                                Agregar/Editar
-                            </a>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="card card-primary">
                         <div class="card-header">
@@ -150,11 +163,8 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>servidor">
-                                Configuración Servidor
-                            </a>
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>contacto">
-                                Configuración Formulario
+                                Formulario de contacto
                             </a>
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>telefono">
                                 Configuración WhatsApp
@@ -166,44 +176,18 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Oferta Educativa</h3>
+                            <h3 class="card-title">Configuración General</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
                                 </button>
                             </div>
                         </div>
                         <div class="card-body">
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>licenciatura">
-                                Licenciaturas
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>colores">
+                                Paleta de colores
                             </a>
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>maestria">
-                                Maestrías
-                            </a>
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>continua">
-                                Educación Continua
-                            </a>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Filosofía</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>vision">
-                                Visión
-                            </a>
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>objetivo">
-                                Objetivos
-                            </a>
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>Valor">
-                                Valores
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>servidor">
+                                Servidor de correos
                             </a>
                         </div>
                         <!-- /.card-body -->

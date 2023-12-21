@@ -7,26 +7,23 @@ class Home extends Controller{
     }
 
     function render(){
+       $imgs = $this->model->getImgs();
+        $this->view->imgs = $imgs;
+
         $ini1 = $this->model->getVideo();
         $this->view->ini1 = $ini1;
 
-        $tel = $this->model->getWhats();
-        $this->view->tel = $tel;
-
         $articulos = $this->model->getAllArticulos();
         $this->view->articulos = $articulos;
-        
-        $secEqs = $this->model->getProfesionisitas();
-        $this->view->secEqs = $secEqs;
 
         $inputs = $this->model->getInputs();
         $this->view->inputs = $inputs;
 
-        $imgs = $this->model->getImgs();
-        $this->view->imgs = $imgs;
-
-        $this->view->render('home/index', $tel);
+        $secEqs = $this->model->getProfesionisitas();
+        $this->view->secEqs = $secEqs;
+        $this->view->render('home/index');
     }
+
 
 }
 ?>

@@ -7,8 +7,8 @@ class Aviso extends Controller{
     }
 
     function render(){
+       
         $this->view->render('aviso/index');
-
     }
 
 }

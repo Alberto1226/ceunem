@@ -8,12 +8,13 @@ class Continua extends Controller
     }
 
     function render()
-    {
+    {       
         $fila = $this->model->countRowsContinuas();
         $this->view->fila = $fila;
         
         $continuas = $this->model->getAllContinuas();
         $this->view->continuas = $continuas;
+
         $this->view->render('continua/index');
     }
 }

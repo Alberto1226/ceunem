@@ -1,6 +1,7 @@
 <?php
 require_once 'libs/controller.php';
 class Panel extends Controller{
+    public $id;
     function __construct()
     {
         session_start();
@@ -16,7 +17,6 @@ class Panel extends Controller{
         $this->view->render('panel/index');
 
     }
-
 }
 
 ?>

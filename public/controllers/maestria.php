@@ -9,8 +9,8 @@ class Maestria extends Controller{
     function render(){
         $maestrias = $this->model->getAllMaestrias();
         $this->view->maestrias = $maestrias;
-        $this->view->render('maestria/index');
 
+        $this->view->render('maestria/index');
     }
 
 }

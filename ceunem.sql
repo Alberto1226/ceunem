@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-12-2023 a las 16:39:29
+-- Tiempo de generación: 21-12-2023 a las 17:29:17
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -43,6 +43,25 @@ CREATE TABLE `blog` (
 
 INSERT INTO `blog` (`id_blog`, `categoria`, `titulo`, `descripcion`, `img_url`, `link_url`, `estado`) VALUES
 (1, 'Salud', '5 Maneras para Apoyar la Salud Mental de los Estudiantes', 'Muchos estudiantes pasan aproximadamente una sexta parte de sus horas de vigilia en la escuela, por lo que apoyar la salud mental de los estudiantes cae sobre los hombros de los docentes.', 'public/img/blog/20231124_193809_blog-1.jpg', 'https://ceunem.edu.mx/nosotros.html', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `calidad`
+--
+
+CREATE TABLE `calidad` (
+  `id_prog` int(11) NOT NULL,
+  `nom_menu` varchar(50) NOT NULL,
+  `tit_prog` varchar(150) NOT NULL,
+  `descripcion` text NOT NULL,
+  `img_url` varchar(255) NOT NULL,
+  `btn_name1` varchar(20) NOT NULL,
+  `btn_url1` varchar(255) NOT NULL,
+  `btn_name2` varchar(20) NOT NULL,
+  `btn_url2` varchar(255) NOT NULL,
+  `id_usu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -147,26 +166,6 @@ CREATE TABLE `formulario` (
 
 INSERT INTO `formulario` (`id_form`, `nCompleto`, `nombre`, `apellidos`, `email`, `tel`, `face`, `mensaje`, `asunto`, `live`, `id_usu`) VALUES
 (1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `inicio`
---
-
-CREATE TABLE `inicio` (
-  `id_ini` int(11) NOT NULL,
-  `vid_url` varchar(255) NOT NULL,
-  `estado` int(2) NOT NULL,
-  `id_usu` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `inicio`
---
-
-INSERT INTO `inicio` (`id_ini`, `vid_url`, `estado`, `id_usu`) VALUES
-(1, 'public/vid/inicio/VIDEO_20231211_233147.mp4', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -287,18 +286,12 @@ CREATE TABLE `sliders` (
   `img` varchar(255) NOT NULL,
   `tit` varchar(255) NOT NULL,
   `descripcion` text NOT NULL,
+  `btn_name` varchar(100) NOT NULL,
   `link` varchar(255) NOT NULL,
-  `tUrl` int(2) NOT NULL,
+  `tUrl` int(1) NOT NULL,
+  `posicion` int(1) NOT NULL,
   `id_usu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `sliders`
---
-
-INSERT INTO `sliders` (`id_slider`, `img`, `tit`, `descripcion`, `link`, `tUrl`, `id_usu`) VALUES
-(1, 'public/img/sliders/IMG1_20231218_171413_carousel-1.jpg', 'Creando líderes y emprendedores', 'Nuestro objetivo principal es empoderar académicamente a nuestros estudiantes a través de la formación de conocimientos y competencias profesionales en disciplinas de corte humanista, académico-administrativo y de comunicación.', 'nosotros', 1, 1),
-(2, 'public/img/sliders/IMG2_20231218_171425_carousel-2.jpg', 'Crea tu futuro profesional 100% online', 'Becas de hasta el 70%', 'contacto', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -413,6 +406,13 @@ ALTER TABLE `blog`
   ADD PRIMARY KEY (`id_blog`);
 
 --
+-- Indices de la tabla `calidad`
+--
+ALTER TABLE `calidad`
+  ADD PRIMARY KEY (`id_prog`),
+  ADD UNIQUE KEY `id_usu` (`id_usu`);
+
+--
 -- Indices de la tabla `colores`
 --
 ALTER TABLE `colores`
@@ -436,13 +436,6 @@ ALTER TABLE `equipo`
 --
 ALTER TABLE `formulario`
   ADD PRIMARY KEY (`id_form`),
-  ADD UNIQUE KEY `id_usu` (`id_usu`);
-
---
--- Indices de la tabla `inicio`
---
-ALTER TABLE `inicio`
-  ADD PRIMARY KEY (`id_ini`),
   ADD UNIQUE KEY `id_usu` (`id_usu`);
 
 --
@@ -530,6 +523,12 @@ ALTER TABLE `blog`
   MODIFY `id_blog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `calidad`
+--
+ALTER TABLE `calidad`
+  MODIFY `id_prog` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `colores`
 --
 ALTER TABLE `colores`
@@ -552,12 +551,6 @@ ALTER TABLE `equipo`
 --
 ALTER TABLE `formulario`
   MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `inicio`
---
-ALTER TABLE `inicio`
-  MODIFY `id_ini` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `licenciaturas`
@@ -593,7 +586,7 @@ ALTER TABLE `objetivos`
 -- AUTO_INCREMENT de la tabla `sliders`
 --
 ALTER TABLE `sliders`
-  MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `smtp`
@@ -647,12 +640,6 @@ ALTER TABLE `equipo`
 --
 ALTER TABLE `formulario`
   ADD CONSTRAINT `formulario_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
-
---
--- Filtros para la tabla `inicio`
---
-ALTER TABLE `inicio`
-  ADD CONSTRAINT `inicio_ibfk_1` FOREIGN KEY (`id_usu`) REFERENCES `usuarios` (`id_usu`);
 
 --
 -- Filtros para la tabla `menu`

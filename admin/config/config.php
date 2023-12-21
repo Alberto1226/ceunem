@@ -6,4 +6,5 @@
     define('PASSWORD','');
     define('CHARSET','utf8');
 
+    define('PUBLIC', 'http://localhost/proyectos/ceunem/public/');
 ?>

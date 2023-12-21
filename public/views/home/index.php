@@ -2,69 +2,67 @@
 <?php require 'views/templete/navar.php'; ?>
 
 <!-- Carousel Start -->
-
 <div class="container-fluid p-0 mb-5">
-  <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="w-100" src="<?php echo constant('ARCHIVOS') . $this->imgs[0]->img; ?>" alt="Image">
-        <div class="carousel-caption">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-7 pt-5">
-                <h1 class="display-4 text-white mb-3 animated slideInDown"><?php echo $this->imgs[0]->tit ?></h1>
-                <p class="fs-5 text-white-50 mb-5 animated slideInDown"><?php echo $this->imgs[0]->descripcion ?></p>
-                <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo $this->imgs[0]->link ?>">
-                  Más información
-                  <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                    <i class="fa fa-arrow-right"></i>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <?php
-      for ($i = 1; $i < count($this->imgs); $i++) {
-        $imgs1 = $this->imgs[$i];
-        $url = $imgs1->tUrl == 2 ? $imgs1->link : constant('URL') . $imgs1->link;
-      ?>
-        <div class="carousel-item">
-          <img class="w-100" src="<?php echo constant('ARCHIVOS') . $imgs1->img; ?>" alt="Image">
-          <div class="carousel-caption">
-            <div class="container">
-              <div class="row justify-content-center">
-                <div class="col-lg-7 pt-5">
-                  <h1 class="display-4 text-white mb-3 animated slideInDown"><?php echo $imgs1->tit ?></h1>
-                  <p class="fs-5 text-white-50 mb-5 animated slideInDown"><?php echo $imgs1->descripcion ?></p>
-                  <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo $url ?>">
-                    Más información
-                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                      <i class="fa fa-arrow-right"></i>
+    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="w-100" src="<?php echo constant('ARCHIVOS') . $this->imgs[0]->img; ?>" alt="Image">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7 pt-5">
+                                <h1 class="display-4 text-white mb-3 animated slideInDown"><?php echo $this->imgs[0]->tit ?></h1>
+                                <p class="fs-5 text-white-50 mb-5 animated slideInDown"><?php echo $this->imgs[0]->descripcion ?></p>
+                                <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo $this->imgs[0]->link ?>">
+                                    Más información
+                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                        <i class="fa fa-arrow-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                  </a>
                 </div>
-              </div>
             </div>
-          </div>
+            <?php
+            for ($i = 1; $i < count($this->imgs); $i++) {
+                $imgs1 = $this->imgs[$i];
+                $url = $imgs1->tUrl == 2 ? $imgs1->link : constant('URL') . $imgs1->link;
+            ?>
+                <div class="carousel-item">
+                    <img class="w-100" src="<?php echo constant('ARCHIVOS') . $imgs1->img; ?>" alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 pt-5">
+                                    <h1 class="display-4 text-white mb-3 animated slideInDown"><?php echo $imgs1->tit ?></h1>
+                                    <p class="fs-5 text-white-50 mb-5 animated slideInDown"><?php echo $imgs1->descripcion ?></p>
+                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo $url ?>">
+                                        Más información
+                                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
-      <?php } ?>
+        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
 </div>
-
-
-
 <!-- Carousel End -->
+
+
 <?php
 include_once 'models/clases/video.php';
 foreach ($this->ini1 as $row) {
@@ -85,7 +83,6 @@ foreach ($this->ini1 as $row) {
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="position-relative overflow-hidden h-100" style="min-height: 400px;">
                     <img class="position-absolute w-100 h-100 pt-5 pe-5" src="<?php echo constant('URL') ?>assets/img/nosotros-1.jpg" alt="" style="object-fit: cover;">
-                    <img class="position-absolute top-0 end-0 bg-white ps-2 pb-2" src="<?php echo constant('URL') ?>assets/img/nosotros-2.jpg" alt="" style="width: 200px; height: 200px;">
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -110,9 +107,7 @@ foreach ($this->ini1 as $row) {
         </div>
     </div>
 </div>
-</div>
 <!-- Nosotros End -->
-
 
 <!-- Blog Start -->
 <div class="container-xxl bg-light my-5 py-5">
@@ -165,7 +160,6 @@ foreach ($this->ini1 as $row) {
 </div>
 <!-- Blog End -->
 
-
 <!-- Oferta Educativa Start -->
 <div class="container-xxl py-5">
     <div class="container">
@@ -217,7 +211,6 @@ foreach ($this->ini1 as $row) {
     </div>
 </div>
 <!-- Oferta Educativa End -->
-
 
 <!-- Contacto Start -->
 <div class="container-fluid donate my-5 py-5" data-parallax="scroll" data-image-src="<?php echo constant('URL') ?>assets/img/carousel-2.jpg">
@@ -285,9 +278,7 @@ foreach ($this->ini1 as $row) {
         </div>
     </div>
 </div>
-</div>
 <!-- Contacto End -->
-
 
 <!-- Nuestro Equipo Start -->
 <div class="container-xxl py-5">
@@ -349,7 +340,6 @@ foreach ($this->ini1 as $row) {
 </div>
 <!-- Nuestro Equipo End -->
 
-
 <!-- Testimonios Start -->
 <div class="container-xxl py-5">
     <div class="container">
@@ -385,7 +375,6 @@ foreach ($this->ini1 as $row) {
         </div>
     </div>
 </div>
-
 <!-- Testimonios End -->
-<?php require 'views/templete/whatsapp.php'; ?>
+
 <?php require 'views/templete/footer.php'; ?>

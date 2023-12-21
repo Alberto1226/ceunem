@@ -10,159 +10,187 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-        <!-- Configuracion -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-cog"></i>
-            <p>
-              Configuración
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?php echo constant('URL') ?>colores" class="nav-link">
-                <i class="fas fa-edit nav-icon"></i>
-                <p>Paleta de colores</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo constant('URL') ?>sliders" class="nav-link">
-                <i class="fas fa-image nav-icon"></i>
-                <p>Imangenes encabezados</p>
-              </a>
-            </li>
-          </ul>
-        </li>
         <!-- Inicio -->
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-home"></i>
+          <p>
+            Inicio
+            <i class="right fas fa-angle-left"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>slider1" class="nav-link">
+              <i class="fas fa-image nav-icon"></i>
+              <p>Imágen Slider 1</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>slider2" class="nav-link">
+              <i class="fas fa-image nav-icon"></i>
+              <p>Imágen Slider 2</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>slider3" class="nav-link">
+              <i class="fas fa-image nav-icon"></i>
+              <p>Imágen Slider 3</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <!-- Nosotros -->
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-users"></i>
+          <p>
+            Nosotros
+            <i class="right fas fa-angle-left"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
         <li class="nav-item">
-          <a href="<?php echo constant('URL') ?>inicio" class="nav-link">
-            <i class="nav-icon fas fa-home"></i>
-            <p>Inicio</p>
-          </a>
-        </li>
-        <!-- Blog -->
+            <a href="<?php echo constant('URL') ?>programaCalidad" class="nav-link">
+              <i class="fas fa-certificate nav-icon"></i>
+              <p>Programa de Calidad</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>mision" class="nav-link">
+              <i class="fas fa-bullseye nav-icon"></i>
+              <p>Misión</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-graduation-cap"></i>
+              <p>
+                Filosofía
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo constant('URL') ?>vision" class="nav-link">
+                  <i class="fas fa-arrow-circle-right nav-icon"></i>
+                  <p>Visión</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo constant('URL') ?>objetivo" class="nav-link">
+                  <i class="fas fa-arrow-circle-right nav-icon"></i>
+                  <p>Objetivos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo constant('URL') ?>valor" class="nav-link">
+                  <i class="fas fa-arrow-circle-right nav-icon"></i>
+                  <p>Valores</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>equipo" class="nav-link">
+              <i class="fas fa-people-carry nav-icon"></i>
+              <p>Equipo de trabajo</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <!-- oferta educativa -->
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-graduation-cap"></i>
+          <p>
+            Oferta Educativa
+            <i class="right fas fa-angle-left"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
         <li class="nav-item">
-          <a href="<?php echo constant('URL') ?>blog" class="nav-link">
-            <i class="nav-icon fas fa-rss"></i>
-            <p>Blog</p>
-          </a>
-        </li>
-        <!-- oferta educativa -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-graduation-cap"></i>
-            <p>
-              Oferta Educativa
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?php echo constant('URL') ?>licenciatura" class="nav-link">
-                <i class="fas fa-edit nav-icon"></i>
-                <p>Licenciaturas</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo constant('URL') ?>maestria" class="nav-link">
-                <i class="fas fa-edit nav-icon"></i>
-                <p>Maestrías</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo constant('URL') ?>continua" class="nav-link">
-                <i class="fas fa-edit nav-icon"></i>
-                <p>Educación Continua</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <!-- Nosotros -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>
-              Nosotros
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?php echo constant('URL') ?>mision" class="nav-link">
-                <i class="fas fa-bullseye nav-icon"></i>
-                <p>Misión</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-graduation-cap"></i>
-                <p>
-                  Filosofía
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="<?php echo constant('URL') ?>vision" class="nav-link">
-                    <i class="fas fa-arrow-circle-right nav-icon"></i>
-                    <p>Visión</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?php echo constant('URL') ?>objetivo" class="nav-link">
-                    <i class="fas fa-arrow-circle-right nav-icon"></i>
-                    <p>Objetivos</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?php echo constant('URL') ?>valor" class="nav-link">
-                    <i class="fas fa-arrow-circle-right nav-icon"></i>
-                    <p>Valores</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo constant('URL') ?>equipo" class="nav-link">
-                <i class="fas fa-people-carry nav-icon"></i>
-                <p>Equipo de trabajo</p>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <!-- Contacto -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-envelope"></i>
-            <p>
-              Contacto
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="<?php echo constant('URL') ?>servidor" class="nav-link">
-                <i class="fas fa-server nav-icon"></i>
-                <p>Servidor</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo constant('URL') ?>contacto" class="nav-link">
-                <i class="fas fa-list-ul nav-icon"></i>
-                <p>Formulario</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo constant('URL') ?>telefono" class="nav-link">
-                <i class="fab fa-whatsapp nav-icon"></i>
-                <p>Whatsapp</p>
-              </a>
-            </li>
-          </ul>
-        </li>
+            <a href="#" class="nav-link">
+              <i class="fas fa-edit nav-icon"></i>
+              <p>Descripción</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>licenciatura" class="nav-link">
+              <i class="fas fa-edit nav-icon"></i>
+              <p>Licenciaturas</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>maestria" class="nav-link">
+              <i class="fas fa-edit nav-icon"></i>
+              <p>Maestrías</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>continua" class="nav-link">
+              <i class="fas fa-edit nav-icon"></i>
+              <p>Educación Continua</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <!-- Blog -->
+      <li class="nav-item">
+        <a href="<?php echo constant('URL') ?>blog" class="nav-link">
+          <i class="nav-icon fas fa-rss"></i>
+          <p>Blog</p>
+        </a>
+      </li>
+      <!-- Contacto -->
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-envelope"></i>
+          <p>
+            Contacto
+            <i class="right fas fa-angle-left"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          
+          <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>contacto" class="nav-link">
+              <i class="fas fa-list-ul nav-icon"></i>
+              <p>Formulario de contacto</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>telefono" class="nav-link">
+              <i class="fab fa-whatsapp nav-icon"></i>
+              <p>Whatsapp</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <!-- Configuracion -->
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-cog"></i>
+          <p>
+            Configuración General
+            <i class="right fas fa-angle-left"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>colores" class="nav-link">
+              <i class="fas fa-edit nav-icon"></i>
+              <p>Paleta de colores</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>servidor" class="nav-link">
+              <i class="fas fa-server nav-icon"></i>
+              <p>Servidor de correos</p>
+            </a>
+          </li>
+        </ul>
+      </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

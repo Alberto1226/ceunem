@@ -12,8 +12,8 @@ class Blog extends Controller{
 
         $articulos = $this->model->getAllArticulos();
         $this->view->articulos = $articulos;
+        
         $this->view->render('blog/index');
-
     }
 
 }

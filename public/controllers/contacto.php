@@ -14,7 +14,7 @@ class Contacto extends Controller{
         parent::__construct();
     }
 
-    function render(){
+    function render(){      
         $inputs = $this->model->getInputs();
         $this->view->inputs = $inputs;
         $this->view->render('contacto/index');

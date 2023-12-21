@@ -20,7 +20,7 @@
         </div>
     </div>
     <!-- /.card-header -->
-    <div class="card-body d-flex justify-content-center align-items-center col-9">
+    <div class="card-body d-flex justify-content-center mx-auto col-9">
         <div class="card border-secondary cardBodyObj" id="cardBodyObj">
             <div class="card-body d-flex justify-content-center align-items-center">
                 <div class="service-item bg-white text-center h-100 p-4 p-xl-5">

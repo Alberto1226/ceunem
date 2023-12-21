@@ -52,7 +52,7 @@
                                 <span class="text-success autorFrase" id="autorFrase"></span>
                             </div>
                             <p class="mb-5 descMision" id="descMision"></p>
-                            <a class="btn btn-outline-success py-2 px-3 btnMision" id="btnMision" href="<?php echo constant('URL') ?>contacto">
+                            <a class="btn btn-outline-success py-2 px-3 btnMision" id="btnMision" href="<?php echo constant('PUBLIC') ?>contacto">
                                 Contáctanos
                                 <div class="d-inline-flex btn-sm-square bg-success text-white rounded-circle ms-2">
                                     <i class="fa fa-arrow-right"></i>

@@ -38,7 +38,7 @@ foreach ($this->secMisions as $row) {
                             <span class="text-primary"><?php echo $secMision->autor; ?></span>
                         </div>
                         <p class="mb-5"><?php echo $secMision->mision; ?></p>
-                        <a class="btn btn-outline-primary py-2 px-3" href="<?php echo constant('URL') ?>contacto">
+                        <a class="btn btn-outline-primary py-2 px-3" href="<?php constant('ARCHIVOS') ?>contacto">
                             Contáctanos
                             <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                 <i class="fa fa-arrow-right"></i>
@@ -178,4 +178,3 @@ foreach ($this->secMisions as $row) {
 </div>
 <!-- Equipo End -->
 <?php require 'views/templete/footer.php'; ?>
-<?php require 'views/templete/whatsapp.php'; ?>

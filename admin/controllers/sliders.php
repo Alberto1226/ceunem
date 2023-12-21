@@ -23,6 +23,7 @@ class Sliders extends Controller
         $this->view->render('sliders/index');
     }
 
+
     function addImgs()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

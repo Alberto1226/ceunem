@@ -15,7 +15,7 @@
                 <label for="img_url">Imagen Valores</label>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input is-valid inform" id="img_sec" name="img_sec" onchange="imgVal(event,'#img_sec')">
+                        <input type="file" class="custom-file-input is-valid inform" id="img_sec" name="img_sec" onchange="imgVal(event,'#imgProg')">
                         <label class="custom-file-label" for="img_url">Seleccione la imagen</label>
                     </div>
                 </div>

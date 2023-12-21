@@ -8,7 +8,6 @@ class Admision extends Controller{
 
     function render(){
         $this->view->render('admision/index');
-
     }
 
 }
