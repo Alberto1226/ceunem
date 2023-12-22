@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const select = document.getElementById('nom_menu');
-    select.addEventListener('keyup', seccionMenu);
-    select.addEventListener('blur', seccionMenu);
+    const select = document.querySelectorAll('select');
+    select.forEach((select) => {
+        select.addEventListener('keyup', showSelect);
+        select.addEventListener('blur', showSelect);
+    });
 
 
     const texto = document.querySelectorAll('input[type="text"]');
@@ -22,25 +24,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-function previewImg(event, querySelector) {
+function previewImg(event) {
     const input = event.target
-    $img_prog = document.querySelector(querySelector);
+    const ext = ['jpg', 'jpeg', 'png'];
+    const url2 = input.value
+    var filext = url2.split(".").pop();
+    var img = ext.includes(filext)
     if (!input.files.length) return
     file = input.files[0];
-    url = URL.createObjectURL(file);
-    $img_prog.src = url;
-    $img_prog.style.display = 'inline'
+    objectURL = URL.createObjectURL(file);
+    
+    if(img){
+        let img_prog = document.getElementById('img_prog');
+        img_prog.src = objectURL
+        img_prog.style.display='inline'
+        video.style.display = 'none'; 
+    }else{
+        let video = document.getElementById('video');
+        video.src = objectURL;
+        video.style.display = 'inline';
+        img_prog.style.display='none'
+
+    }
 }
 
-function seccionMenu(e) {
+function showSelect(e) {
     const select = e.target;
     const opcion = select.options[select.selectedIndex];
     const texto = opcion.textContent;
-    if(texto !== 'Seleccione una opción'){
+    if (texto !== 'Seleccione una opción' && select.name == 'nom_menu') {
         document.getElementById('divSec').style.display = 'inline';
         document.getElementById('secProg').innerHTML = texto;
+    }else if(texto !== 'Seleccione una opción' && select.name == 'sName'){
+        const btn1 = document.getElementById('btn1');
+        const span = btn1.querySelector('span');
+        span.textContent = texto;
+        document.getElementById('divBtns').style.display = 'inline';
     }
-    
+
 }
 
 function showText(e) {
@@ -54,15 +75,5 @@ function showText(e) {
     else if (input == 'descripcion') {
         document.getElementById('descProg').style.display = 'block';
         document.getElementById('descProg').innerHTML = contenido;
-    } else if (input == 'btn_name1') {
-        const btn1 = document.getElementById('btn1');
-        const span = btn1.querySelector('span');
-        span.textContent = contenido;
-        document.getElementById('divBtns').style.display = 'inline';
-    } else if (input == 'btn_name2') {
-        const btn2 = document.getElementById('btn2');
-        const span = btn2.querySelector('span');
-        span.textContent = contenido;
-        document.getElementById('divBtns').style.display = 'inline';
     }
 }

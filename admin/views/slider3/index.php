@@ -33,7 +33,7 @@
                     <script src="<?php echo constant('URL') ?>assets/js/formEditImg3.js"></script>
                 <?php
                 }
-                require 'views/slider1/previewImg.php';
+                require 'views/slider3/previewImg.php';
                 ?>
             </div>
         </div>

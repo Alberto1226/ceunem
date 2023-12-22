@@ -93,13 +93,13 @@ const validText = (e) => {
 
 const valSelect = (e) => {
     var campo = e.target.name;
-    var select = campo === 'sName' ? 'btn_name' : 'link';
     if (e.target.value === 'Seleccione una opción') {
         showToastr("error", "Seleccione una opción", "Link del botón");
         document.getElementById(`${campo}`).classList.remove('border-success');
         document.getElementById(`${campo}`).classList.add('border-danger');
         document.getElementById(`${campo}`).classList.add('is-invalid');
-        campos[select] = false;
+        campos['btn_name'] = false;
+        campos['link'] = false;
         if (campo === 'sLink') {
             document.getElementById('otroLink').style.display = 'none';
         }
@@ -107,13 +107,12 @@ const valSelect = (e) => {
         document.getElementById(`${campo}`).classList.add('border-success');
         document.getElementById(`${campo}`).classList.remove('border-danger');
         document.getElementById(`${campo}`).classList.remove('is-invalid');
-        if (campo == 'sName') {
-            campo['btn_name'] = true;
+        if (campo === 'sName') {
+            campos['btn_name'] = true;
         }
-        if (campo == 'sLink' && e.target.value === 'otro') {
+        else if (campo == 'sLink' && e.target.value === 'otro') {
             document.getElementById('otroLink').style.display = 'block';
             campos['link'] = false;
-            console.log(campos)
         } else {
             document.getElementById('otroLink').style.display = 'none';
             campos['link'] = true;
@@ -156,12 +155,11 @@ function insertar(event) {
         axios.post(baseURL, datos, { encabezados }).then((response) => {
             if (response.data.status) {
                 showSwal("success", "Actualización exitosa", "Se enviaron los datos con exito", response.data.url);
-                vaciar()
             } else {
                 showToastr("error", response.data.msg, "Error");
             }
         });
     } else {
-        showSwal2("error", "Oops...", "Verifique que todos los colores esten seleccionados")
+        showSwal2("error", "Oops...", "Verifique que todos los datos esten correctos")
     }
 }

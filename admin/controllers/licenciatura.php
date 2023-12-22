@@ -45,7 +45,7 @@ class Licenciatura extends Controller
             $rImg = $dirImg . $nom_img;
             $rPdf = $dirPdf . $nom_pdf;
             if(move_uploaded_file($img_url, $rImg) and move_uploaded_file($pdf_url, $rPdf)){
-                if($this->model->insertLicenciatura([
+                if($this->model->insert([
                     'nom_lic' =>$nom_lic,
                     'descripcion' =>$descripcion,
                     'img_url' =>$rImg,

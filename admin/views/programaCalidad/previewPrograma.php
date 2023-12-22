@@ -1,4 +1,5 @@
 <style>
+    .video,
     .img_prog,
     .divSec,
     .divBtns {
@@ -39,6 +40,7 @@
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="position-relative overflow-hidden h-100" id="divImg" style="min-height: 400px;">
                             <img class="position-absolute w-100 h-100 pt-5 pe-5 pr-5 img_prog" id="img_prog">
+                            <video id="video" controls autoplay loop class="position-absolute w-100 h-100 pt-5 pe-5 pr-5 video"></video>
                         </div>
                     </div>
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -52,12 +54,6 @@
                                 <span></span>
                                 <div class="d-inline-flex btn-sm-square bg-white text-success rounded-circle ms-2 ml-2">
                                     <i class="fa fa-arrow-right text-success"></i>
-                                </div>
-                            </a>
-                            <a class="btn btn-outline-success py-2 px-3 ml-2" id="btn2">
-                                <span></span>
-                                <div class="d-inline-flex btn-sm-square bg-success text-white rounded-circle ms-2  ml-2">
-                                    <i class="fa fa-arrow-right"></i>
                                 </div>
                             </a>
                         </div>

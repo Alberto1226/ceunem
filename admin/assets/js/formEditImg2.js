@@ -95,13 +95,13 @@ const validText = (e) => {
 
 const valSelect = (e) => {
     var campo = e.target.name;
-    var select = campo === 'sName' ? 'btn_name' : 'link';
     if (e.target.value === 'Seleccione una opción') {
         showToastr("error", "Seleccione una opción", "Link del botón");
         document.getElementById(`${campo}`).classList.remove('border-success');
         document.getElementById(`${campo}`).classList.add('border-danger');
         document.getElementById(`${campo}`).classList.add('is-invalid');
-        campos[select] = false;
+        campos['btn_name'] = false;
+        campos['link'] = false;
         if (campo === 'sLink') {
             document.getElementById('otroLink').style.display = 'none';
         }
@@ -110,12 +110,11 @@ const valSelect = (e) => {
         document.getElementById(`${campo}`).classList.remove('border-danger');
         document.getElementById(`${campo}`).classList.remove('is-invalid');
         if (campo == 'sName') {
-            campo['btn_name'] = true;
+            campos['btn_name'] = true;
         }
-        if (campo == 'sLink' && e.target.value === 'otro') {
+        else if (campo == 'sLink' && e.target.value === 'otro') {
             document.getElementById('otroLink').style.display = 'block';
             campos['link'] = false;
-            console.log(campos)
         } else {
             document.getElementById('otroLink').style.display = 'none';
             campos['link'] = true;
@@ -150,8 +149,8 @@ function showSwal2(icono, titulo, mensaje) {
 
 var camposEdit = false;
 function obtenerDatos(){
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/slider1/getImg';
-    var url = 'http://localhost/proyectos/ceunem/admin/';
+    var baseURL = 'http://localhost/ceunem/admin/slider2/getImg';
+    var url = 'http://localhost/ceunem/admin/';
     axios.post(baseURL).then((response) => {
         const slider = response.data;
         const entries = Object.entries(slider);
@@ -205,7 +204,7 @@ function obtenerDatos(){
 
 function editar(e) {
     e.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/slider1/upImg';
+    var baseURL = 'http://localhost/ceunem/admin/slider2/upImg';
     let datos = new FormData(this);
     let encabezados = new Headers();
     if(Object.values(campos).every(value => value === true)){
@@ -217,6 +216,6 @@ function editar(e) {
             }
         });
     } else {
-        showSwal2("error", "Oops...", "Los campos en color rojo son obligatorios")
+        showSwal2("error", "Oops...", "Verifique que este correcta la información")
     }
 }

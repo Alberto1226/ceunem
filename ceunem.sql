@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-12-2023 a las 17:29:49
+-- Tiempo de generación: 22-12-2023 a las 20:55:36
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -53,13 +53,11 @@ INSERT INTO `blog` (`id_blog`, `categoria`, `titulo`, `descripcion`, `img_url`, 
 CREATE TABLE `calidad` (
   `id_prog` int(11) NOT NULL,
   `nom_menu` varchar(50) NOT NULL,
-  `tit_prog` varchar(150) NOT NULL,
+  `tit` varchar(150) NOT NULL,
   `descripcion` text NOT NULL,
   `img_url` varchar(255) NOT NULL,
-  `btn_name1` varchar(20) NOT NULL,
-  `btn_url1` varchar(255) NOT NULL,
-  `btn_name2` varchar(20) NOT NULL,
-  `btn_url2` varchar(255) NOT NULL,
+  `btn_name` varchar(20) NOT NULL,
+  `link` varchar(255) NOT NULL,
   `id_usu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -88,7 +86,7 @@ CREATE TABLE `colores` (
 --
 
 INSERT INTO `colores` (`id_color`, `let_hf`, `let_hover`, `btn_font`, `font`, `btn_hfont`, `fondo_hf`, `btn_color`, `btn_hover`, `background`, `id_usu`) VALUES
-(1, '#000000', '#e61919', '#c45a5a', '#100f0f', '#b17c7c', '#ea4848', '#e02929', '#c91313', '#d8cfcf', 1);
+(1, '#222183', '#203fbc', '#2d25a7', '#1a1986', '#211a84', '#3238e2', '#0e1177', '#33206a', '#0f103e', 1);
 
 -- --------------------------------------------------------
 
@@ -298,7 +296,8 @@ CREATE TABLE `sliders` (
 --
 
 INSERT INTO `sliders` (`id_slider`, `img`, `tit`, `descripcion`, `btn_name`, `link`, `tUrl`, `posicion`, `id_usu`) VALUES
-(1, 'public/img/sliders/IMG1_20231221_193941_carousel-1.jpg', 'Creando líderes y emprendedores', 'Nuestro objetivo principal es empoderar académicamente a nuestros estudiantes a través de la formación de conocimientos y competencias profesionales en disciplinas de corte humanista, académico-administrativo y de comunicación.', 'Más Información', 'nosotros', 1, 1, 1);
+(1, 'public/img/sliders/IMG1_20231222_182206_carousel-1.jpg', 'Creando líderes y emprendedores', 'Nuestro objetivo principal es empoderar académicamente a nuestros estudiantes a través de la formación de conocimientos y competencias profesionales en disciplinas de corte humanista, académico-administrativo y de comunicación.', 'Más Información', 'nosotros', 1, 1, 1),
+(2, 'public/img/sliders/IMG1_20231222_182602_carousel-2.jpg', 'Crea tu futuro profesional 100% online', 'Becas de hasta el 70%', 'Más Información', 'contacto', 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -593,7 +592,7 @@ ALTER TABLE `objetivos`
 -- AUTO_INCREMENT de la tabla `sliders`
 --
 ALTER TABLE `sliders`
-  MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `smtp`

@@ -52,7 +52,7 @@
                         if (empty($this->fila)) {
                             require 'views/programaCalidad/formInsertPrograma.php';
                         ?>
-                        <script src="<?php echo constant('URL') ?>assets/js/previewProgramas.js"></script>
+                        
                         <script src="<?php echo constant('URL') ?>assets/js/formInsertPrograma.js"></script>
                         <?php
                         } else {
@@ -71,3 +71,4 @@
     </div>
 </div>
 <?php require 'views/templete/footer.php'; ?>
+<script src="<?php echo constant('URL') ?>assets/js/previewProgramas.js"></script>

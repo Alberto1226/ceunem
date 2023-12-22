@@ -176,7 +176,7 @@ function deleteEq(event) {
 var statusEquipoModel = new bootstrap.Modal(document.getElementById('statusEquipoModel'), {});
 
 function estadoEq(id) {
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/equipo/getEquipo';
+    var baseURL = 'http://localhost/ceunem/admin/equipo/getEquipo';
     const data = { id_eq: id }
     axios.post(baseURL, data).then((response) => {
         if (response.data.estado == 1) {
@@ -209,7 +209,7 @@ function estadoEq(id) {
 
 function changeEq(event){
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/equipo/statusEquipo';
+    var baseURL = 'http://localhost/ceunem/admin/equipo/statusEquipo';
     let encabezados = new Headers();
     let form = new FormData(this)
     axios.post(baseURL, form, { encabezados }).then((response) => {
