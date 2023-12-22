@@ -113,7 +113,7 @@ function vaciarPreview() {
 
 function insert(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/inicio/addInicio';
+    var baseURL = 'http://localhost/ceunem/admin/inicio/addInicio';
     let datos = new FormData(this);
     let encabezados = new Headers();
     if (campos.vid_url) {
@@ -134,7 +134,7 @@ function insert(event) {
 //obtner datos
 function obtnerDatos() {
 
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/inicio/getIni';
+    var baseURL = 'http://localhost/ceunem/admin/inicio/getIni';
 
     axios.post(baseURL).then((response) => {
         const vid = response.data.vid_url;
@@ -143,7 +143,7 @@ function obtnerDatos() {
         document.getElementById('id_ini').value = response.data.id_ini;
         document.getElementById('vid_bd').value = response.data.vid_url;
         document.getElementById('vidAct').textContent = "Videio Actual: " + file;
-        var url = 'http://localhost/proyectos/ceunem/admin/'+response.data.vid_url;
+        var url = 'http://localhost/ceunem/admin/'+response.data.vid_url;
         showVid(url);
     });
 }
@@ -152,7 +152,7 @@ function obtnerDatos() {
 //editar-----------------
 function editar(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/inicio/upIni';
+    var baseURL = 'http://localhost/ceunem/admin/inicio/upIni';
     let datos = new FormData(this);
     let encabezados = new Headers();
     if(!campos.vid_url2) return campos.vid_url2 = true;

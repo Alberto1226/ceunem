@@ -66,7 +66,7 @@ function vaciar() {
 
 function insertar(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/colores/addColors';
+    var baseURL = 'http://localhost/ceunem/admin/colores/addColors';
     let datos = new FormData(this);
     let encabezados = new Headers();
 

@@ -67,7 +67,7 @@ function insert(event) {
         return acum + (valor === 1 ? 1 : 0);
     }, 0);
     if (camposUno > 0) {
-        var baseURL = 'http://localhost/proyectos/ceunem/admin/contacto/addForm';
+        var baseURL = 'http://localhost/ceunem/admin/contacto/addForm';
         let datos = new FormData(this);
         let encabezados = new Headers();
         axios.post(baseURL, datos, { encabezados }).then((response) => {

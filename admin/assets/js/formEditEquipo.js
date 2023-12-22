@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 var editEquipoModal = new bootstrap.Modal(document.getElementById('editEquipoModal'), {})
 
 function editarEquipo(id) {
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/equipo/getEquipo';
+    var baseURL = 'http://localhost/ceunem/admin/equipo/getEquipo';
     const data = { id_eq: id }
     axios.post(baseURL, data).then((response) => {
         const img = response.data.img_url;
@@ -124,7 +124,7 @@ const validarImgEdit = (input, campo) => {
 
 function update(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/equipo/upEquipo';
+    var baseURL = 'http://localhost/ceunem/admin/equipo/upEquipo';
 
     let encabezados = new Headers();
     if (camposEdit.nombreE && camposEdit.puestoE) {
@@ -146,7 +146,7 @@ function update(event) {
 var deleteEquipoModal = new bootstrap.Modal(document.getElementById('deleteEquipoModal'), {});
 
 function eliminarEquipo(id) {
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/equipo/getEquipo';
+    var baseURL = 'http://localhost/ceunem/admin/equipo/getEquipo';
     const data = { id_eq: id }
     axios.post(baseURL, data).then((response) => {
         document.getElementById('lName').textContent = "Nombre: " + response.data.nombre;
@@ -160,7 +160,7 @@ function eliminarEquipo(id) {
 
 function deleteEq(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/equipo/delEquipo';
+    var baseURL = 'http://localhost/ceunem/admin/equipo/delEquipo';
     let encabezados = new Headers();
     let form = new FormData(this)
     axios.post(baseURL, form, { encabezados }).then((response) => {

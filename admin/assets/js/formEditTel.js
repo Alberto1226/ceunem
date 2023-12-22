@@ -100,7 +100,7 @@ function showSwal2(icono, titulo, mensaje) {
 }
 
 function obtenerTel() {
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/telefono/getWhats';
+    var baseURL = 'http://localhost/ceunem/admin/telefono/getWhats';
     axios.post(baseURL).then((response) => {
         for (const key in response.data) {
             campos[key] = response.data[key];
@@ -114,7 +114,7 @@ function editar(event) {
     event.preventDefault();
     const formEditTel= document.getElementById("formEditTel");
     if (campos.numero && campos.mensaje) {
-            var baseURL = 'http://localhost/proyectos/ceunem/admin/telefono/upWhats';
+            var baseURL = 'http://localhost/ceunem/admin/telefono/upWhats';
             let datos = new FormData(formEditTel);
             let encabezados = new Headers();
             axios.post(baseURL, datos, { encabezados }).then((response) => {

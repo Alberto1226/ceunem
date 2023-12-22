@@ -149,7 +149,7 @@ function insert(event) {
     event.preventDefault();
     if (campos.dirServer && campos.email && campos.pass
         && campos.portServer && campos.conect && campos.nombre) {
-            var baseURL = 'http://localhost/proyectos/ceunem/admin/servidor/configuracion';
+            var baseURL = 'http://localhost/ceunem/admin/servidor/configuracion';
             let datos = new FormData(this);
             let encabezados = new Headers();
             axios.post(baseURL, datos, { encabezados }).then((response) => {

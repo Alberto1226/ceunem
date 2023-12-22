@@ -111,7 +111,7 @@ function vaciar() {
 
 function validar(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/registrar/addUser';
+    var baseURL = 'http://localhost/ceunem/admin/registrar/addUser';
     let datos = new FormData(this);
     let encabezados = new Headers();
     if (campos.nameFull && campos.email && campos.pass && campos.pass2) {

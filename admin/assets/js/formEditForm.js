@@ -44,7 +44,7 @@ function showSwal2(icono, titulo, mensaje) {
 
 
 function obtenerCheck() {
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/contacto/getInputs';
+    var baseURL = 'http://localhost/ceunem/admin/contacto/getInputs';
     axios.post(baseURL).then((response) => {
         let checkbox;
         for (const key in response.data) {
@@ -74,7 +74,7 @@ function editar(event) {
         return acum + (valor === 1 ? 1 : 0);
     }, 0);
     if (camposUno > 2) {
-        var baseURL = 'http://localhost/proyectos/ceunem/admin/contacto/upForm';
+        var baseURL = 'http://localhost/ceunem/admin/contacto/upForm';
         let datos = new FormData(formEditContacto);
         
         let encabezados = new Headers();

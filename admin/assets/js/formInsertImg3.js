@@ -6,10 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
     imagen.addEventListener('keyup', validImg);
     imagen.addEventListener('blur', validImg);
 
-
-    const texto = document.getElementById('tit');
-    texto.addEventListener('keyup', validText);
-    texto.addEventListener('blur', validText);
+    const texto = document.querySelectorAll('input[type="text"]');
+    texto.forEach((input) => {
+        input.addEventListener('keyup', validText);
+        input.addEventListener('blur', validText);
+    });
 
     const textArea = document.getElementById('descripcion');
     textArea.addEventListener('keyup', validText);
@@ -71,6 +72,10 @@ const validText = (e) => {
         titulo = "Descripción";
     }
 
+    if (campo === 'link') {
+        titulo = 'Link fuera del sitio';
+    }
+
     if (input.value.trim() === '') {
         document.getElementById(`${campo}`).classList.remove('border-success');
         document.getElementById(`${campo}`).classList.add('border-danger');
@@ -101,11 +106,16 @@ const valSelect = (e) => {
         document.getElementById(`${campo}`).classList.add('border-success');
         document.getElementById(`${campo}`).classList.remove('border-danger');
         document.getElementById(`${campo}`).classList.remove('is-invalid');
-        campos[select] = true;
+        if (campo == 'sName') {
+            campo['btn_name'] = true;
+        }
         if (campo == 'sLink' && e.target.value === 'otro') {
             document.getElementById('otroLink').style.display = 'block';
+            campos['link'] = false;
+            console.log(campos)
         } else {
             document.getElementById('otroLink').style.display = 'none';
+            campos['link'] = true;
         }
     }
 }
@@ -137,7 +147,7 @@ function showSwal2(icono, titulo, mensaje) {
 
 function insertar(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/slider1/addImg';
+    var baseURL = 'http://localhost/ceunem/admin/slider1/addImg';
     let datos = new FormData(this);
     let encabezados = new Headers();
 

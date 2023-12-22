@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /*recuperar los elementos y mandarlos a las funciones de preview
     recupremos la imagen*/
     const imgBD = document.getElementById('img_bd');
-    baseURL = 'http://localhost/proyectos/ceunem/admin/';
+    baseURL = 'http://localhost/ceunem/admin/';
     urlImg = imgBD.value;
     url = baseURL+urlImg;
     showImgHeader(url);
@@ -121,7 +121,7 @@ function showSwal(icono, titulo, mensaje) {
 
 function update(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/mision/upMision';
+    var baseURL = 'http://localhost/ceunem/admin/mision/upMision';
     let datos = new FormData(this);
     let encabezados = new Headers();
     axios.post(baseURL, datos, { encabezados }).then((response) => {

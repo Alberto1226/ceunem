@@ -69,9 +69,6 @@
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider3">
                                 Imágen Slider 3
                             </a>
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>sliders">
-                                Imagenes encabezados
-                            </a>
                         </div>
                         <!-- /.card-body -->
                     </div>

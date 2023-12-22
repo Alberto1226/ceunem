@@ -149,7 +149,7 @@ function showSwal2(icono, titulo, mensaje) {
 }
 
 function obterSmtp(){
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/servidor/getConfig';
+    var baseURL = 'http://localhost/ceunem/admin/servidor/getConfig';
     axios.post(baseURL).then((response) => {
         for (const key in response.data) {
             campos[key] = response.data[key];
@@ -164,7 +164,7 @@ function editar(event) {
     event.preventDefault();
     if (campos.dirServer && campos.email && campos.pass
         && campos.portServer && campos.conect && campos.nombre) {
-            var baseURL = 'http://localhost/proyectos/ceunem/admin/servidor/upConfig';
+            var baseURL = 'http://localhost/ceunem/admin/servidor/upConfig';
             let datos = new FormData(this);
             let encabezados = new Headers();
             axios.post(baseURL, datos, { encabezados }).then((response) => {

@@ -7,10 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
     imagen.addEventListener('blur', validImg);
 
 
-    const texto = document.getElementById('tit');
-    texto.addEventListener('keyup', validText);
-    texto.addEventListener('blur', validText);
-
+    const texto = document.querySelectorAll('input[type="text"]');
+    texto.forEach((input) => {
+        input.addEventListener('keyup', validText);
+        input.addEventListener('blur', validText);
+    })
+    
     const textArea = document.getElementById('descripcion');
     textArea.addEventListener('keyup', validText);
     textArea.addEventListener('blur', validText);
@@ -74,6 +76,11 @@ const validText = (e) => {
         titulo = "Descripción";
     }
 
+    if (campo === 'link') {
+        titulo = 'Link fuera del sitio';
+    }
+
+
     if (input.value.trim() === '') {
         document.getElementById(`${campo}`).classList.remove('border-success');
         document.getElementById(`${campo}`).classList.add('border-danger');
@@ -104,11 +111,16 @@ const valSelect = (e) => {
         document.getElementById(`${campo}`).classList.add('border-success');
         document.getElementById(`${campo}`).classList.remove('border-danger');
         document.getElementById(`${campo}`).classList.remove('is-invalid');
-        campos[select] = true;
+        if (campo == 'sName') {
+            campo['btn_name'] = true;
+        }
         if (campo == 'sLink' && e.target.value === 'otro') {
             document.getElementById('otroLink').style.display = 'block';
+            campos['link'] = false;
+            console.log(campos)
         } else {
             document.getElementById('otroLink').style.display = 'none';
+            campos['link'] = true;
         }
     }
 }
@@ -139,7 +151,7 @@ function showSwal2(icono, titulo, mensaje) {
 }
 
 var camposEdit = false;
-function obtenerDatos(){
+function obtenerDatos() {
     var baseURL = 'http://localhost/proyectos/ceunem/admin/slider1/getImg';
     var url = 'http://localhost/proyectos/ceunem/admin/';
     axios.post(baseURL).then((response) => {
@@ -152,17 +164,17 @@ function obtenerDatos(){
 
         entries.forEach(([key, value]) => {
             const input = document.getElementById(key);
-            const imgBD = document.getElementById(key+"BD");
-            const label = document.getElementById(key+"Tit");
+            const imgBD = document.getElementById(key + "BD");
+            const label = document.getElementById(key + "Tit");
 
             let tipo = response.data['tUrl'];
-            if(key !== 'tUrl' && key !== 'link' && key !== 'img'
-            && key !== 'btn_name'){
+            if (key !== 'tUrl' && key !== 'link' && key !== 'img'
+                && key !== 'btn_name') {
                 campos[key] = true;
                 input.value = value;
                 document.getElementById('titImg').textContent = response.data.tit;
                 document.getElementById('descImg').textContent = response.data.descripcion;
-            }else if(key !== 'tUrl' && key !== 'link' && key !== 'btn_name'){
+            } else if (key !== 'tUrl' && key !== 'link' && key !== 'btn_name') {
                 const img = value;
                 const file = img.split("/").pop().split(".")[0];
                 label.textContent = "Imagen Actual: " + file;
@@ -170,17 +182,17 @@ function obtenerDatos(){
                 urlImg = url + img;
                 campos['img'] = true;
                 document.getElementById('sliderImg').src = urlImg;
-            }else if(key === 'tUrl'){
-                if(tipo === 1){
+            } else if (key === 'tUrl') {
+                if (tipo === 1) {
                     sLink.value = response.data.link;
                     campos['link'] = true;
-                }else{
+                } else {
                     sLink.value = 'otro';
                     otroLink.style.display = 'block';
                     otroLink.value = response.data.link;
                     campos['link'] = true;
                 }
-            }else if(key === 'btn_name'){
+            } else if (key === 'btn_name') {
                 sName.value = response.data.btn_name;
                 campos['btn_name'] = true;
                 document.getElementById('btnTit').textContent = response.data.btn_name;
@@ -198,7 +210,7 @@ function editar(e) {
     var baseURL = 'http://localhost/proyectos/ceunem/admin/slider1/upImg';
     let datos = new FormData(this);
     let encabezados = new Headers();
-    if(Object.values(campos).every(value => value === true)){
+    if (Object.values(campos).every(value => value === true)) {
         axios.post(baseURL, datos, { encabezados }).then((response) => {
             if (response.data.status) {
                 showSwal("success", "Actualización exitosa", "Se enviaron los datos con exito", response.data.url)

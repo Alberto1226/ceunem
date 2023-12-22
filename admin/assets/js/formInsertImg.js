@@ -175,7 +175,7 @@ function vaciar() {
 function insert(event) {
     event.preventDefault();
     if (Object.values(campos).every(value => value === true)) {
-        var baseURL = 'http://localhost/proyectos/ceunem/admin/sliders/addImgs';
+        var baseURL = 'http://localhost/ceunem/admin/sliders/addImgs';
         let datos = new FormData(this);
         let encabezados = new Headers();
         axios.post(baseURL, datos, { encabezados }).then((response) => {

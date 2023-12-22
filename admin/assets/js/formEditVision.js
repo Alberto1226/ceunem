@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("formEditVis").addEventListener('submit', update);
 
     const imgBD = document.getElementById('img_bd');
-    baseURL = 'http://localhost/proyectos/ceunem/admin/';
+    baseURL = 'http://localhost/ceunem/admin/';
     urlImg = imgBD.value;
     url = baseURL+urlImg;
     showImgVis(url);
@@ -111,7 +111,7 @@ function showSwal2(icono, titulo, mensaje) {
 
 function update(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/vision/upVision';
+    var baseURL = 'http://localhost/ceunem/admin/vision/upVision';
     let datos = new FormData(this);
     let encabezados = new Headers();
     axios.post(baseURL, datos, { encabezados }).then((response) => {

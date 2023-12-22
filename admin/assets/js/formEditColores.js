@@ -74,7 +74,7 @@ function showSwal2(icono, titulo, mensaje) {
 }
 
 function obtenerColores() {
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/colores/getColores';
+    var baseURL = 'http://localhost/ceunem/admin/colores/getColores';
     axios.post(baseURL).then((response) => {
         for (const key in response.data) {
             campos[key] = true;
@@ -96,7 +96,7 @@ function obtenerColores() {
 
 function editar(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/colores/upColors';
+    var baseURL = 'http://localhost/ceunem/admin/colores/upColors';
     let datos = new FormData(this);
     let encabezados = new Headers();
     if (Object.values(campos).every(value => value === true)) {

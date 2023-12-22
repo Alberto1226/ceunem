@@ -119,7 +119,7 @@ function vaciarPreview() {
 
 function insert(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/valor/addValores';
+    var baseURL = 'http://localhost/ceunem/admin/valor/addValores';
     let datos = new FormData(this);
     let encabezados = new Headers();
     if (campos.desc_sec && campos.img_sec) {

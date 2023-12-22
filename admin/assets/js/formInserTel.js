@@ -102,7 +102,7 @@ function insert(event) {
     event.preventDefault();
     const formInserTel = document.getElementById("formInserTel");
     if (campos.numero && campos.mensaje) {
-            var baseURL = 'http://localhost/proyectos/ceunem/admin/telefono/addWhats';
+            var baseURL = 'http://localhost/ceunem/admin/telefono/addWhats';
             let datos = new FormData(formInserTel);
             let encabezados = new Headers();
             axios.post(baseURL, datos, { encabezados }).then((response) => {

@@ -119,7 +119,7 @@ function vaciarPreview() {
 
 function insert(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/objetivo/addObj';
+    var baseURL = 'http://localhost/ceunem/admin/objetivo/addObj';
     let datos = new FormData(this);
     let encabezados = new Headers();
     if (campos.desc_sec && campos.img_sec) {

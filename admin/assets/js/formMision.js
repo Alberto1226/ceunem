@@ -155,7 +155,7 @@ function vaciarPreview() {
 
 function validar(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/mision/addMision';
+    var baseURL = 'http://localhost/ceunem/admin/mision/addMision';
     let datos = new FormData(this);
     let encabezados = new Headers();
     if (campos.img_header && campos.frase && campos.autor && campos.img_body && campos.mision) {

@@ -118,7 +118,7 @@ function vaciar() {
 
 function insert(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/equipo/addEquipo';
+    var baseURL = 'http://localhost/ceunem/admin/equipo/addEquipo';
     let datos = new FormData(this);
     let encabezados = new Headers();
     if (campos.nombre && campos.puesto && campos.img_url) {

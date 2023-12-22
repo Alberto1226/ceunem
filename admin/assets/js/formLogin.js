@@ -80,8 +80,8 @@ function vaciar() {
 
 function validarLogin(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/login/login';
-    var urlRedirect ='http://localhost/proyectos/ceunem/admin/panel';
+    var baseURL = 'http://localhost/ceunem/admin/login/login';
+    var urlRedirect ='http://localhost/ceunem/admin/panel';
     let datos = new FormData(this);
     let encabezados = new Headers();
     if (campos.email && campos.pass) {

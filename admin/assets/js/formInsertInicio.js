@@ -86,7 +86,7 @@ function vaciarPreview() {
 
 function insert(event) {
     event.preventDefault();
-    var baseURL = 'http://localhost/proyectos/ceunem/admin/inicio/addInicio';
+    var baseURL = 'http://localhost/ceunem/admin/inicio/addInicio';
     let datos = new FormData(this);
     let encabezados = new Headers();
     if (campos.vid_url) {
