@@ -1,5 +1,4 @@
 <?php
-include_once 'models/clases/video.php';
 include_once 'models/clases/whats.php';
 include_once 'models/clases/articulo.php';
 include_once 'models/clases/profesionista.php';
@@ -11,30 +10,6 @@ class HomeModel extends Model
     public function __construct()
     {
         parent::__construct();
-    }
-
-    public function getVideo()
-    {
-        $items = [];
-
-        try {
-            $query = $this->db->connect()->query(
-                "SELECT * FROM inicio WHERE estado = 1 AND id_usu = 1"
-            );
-
-            while ($row = $query->fetch()) {
-                $item = new Video();
-                $item->id_ini = $row['id_ini'];
-                $item->vid_url = $row['vid_url'];
-                $item->estado = $row['estado'];
-                $item->id_usu = $row['id_usu'];
-
-                array_push($items, $item);
-            }
-            return $items;
-        } catch (PDOException $th) {
-            return [];
-        }
     }
 
     public function getWhats()
@@ -130,13 +105,13 @@ class HomeModel extends Model
         }
     }
 
-    public function getImgs()
+    public function getSliders()
     {
         $items= [];
 
         try {
             $query = $this->db->connect()->query(
-                "SELECT * FROM sliders WHERE id_usu = 1");
+                "SELECT*FROM sliders WHERE id_usu = 1");
 
             while ($row = $query->fetch()) {
                 $item = new Imagen();
@@ -145,8 +120,10 @@ class HomeModel extends Model
                 $item->img = $row['img'];
                 $item->tit = $row['tit'];
                 $item->descripcion = $row['descripcion'];
+                $item->btn_name = $row['btn_name'];
                 $item->link = $row['link'];
                 $item->tUrl = $row['tUrl'];
+                $item->posicion = $row['posicion'];
                 $item->id_usu = $row['id_usu'];
                 
                 array_push($items, $item);

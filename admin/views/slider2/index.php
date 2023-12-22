@@ -22,8 +22,17 @@
             </div>
             <div class="card-body">
                 <?php
-
-                require 'views/slider1/formInsertImg.php';
+                if (empty($this->fila)) {
+                    require 'views/slider2/formInsertImg.php';
+                ?>
+                    <script src="<?php echo constant('URL') ?>assets/js/formInsertImg2.js"></script>
+                <?php
+                } else {
+                    require 'views/slider2/formEditImg.php';
+                ?>
+                    <script src="<?php echo constant('URL') ?>assets/js/formEditImg2.js"></script>
+                <?php
+                }
                 require 'views/slider1/previewImg.php';
                 ?>
             </div>

@@ -21,9 +21,18 @@
                 </section>
             </div>
             <div class="card-body">
+            <?php
+                if (empty($this->fila)) {
+                    require 'views/slider3/formInsertImg.php';
+                ?>
+                    <script src="<?php echo constant('URL') ?>assets/js/formInsertImg3.js"></script>
                 <?php
-
-                require 'views/slider1/formInsertImg.php';
+                } else {
+                    require 'views/slider3/formEditImg.php';
+                ?>
+                    <script src="<?php echo constant('URL') ?>assets/js/formEditImg3.js"></script>
+                <?php
+                }
                 require 'views/slider1/previewImg.php';
                 ?>
             </div>

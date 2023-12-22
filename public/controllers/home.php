@@ -7,8 +7,8 @@ class Home extends Controller{
     }
 
     function render(){
-        $ini1 = $this->model->getVideo();
-        $this->view->ini1 = $ini1;
+        $sliders = $this->model->getSliders();
+        $this->view->slider = $sliders;
 
         $articulos = $this->model->getAllArticulos();
         $this->view->articulos = $articulos;
