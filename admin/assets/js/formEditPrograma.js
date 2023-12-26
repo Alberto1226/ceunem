@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("formInsertPrograma").addEventListener('submit', insert);
+    document.getElementById("formEditProg").addEventListener('submit', editar);
 
     const select = document.querySelectorAll('select');
     select.forEach((select) => {
@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
         input.addEventListener('focus', valText);
         input.addEventListener('keyup', valText);
     })
+
+    obtenerDatos()
 });
 
 const campos = {
@@ -35,13 +37,13 @@ const campos = {
 const valSelect = (e) => {
     var campo = e.target.name;
     var titulo = '';
-    if (campo === 'nom_menu'){
-        titulo='Sección a la que hace referencia';
+    if (campo === 'nom_menu') {
+        titulo = 'Sección a la que hace referencia';
     }
-    if(campo === 'btn_name'){
-        titulo='Nombre del botón';
+    if (campo === 'btn_name') {
+        titulo = 'Nombre del botón';
     }
-    if(campo === 'sLink'){
+    if (campo === 'sLink') {
         titulo = 'Link del botón'
     }
 
@@ -180,21 +182,93 @@ function invalid() {
     }
 }
 
-function insert(e) {
+function obtenerDatos() {
+    var baseURL = 'http://localhost/ceunem/admin/programaCalidad/getProg';
+    var url = 'http://localhost/ceunem/admin/';
+    axios.post(baseURL).then((response) => {
+        const programa = response.data;
+        const entries = Object.entries(programa);
+
+        let sLink = document.getElementById("sLink");
+        let otroLink = document.getElementById('otroLink');
+
+        entries.forEach(([key, value]) => {
+            const input = document.getElementById(key);
+            const label = document.getElementById(key + 'Tit');
+            const imgBD = document.getElementById(key + 'Bd');
+
+            let tipo = response.data['tUrl'];
+            if (key !== 'tUrl' && key !== 'link' && key !== 'img_url') {
+                input.value = value;
+                campos[key] = true;
+            } else if (key !== 'tUrl' && key !== 'link') {
+                const img = value;
+                const file = img.split("/").pop().split(".")[0];
+                label.textContent = "Actual: " + file;
+                imgBD.value = img;
+                campos[key] = true;
+            } else if (key === 'tUrl') {
+                if (tipo === 1) {
+                    sLink.value = response.data.link;
+                    campos['link'] = true;
+                } else {
+                    sLink.value = 'otro';
+                    otroLink.style.display = 'block';
+                    otroLink.value = response.data.link;
+                    campos['link'] = true;
+                }
+            }
+        });
+
+        document.getElementById('divSec').style.display = 'inline';
+        document.getElementById('secProg').innerHTML = response.data.nom_menu;
+        document.getElementById('titProg').textContent = response.data.tit;
+        document.getElementById('descProg').style.display = 'block';
+        document.getElementById('descProg').innerHTML = response.data.descripcion;
+        const btn = document.getElementById('btn');
+        const span = btn.querySelector('span');
+        span.textContent = response.data.btn_name;
+        document.getElementById('divBtns').style.display = 'inline';
+
+
+        const file = response.data.img_url
+        const ext = ['jpg', 'jpeg', 'png'];
+        const url2 = url + file
+        var filext = file.split(".").pop();
+        var fileType = ext.includes(filext)
+
+        if (fileType) {
+            let img_prog = document.getElementById('img_prog');
+            img_prog.src = url2
+            img_prog.style.display = 'inline'
+            video.style.display = 'none';
+        } else {
+            let video = document.getElementById('video');
+            video.src = url2;
+            video.autoplay = true;
+            video.style.display = 'inline';
+            img_prog.style.display = 'none'
+        }
+    });
+}
+
+
+
+
+function editar(e) {
     e.preventDefault();
-    var baseURL = 'http://localhost/ceunem/admin/programaCalidad/addProg';
+    var baseURL = 'http://localhost/ceunem/admin/programaCalidad/upProg';
     let datos = new FormData(this);
     let encabezados = new Headers();
     if (Object.values(campos).every(value => value === true)) {
         axios.post(baseURL, datos, { encabezados }).then((response) => {
             if (response.data.status) {
-                showSwal("success", "Actualización exitosa", "Se enviaron los datos con exito", response.data.url);
+                showSwal("success", "Actualización exitosa", "Se enviaron los datos con exito", response.data.url)
             } else {
                 showToastr("error", response.data.msg, "Error");
             }
         });
     } else {
-        invalid()
-        showSwal2("error", "Oops...", "Verifique que todos los datos esten correctos")
+        showSwal2("error", "Oops...", "Verifique que este correcta la información")
     }
 }

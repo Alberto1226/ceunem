@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-12-2023 a las 20:55:36
+-- Tiempo de generación: 26-12-2023 a las 23:52:55
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -58,8 +58,16 @@ CREATE TABLE `calidad` (
   `img_url` varchar(255) NOT NULL,
   `btn_name` varchar(20) NOT NULL,
   `link` varchar(255) NOT NULL,
+  `tUrl` int(2) NOT NULL,
   `id_usu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `calidad`
+--
+
+INSERT INTO `calidad` (`id_prog`, `nom_menu`, `tit`, `descripcion`, `img_url`, `btn_name`, `link`, `tUrl`, `id_usu`) VALUES
+(1, 'Nosotros', 'Programa de Calidad', 'Como una institución acreditada, CEUNEM proporciona a sus estudiantes una educación de la más alta calidad en un ambiente flexible. Nuestros reconocidos programas en línea incluyen instrucción en tiempo real y materiales prácticos para asegurar que cada estudiante no solo enfrente un desafío sino que también sienta el apoyo durante todo el curso. Contáctenos hoy mismo para obtener más información sobre lo que tenemos para ofrecer. Nos esforzamos por brindar educación de alta calidad, flexible y personalizada. Contamos con becas del 100% en inscripción y reinscripción así como becas del 50% en colegiaturas únicamente por ser alumno fundador CEUNEM.', 'public/img/calidad/VIDEO_20231226_205003_home_ceunem.mp4', 'Conocer más', 'nosotros', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -532,7 +540,7 @@ ALTER TABLE `blog`
 -- AUTO_INCREMENT de la tabla `calidad`
 --
 ALTER TABLE `calidad`
-  MODIFY `id_prog` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_prog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `colores`

@@ -38,9 +38,9 @@
             <div class="container">
                 <div class="row g-5">
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="position-relative overflow-hidden h-100" id="divImg" style="min-height: 400px;">
+                        <div class="position-relative overflow-hidden h-100" id="divImg">
                             <img class="position-absolute w-100 h-100 pt-5 pe-5 pr-5 img_prog" id="img_prog">
-                            <video id="video" controls autoplay loop class="position-absolute w-100 h-100 pt-5 pe-5 pr-5 video"></video>
+                            <video id="video" controls autoplay loop muted class="position-absolute w-100 h-100 pt-5 pe-5 pr-5 video"></video>
                         </div>
                     </div>
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -50,7 +50,7 @@
                         <h1 class="display-6 mb-5" id="titProg"></h1>
                         <p class="mb-5" id="descProg"></p>
                         <div class="divBtns" id="divBtns">
-                            <a class="btn btn-success py-2 px-3 me-3" id="btn1">
+                            <a class="btn btn-success py-2 px-3 me-3" id="btn">
                                 <span></span>
                                 <div class="d-inline-flex btn-sm-square bg-white text-success rounded-circle ms-2 ml-2">
                                     <i class="fa fa-arrow-right text-success"></i>

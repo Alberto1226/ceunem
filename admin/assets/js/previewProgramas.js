@@ -55,9 +55,9 @@ function showSelect(e) {
     if (texto !== 'Seleccione una opción' && select.name == 'nom_menu') {
         document.getElementById('divSec').style.display = 'inline';
         document.getElementById('secProg').innerHTML = texto;
-    }else if(texto !== 'Seleccione una opción' && select.name == 'sName'){
-        const btn1 = document.getElementById('btn1');
-        const span = btn1.querySelector('span');
+    }else if(texto !== 'Seleccione una opción' && select.name == 'btn_name'){
+        const btn = document.getElementById('btn');
+        const span = btn.querySelector('span');
         span.textContent = texto;
         document.getElementById('divBtns').style.display = 'inline';
     }
@@ -69,7 +69,7 @@ function showText(e) {
     const contenido = e.target.value;
     /* const label = document.querySelector("label[for='"+input+"']");
     console.log(label.textContent) */
-    if (input == 'tit_prog') {
+    if (input == 'tit') {
         document.getElementById('titProg').textContent = contenido;
     }
     else if (input == 'descripcion') {

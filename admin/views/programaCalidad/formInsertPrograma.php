@@ -15,10 +15,14 @@
                 <label>Sección a la que hace referencia</label>
                 <select class="form-control border border-success" id="nom_menu" name="nom_menu">
                     <option>Seleccione una opción</option>
-                    <option value="inicio">Inicio</option>
-                    <option value="nosotros">Nosotros</option>
-                    <option value="blog">Blog</option>
-                    <option value="oferta">Oferta Educativa</option>
+                    <option value="CEUNEM">CEUNEM</option>
+                    <option value="Inicio">Inicio</option>
+                    <option value="Nosotros">Nosotros</option>
+                    <option value="Blog">Blog</option>
+                    <option value="Oferta Educatica">Oferta Educativa</option>
+                    <option value="Filosofía">Filosofía</option>
+                    <option value="Testimonios">Testimonios</option>
+                    <option value="Nuestro Equipo">Nuestro Equipo</option>
                 </select>
             </div>
         </div>
@@ -68,10 +72,10 @@
         </div>
     </div>
     <div class="form-group" id="otroLink" style="display: none;">
-        <label for="btn_url">Link fuera del sitio para el botón 1</label>
-        <input type="text" class="form-control border border-success" id="link" placeholder="Ingrese el link" name="btn_url1">
+        <label for="link">Link fuera del sitio para el botón</label>
+        <input type="text" class="form-control border border-success" id="link" placeholder="Ingrese el link" name="link">
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-success btn-block btnMis" id="btnAddMis" name="btnAddMis">Guardar Configuración</button>
+        <button type="submit" class="btn btn-success btn-block" id="btnaddProg" name="btnaddProg">Guardar Configuración</button>
     </div>
 </form>

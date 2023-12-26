@@ -30,7 +30,7 @@ class SlidersModel extends Model
         }
     }
 
-    public function contar($id, $posicion)
+    public function contarFilas($id, $posicion)
     {
         try {
             $query = $this->db->connect()->prepare("SELECT * FROM sliders WHERE id_usu = :id_usu AND posicion = :posicion");

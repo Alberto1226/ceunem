@@ -151,11 +151,16 @@ function showSwal2(icono, titulo, mensaje) {
 function obterSmtp(){
     var baseURL = 'http://localhost/ceunem/admin/servidor/getConfig';
     axios.post(baseURL).then((response) => {
-        for (const key in response.data) {
+        const config = response.data;
+        const entries = Object.entries(config);
+        entries.forEach(([key, value]) =>{
+            console.log(key + value)
+        })
+       /*  for (const key in response.data) {
             campos[key] = response.data[key];
             const input = document.getElementById(key + "2");
             input.value = response.data[key];
-        }
+        } */
     })
 }
 

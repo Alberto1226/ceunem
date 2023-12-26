@@ -149,7 +149,6 @@ function showSwal2(icono, titulo, mensaje) {
     });
 }
 
-var camposEdit = false;
 function obtenerDatos() {
     var baseURL = 'http://localhost/ceunem/admin/slider1/getImg';
     var url = 'http://localhost/ceunem/admin/';

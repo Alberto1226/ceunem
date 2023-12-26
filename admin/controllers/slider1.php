@@ -20,7 +20,7 @@ class Slider1 extends Controller
     function render()
     {
         $id_usu = $this->id = $_SESSION['id_usu'];
-        $fila = $this->sliders->contar($id_usu, 1);
+        $fila = $this->sliders->contarFilas($id_usu, 1);
         $this->view->fila = $fila;
 
         $this->view->render('slider1/index');
@@ -139,7 +139,7 @@ class Slider1 extends Controller
                 if ($timg == "jpg" or $timg == "jpeg" or $timg == "png") {
                     if ($this->sliders->update($slider)) {
                         if (move_uploaded_file($img, $r)) {
-                            unlink($img);
+                            unlink($imgBD);
                             $arrResponse = array(
                                 'status' => true, 'msg' => 'ok',
                                 'url' => URL . 'slider1'

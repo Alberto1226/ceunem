@@ -57,6 +57,9 @@
                         <?php
                         } else {
                             require 'views/programaCalidad/formEditPrograma.php';
+                        ?>
+                        <script src="<?php echo constant('URL') ?>assets/js/formEditPrograma.js"></script>
+                        <?php
                         }
                         ?>
                     </div>
