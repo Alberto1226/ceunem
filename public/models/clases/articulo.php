@@ -6,5 +6,6 @@
         public $descripcion;
         public $img_url;
         public $link_url;
+        public $estado;
     }
  ?>

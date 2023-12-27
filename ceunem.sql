@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-12-2023 a las 23:52:55
+-- Tiempo de generación: 28-12-2023 a las 00:39:12
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -284,6 +284,32 @@ INSERT INTO `objetivos` (`id_obj`, `nom_sec`, `img_sec`, `desc_sec`, `estado`, `
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `oferta`
+--
+
+CREATE TABLE `oferta` (
+  `id_ofe` int(11) NOT NULL,
+  `tit` varchar(100) NOT NULL,
+  `descripcion` text NOT NULL,
+  `img_url` varchar(255) NOT NULL,
+  `btn_name` varchar(100) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `estado` int(2) NOT NULL,
+  `id_usu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `oferta`
+--
+
+INSERT INTO `oferta` (`id_ofe`, `tit`, `descripcion`, `img_url`, `btn_name`, `link`, `estado`, `id_usu`) VALUES
+(1, 'Licenciaturas', 'En CEUNEM cubrimos una variedad completa de cursos en todos los niveles de creatividad y educación. Como Universidad en línea con experiencia, enseñamos una variedad de clases que abarcan los niveles licenciatura y posgrado enfocados en el ámbito de negocios.', 'public/img/oferta/Licenciaturas20231228_002657_licenciaturas.png', 'Ver más', 'licenciatura', 1, 1),
+(2, 'Maestrías', 'En CEUNEM cubrimos una variedad completa de cursos en todos los niveles de creatividad y educación. Como Universidad en línea con experiencia, enseñamos una variedad de clases que abarcan los niveles licenciatura y posgrado enfocados en el ámbito de negocios.', 'public/img/oferta/Maestrías20231228_002837_maestrias.png', 'Ver más', 'maestria', 1, 1),
+(3, 'Educación continua', 'Sabemos que quieres ver la nueva oferta educativa, pero deberás ser paciente un tiempo más. Suscríbete a nuestra lista de contacto para que te notifiquen cuando tengamos disponibles nuevos planes de estudios.', 'public/img/oferta/Educación continua20231228_003030_educacion.png', 'Ver más', 'continua', 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `sliders`
 --
 
@@ -319,7 +345,7 @@ CREATE TABLE `smtp` (
   `email` varchar(150) NOT NULL,
   `pass` varchar(150) NOT NULL,
   `portServer` int(11) NOT NULL,
-  `conect` int(11) NOT NULL,
+  `conect` varchar(20) NOT NULL,
   `nombre` varchar(150) NOT NULL,
   `id_usu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -486,6 +512,12 @@ ALTER TABLE `objetivos`
   ADD UNIQUE KEY `id_usu` (`id_usu`);
 
 --
+-- Indices de la tabla `oferta`
+--
+ALTER TABLE `oferta`
+  ADD PRIMARY KEY (`id_ofe`);
+
+--
 -- Indices de la tabla `sliders`
 --
 ALTER TABLE `sliders`
@@ -595,6 +627,12 @@ ALTER TABLE `mision`
 --
 ALTER TABLE `objetivos`
   MODIFY `id_obj` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `oferta`
+--
+ALTER TABLE `oferta`
+  MODIFY `id_ofe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `sliders`

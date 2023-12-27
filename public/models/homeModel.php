@@ -4,14 +4,14 @@ include_once 'models/clases/articulo.php';
 include_once 'models/clases/profesionista.php';
 include_once 'models/clases/formulario.php';
 include_once 'models/clases/imagen.php';
-
+include_once 'models/clases/programa.php';
 class HomeModel extends Model
 {
     public function __construct()
     {
         parent::__construct();
     }
-
+    
     public function getWhats()
     {
         $item = new Whats();
@@ -59,7 +59,7 @@ class HomeModel extends Model
     {
         $items = [];
         try {
-            $query = $this->db->connect()->query("SELECT * FROM equipo WHERE estado=1 AND id_usu");
+            $query = $this->db->connect()->query("SELECT * FROM equipo WHERE estado=1 AND id_usu=1");
             while ($row = $query->fetch()) {
                 $item = new Profesionista();
 
@@ -82,7 +82,7 @@ class HomeModel extends Model
     {
         $items = [];
         try {
-            $query = $this->db->connect()->query("SELECT*FROM formulario");
+            $query = $this->db->connect()->query("SELECT*FROM formulario WHERE id_usu=1");
 
             while ($row = $query->fetch()) {
                 $item = new Formulario();
@@ -108,10 +108,9 @@ class HomeModel extends Model
     public function getSliders()
     {
         $items= [];
-
         try {
             $query = $this->db->connect()->query(
-                "SELECT*FROM sliders WHERE id_usu = 1");
+                "SELECT * FROM sliders WHERE id_usu=1 ORDER BY posicion ASC");
 
             while ($row = $query->fetch()) {
                 $item = new Imagen();
@@ -130,6 +129,32 @@ class HomeModel extends Model
             }
             return $items;
         } catch (PDOException $e) {
+            return [];
+        }
+    }
+
+    public function getPrograma(){
+        $item = new Programa();
+
+        try {
+            $query = $this->db->connect()->query("SELECT * FROM calidad WHERE id_usu = 1");
+
+            while ($row = $query->fetch()) {
+                $item = new Programa();
+                $item->id_prog = $row['id_prog'];
+                $item->nom_menu = $row['nom_menu'];
+                $item->tit = $row['tit'];
+                $item->descripcion = $row['descripcion'];
+                $item->img_url = $row['img_url'];
+                $item->btn_name = $row['btn_name'];
+                $item->link = $row['link'];
+                $item->tUrl = $row['tUrl'];
+                $item->id_usu = $row['id_usu'];
+                
+                break;
+            }
+            return $item;
+        } catch (PDOException $th) {
             return [];
         }
     }

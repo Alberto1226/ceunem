@@ -25,7 +25,16 @@
             </div>
             <div class="form-group">
                 <label for="pass" class="col-sm-2 col-form-label">Contraseña</label>
-                <input type="password" class="form-control border border-success" id="pass2" placeholder="Contraseña" name="pass">
+                <div class="input-group">
+                    <input type="password" class="form-control border border-success" id="pass2" placeholder="Contraseña" name="pass">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span>
+                                <i class="fas fa-eye" id="show-password" style="font-size: 1.2rem; cursor: pointer;"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-6">

@@ -37,7 +37,7 @@ class Maestria extends Controller{
 
         $fecha = date('Ymd_His');
         $rImg = $dirImg . $fecha . "_" . $nom_img;
-        $rPdf = $dirPdf . $fecha . "_" . $nom_img;
+        $rPdf = $dirPdf . $fecha . "_" . $nom_pdf;
 
         if($tImg == "jpg" or $tImg == "jpeg" or $tImg == "png" and $tPdf == "pdf"){
             if(move_uploaded_file($img_url, $rImg) and move_uploaded_file($pdf_url, $rPdf)){

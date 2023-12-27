@@ -5,53 +5,59 @@
 <div class="container-fluid p-0 mb-5">
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="w-100" src="<?php echo constant('URL') ?>assets/img/carousel-1.jpg" alt="Image">
-                <div class="carousel-caption">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-7 pt-5">
-                                <h1 class="display-4 text-white mb-3 animated slideInDown">Creando líderes y emprendedores</h1>
-                                <p class="fs-5 text-white-50 mb-5 animated slideInDown">Nuestro objetivo principal es empoderar académicamente a nuestros estudiantes a través de la formación de conocimientos y competencias profesionales en disciplinas de corte humanista, académico-administrativo y de comunicación.</p>
-                                <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo constant('URL') ?>nosotros">
-                                    Más información
-                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                        <i class="fa fa-arrow-right"></i>
+            <div class="container-fluid p-0 mb-5">
+                <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="w-100" src="<?php echo constant('URL') ?>assets/img/carousel-1.jpg" alt="Image">
+                            <div class="carousel-caption">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-7 pt-5">
+                                            <h1 class="display-4 text-white mb-3 animated slideInDown">Creando líderes y emprendedores</h1>
+                                            <p class="fs-5 text-white-50 mb-5 animated slideInDown">Nuestro objetivo principal es empoderar académicamente a nuestros estudiantes a través de la formación de conocimientos y competencias profesionales en disciplinas de corte humanista, académico-administrativo y de comunicación.</p>
+                                            <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo constant('URL') ?>nosotros">
+                                                Más información
+                                                <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="w-100" src="<?php echo constant('URL') ?>assets/img/carousel-2.jpg" alt="Image">
+                            <div class="carousel-caption">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-7 pt-5">
+                                            <h1 class="display-4 text-white mb-3 animated slideInDown">Crea tu futuro profesional 100% online</h1>
+                                            <p class="fs-5 text-white-50 mb-5 animated slideInDown">Becas de hasta el 70%</p>
+                                            <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo constant('URL') ?>contacto">
+                                                Más Información
+                                                <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                                    <i class="fa fa-arrow-right"></i>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="w-100" src="<?php echo constant('URL') ?>assets/img/carousel-2.jpg" alt="Image">
-                <div class="carousel-caption">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-7 pt-5">
-                                <h1 class="display-4 text-white mb-3 animated slideInDown">Crea tu futuro profesional 100% online</h1>
-                                <p class="fs-5 text-white-50 mb-5 animated slideInDown">Becas de hasta el 70%</p>
-                                <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo constant('URL') ?>contacto">
-                                    Más Información
-                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
 </div>
 <!-- Carousel End -->

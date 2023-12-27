@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("formInsertPrograma").addEventListener('submit', insert);
+    document.getElementById("formInsertOferta").addEventListener('submit', insert);
 
     const select = document.querySelectorAll('select');
     select.forEach((select) => {
@@ -10,38 +10,30 @@ document.addEventListener("DOMContentLoaded", function () {
     imagen.addEventListener('focus', valImagen);
     imagen.addEventListener('change', valImagen);
 
-    const texto = document.querySelectorAll('input[type="text"]');
-    texto.forEach((input) => {
-        input.addEventListener('focus', valText);
-        input.addEventListener('keyup', valText);
-    });
+    const txtAreas = document.getElementById('descripcion');
+    txtAreas.addEventListener('focus', valText);
+    txtAreas.addEventListener('keyup', valText);
 
-    const txtAreas = document.querySelectorAll('textarea');
-    txtAreas.forEach((input) => {
-        input.addEventListener('focus', valText);
-        input.addEventListener('keyup', valText);
-    })
 });
 
 const campos = {
-    nom_menu: false,
+    img_url: false,
     tit: false,
     descripcion: false,
-    img_url: false,
     btn_name: false,
-    link: false,
+    link: false
 }
 
 const valSelect = (e) => {
     var campo = e.target.name;
     var titulo = '';
-    if (campo === 'nom_menu'){
-        titulo='Sección a la que hace referencia';
+    if (campo === 'tit'){
+        titulo='Nombre de la oferta';
     }
     if(campo === 'btn_name'){
         titulo='Nombre del botón';
     }
-    if(campo === 'sLink'){
+    if(campo === 'link'){
         titulo = 'Link del botón'
     }
 
@@ -50,33 +42,12 @@ const valSelect = (e) => {
         document.getElementById(`${campo}`).classList.remove('border-success');
         document.getElementById(`${campo}`).classList.add('border-danger');
         document.getElementById(`${campo}`).classList.add('is-invalid');
-        //campos[campo] = false;
-        if (campo === 'btn_name') {
-            campos['btn_name'] = false;
-        } else if (campo === 'nom_menu') {
-            campos['nom_menu'] = false;
-        }
-        else if (campo === 'sLink') {
-            document.getElementById('otroLink').style.display = 'none';
-            campos['link'] = false;
-        }
+        campos[campo] = false;
     } else {
         document.getElementById(`${campo}`).classList.add('border-success');
         document.getElementById(`${campo}`).classList.remove('border-danger');
         document.getElementById(`${campo}`).classList.remove('is-invalid');
-        //campos[campo] = true;
-        if (campo === 'btn_name') {
-            campos['btn_name'] = true;
-        } else if (campo === 'nom_menu') {
-            campos['nom_menu'] = true;
-        }
-        else if (campo === 'sLink' && e.target.value === 'otro') {
-            document.getElementById('otroLink').style.display = 'block';
-            campos['link'] = false;
-        } else {
-            document.getElementById('otroLink').style.display = 'none';
-            campos['link'] = true;
-        }
+        campos[campo] = true;
     }
 }
 
@@ -113,15 +84,11 @@ const valText = (e) => {
     var campo = e.target.name;
     var input = e.target;
     var titulo = '';
-    if (campo === 'tit') {
-        titulo = "Título";
-    }
+
     if (campo === 'descripcion') {
         titulo = "Descripción";
     }
-    if (campo === 'link') {
-        titulo = 'Link fuera del sitio';
-    }
+
     if (input.value.trim() === '') {
         document.getElementById(`${campo}`).classList.remove('border-success');
         document.getElementById(`${campo}`).classList.add('border-danger');
@@ -161,6 +128,11 @@ function showSwal2(icono, titulo, mensaje) {
     });
 }
 
+function agregar() {
+    var addOfertaModal = new bootstrap.Modal(document.getElementById('addOfertaModal'), {})
+    addOfertaModal.show();
+}
+
 function invalid() {
     for (const key in campos) {
         if (campos.hasOwnProperty(key)) {
@@ -169,24 +141,19 @@ function invalid() {
                 document.getElementById(`${key}`).classList.add('border-danger');
                 document.getElementById(`${key}`).classList.add('is-invalid');
             }
-            if (!campos['link']) {
-                document.getElementById('sLink').classList.remove('border-success');
-                document.getElementById('sLink').classList.add('border-danger');
-                document.getElementById('sLink').classList.add('is-invalid');
-            }
         }
     }
 }
 
 function insert(e) {
     e.preventDefault();
-    var baseURL = 'http://localhost/ceunem/admin/programaCalidad/addProg';
+    var baseURL = 'http://localhost/ceunem/admin/oferta/addProg';
     let datos = new FormData(this);
     let encabezados = new Headers();
     if (Object.values(campos).every(value => value === true)) {
         axios.post(baseURL, datos, { encabezados }).then((response) => {
             if (response.data.status) {
-                showSwal("success", "Actualización exitosa", "Se enviaron los datos con exito", response.data.url);
+                showSwal("success", "Se enviaron los datos", "Con exito", response.data.url);
             } else {
                 showToastr("error", response.data.msg, "Error");
             }

@@ -9,6 +9,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const select = document.querySelector('select');
     select.addEventListener('blur', valSelect);
+
+    const passwordInput = document.getElementById("pass2");
+    const showPasswordIcon = document.getElementById("show-password");
+
+    showPasswordIcon.addEventListener("click", () => {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            showPasswordIcon.classList.remove("far");
+            showPasswordIcon.classList.add("fas");
+        } else {
+            passwordInput.type = "password";
+            showPasswordIcon.classList.remove("fas");
+            showPasswordIcon.classList.add("far");
+        }
+    });
 });
 
 const campos = {
@@ -62,7 +77,7 @@ const validarCampo = (input, campo) => {
     var lCapital = nameCampo[0].toUpperCase()
     var restName = nameCampo.slice(1);
     var titulo = lCapital + restName;
-    var input2 = campo+"2";
+    var input2 = campo + "2";
 
     if (input.value.trim() === '') {
         document.getElementById(`${input2}`).classList.remove('border-success');
@@ -83,7 +98,7 @@ const validarEmail = (input, campo) => {
     var lCapital = nameCampo[0].toUpperCase()
     var restName = nameCampo.slice(1);
     var titulo = lCapital + restName;
-    var input2 = campo+"2";
+    var input2 = campo + "2";
 
     const regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
@@ -107,7 +122,7 @@ const validarPort = (input, campo) => {
     var restName = nameCampo.slice(1);
     var titulo = lCapital + restName;
     const regex = /^[0-9]{2,6}$/;
-    var input2 = campo+"2";
+    var input2 = campo + "2";
 
     if (regex.test(input.value)) {
         document.getElementById(`${input2}`).classList.add('border-success');
@@ -148,19 +163,22 @@ function showSwal2(icono, titulo, mensaje) {
     })
 }
 
-function obterSmtp(){
+function obterSmtp() {
     var baseURL = 'http://localhost/ceunem/admin/servidor/getConfig';
     axios.post(baseURL).then((response) => {
+        console.log(response.data)
         const config = response.data;
         const entries = Object.entries(config);
-        entries.forEach(([key, value]) =>{
-            console.log(key + value)
-        })
-       /*  for (const key in response.data) {
-            campos[key] = response.data[key];
+        entries.forEach(([key, value]) => {
             const input = document.getElementById(key + "2");
-            input.value = response.data[key];
-        } */
+            input.value = value;
+            campos[key] = true;
+        })
+        /*  for (const key in response.data) {
+             campos[key] = response.data[key];
+             const input = document.getElementById(key + "2");
+             input.value = response.data[key];
+         } */
     })
 }
 
@@ -169,16 +187,16 @@ function editar(event) {
     event.preventDefault();
     if (campos.dirServer && campos.email && campos.pass
         && campos.portServer && campos.conect && campos.nombre) {
-            var baseURL = 'http://localhost/ceunem/admin/servidor/upConfig';
-            let datos = new FormData(this);
-            let encabezados = new Headers();
-            axios.post(baseURL, datos, { encabezados }).then((response) => {
-                if (response.data.status) {
-                    showSwal("success", "Actualización exitosa", "Se enviaron los datos con exito", response.data.url);
-                } else {
-                    showToastr("error", response.data.msg, "Error");
-                }
-            })
+        var baseURL = 'http://localhost/ceunem/admin/servidor/upConfig';
+        let datos = new FormData(this);
+        let encabezados = new Headers();
+        axios.post(baseURL, datos, { encabezados }).then((response) => {
+            if (response.data.status) {
+                showSwal("success", "Actualización exitosa", "Se enviaron los datos con exito", response.data.url);
+            } else {
+                showToastr("error", response.data.msg, "Error");
+            }
+        })
     } else {
         showSwal2("error", "Oops...", "No podemos enviar un formulario vacio");
     }

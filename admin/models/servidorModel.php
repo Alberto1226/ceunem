@@ -42,7 +42,7 @@ class ServidorModel extends Model
         }
     }
 
-    public function getConfig($id)
+    public function getSmtp($id)
     {
         $item = new Smtp();
         try {
@@ -72,7 +72,7 @@ class ServidorModel extends Model
             $query = $this->db->connect()->prepare(
                 "UPDATE smtp
                 SET dirServer =:dirServer, email = :email, pass = :pass, 
-                portServer =:portServer, conect =:conect, 
+                portServer =:portServer, conect =:conect, nombre = :nombre 
                 WHERE id_usu =:id_usu AND id_smtp = :id_smtp"
             );
 
@@ -88,7 +88,7 @@ class ServidorModel extends Model
             ]);
             return true;
         } catch (PDOException $th) {
-            return false;
+            echo $th;
         }
     }
 }

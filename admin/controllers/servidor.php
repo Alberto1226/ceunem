@@ -8,7 +8,7 @@ class Servidor extends Controller
     {
         session_start();
         parent::__construct();
-        
+
         if (empty($_SESSION['login'])) {
             header('Location: ' . URL . 'login');
             die();
@@ -34,7 +34,7 @@ class Servidor extends Controller
             $nombre = $_POST['nombre'];
             $id_usu = $_POST['id_usu'];
 
-            if ($this->model->insert([
+            $smtp = [
                 'dirServer' => $dirServer,
                 'email' => $email,
                 'pass' => $pass,
@@ -42,7 +42,10 @@ class Servidor extends Controller
                 'conect' => $conect,
                 'nombre' => $nombre,
                 'id_usu' => $id_usu,
-            ])) {
+            ];
+            
+
+            if ($this->model->insert($smtp)) {
                 $arrResponse = array(
                     'status' => true, 'msg' => 'ok',
                     'url' => URL.'servidor'
@@ -66,7 +69,7 @@ class Servidor extends Controller
         }
     }
 
-    function upComfig()
+    function upConfig()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $dirServer = $_POST['dirServer'];
@@ -76,21 +79,23 @@ class Servidor extends Controller
             $conect = $_POST['conect'];
             $nombre = $_POST['nombre'];
             $id_usu = $_POST['id_usu'];
-            $id_smtp =$_POST['id_smtp'];
+            $id_smtp = $_POST['id_smtp'];
 
-            if ($this->model->update([
+            $smtp = [
+                'id_smtp' => $id_smtp,
                 'dirServer' => $dirServer,
                 'email' => $email,
                 'pass' => $pass,
                 'portServer' => $portServer,
                 'conect' => $conect,
-                'nombre' =>$nombre,
+                'nombre' => $nombre,
                 'id_usu' => $id_usu,
-                'id_smtp' => $id_smtp,
-            ])) {
+            ];
+
+            if ($this->model->update($smtp)) {
                 $arrResponse = array(
                     'status' => true, 'msg' => 'ok',
-                    'url' => URL.'servidor'
+                    'url' => URL . 'servidor'
                 );
                 echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
             } else {

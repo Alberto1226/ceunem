@@ -43,9 +43,11 @@ class View{
     public $sliders = [];
     public $slider;
 
+    public $programas = [];
+    public $programa;
+
     function __construct()
     {
-        //echo "Vista base";
     }
 
     function render($nombre){

@@ -8,6 +8,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const select = document.querySelector('select');
     select.addEventListener('blur', valSelect);
+
+    const passwordInput = document.getElementById("pass");
+    const showPasswordIcon = document.getElementById("show-password");
+
+    showPasswordIcon.addEventListener("click", () => {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            showPasswordIcon.classList.remove("far");
+            showPasswordIcon.classList.add("fas");
+        } else {
+            passwordInput.type = "password";
+            showPasswordIcon.classList.remove("fas");
+            showPasswordIcon.classList.add("far");
+        }
+    });
 });
 
 const campos = {
