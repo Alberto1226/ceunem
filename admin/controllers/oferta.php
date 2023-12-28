@@ -210,4 +210,49 @@ class Oferta extends Controller
             }
         }
     }
+
+    function addEncabezado(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_usu = $_POST['id_usu'];
+            $encabezado = $_POST['encabezado'];
+            $descripcion = $_POST['descripcion'];
+            $id_en = $_POST['id_en'];
+
+            $ids = empty($id_en) ? $ids=false : $ids=true;
+
+            $insertar =[
+                'id_usu'=> $id_usu,
+                'encabezado' => $encabezado,
+                'descripcion' => $descripcion,
+            ];
+
+            $editar =[
+                'id_usu'=> $id_usu,
+                'encabezado' => $encabezado,
+                'descripcion' => $descripcion,
+                'id_en' => $id_en
+            ];
+
+            if($ids==false){
+                if($this->model->insertEncabezado($insertar)){
+                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL.'oferta');
+                    echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+                }
+            }else{
+                if($this->model->updateEncabezado($editar)){
+                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL.'oferta');
+                    echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+                }
+            }
+            
+        }
+    }
+
+    function getEncabezado(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $encabezado =  json_decode(file_get_contents('php://input'))->encabezado;
+            $tabla = $this->model->getByEncabezado($encabezado);
+            echo json_encode($tabla); 
+        }
+    }
 }

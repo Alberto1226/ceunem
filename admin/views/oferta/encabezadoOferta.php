@@ -9,13 +9,13 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-    <form action="#" method="post" id="formEnBlog">
+    <form action="#" method="post" id="formEnOferta">
     <input type="hidden" id="id_usu" value="<?php echo $_SESSION['id_usu'] ?>" name="id_usu">
     <input type="hidden" id="id_en" name="id_en">
-    <input type="hidden" id="encabezado" name="encabezado" value="Blog">
+    <input type="hidden" id="encabezado" name="encabezado" value="Oferta Educativa">
     <div class="form-group">
         <label for="descripcion">Descripción</label>
-        <textarea class="form-control border border-success" rows="3" id="descripcion" placeholder="Ingresa el texto que se mostrara antes de tus articulos" name="descripcion"></textarea>
+        <textarea class="form-control border border-success" rows="3" id="descripcion" placeholder="Ingresa el texto que se mostrara antes de tus ofertas Educativas" name="descripcion"></textarea>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-success btn-block" id="btnEncabezado" name="btnEncabezado">Guardar Configuración</button>

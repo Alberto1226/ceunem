@@ -191,6 +191,13 @@
           </li>
         </ul>
       </li>
+      <!-- Testimonios -->
+      <li class="nav-item">
+        <a href="<?php echo constant('URL') ?>testimonios" class="nav-link">
+          <i class="nav-icon fas fa-users"></i>
+          <p>Testimonios</p>
+        </a>
+      </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

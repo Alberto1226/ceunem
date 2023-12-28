@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("formEnFilosofia").addEventListener('submit', insert);
+    document.getElementById("formEnTest").addEventListener('submit', insert);
     const txtAreas = document.getElementById('descripcion');
-    txtAreas.addEventListener('focus', valText);
-    txtAreas.addEventListener('keyup', valText);
+    txtAreas.addEventListener('focus', valTextArea);
+    txtAreas.addEventListener('keyup', valTextArea);
     obtenerDatos();
 });
 
 const camposEn = {
     descripcion: false,
 }
-const valText = (e) => {
+const valTextArea = (e) => {
     var campo = e.target.name;
     var estilo = e.target.id;
     var input = e.target;
@@ -60,7 +60,7 @@ function showSwal2(icono, titulo, mensaje) {
 
 function insert(e) {
     e.preventDefault();
-    var baseURL = 'http://localhost/ceunem/admin/vision/addEncabezado';
+    var baseURL = 'http://localhost/ceunem/admin/testimonios/addEncabezado';
     let datos = new FormData(this);
     let encabezados = new Headers();
     if (Object.values(camposEn).every(value => value === true)) {
@@ -77,22 +77,17 @@ function insert(e) {
 }
 
 function obtenerDatos() {
-    var baseURL = 'http://localhost/ceunem/admin/vision/getEncabezado';
-    const data = { encabezado: 'Filosofía' }
+    var baseURL = 'http://localhost/ceunem/admin/testimonios/getEncabezado';
+    const data = { encabezado: 'Testimonios' }
     axios.post(baseURL, data).then((response) => {
         const data = response.data;
         if(data !== false){
             document.getElementById('id_usu').value = response.data.id_usu;
             document.getElementById('encabezado').value = response.data.encabezado;
             document.getElementById('descripcion').value = response.data.descripcion;
+            document.getElementById('id_en').value = response.data.id_en;
             camposEn['descripcion'] = true;
-            const input = document.createElement('input');
-            input.type = 'hidden';
-            input.id = 'id_en'
-            input.name = 'id_en'
-            const form = document.getElementById("formEnFilosofia");
-            form.appendChild(input)
-            input.value = response.data.id_en;
+            
         }   
     })
 }

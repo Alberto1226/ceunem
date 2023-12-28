@@ -87,13 +87,6 @@ function obtenerDatos() {
             document.getElementById('encabezado').value = response.data.encabezado;
             document.getElementById('descripcion').value = response.data.descripcion;
             camposEn['descripcion'] = true;
-            const input = document.createElement('input');
-            input.type = 'hidden';
-            input.id = 'id_en'
-            input.name = 'id_en'
-            const form = document.getElementById("formEnEquipo");
-            form.appendChild(input)
-            input.value = response.data.id_en;
         }   
     })
 }

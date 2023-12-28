@@ -21,6 +21,7 @@
                 </section>
             </div>
     <div class="container-fluid">
+    <?php require 'encabezadoLic.php'; ?>
         <div class="card">
             <div class="card-header">
                 <button type="button" class="btn  btn-outline-success" data-toggle="modal" data-target="#addLicModal">
@@ -271,3 +272,4 @@
 </div>
 <?php require 'views/templete/footer.php'; ?>
 <?php include 'addLicModal.php'; ?>
+<script src="<?php echo constant('URL') ?>assets/js/formEnLic.js"></script>

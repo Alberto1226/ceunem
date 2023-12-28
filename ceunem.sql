@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-12-2023 a las 21:17:37
+-- Tiempo de generación: 29-12-2023 a las 00:33:28
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -138,7 +138,12 @@ CREATE TABLE `encabezado` (
 INSERT INTO `encabezado` (`id_en`, `encabezado`, `descripcion`, `id_usu`) VALUES
 (1, 'Blog', 'Mantente actualizado sobre todo lo referente al mundo universitario en México y el mundo.', 1),
 (2, 'Filosofía', 'Políticas para forjar principios y valores', 1),
-(3, 'Nuestro Equipo', 'Su dedicación es vital para el éxito de nuestra Universidad', 1);
+(3, 'Nuestro Equipo', 'Su dedicación es vital para el éxito de nuestra Universidad', 1),
+(4, 'Oferta Educativa', 'Licenciaturas y posgrados enfocados en el ámbito de negocios. ', 1),
+(5, 'Licenciaturas', 'Abarcamos los niveles de licenciatura y posgrado enfocados en el ámbito de negocios', 1),
+(6, 'Maestrías', 'Abarcamos los niveles de licenciatura y posgrado enfocados en el ámbito de negocios', 1),
+(7, 'Educación Continua', 'Abarcamos los niveles de licenciatura y posgrado enfocados en el ámbito de negocios', 1),
+(8, 'Testimonios', 'Conoce los testimonios de éxito de alumnos y egresados', 1);
 
 -- --------------------------------------------------------
 
@@ -395,6 +400,31 @@ INSERT INTO `telefono` (`id_tel`, `numero`, `mensaje`, `id_usu`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `testimonios`
+--
+
+CREATE TABLE `testimonios` (
+  `id_tes` int(11) NOT NULL,
+  `nombre` varchar(150) NOT NULL,
+  `carrera` varchar(150) NOT NULL,
+  `testimonio` text NOT NULL,
+  `img_url` varchar(255) NOT NULL,
+  `estado` int(2) NOT NULL,
+  `id_usu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `testimonios`
+--
+
+INSERT INTO `testimonios` (`id_tes`, `nombre`, `carrera`, `testimonio`, `img_url`, `estado`, `id_usu`) VALUES
+(1, 'Fernando', 'Estudiante de Derecho', 'CEUNEM es una gran universidad y una buena opción para muchas personas. En lo particular me ha brindado la oportunidad de iniciar un sueño muy anhelado', 'public/img/testimonios/20231228_235044_testimonial-1.jpg', 1, 1),
+(2, 'Noemi', 'Estudiante de Derecho', 'Tengo muy buena experiencia con esta universidad 10/10, te atienden de lo mas amable, sus tramites son rápidos y tiene muy buenos maestros :)', 'public/img/testimonios/20231229_001059_testimonial-2.jpg', 1, 1),
+(3, 'Miriiam', 'Estudiante de Administración', 'Para mis necesidades ha sido excelente, mi mayor preocupación es sentarme a estudiar, el espacio virtual es perfecto para eso, además encuentro la libertad necesaria para compaginarlo con otras actividades de mi elección.', 'public/img/testimonios/20231229_001204_testimonial-3.jpg', 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -567,6 +597,12 @@ ALTER TABLE `telefono`
   ADD KEY `id_usu` (`id_usu`);
 
 --
+-- Indices de la tabla `testimonios`
+--
+ALTER TABLE `testimonios`
+  ADD PRIMARY KEY (`id_tes`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -618,7 +654,7 @@ ALTER TABLE `continua`
 -- AUTO_INCREMENT de la tabla `encabezado`
 --
 ALTER TABLE `encabezado`
-  MODIFY `id_en` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_en` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `equipo`
@@ -685,6 +721,12 @@ ALTER TABLE `smtp`
 --
 ALTER TABLE `telefono`
   MODIFY `id_tel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `testimonios`
+--
+ALTER TABLE `testimonios`
+  MODIFY `id_tes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

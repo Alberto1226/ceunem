@@ -11,6 +11,7 @@
     <div class="card-body">
     <form method="post" id="formEnFilosofia">
     <input type="hidden" id="id_usu" value="<?php echo $_SESSION['id_usu'] ?>" name="id_usu">
+    <input type="hidden" id="id_en" name="id_en">
     <input type="hidden" id="encabezado" name="encabezado" value="Filosofía">
     <div class="form-group">
         <label for="descripcion">Descripción</label>

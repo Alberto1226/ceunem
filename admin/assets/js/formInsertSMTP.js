@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     inputs.forEach((input) => {
         input.addEventListener('keyup', validar);
         input.addEventListener('blur', validar);
-    })
+    });
 
     const select = document.querySelector('select');
     select.addEventListener('blur', valSelect);

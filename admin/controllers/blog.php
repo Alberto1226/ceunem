@@ -177,6 +177,8 @@ class Blog extends Controller
             $encabezado = $_POST['encabezado'];
             $descripcion = $_POST['descripcion'];
             $id_en = $_POST['id_en'];
+            
+            $ids = empty($id_en) ? $ids=false : $ids=true;
 
             $insertar =[
                 'id_usu'=> $id_usu,
@@ -191,7 +193,7 @@ class Blog extends Controller
                 'id_en' => $id_en
             ];
 
-            if(empty($id_en)){
+            if($ids==false){
                 if($this->model->insertEncabezado($insertar)){
                     $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL.'blog');
                     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
