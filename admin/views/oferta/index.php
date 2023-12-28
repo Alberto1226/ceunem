@@ -43,29 +43,8 @@
                             </thead>
                             <tbody>
                                 <?php
-                                include_once 'models/clases/ofertas.php';
-                                foreach ($this->tablas as $row) {
-                                    $tabla = new Ofertas();
-                                    $tabla = $row;
+                                require 'views/oferta/tabla.php';
                                 ?>
-                                    <tr>
-                                        <td><?php echo $tabla->tit; ?></td>
-                                        <td><?php echo $tabla->descripcion; ?></td>
-                                        <td>
-                                            <img src="<?php echo $tabla->img_url; ?>">
-                                        </td>
-                                        <td><?php echo $tabla->btn_name; ?></td>
-                                        <td><?php echo $tabla->link; ?></td>
-                                        <td>
-                                        <td class="align-middle">
-                                            <div class="col-auto" style="display: inline-block;">
-                                                <a class="btn btn-outline-warning" data-toggle="modal" onclick="editarOferta(<?= $tabla->id_ofe; ?>)"><i class="fa fa-pencil-alt"></i></a>
-                                                <a class="btn btn-outline-danger" data-toggle="modal" onclick="eliminarOferta(<?= $tabla->id_ofe; ?>)"><i class="fa fa-trash"></i></a>
-                                            </div>
-                                        </td>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -86,5 +65,9 @@
     </div>
 </div>
 <?php include 'addOfertaModal.php' ?>
+<?php include 'editOfertaModal.php' ?>
+<?php include 'deleteOfertaModal.php' ?>
+<?php include 'statusOfertaModal.php' ?>
 <?php require 'views/templete/footer.php'; ?>
 <script src="<?php echo constant('URL') ?>assets/js/formInsertarOferta.js"></script>
+<script src="<?php echo constant('URL') ?>assets/js/formEditOferta.js"></script>

@@ -1,21 +1,24 @@
-<div class="modal fade" id="addOfertaModal">
+<div class="modal fade" id="editOfertaModal">
   <div class="modal-dialog modal-lg">
     <div class="modal-content ">
       <div class="modal-header">
-        <h4 class="modal-title">Agregar Oferta Educativa</h4>
+        <h4 class="modal-title">Editar Oferta Educativa</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <div class="card card-success border border-success">
+        <div class="card card-warning border border-warning">
           <div class="card-body">
-            <form id="formInsertOferta" method="POST" enctype="multipart/form-data">
-            <input type="hidden" id="id_usu" value="<?php echo $_SESSION['id_usu'] ?>" name="id_usu">
+            <form id="formEditOferta" method="POST" enctype="multipart/form-data">
+              <input type="hidden" id="id_usu2" name="id_usu">
+              <input type="hidden" id="id_ofe2" name="id_ofe">
+              <input type="hidden" id="img_urlBd" name="imgBd">
+              <input type="hidden" id="estado2" name="estado">
               <div class="card-body">
                 <div class="form-group">
                   <label>Nombre de la oferta</label>
-                  <select class="form-control border border-success select1" id="tit" name="tit">
+                  <select class="form-control border border-success select2" id="tit2" name="tit">
                     <option>Seleccione una opción</option>
                     <option value="Licenciaturas">Licenciaturas</option>
                     <option value="Maestrías">Maestrías</option>
@@ -24,22 +27,25 @@
                 </div>
                 <div class="form-group">
                   <label for="descripcion">Descripción</label>
-                  <textarea class="form-control border border-success" rows="3" id="descripcion" placeholder="Ingresa la Descripción" name="descripcion"></textarea>
+                  <textarea class="form-control border border-success" rows="3" id="descripcion2" placeholder="Ingresa la Descripción" name="descripcion"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="img_url">Imagen</label>
                   <div class="input-group">
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input is-valid" id="img_url" name="img_url">
+                      <input type="file" class="custom-file-input is-valid" id="img_url2" name="img_url">
                       <label class="custom-file-label" for="img_url">Seleccione la imagen</label>
                     </div>
                   </div>
+                </div>
+                <div class="form-group">
+                  <label id="img_urlTit"></label>
                 </div>
                 <div class="row">
                   <div class="col-6">
                     <div class="form-group">
                       <label>Nombre del botón</label>
-                      <select class="form-control border border-success select1" id="btn_name" name="btn_name">
+                      <select class="form-control border border-success select2" id="btn_name2" name="btn_name">
                         <option>Seleccione una opción</option>
                         <option value="Más Información">Más Información</option>
                         <option value="Conocer más">Conocer más</option>
@@ -55,7 +61,7 @@
                   <div class="col-6">
                     <div class="form-group">
                       <label>Link del botón</label>
-                      <select class="form-control border border-success select1" id="link" name="link">
+                      <select class="form-control border border-success select2" id="link2" name="link">
                         <option>Seleccione una opción</option>
                         <option value="inicio">Inicio</option>
                         <option value="nosotros">Nosotros</option>
@@ -70,7 +76,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <button type="submit" class="btn btn-success btn-block" id="btn-add">Agregar Oferta</button>
+                <button type="submit" class="btn btn-warning btn-block" id="btn-add">Guardar Cambios</button>
               </div>
             </form>
           </div>

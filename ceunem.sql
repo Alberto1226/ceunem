@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-12-2023 a las 00:39:12
+-- Tiempo de generación: 28-12-2023 a las 21:17:37
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -117,6 +117,28 @@ CREATE TABLE `continua` (
 
 INSERT INTO `continua` (`id_ec`, `nom_ec`, `descripcion`, `img_url`, `pdf_url`, `estado`) VALUES
 (1, 'Maestría en Derecho Corporativo', 'La formación va dirigida a profesionales que deseen adquirir una maestría a su profesión en Derecho Corporativo, al estudiar esta rama el estudiante adquirirá conocimientos que lo ayudarán a desempeñarse actividades de sustento jurídico para las empresas de acuerdo a teorías, instituciones, principios, normativos, en etc.', 'public/img/continua/maestriaderecho.png', 'public/docs/continua/PLAN_MAESTRIA_DERECHO.pdf', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `encabezado`
+--
+
+CREATE TABLE `encabezado` (
+  `id_en` int(11) NOT NULL,
+  `encabezado` varchar(100) NOT NULL,
+  `descripcion` text NOT NULL,
+  `id_usu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `encabezado`
+--
+
+INSERT INTO `encabezado` (`id_en`, `encabezado`, `descripcion`, `id_usu`) VALUES
+(1, 'Blog', 'Mantente actualizado sobre todo lo referente al mundo universitario en México y el mundo.', 1),
+(2, 'Filosofía', 'Políticas para forjar principios y valores', 1),
+(3, 'Nuestro Equipo', 'Su dedicación es vital para el éxito de nuestra Universidad', 1);
 
 -- --------------------------------------------------------
 
@@ -466,6 +488,12 @@ ALTER TABLE `continua`
   ADD PRIMARY KEY (`id_ec`);
 
 --
+-- Indices de la tabla `encabezado`
+--
+ALTER TABLE `encabezado`
+  ADD PRIMARY KEY (`id_en`);
+
+--
 -- Indices de la tabla `equipo`
 --
 ALTER TABLE `equipo`
@@ -585,6 +613,12 @@ ALTER TABLE `colores`
 --
 ALTER TABLE `continua`
   MODIFY `id_ec` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `encabezado`
+--
+ALTER TABLE `encabezado`
+  MODIFY `id_en` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `equipo`

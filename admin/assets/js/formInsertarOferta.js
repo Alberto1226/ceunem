@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("formInsertOferta").addEventListener('submit', insert);
 
-    const select = document.querySelectorAll('select');
+    const select = document.querySelectorAll('.select1');
     select.forEach((select) => {
         select.addEventListener('mouseup', valSelect);
     });
@@ -147,7 +147,7 @@ function invalid() {
 
 function insert(e) {
     e.preventDefault();
-    var baseURL = 'http://localhost/ceunem/admin/oferta/addProg';
+    var baseURL = 'http://localhost/ceunem/admin/oferta/addOferta';
     let datos = new FormData(this);
     let encabezados = new Headers();
     if (Object.values(campos).every(value => value === true)) {

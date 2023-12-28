@@ -21,6 +21,7 @@
                 </section>
             </div>
             <div class="card-body">
+            <?php require 'encabezadoFilosofia.php'; ?>
                 <div class="row">
                     <div class="col-md-6">
                         <?php
@@ -47,3 +48,4 @@
 </div>
 <?php require 'views/templete/footer.php'; ?>
 <script src="<?php echo constant('URL') ?>assets/js/previewVision.js"></script>
+<script src="<?php echo constant('URL') ?>assets/js/formEnFilosofia.js"></script>

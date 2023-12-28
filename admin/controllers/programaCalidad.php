@@ -149,6 +149,11 @@ class ProgramaCalidad extends Controller
                         );
                         echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                     }
+                } else {
+                    $arrResponse = array(
+                        'status' => false, 'msg' => 'Formato no admitido',
+                    );
+                    echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                 }
             } else {
                 if ($this->model->update($item)) {
@@ -157,7 +162,7 @@ class ProgramaCalidad extends Controller
                         'url' => URL . 'programaCalidad'
                     );
                     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
-                }else {
+                } else {
                     $arrResponse = array(
                         'status' => false, 'msg' => 'Error al modificar datos',
                     );

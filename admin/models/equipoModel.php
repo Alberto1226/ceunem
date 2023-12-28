@@ -1,5 +1,6 @@
 <?php
 include_once 'models/clases/profesionista.php';
+include_once 'models/clases/encabezados.php';
 
 class EquipoModel extends Model
 {
@@ -134,6 +135,67 @@ class EquipoModel extends Model
                 'id_eq' => $item['id_eq'],
                 'id_usu' => $item['id_usu'],
                 'estado' => $item['estado']
+            ]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+
+    public function insertEncabezado($datos)
+    {
+        try {
+            $query = $this->db->connect()->prepare(
+                'INSERT INTO encabezado (encabezado, descripcion, id_usu)
+                VALUES (:encabezado, :descripcion, :id_usu)'
+            );
+            $query->execute([
+                'encabezado' => $datos['encabezado'],
+                'descripcion' => $datos['descripcion'],
+                'id_usu' => $datos['id_usu'],
+            ]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+
+    public function getByEncabezado($encabezado)
+    {
+        $item = new Encabezados();
+        try {
+            $query = $this->db->connect()->prepare(
+                "SELECT * FROM encabezado WHERE encabezado = :encabezado"
+            );
+            $query->execute(['encabezado' => $encabezado]);
+
+            $row = $query->fetch();
+            if ($row) {
+                $item->id_en = $row['id_en'];
+                $item->encabezado = $row['encabezado'];
+                $item->descripcion = $row['descripcion'];
+                $item->id_usu = $row['id_usu'];
+                return $item;
+            } else {
+                return $row;
+            }
+        } catch (PDOException $th) {
+            return [];
+        }
+    }
+
+    public function updateEncabezado($datos)
+    {
+        $query = $this->db->connect()->prepare("UPDATE encabezado
+            SET descripcion = :descripcion
+            WHERE id_en= :id_en AND id_usu = :id_usu AND encabezado = :encabezado");
+
+        try {
+            $query->execute([
+                'encabezado' => $datos['encabezado'],
+                'descripcion' => $datos['descripcion'],
+                'id_usu' => $datos['id_usu'],
+                'id_en' => $datos['id_en']
             ]);
             return true;
         } catch (PDOException $th) {

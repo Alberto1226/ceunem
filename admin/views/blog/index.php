@@ -21,6 +21,7 @@
                 </section>
             </div>
             <div class="container-fluid">
+            <?php require 'encabezadoBlog.php'; ?>
                 <div class="card">
                     <div class="card-header ">
                         <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#addBlogModal">
@@ -275,3 +276,4 @@
 </div>
 <?php require 'views/templete/footer.php'; ?>
 <?php include 'addBlogModal.php'; ?>
+<script src="<?php echo constant('URL') ?>assets/js/formEnBlog.js"></script>

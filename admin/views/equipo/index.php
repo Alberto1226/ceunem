@@ -18,6 +18,7 @@
         </div><!-- /.container-fluid -->
     </section>
     <div class="container-fluid">
+    <?php require 'encabezadoEquipo.php'; ?>
         <div class="card">
             <div class="card-header ">
                 <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#addEquipoModal">
@@ -76,3 +77,4 @@
 <?php include 'statusEquipoModel.php'; ?>
 <script src="<?php echo constant('URL') ?>assets/js/formInsertEquipo.js"></script>
 <script src="<?php echo constant('URL') ?>assets/js/formEditEquipo.js"></script>
+<script src="<?php echo constant('URL') ?>assets/js/formEnEquipo.js"></script>
