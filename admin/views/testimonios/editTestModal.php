@@ -10,10 +10,11 @@
       <div class="modal-body">
         <div class="card card-warning border border-warning">
           <div class="card-body">
-            <form id="formEditTest" method="POST" enctype="multipart/form-data">
-            <input type="hidden" id="id_usu2" name="id_usu">
-            <input type="hidden" id="id_tes2" name="id_tes">
-            <input type="hidden" id="img_urlBD" name="img_urlBD">
+          <form id="formEditTest" method="POST" enctype="multipart/form-data">
+              <input type="hidden" id="id_usu2" name="id_usu">
+              <input type="hidden" id="id_tes2" name="id_tes">
+              <input type="hidden" id="estado2" name="estado">
+              <input type="hidden" id="img_urlBd" name="img_urlBd">
               <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="text" class="form-control border border-success" id="nombre2" placeholder="Ingrese el nombre del estudiante" name="nombre">
@@ -36,10 +37,10 @@
                 </div>
               </div>
               <div class="form-group">
-                  <label id="img_urlTit"></label>
-                </div>
+                <label id="img_urlTit"></label>
+              </div>
               <div class="form-group">
-                <button type="submit" class="btn btn-success btn-block" id="btn-add">Guardar Datos</button>
+                <button type="submit" class="btn btn-warning btn-block" id="btn-add">Guardar</button>
               </div>
             </form>
           </div>
@@ -47,3 +48,4 @@
       </div>
     </div>
   </div>
+</div>

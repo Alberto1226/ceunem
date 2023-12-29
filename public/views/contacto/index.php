@@ -77,5 +77,5 @@
     </div>
 </div>
 <!-- Contacto End -->
-
+<?php require 'views/templete/whatsapp.php'; ?>
 <?php require 'views/templete/footer.php'; ?>

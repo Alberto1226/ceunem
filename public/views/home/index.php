@@ -94,7 +94,14 @@
     </div>
 </div>
 <!-- Nosotros End -->
-
+<?php
+include_once 'models/clases/programa.php';
+var_dump($this->programas);
+foreach ($this->programas as $row) {
+    $programa = new Articulo();
+    $programa = $row;
+}
+?>
 <!-- Blog Start -->
 <div class="container-xxl bg-light my-5 py-5">
     <div class="container py-5">
@@ -362,5 +369,5 @@
     </div>
 </div>
 <!-- Testimonios End -->
-
+<?php require 'views/templete/whatsapp.php'; ?>
 <?php require 'views/templete/footer.php'; ?>

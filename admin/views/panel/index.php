@@ -201,7 +201,7 @@
                         </div>
                         <div class="card-body">
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>testimonios">
-                                Agrear Artículo
+                                Agrear Testimonios
                             </a>
                         </div>
                         <!-- /.card-body -->

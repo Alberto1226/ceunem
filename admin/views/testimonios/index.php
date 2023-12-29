@@ -63,11 +63,11 @@
         </div>
     </div>
 </div>
-<?php include 'addTestModal.php' ?>
-<?php include 'editTestModal.php' ?>
-<!--<?php include 'deleteOfertaModal.php' ?>
-<?php include 'statusOfertaModal.php' ?> -->
-<?php require 'views/templete/footer.php'; ?>
+<?php include 'addTestModal.php';?>
+<?php include 'editTestModal.php';?>
+<?php include 'deleteTestModal.php';?>
+<?php include 'statusTestModal.php';?>
+<?php require 'views/templete/footer.php';?>
 <script src="<?php echo constant('URL') ?>assets/js/formInsertTest.js"></script>
 <script src="<?php echo constant('URL') ?>assets/js/formEditTest.js"></script>
 <script src="<?php echo constant('URL') ?>assets/js/formEnTest.js"></script>

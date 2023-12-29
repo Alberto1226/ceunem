@@ -63,5 +63,5 @@
     </div>
 </div>
 <!-- Maestrías End -->
-
+<?php require 'views/templete/whatsapp.php'; ?>
 <?php require 'views/templete/footer.php'; ?>

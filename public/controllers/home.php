@@ -20,10 +20,17 @@ class Home extends Controller{
         $sliders = $this->model->getSliders();
         $this->view->sliders = $sliders;
 
-        $programa = $this->model->getPrograma();
-        $this->view->programa = $programa;
+        $programas = $this->model->getPrograma();
+        $this->view->programa = $programas;
         
         $this->view->render('home/index');
+    }
+
+    function getWhats(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $tabla = $this->model->getWhats();
+            echo json_encode($tabla);
+        }
     }
 }
 ?>

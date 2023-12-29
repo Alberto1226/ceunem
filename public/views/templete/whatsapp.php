@@ -13,6 +13,8 @@
     }
 </style>
 
-<a href="https://api.whatsapp.com/send?phone=<?= urlencode($this->tel->numero); ?>&text=<?= urlencode($this->tel->mensaje); ?>" class="whatsapp" target="_blank">
+<a class="whatsapp" target="_blank" id="whats">
     <img class="whatsapp-icon" src="<?php echo constant('URL') . 'assets/img/whatsapp.png'; ?>" alt="">
 </a>
+
+<script src="<?php echo constant('URL') ?>assets/js/whats.js"></script>

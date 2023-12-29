@@ -5,5 +5,5 @@
 <h1 class="center error"><?php echo $this->mensaje; ?></h1>
 </div>
 
-
+<?php require 'views/templete/whatsapp.php'; ?>
 <?php  require 'views/templete/footer.php';?>

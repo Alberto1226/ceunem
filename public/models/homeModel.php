@@ -134,13 +134,14 @@ class HomeModel extends Model
     }
 
     public function getPrograma(){
-        $item = new Programa();
+        $items = [];
 
         try {
             $query = $this->db->connect()->query("SELECT * FROM calidad WHERE id_usu = 1");
 
             while ($row = $query->fetch()) {
                 $item = new Programa();
+
                 $item->id_prog = $row['id_prog'];
                 $item->nom_menu = $row['nom_menu'];
                 $item->tit = $row['tit'];
@@ -150,10 +151,10 @@ class HomeModel extends Model
                 $item->link = $row['link'];
                 $item->tUrl = $row['tUrl'];
                 $item->id_usu = $row['id_usu'];
-                
-                break;
+
+                array_push($items, $item);
             }
-            return $item;
+            return $items;
         } catch (PDOException $th) {
             return [];
         }

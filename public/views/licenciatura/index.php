@@ -61,5 +61,5 @@
     </div>
 </div>
 <!-- Licenciaturas End -->
-
+<?php require 'views/templete/whatsapp.php'; ?>
 <?php require 'views/templete/footer.php';?>

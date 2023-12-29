@@ -56,6 +56,88 @@ class TestimoniosModel extends Model
         }
     }
 
+    public function getById($id)
+    {
+        $item = new Testimonio();
+        try {
+            $query = $this->db->connect()->prepare(
+                "SELECT * FROM testimonios WHERE id_tes = :id_tes"
+            );
+            $query->execute(['id_tes' => $id]);
+
+            while ($row = $query->fetch()) {
+                $item->id_tes = $row['id_tes'];
+                $item->nombre = $row['nombre'];
+                $item->carrera = $row['carrera'];
+                $item->testimonio = $row['testimonio'];
+                $item->img_url = $row['img_url'];
+                $item->estado = $row['estado'];
+                $item->id_usu = $row['id_usu'];
+            }
+            return $item;
+        } catch (PDOException $th) {
+            return [];
+        }
+    }
+
+    public function update($datos)
+    {
+        try {
+            $query = $this->db->connect()->prepare(
+                'UPDATE testimonios
+                SET nombre = :nombre, carrera = :carrera, testimonio = :testimonio,
+                img_url = :img_url, estado = :estado
+                WHERE id_tes = :id_tes AND id_usu = :id_usu'
+            );
+
+            $query->execute([
+                'id_tes' => $datos['id_tes'],
+                'nombre' => $datos['nombre'],
+                'carrera' => $datos['carrera'],
+                'testimonio' => $datos['testimonio'],
+                'img_url' => $datos['img_url'],
+                'estado' => $datos['estado'],
+                'id_usu' => $datos['id_usu'],
+            ]);
+            return true;
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+    
+    public function delete($item){
+        $query = $this->db->connect()->prepare(
+            "DELETE FROM testimonios WHERE id_tes = :id_tes AND id_usu = :id_usu"
+        );
+        try {
+            $query->execute([
+                'id_tes' => $item['id_tes'],
+                'id_usu' => $item['id_usu']
+            ]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+
+    public function estado($item)
+    {
+        $query = $this->db->connect()->prepare("UPDATE testimonios
+            SET estado = :estado
+            WHERE id_tes = :id_tes AND id_usu = :id_usu");
+
+        try {
+            $query->execute([
+                'id_tes' => $item['id_tes'],
+                'id_usu' => $item['id_usu'],
+                'estado' => $item['estado']
+            ]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+
     public function insertEncabezado($datos)
     {
         try {

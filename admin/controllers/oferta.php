@@ -53,7 +53,7 @@ class Oferta extends Controller
                 'id_usu' => $id_usu
             ];
 
-            if ($timg == "jpg" or $timg == "jpeg" or $timg == "png" or $timg == "mp4") {
+            if ($timg == "jpg" or $timg == "jpeg" or $timg == "png") {
                 if ($this->model->insert($item)) {
                     if(move_uploaded_file($img_url, $r)){
                         $arrResponse = array(
@@ -123,7 +123,7 @@ class Oferta extends Controller
             ];
 
             if(is_file($img_url)){
-                if ($timg == "jpg" or $timg == "jpeg" or $timg == "png" or $timg == "mp4") {
+                if ($timg == "jpg" or $timg == "jpeg" or $timg == "png") {
                     if ($this->model->update($item)) {
                         if(move_uploaded_file($img_url, $r)){
                             unlink($imgBd);
