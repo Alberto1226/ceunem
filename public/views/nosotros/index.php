@@ -60,8 +60,8 @@ foreach ($this->secMisions as $row) {
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3">Filosofía</div>
-            <h1 class="display-6 mb-5">Políticas para forjar principios y valores&nbsp;</h1>
+            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3"><?= $this->header->encabezado; ?></div>
+            <h1 class="display-6 mb-5"><?= $this->header->descripcion; ?></h1>
         </div>
         <div class="row g-4 justify-content-center">
             <?php
@@ -115,15 +115,12 @@ foreach ($this->secMisions as $row) {
 </div>
 <!-- Service End -->
 
-
-
-
 <!-- Equipo Start -->
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3">Nuestro Equipo</div>
-            <h1 class="display-6 mb-5">Su dedicación es vital para el éxito de nuestra Universidad&nbsp;</h1>
+            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3"><?= $this->header1->encabezado; ?></div>
+            <h1 class="display-6 mb-5"><?= $this->header1->descripcion; ?></h1>
         </div>
         <div class="row g-4">
             <div class="swiper mySwiper">

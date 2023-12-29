@@ -22,6 +22,12 @@ class Nosotros extends Controller{
         $secEqs = $this->model->getProfesionisitas();
         $this->view->secEqs = $secEqs;
 
+        $header = $this->model->getByEncabezado('Filosofía');
+        $this->view->header = $header;
+
+        $header1 = $this->model->getByEncabezado('Nuestro Equipo');
+        $this->view->header1 = $header1;
+        
         $this->view->render('nosotros/index');
     }
 

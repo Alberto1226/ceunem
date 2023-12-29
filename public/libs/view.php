@@ -1,5 +1,6 @@
 <?php
-class View{   
+class View
+{
     public $mensaje;
 
     public array $articulos = [];
@@ -28,7 +29,7 @@ class View{
 
     public $secEqs = [];
     public $secEq;
-    
+
     public $fila;
 
     public $inputs = [];
@@ -37,22 +38,25 @@ class View{
     public $ini1 = [];
     public $ini2;
 
-    public $tel =[];
+    public $tel = [];
     public $tel1;
 
-    public $sliders = [];
-    public $slider;
+    public $header;
 
-    public $programas = [];
-    public $programa;
+    public $header1;
+
+    public $ofertas =[];
+    public $oferta;
+
+    public $testimonios = [];
+    public $testimonio;
 
     function __construct()
     {
     }
 
-    function render($nombre){
-        require 'views/'. $nombre . '.php';
+    function render($nombre)
+    {
+        require 'views/' . $nombre . '.php';
     }
-
 }
-?>

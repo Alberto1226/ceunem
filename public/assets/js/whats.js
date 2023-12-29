@@ -7,6 +7,5 @@ function obtenerWhats() {
     axios.post(baseURL).then((response) => {
        const link = document.getElementById('whats');
        link.href ="https://api.whatsapp.com/send?phone"+response.data.numero+"&text="+response.data.mensaje+"";
-       console.log(link)
     });
 }

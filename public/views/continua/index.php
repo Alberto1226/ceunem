@@ -18,8 +18,12 @@
 
 <!-- Educación Continua Start -->
 <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-    <div class="container text-center">
-        <div class="row justify-content-center">
+    <div class="container">
+    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3"><?= $this->header->encabezado; ?></div>
+            <h1 class="display-6 mb-5"><?= $this->header->descripcion; ?></h1>
+        </div>
+        <div class="row g-4 justify-content-center">
             <?php
             include_once 'models/clases/continuas.php';
             if (empty($this->fila)) {

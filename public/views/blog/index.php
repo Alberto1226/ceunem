@@ -15,9 +15,11 @@
 <!-- Page Header End -->
 <div class="container-xxl bg-light my-5 py-5">
     <div class="container py-5">
+        <?php 
+        $tit = $this->header->encabezado == 'Blog' ? $tit = 'Artículos' : $tit ='Blog';?>
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3">Artículos</div>
-            <h1 class="display-6 mb-5">Mantente actualizado sobre todo lo referente al mundo universitario en México y el mundo&nbsp;</h1>
+            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3"><?= $tit; ?></div>
+            <h1 class="display-6 mb-5"><?= $this->header->descripcion; ?></h1>
         </div>
         <div class="row g-4 justify-content-center">
             <?php

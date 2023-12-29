@@ -11,6 +11,9 @@ class Licenciatura extends Controller
     {
         $licenciaturas = $this->model->getAllLicenciaturas();
         $this->view->licenciaturas = $licenciaturas;
+
+        $header = $this->model->getByEncabezado('Licenciaturas');
+        $this->view->header = $header;
         
         $this->view->render('licenciatura/index');
     }

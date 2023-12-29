@@ -10,6 +10,9 @@ class Maestria extends Controller{
         $maestrias = $this->model->getAllMaestrias();
         $this->view->maestrias = $maestrias;
 
+        $header = $this->model->getByEncabezado('Maestrías');
+        $this->view->header = $header;
+
         $this->view->render('maestria/index');
     }
 

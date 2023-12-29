@@ -3,6 +3,7 @@ include_once 'models/clases/mision.php';
 include_once 'models/clases/vision.php';
 include_once 'models/clases/objetivo.php';
 include_once 'models/clases/profesionista.php';
+include_once 'models/clases/encabezados.php';
 
 class NosotrosModel extends Model
 {
@@ -114,6 +115,29 @@ class NosotrosModel extends Model
                 array_push($items, $item);
             }
             return $items;
+        } catch (PDOException $th) {
+            return [];
+        }
+    }
+
+    public function getByEncabezado($encabezado){
+        $item = new Encabezados();
+        try {
+            $query = $this->db->connect()->prepare(
+                "SELECT * FROM encabezado WHERE encabezado = :encabezado AND id_usu = 1"
+            );
+            $query->execute(['encabezado' => $encabezado]);
+
+            $row = $query->fetch();
+            if ($row) {
+                $item->id_en = $row['id_en'];
+                $item->encabezado = $row['encabezado'];
+                $item->descripcion = $row['descripcion'];
+                $item->id_usu = $row['id_usu'];
+                return $item;
+            } else {
+                return false;
+            }
         } catch (PDOException $th) {
             return [];
         }

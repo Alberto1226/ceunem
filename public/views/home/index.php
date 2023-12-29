@@ -3,61 +3,74 @@
 
 <!-- Carousel Start -->
 <div class="container-fluid p-0 mb-5">
-    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="header-carousel" class="carousel slide" id="sliderHeader" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="container-fluid p-0 mb-5">
-                <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="w-100" src="<?php echo constant('URL') ?>assets/img/carousel-1.jpg" alt="Image">
-                            <div class="carousel-caption">
-                                <div class="container">
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-7 pt-5">
-                                            <h1 class="display-4 text-white mb-3 animated slideInDown">Creando líderes y emprendedores</h1>
-                                            <p class="fs-5 text-white-50 mb-5 animated slideInDown">Nuestro objetivo principal es empoderar académicamente a nuestros estudiantes a través de la formación de conocimientos y competencias profesionales en disciplinas de corte humanista, académico-administrativo y de comunicación.</p>
-                                            <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo constant('URL') ?>nosotros">
-                                                Más información
-                                                <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                                    <i class="fa fa-arrow-right"></i>
-                                                </div>
-                                            </a>
-                                        </div>
+            <div class="carousel-item active" id="item1" style="display: none;">
+                <img class="w-100" id="img1" alt="Image">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7 pt-5">
+                                <h1 class="display-4 text-white mb-3 animated slideInDown" id="tit1"></h1>
+                                <p class="fs-5 text-white-50 mb-5 animated slideInDown" id="desc1"></p>
+                                <a class="btn btn-primary py-2 px-3 animated slideInDown" id="link1">
+                                    <span id="btn_name1"></span>
+                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                        <i class="fa fa-arrow-right"></i>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img class="w-100" src="<?php echo constant('URL') ?>assets/img/carousel-2.jpg" alt="Image">
-                            <div class="carousel-caption">
-                                <div class="container">
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-7 pt-5">
-                                            <h1 class="display-4 text-white mb-3 animated slideInDown">Crea tu futuro profesional 100% online</h1>
-                                            <p class="fs-5 text-white-50 mb-5 animated slideInDown">Becas de hasta el 70%</p>
-                                            <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo constant('URL') ?>contacto">
-                                                Más Información
-                                                <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                                    <i class="fa fa-arrow-right"></i>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                </div>
+            </div>
+            <div class="carousel-item" id="item2" style="display: none;">
+                <img class="w-100" id="img2" alt="Image">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7 pt-5">
+                                <h1 class="display-4 text-white mb-3 animated slideInDown" id="tit2"></h1>
+                                <p class="fs-5 text-white-50 mb-5 animated slideInDown" id="desc2"></p>
+                                <a class="btn btn-primary py-2 px-3 animated slideInDown" id="link2">
+                                    <span id="btn_name2"></span>
+                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                        <i class="fa fa-arrow-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item" id="item3" style="display: none;">
+                <img class="w-100" id="img3" alt="Image">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7 pt-5">
+                                <h1 class="display-4 text-white mb-3 animated slideInDown" id="tit3"></h1>
+                                <p class="fs-5 text-white-50 mb-5 animated slideInDown" id="desc3"></p>
+                                <a class="btn btn-primary py-2 px-3 animated slideInDown" id="link3">
+                                    <span id="btn_name3"></span>
+                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                        <i class="fa fa-arrow-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 </div>
 <!-- Carousel End -->
@@ -68,24 +81,19 @@
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="position-relative overflow-hidden h-100" style="min-height: 400px;">
-                    <img class="position-absolute w-100 h-100 pt-5 pe-5" src="<?php echo constant('URL') ?>assets/img/nosotros-1.jpg" alt="" style="object-fit: cover;">
+                    <img id="imgProg" class="position-absolute w-100 h-100 pt-5 pe-5" alt="" style="object-fit: cover; display: none;">
+                    <video id="vidProg" controls autoplay loop muted class="position-absolute w-100 h-100 pt-5 pe-5 pr-5 video" style="object-fit: cover; display: none;"></video>
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="h-20">
-                    <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3">Nosotros</div>
+                    <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3" id="nom_menu"></div>
                 </div>
-                <h1 class="display-6 mb-5">Programas de Calidad</h1>
-                <p class="mb-5">Como una institución acreditada, CEUNEM proporciona a sus estudiantes una educación de la más alta calidad en un ambiente flexible. Nuestros reconocidos programas en línea incluyen instrucción en tiempo real y materiales prácticos para asegurar que cada estudiante no solo enfrente un desafío sino que también sienta el apoyo durante todo el curso. Contáctenos hoy mismo para obtener más información sobre lo que tenemos para ofrecer. Nos esforzamos por brindar educación de alta calidad, flexible y personalizada. Contamos con becas del 100% en inscripción y reinscripción así como becas del 50% en colegiaturas únicamente por ser alumno fundador CEUNEM.&nbsp;</p>
-                <a class="btn btn-primary py-2 px-3 me-3" href="<?php echo constant('URL') ?>nosotros">
-                    Conocer más
+                <h1 class="display-6 mb-5" id="titProg"></h1>
+                <p class="mb-5" id="descripcion"></p>
+                <a class="btn btn-primary py-2 px-3 me-3" id="linkProg">
+                    <span id="btn_name"></span>
                     <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                        <i class="fa fa-arrow-right"></i>
-                    </div>
-                </a>
-                <a class="btn btn-outline-primary py-2 px-3" href="<?php echo constant('URL') ?>contacto">
-                    Contáctanos
-                    <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                         <i class="fa fa-arrow-right"></i>
                     </div>
                 </a>
@@ -94,20 +102,13 @@
     </div>
 </div>
 <!-- Nosotros End -->
-<?php
-include_once 'models/clases/programa.php';
-var_dump($this->programas);
-foreach ($this->programas as $row) {
-    $programa = new Articulo();
-    $programa = $row;
-}
-?>
+
 <!-- Blog Start -->
 <div class="container-xxl bg-light my-5 py-5">
     <div class="container py-5">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3">Blog&nbsp;</div>
-            <h1 class="display-6 mb-5">Mantente actualizado sobre todo lo referente al mundo universitario en México y el mundo&nbsp;</h1>
+            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3" id="enBlog"></div>
+            <h1 class="display-6 mb-5" id="descBlog"></h1>
         </div>
         <div class="row g-4">
             <div class="swiper mySwiper">
@@ -157,56 +158,42 @@ foreach ($this->programas as $row) {
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3">Oferta Educativa&nbsp;</div>
-            <h1 class="display-6 mb-5">Licenciaturas y posgrados enfocados en el ámbito de negocios.&nbsp;</h1>
+            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3" id="enOferta"></div>
+            <h1 class="display-6 mb-5" id="descOferta"></h1>
         </div>
-        <div class="row g-4 justify-content-center">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
-                    <img class="img-fluid mb-4" src="<?php echo constant('URL') ?>assets/img/licenciaturas.png" alt="">
-                    <h4 class="mb-3">Licenciaturas</h4>
-                    <p class="mb-4">En CEUNEM cubrimos una variedad completa de cursos en todos los niveles de creatividad y educación. Como Universidad en línea con experiencia, enseñamos una variedad de clases que abarcan los niveles licenciatura y posgrado enfocados en el ámbito de negocios.</p>
-                    <a class="btn btn-outline-primary px-3" href="<?php echo constant('URL') ?>licenciatura">
-                        Ver oferta académica
-                        <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                            <i class="fa fa-arrow-right"></i>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <?php
+                include_once 'models/clases/ofertas.php';
+                foreach ($this->ofertas as $row) {
+                    $oferta = new Ofertas();
+                    $oferta = $row;
+                ?>
+                    <div class="swiper-slide wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="card service-item bg-white text-center p-4 p-xl-5">
+                            <img src="<?php echo constant('ARCHIVOS') . $oferta->img_url; ?>" class="card-img-top img-fluid mb-4" alt="Imagen de la tarjeta">
+                            <div class="card-body">
+                                <h4 class="card-title"><?= $oferta->tit; ?></h4>
+                                <p class="card-text" style="height: 300px;"><?= $oferta->descripcion; ?></p>
+                            </div>
+                            <a class="btn btn-outline-primary px-3" href="<?php echo constant('URL') . $oferta->link; ?>">
+                                <span><?= $oferta->btn_name; ?></span>
+                                <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
+                                    <i class="fa fa-arrow-right"></i>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
+                    </div>
+                <?php } ?>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
-                    <img class="img-fluid mb-4" src="<?php echo constant('URL') ?>assets/img/maestrias.png" alt="">
-                    <h4 class="mb-3">Maestrías</h4>
-                    <p class="mb-4">En CEUNEM cubrimos una variedad completa de cursos en todos los niveles de creatividad y educación. Como Universidad en línea con experiencia, enseñamos una variedad de clases que abarcan los niveles licenciatura y posgrado enfocados en el ámbito de negocios.</p>
-                    <a class="btn btn-outline-primary px-3" href="<?php echo constant('URL') ?>maestria">
-                        Ver oferta académica
-                        <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                            <i class="fa fa-arrow-right"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
-                    <img class="img-fluid mb-4" src="<?php echo constant('URL') ?>assets/img/educacion.png" alt="">
-                    <h4 class="mb-3">Educación continua</h4>
-                    <p class="mb-4">Sabemos que quieres ver la nueva oferta educativa, pero deberás ser paciente un tiempo más. Suscríbete a nuestra lista de contacto para que te notifiquen cuando tengamos disponibles nuevos planes de estudios.</p>
-                    <a class="btn btn-outline-primary px-3" href="<?php echo constant('URL') ?>contacto">
-                        Sucríbete
-                        <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                            <i class="fa fa-arrow-right"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            <div class="swiper-pagination"></div>
         </div>
     </div>
 </div>
 <!-- Oferta Educativa End -->
 
 <!-- Contacto Start -->
-<div class="container-fluid donate my-5 py-5" data-parallax="scroll" data-image-src="<?php echo constant('URL') ?>assets/img/carousel-2.jpg">
+<div class="container-fluid donate " data-parallax="" data-image-src="<?php echo constant('URL') ?>assets/img/carousel-2.jpg">
     <div class="container py-5">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
@@ -277,8 +264,8 @@ foreach ($this->programas as $row) {
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3">Nuestro Equipo</div>
-            <h1 class="display-6 mb-5">Su dedicación es vital para el éxito de nuestra Universidad&nbsp;</h1>
+            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3" id="enEquipo"></div>
+            <h1 class="display-6 mb-5" id="descEquipo"></h1>
         </div>
         <div class="row g-4">
             <div class="swiper mySwiper">
@@ -337,37 +324,59 @@ foreach ($this->programas as $row) {
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3">Testimonios</div>
-            <h1 class="display-6 mb-5">Conoce los testimonios de éxito de alumnos y egresados</h1>
+            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3" id="enTestimonio"></div>
+            <h1 class="display-6 mb-5" id="descTestimonio"></h1>
         </div>
-        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-            <div class="testimonial-item text-center">
-                <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="<?php echo constant('URL') ?>assets/img/testimonial-1.jpg" style="width: 100px; height: 100px;">
-                <div class="testimonial-text rounded text-center p-4">
-                    <p>CEUNEM es una gran universidad y una buena opción para muchas personas. En lo particular me ha brindado la oportunidad de iniciar un sueño muy anhelado.</p>
-                    <h5 class="mb-1">Fernando</h5>
-                    <span class="fst-italic">Estudiante de Derecho</span>
-                </div>
+        <div class="swiper mySwiper2">
+            <div class="swiper-wrapper">
+                <?php
+                include_once 'models/clases/testimonio.php';
+                foreach ($this->testimonios as $row) {
+                    $testimonio = new Testimonio();
+                    $testimonio = $row;
+                ?>
+                    <div class="swiper-slide wow fadeInUp" data-wow-delay="0.1s" style=" display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;  ">
+                        <div class="card mb-3" style="width: 85%; height: 85%;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="<?php echo constant('ARCHIVOS') . $testimonio->img_url; ?>" style="width: 95%;">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body" style="text-align: left;">
+                                        <h5 class="card-title"><?= $testimonio->nombre; ?></h5>
+                                        <p class="card-text"><?= $testimonio->carrera; ?></p>
+                                        <p class="card-text"><small class="text-muted"><?= $testimonio->testimonio; ?></small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
-            <div class="testimonial-item text-center">
-                <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="<?php echo constant('URL') ?>assets/img/testimonial-2.jpg" style="width: 100px; height: 100px;">
-                <div class="testimonial-text rounded text-center p-4">
-                    <p>Tengo muy buena experiencia con esta universidad 10/10, te atienden de lo mas amable, sus tramites son rápidos y tiene muy buenos maestros :) </p>
-                    <h5 class="mb-1">Noemi</h5>
-                    <span class="fst-italic">Estudiante de Derecho</span>
-                </div>
-            </div>
-            <div class="testimonial-item text-center">
-                <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="<?php echo constant('URL') ?>assets/img/testimonial-3.jpg" style="width: 100px; height: 100px;">
-                <div class="testimonial-text rounded text-center p-4">
-                    <p>Para mis necesidades ha sido excelente, mi mayor preocupación es sentarme a estudiar, el espacio virtual es perfecto para eso, además encuentro la libertad necesaria para compaginarlo con otras actividades de mi elección.</p>
-                    <h5 class="mb-1">Miriam</h5>
-                    <span class="fst-italic">Estudiante de Administración</span>
-                </div>
-            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
     </div>
 </div>
 <!-- Testimonios End -->
 <?php require 'views/templete/whatsapp.php'; ?>
 <?php require 'views/templete/footer.php'; ?>
+<script src="<?php echo constant('URL') ?>assets/js/home.js"></script>
+<script>
+    var swiper = new Swiper(".mySwiper2", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>

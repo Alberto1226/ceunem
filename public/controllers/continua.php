@@ -15,6 +15,9 @@ class Continua extends Controller
         $continuas = $this->model->getAllContinuas();
         $this->view->continuas = $continuas;
 
+        $header = $this->model->getByEncabezado('Educación Continua');
+        $this->view->header = $header;
+
         $this->view->render('continua/index');
     }
 }

@@ -12,6 +12,9 @@ class Blog extends Controller{
 
         $articulos = $this->model->getAllArticulos();
         $this->view->articulos = $articulos;
+
+        $header = $this->model->getByEncabezado('Blog');
+        $this->view->header = $header;
         
         $this->view->render('blog/index');
     }

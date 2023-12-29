@@ -17,11 +17,11 @@ class Home extends Controller{
         $secEqs = $this->model->getProfesionisitas();
         $this->view->secEqs = $secEqs;
 
-        $sliders = $this->model->getSliders();
-        $this->view->sliders = $sliders;
+        $ofertas = $this->model->getOfertas();
+        $this->view->ofertas = $ofertas;
 
-        $programas = $this->model->getPrograma();
-        $this->view->programa = $programas;
+        $testimonios = $this->model->getTestimonios();
+        $this->view->testimonios = $testimonios;
         
         $this->view->render('home/index');
     }
@@ -30,6 +30,29 @@ class Home extends Controller{
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tabla = $this->model->getWhats();
             echo json_encode($tabla);
+        }
+    }
+
+    function getPrograma(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $programa = $this->model->getPrograma();
+            echo json_encode($programa);
+        }
+    }
+
+    function getSliders(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $sliders = $this->model->getSliders();
+            echo json_encode($sliders);
+        }
+    }
+
+    function getEncabezado()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $encabezado =  json_decode(file_get_contents('php://input'))->encabezado;
+            $seccionEn = $this->model->getByEncabezado($encabezado);
+            echo json_encode($seccionEn);
         }
     }
 }
