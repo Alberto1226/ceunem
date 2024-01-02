@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-12-2023 a las 23:22:48
+-- Tiempo de generación: 02-01-2024 a las 22:43:42
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -243,6 +243,25 @@ CREATE TABLE `maestrias` (
 
 INSERT INTO `maestrias` (`id_mas`, `nom_mas`, `descripcion`, `img_url`, `pdf_url`, `estado`) VALUES
 (1, 'Maestría en Administración de Negocios', 'La formación va dirigida a profesionales que deseen adquirir una maestría a su profesión en Administración de Negocios con la finalidad de formar profesionales con una visión estratégica, emprendedora en innovadora, con conocimientos y habilidades relacionados a los procesos administrativos de los negocios.', 'public/img/maestria/maestriaadministracion.png', 'public/docs/maestria/PLAN_MAESTRIA_ADMINISTRACION.pdf', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mapa`
+--
+
+CREATE TABLE `mapa` (
+  `id_mapa` int(11) NOT NULL,
+  `mapa` text NOT NULL,
+  `id_usu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `mapa`
+--
+
+INSERT INTO `mapa` (`id_mapa`, `mapa`, `id_usu`) VALUES
+(1, '<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d29905.860789428338!2d-99.9774779!3d20.45563765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2smx!4v1704223837896!5m2!1ses!2smx\" width=\"650\" height=\"700\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 1);
 
 -- --------------------------------------------------------
 
@@ -549,6 +568,13 @@ ALTER TABLE `maestrias`
   ADD PRIMARY KEY (`id_mas`);
 
 --
+-- Indices de la tabla `mapa`
+--
+ALTER TABLE `mapa`
+  ADD PRIMARY KEY (`id_mapa`),
+  ADD UNIQUE KEY `id_usu` (`id_usu`);
+
+--
 -- Indices de la tabla `menu`
 --
 ALTER TABLE `menu`
@@ -679,6 +705,12 @@ ALTER TABLE `licenciaturas`
 --
 ALTER TABLE `maestrias`
   MODIFY `id_mas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `mapa`
+--
+ALTER TABLE `mapa`
+  MODIFY `id_mapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `menu`

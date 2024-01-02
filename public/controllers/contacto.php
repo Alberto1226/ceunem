@@ -17,6 +17,10 @@ class Contacto extends Controller{
     function render(){      
         $inputs = $this->model->getInputs();
         $this->view->inputs = $inputs;
+
+        $mapa = $this->model->getMapa();
+        $this->view->mapa = $mapa;
+
         $this->view->render('contacto/index');
     }
 

@@ -51,6 +51,11 @@ class View
     public $testimonios = [];
     public $testimonio;
 
+    public $mapa;
+
+    public $sliders = [];
+    public $slider;
+
     function __construct()
     {
     }

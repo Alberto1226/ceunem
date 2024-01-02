@@ -165,6 +165,12 @@
               <p>Whatsapp</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>mapa" class="nav-link">
+              <i class="fas fa-map-marker-alt nav-icon"></i>
+              <p>GPS</p>
+            </a>
+          </li>
         </ul>
       </li>
       <!-- Configuracion -->

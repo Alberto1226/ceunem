@@ -1,6 +1,7 @@
 <?php
 include_once 'models/clases/formulario.php';
 include_once 'models/clases/smtp.php';
+include_once 'models/clases/mapas.php';
 
 class ContactoModel extends Model
 {
@@ -50,6 +51,28 @@ class ContactoModel extends Model
                 array_push($items, $item);
             }
             return $items;
+        } catch (PDOException $th) {
+            return [];
+        }
+    }
+
+    public function getMapa()
+    {
+        $item = new Mapas();
+        try {
+            $query = $this->db->connect()->query(
+                "SELECT * FROM mapa WHERE id_usu = 1"
+            );
+            
+            $row = $query->fetch();
+            if ($row) {
+                $item->id_mapa = $row['id_mapa'];
+                $item->mapa = $row['mapa'];
+                $item->id_usu = $row['id_usu'];
+                return $item;
+            } else {
+                return false;
+            }
         } catch (PDOException $th) {
             return [];
         }

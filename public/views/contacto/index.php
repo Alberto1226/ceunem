@@ -1,5 +1,6 @@
 <?php require 'views/templete/header.php'; ?>
 <?php require 'views/templete/navar.php'; ?>
+
 <!-- Page Header Start -->
 <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container text-center">
@@ -70,7 +71,10 @@
             </div>
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 450px;">
                 <div class="position-relative rounded overflow-hidden h-100">
-                    <iframe class="position-relative w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3739.920254616823!2d-100.00716448580934!3d20.38617761478076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2smx!4v1662739486241!5m2!1ses!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" frameborder="0" style="min-height: 450px; border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+                    <div class="position-relative w-100 h-100 divMapa">
+                        <?php echo $this->mapa->mapa; ?>
+                    </div>
                 </div>
             </div>
         </div>

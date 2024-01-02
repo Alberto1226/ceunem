@@ -166,6 +166,9 @@
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>telefono">
                                 Configuración WhatsApp
                             </a>
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>mapa">
+                                Configuración del GPS
+                            </a>
                         </div>
                         <!-- /.card-body -->
                     </div>

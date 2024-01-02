@@ -22,6 +22,9 @@ class Home extends Controller{
 
         $testimonios = $this->model->getTestimonios();
         $this->view->testimonios = $testimonios;
+
+        $sliders = $this->model->getSliders();
+        $this->view->sliders = $sliders;
         
         $this->view->render('home/index');
     }
@@ -40,12 +43,12 @@ class Home extends Controller{
         }
     }
 
-    function getSliders(){
+    /* function getSliders(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $sliders = $this->model->getSliders();
             echo json_encode($sliders);
         }
-    }
+    } */
 
     function getEncabezado()
     {

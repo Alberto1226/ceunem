@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     obtenerDatos();
 });
 
-const campos ={
+const camposEn ={
     descripcion:false,
 }
 const valText = (e) => {

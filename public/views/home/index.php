@@ -1,76 +1,48 @@
 <?php require 'views/templete/header.php'; ?>
 <?php require 'views/templete/navar.php'; ?>
-
+<style>
+    .imgSlider {
+        max-width: 100%;
+    }
+</style>
 <!-- Carousel Start -->
 <div class="container-fluid p-0 mb-5">
-    <div id="header-carousel" class="carousel slide" id="sliderHeader" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active" id="item1" style="display: none;">
-                <img class="w-100" id="img1" alt="Image">
-                <div class="carousel-caption">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-7 pt-5">
-                                <h1 class="display-4 text-white mb-3 animated slideInDown" id="tit1"></h1>
-                                <p class="fs-5 text-white-50 mb-5 animated slideInDown" id="desc1"></p>
-                                <a class="btn btn-primary py-2 px-3 animated slideInDown" id="link1">
-                                    <span id="btn_name1"></span>
-                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </div>
-                                </a>
+    <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper3">
+        <div class="swiper-wrapper">
+            <?php
+            include_once 'models/clases/imagen.php';
+            foreach ($this->sliders as $row) {
+                $slider = new Imagen();
+                $slider = $row;
+                $url = $slider->tUrl = 1 ? $url = constant('URL') . $slider->link : $slider->link;
+            ?>
+                <div class="swiper-slide">
+                    <div class="parallax-bg" data-swiper-parallax="-23%">
+                        <img src="<?php echo constant('ARCHIVOS') . $slider->img ?>" alt="" class="imgSlider">
+                    </div>
+                    <!-- <div class="title" data-swiper-parallax="-300">Slide 1</div> -->
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7 pt-5">
+                                    <h1 class="display-4 text-white mb-3 animated slideInDown"><?= $slider->tit ?></h1>
+                                    <p class="fs-5 text-white-50 mb-5 animated slideInDown"><?= $slider->descripcion ?></p>
+                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo $url ?>">
+                                        <span><?= $slider->btn_name; ?></span>
+                                        <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="carousel-item" id="item2" style="display: none;">
-                <img class="w-100" id="img2" alt="Image">
-                <div class="carousel-caption">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-7 pt-5">
-                                <h1 class="display-4 text-white mb-3 animated slideInDown" id="tit2"></h1>
-                                <p class="fs-5 text-white-50 mb-5 animated slideInDown" id="desc2"></p>
-                                <a class="btn btn-primary py-2 px-3 animated slideInDown" id="link2">
-                                    <span id="btn_name2"></span>
-                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item" id="item3" style="display: none;">
-                <img class="w-100" id="img3" alt="Image">
-                <div class="carousel-caption">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-7 pt-5">
-                                <h1 class="display-4 text-white mb-3 animated slideInDown" id="tit3"></h1>
-                                <p class="fs-5 text-white-50 mb-5 animated slideInDown" id="desc3"></p>
-                                <a class="btn btn-primary py-2 px-3 animated slideInDown" id="link3">
-                                    <span id="btn_name3"></span>
-                                    <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
     </div>
 </div>
 <!-- Carousel End -->
@@ -369,6 +341,20 @@
     var swiper = new Swiper(".mySwiper2", {
         slidesPerView: 1,
         spaceBetween: 30,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+
+    var swiper3 = new Swiper(".mySwiper3", {
+        speed: 600,
+        parallax: true,
         loop: true,
         pagination: {
             el: ".swiper-pagination",
