@@ -38,7 +38,7 @@ foreach ($this->secMisions as $row) {
                             <span class="text-primary"><?php echo $secMision->autor; ?></span>
                         </div>
                         <p class="mb-5"><?php echo $secMision->mision; ?></p>
-                        <a class="btn btn-outline-primary py-2 px-3" href="<?php constant('ARCHIVOS') ?>contacto">
+                        <a class="btn btn-outline-primary py-2 px-3 btnPag" href="<?php constant('ARCHIVOS') ?>contacto">
                             Contáctanos
                             <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                 <i class="fa fa-arrow-right"></i>
@@ -145,17 +145,17 @@ foreach ($this->secMisions as $row) {
                                             <?php
                                             if (!empty($secEq->rFace)) {
                                             ?>
-                                                <a class="btn btn-square" href="<?php echo $secEq->rFace; ?>"><i class="fab fa-facebook-f"></i></a>
+                                                <a class="btn btn-square btnPag" href="<?php echo $secEq->rFace; ?>"><i class="fab fa-facebook-f"></i></a>
                                             <?php
                                             } 
                                             if (!empty($secEq->rTw)) {
                                             ?>
-                                                <a class="btn btn-square" href="<?php echo $secEq->rTw; ?>"><i class="fab fa-twitter"></i></a>
+                                                <a class="btn btn-square btnPag" href="<?php echo $secEq->rTw; ?>"><i class="fab fa-twitter"></i></a>
                                             <?php
                                             }
                                             if (!empty($secEq->rIns)) {
                                             ?>
-                                                <a class="btn btn-square" href="<?php echo $secEq->rIns; ?>"><i class="fab fa-instagram"></i></a>
+                                                <a class="btn btn-square btnPag" href="<?php echo $secEq->rIns; ?>"><i class="fab fa-instagram"></i></a>
                                             <?php
                                             }
                                             ?>

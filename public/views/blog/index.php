@@ -29,7 +29,7 @@
                 <div class="col-lg-6">
                     <h1 class="display-1">Proximamente</h1>
                     <p class="mb-4">Todavía estamos trabajando arduamente para que la magia suceda (no puedes apurar la perfección), así que deberás esperar un poco más. Asegúrate de suscribirte a las últimas actualizaciones y estar al tanto de cuando tengamos nuevas carreras, maestrías y cursos para tí.</p>
-                    <a class="btn btn-outline-primary py-2 px-3" href="<?php echo constant('URL') ?>contacto">
+                    <a class="btn btn-outline-primary py-2 px-3 btnPag" href="<?php echo constant('URL') ?>contacto">
                         Suscríbete
                         <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                             <i class="fa fa-arrow-right"></i>
@@ -54,7 +54,7 @@
                             <div class="position-relative mt-auto">
                                 <img class="img-fluid" src="<?php echo constant('ARCHIVOS') . $articulo->img_url; ?>" alt="">
                                 <div class="causes-overlay">
-                                    <a class="btn btn-outline-primary" href="<?php echo $articulo->link_url; ?>" target="_blank">
+                                    <a class="btn btn-outline-primary btnPag" href="<?php echo $articulo->link_url; ?>" target="_blank">
                                         Leer más
                                         <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                             <i class="fa fa-arrow-right"></i>

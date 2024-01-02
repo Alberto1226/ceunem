@@ -29,7 +29,7 @@
                 <div class="col-lg-6">
                     <h1 class="display-1">Proximamente</h1>
                     <p class="mb-4">Todavía estamos trabajando arduamente para que la magia suceda (no puedes apurar la perfección), así que deberás esperar un poco más. Asegúrate de suscribirte a las últimas actualizaciones y estar al tanto de cuando tengamos nuevas carreras, maestrías y cursos para tí.</p>
-                    <a class="btn btn-outline-primary py-2 px-3" href="<?php echo constant('URL') ?>contacto">
+                    <a class="btn btn-outline-primary py-2 px-3 btnPag" href="<?php echo constant('URL') ?>contacto">
                         Suscríbete
                         <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                             <i class="fa fa-arrow-right"></i>
@@ -47,7 +47,7 @@
                             <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $licenciatura->img_url; ?>" alt="">
                             <h4 class="mb-3"><?php echo $licenciatura->nom_lic; ?></h4>
                             <p class="mb-4"><?php echo $licenciatura->descripcion; ?></p>
-                            <a class="btn btn-outline-primary px-3" href="<?php echo constant('ARCHIVOS') . $licenciatura->pdf_url; ?>" target="_blank">
+                            <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('ARCHIVOS') . $licenciatura->pdf_url; ?>" target="_blank">
                                 Plan de estudios
                                 <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                     <i class="fa fa-arrow-right"></i>

@@ -1,5 +1,5 @@
 <!-- Navbar Start -->
-<div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
+<div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s" id="navarPag">
         <div class="top-bar text-white-50 row gx-0 align-items-center d-none d-lg-flex">
             <div class="col-lg-6 px-5 text-start">
                 <small class="ms-4"><i class="fa fa-envelope me-2"></i>info@ceunem.edu.mx</small>
@@ -35,7 +35,7 @@
                     <a href="<?php echo constant('URL') ?>contacto" class="nav-item nav-link">Contacto</a>
                 </div>
                 <div class="d-none d-lg-flex ms-2">
-                    <a class="btn btn-outline-primary py-2 px-3" href="<?php echo constant('URL') ?>admision">
+                    <a class="btn btn-outline-primary py-2 px-3 btnPag" href="<?php echo constant('URL') ?>admision">
                         Admisión
                         <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
                             <i class="fa fa-arrow-right"></i>

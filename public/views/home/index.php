@@ -1,10 +1,5 @@
 <?php require 'views/templete/header.php'; ?>
 <?php require 'views/templete/navar.php'; ?>
-<style>
-    .imgSlider {
-        max-width: 100%;
-    }
-</style>
 <!-- Carousel Start -->
 <div class="container-fluid p-0 mb-5">
     <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper3">
@@ -27,7 +22,7 @@
                                 <div class="col-lg-7 pt-5">
                                     <h1 class="display-4 text-white mb-3 animated slideInDown"><?= $slider->tit ?></h1>
                                     <p class="fs-5 text-white-50 mb-5 animated slideInDown"><?= $slider->descripcion ?></p>
-                                    <a class="btn btn-primary py-2 px-3 animated slideInDown" href="<?php echo $url ?>">
+                                    <a class="btn btn-primary py-2 px-3 animated slideInDown btnPag" href="<?php echo $url ?>">
                                         <span><?= $slider->btn_name; ?></span>
                                         <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
                                             <i class="fa fa-arrow-right"></i>
@@ -63,7 +58,7 @@
                 </div>
                 <h1 class="display-6 mb-5" id="titProg"></h1>
                 <p class="mb-5" id="descripcion"></p>
-                <a class="btn btn-primary py-2 px-3 me-3" id="linkProg">
+                <a class="btn btn-primary py-2 px-3 me-3 btnPag" id="linkProg">
                     <span id="btn_name"></span>
                     <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
                         <i class="fa fa-arrow-right"></i>
@@ -104,9 +99,9 @@
                                     <div class="position-relative mt-auto">
                                         <img class="img-fluid" src="<?php echo constant('ARCHIVOS') . $articulo->img_url; ?>" alt="">
                                         <div class="causes-overlay">
-                                            <a class="btn btn-outline-primary" href="<?php echo $articulo->link_url; ?>" target="_blank">
+                                            <a class="btn btn-outline-primary btnPag" href="<?php echo $articulo->link_url; ?>" target="_blank">
                                                 Leer más
-                                                <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
+                                                <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
                                                     <i class="fa fa-arrow-right"></i>
                                                 </div>
                                             </a>
@@ -148,7 +143,7 @@
                                 <h4 class="card-title"><?= $oferta->tit; ?></h4>
                                 <p class="card-text" style="height: 300px;"><?= $oferta->descripcion; ?></p>
                             </div>
-                            <a class="btn btn-outline-primary px-3" href="<?php echo constant('URL') . $oferta->link; ?>">
+                            <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') . $oferta->link; ?>">
                                 <span><?= $oferta->btn_name; ?></span>
                                 <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                     <i class="fa fa-arrow-right"></i>
@@ -217,7 +212,7 @@
                             </div>
                         <?php } ?>
                         <div class="form-group mt-3">
-                            <button class="btn btn-primary py-2 px-3 me-3">
+                            <button class="btn btn-primary py-2 px-3 me-3 btnPag" >
                                 Envíar
                                 <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
                                     <i class="fa fa-arrow-right"></i>
@@ -262,17 +257,17 @@
                                             <?php
                                             if (!empty($secEq->rFace)) {
                                             ?>
-                                                <a class="btn btn-square" href="<?php echo $secEq->rFace; ?>"><i class="fab fa-facebook-f"></i></a>
+                                                <a class="btn btn-square btnPag" href="<?php echo $secEq->rFace; ?>"><i class="fab fa-facebook-f"></i></a>
                                             <?php
                                             }
                                             if (!empty($secEq->rTw)) {
                                             ?>
-                                                <a class="btn btn-square" href="<?php echo $secEq->rTw; ?>"><i class="fab fa-twitter"></i></a>
+                                                <a class="btn btn-square btnPag" href="<?php echo $secEq->rTw; ?>"><i class="fab fa-twitter"></i></a>
                                             <?php
                                             }
                                             if (!empty($secEq->rIns)) {
                                             ?>
-                                                <a class="btn btn-square" href="<?php echo $secEq->rIns; ?>"><i class="fab fa-instagram"></i></a>
+                                                <a class="btn btn-square btnPag" href="<?php echo $secEq->rIns; ?>"><i class="fab fa-instagram"></i></a>
                                             <?php
                                             }
                                             ?>

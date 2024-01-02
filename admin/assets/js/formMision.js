@@ -60,7 +60,7 @@ const validarCampos = (input, campo) => {
     var titulo = lCapital + restName;
 
     if (input.value.trim() === '') {
-        document.getElementById(`${campo}`).classList.remove('border-success');
+        document.getElementById(`${campo}`).c
         document.getElementById(`${campo}`).classList.add('border-danger');
         document.getElementById(`${campo}`).classList.add('is-invalid');
         showToastr("error", "Verifique el campo", `${titulo}`);

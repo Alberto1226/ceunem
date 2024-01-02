@@ -46,7 +46,7 @@
                             <div class="col-12">
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary px-5" style="height: 60px;">
+                                <button class="btn btn-primary px-5 btnPag" style="height: 60px;">
                                     Descargar Formulario
                                     <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
                                         <i class="fa fa-arrow-right"></i>

@@ -103,7 +103,6 @@ function editar(event) {
         axios.post(baseURL, datos, { encabezados }).then((response) => {
             if (response.data.status) {
                 showSwal("success", "Actualización exitosa", "Se enviaron los datos con exito", response.data.url);
-                vaciar()
             } else {
                 showToastr("error", response.data.msg, "Error");
             }

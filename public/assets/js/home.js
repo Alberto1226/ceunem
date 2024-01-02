@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     obtenerPrograma();
-    obtenerSliders();
     obtenerBlog();
     obtenerOferta();
     obtenerEquipo();
@@ -45,41 +44,6 @@ function obtenerPrograma() {
         descripcion.textContent = response.data.descripcion;
         btn_name.textContent = response.data.btn_name;
         linkProg.href = url;
-    });
-}
-
-function obtenerSliders() {
-    var baseURL = 'http://localhost/ceunem/public/home/getSliders';
-    var urlImagen = 'http://localhost/ceunem/admin/';
-    axios.post(baseURL).then((response) => {
-        const sliders = response.data;
-        for (let i = 0; i < sliders.length; i++) {
-            const slider = Object.entries(sliders[i]);
-            const item = document.getElementById(`item${i + 1}`);
-
-            if (sliders[i]) {
-                slider.forEach(([key, value]) => {
-                    let img = document.getElementById(`img${i + 1}`);
-                    let tit = document.getElementById(`tit${i + 1}`);
-                    let desc = document.getElementById(`desc${i + 1}`);
-                    let link = document.getElementById(`link${i + 1}`);
-                    let btn_name = document.getElementById(`btn_name${i + 1}`);
-
-                    if (key == "img") {
-                        let imgUrl = urlImagen + value;
-                        img.src = imgUrl;
-                    }
-                    if (key == "tit") tit.textContent = value;
-                    if (key == "descripcion") desc.textContent = value;
-                    if (key == "link") link.href = urlImagen + value;
-                    if (key == "btn_name") btn_name.textContent = value;
-                });
-
-                item.style.display = 'inline';
-            } else {
-                item.style.display = 'none';
-            }
-        } 
     });
 }
 

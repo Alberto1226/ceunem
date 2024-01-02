@@ -8,6 +8,8 @@ include_once 'models/clases/programa.php';
 include_once 'models/clases/encabezados.php';
 include_once 'models/clases/ofertas.php';
 include_once 'models/clases/testimonio.php';
+include_once 'models/clases/colores.php';
+
 class HomeModel extends Model
 {
     public function __construct()
@@ -230,6 +232,33 @@ class HomeModel extends Model
                 array_push($items, $item);
             }
             return $items;
+        } catch (PDOException $th) {
+            return [];
+        }
+    }
+
+    public function getColor()
+    {
+        $item = new Colores();
+
+        try {
+            $query = $this->db->connect()->query("SELECT * FROM colores WHERE id_usu = 1");
+
+            while ($row = $query->fetch()) {
+                $item->id_color = $row['id_color'];
+                $item->let_hf = $row['let_hf'];
+                $item->let_hover = $row['let_hover'];
+                $item->btn_font = $row['btn_font'];
+                $item->font = $row['font'];
+                $item->btn_hfont = $row['btn_hfont'];
+                $item->fondo_hf = $row['fondo_hf'];
+                $item->btn_color = $row['btn_color'];
+                $item->btn_hover = $row['btn_hover'];
+                $item->background = $row['background'];
+                $item->id_usu = $row['id_usu'];
+            }
+
+            return $item;
         } catch (PDOException $th) {
             return [];
         }

@@ -43,12 +43,12 @@ class Home extends Controller{
         }
     }
 
-    /* function getSliders(){
+    function getColores(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $sliders = $this->model->getSliders();
-            echo json_encode($sliders);
+            $colores = $this->model->getColor();
+            echo json_encode($colores);
         }
-    } */
+    }
 
     function getEncabezado()
     {
