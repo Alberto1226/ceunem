@@ -7,8 +7,8 @@ class App
     function __construct()
     {
         //echo "<p>Nueva App</p>";
-
-        $url = isset($_GET['url']) ? $_GET['url'] : null;
+        // echo  $_GET['url'];
+        $url = isset($_GET['url']) ? $_GET['url'] : 'home';
         $url = rtrim($url, '/');
         $url = explode('/', $url);
 
