@@ -15,8 +15,9 @@ function obtenerColores() {
     var baseURL = 'http://localhost/ceunem/public/home/getColores';
     const data = { encabezado: 'Testimonios' }
     axios.post(baseURL, data).then((response) => {
-        console.log(response.data)
+        
         const btnPag = document.querySelectorAll('.btnPag');
+       
         //var fondo = response.data.btn_hover == '#ffffff' ? fondo = 'transparent' : fondo = response.data.btn_hover;
 
         btnPag.forEach(function (boton) {
@@ -32,7 +33,7 @@ function obtenerColores() {
             // Agrega un evento al pasar el mouse sobre el botón efecto hover
             boton.addEventListener('mouseover', function () {
                 // Cambia el color de fondo al pasar el mouse sobre el botón
-                boton.style.backgroundColor = fondo;
+                boton.style.backgroundColor = response.data.fondo;
                 boton.style.color = response.data.btn_hfont;
 
                 iconos.forEach(function (icono) {
@@ -61,5 +62,48 @@ function obtenerColores() {
                 });
             });
         });
+        const menuPag = document.querySelectorAll('.menuPag');       
+        menuPag.forEach(function (menu) {
+            // let_hf color letra
+            // fondo_hf color fondo
+            // let_hover color de efecto para la letra
+            menu.style.border = `1px solid  ${response.data.fondo_hf}`;
+            menu.style.backgroundColor =response.data.fondo_hf;     
+            var enlaces = menu.querySelectorAll('div a:hover');
+                enlaces.forEach(function (enlace) {
+                    enlace.style.color =   response.data.let_hover;
+            });   
+            var parrafos = menu.querySelectorAll('div p, div > p, p');
+            parrafos.forEach(function (parrafo) {
+                    parrafo.style.color =   `${response.data.let_hf} !important`;
+            });   
+            var iconos = menu.querySelectorAll('i');
+                iconos.forEach(function (icono) {
+                    icono.style.color =   response.data.fondo_hf;
+            });   
+        });
+
+        // Colores generales
+
+        // background - color fondo resto de la pagina
+        // font - color de la letra resto de la pagina
+        
+        const restPagina = document.querySelectorAll('.restPagina');       
+        setTimeout(() => {
+            restPagina.forEach(function (restPag) {     
+                restPag.style.border = `1px solid  ${response.data.background}`;
+                restPag.style.backgroundColor = `${response.data.background} !important`;     
+                restPag.style.background = `${response.data.background} !important` ;  
+                // var enlaces = restPag.querySelectorAll('div a:hover');
+                //     enlaces.forEach(function (enlace) {
+                //         enlace.style.color =   response.data.let_hover;
+                // });   
+                var parrafos = restPag.querySelectorAll('div p, div > p');
+                parrafos.forEach(function (parrafo) {
+                        parrafo.style.color =   `${response.data.font}  !important !important`;
+                }); 
+            });            
+        }, 1000);
+
     })
 }

@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <nav class="navbar navbar-expand-lg navbar-dark py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+        <nav class="navbar navbar-expand-lg navbar-dark py-lg-0 px-lg-5 wow fadeIn menuPag" data-wow-delay="0.1s">
             <a href="<?php echo constant('URL') ?>home" class="navbar-brand ms-4 ms-lg-0">
                 <img src="<?php echo constant('URL') ?>assets/img/LOGO CEUNEM.png" width="136" height="46" alt="" />
             </a>

@@ -54,7 +54,7 @@
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="h-20">
-                    <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3" id="nom_menu"></div>
+                    <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3 restPagina" id="nom_menu"></div>
                 </div>
                 <h1 class="display-6 mb-5" id="titProg"></h1>
                 <p class="mb-5" id="descripcion"></p>
@@ -160,7 +160,7 @@
 <!-- Oferta Educativa End -->
 
 <!-- Contacto Start -->
-<div class="container-fluid donate " data-parallax="" data-image-src="<?php echo constant('URL') ?>assets/img/carousel-2.jpg">
+<div class="container-fluid donate menuPag" data-parallax="" data-image-src="<?php echo constant('URL') ?>assets/img/carousel-2.jpg">
     <div class="container py-5">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
