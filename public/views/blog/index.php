@@ -18,7 +18,7 @@
         <?php 
         $tit = $this->header->encabezado == 'Blog' ? $tit = 'Artículos' : $tit ='Blog';?>
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3"><?= $tit; ?></div>
+            <div class="d-inline-block rounded-pill restPagina text-white py-1 px-3 mb-3"><?= $tit; ?></div>
             <h1 class="display-6 mb-5"><?= $this->header->descripcion; ?></h1>
         </div>
         <div class="row g-4 justify-content-center">

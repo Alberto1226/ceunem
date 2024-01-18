@@ -9,6 +9,7 @@ todosLosElementos.forEach(function(elemento) {
 });
 
     obtenerColores();
+    defineActivo();
 });
 
 function obtenerColores() {
@@ -89,21 +90,35 @@ function obtenerColores() {
         // font - color de la letra resto de la pagina
         
         const restPagina = document.querySelectorAll('.restPagina');       
-        setTimeout(() => {
-            restPagina.forEach(function (restPag) {     
+        
+            restPagina.forEach(function (restPag) {   
+                restPag.style.backgroundColor = response.data.background; 
                 restPag.style.border = `1px solid  ${response.data.background}`;
-                restPag.style.backgroundColor = `${response.data.background} !important`;     
-                restPag.style.background = `${response.data.background} !important` ;  
-                // var enlaces = restPag.querySelectorAll('div a:hover');
-                //     enlaces.forEach(function (enlace) {
-                //         enlace.style.color =   response.data.let_hover;
-                // });   
+                restPag.style.color = response.data.font;
                 var parrafos = restPag.querySelectorAll('div p, div > p');
                 parrafos.forEach(function (parrafo) {
-                        parrafo.style.color =   `${response.data.font}  !important !important`;
+                        parrafo.style.color = `${response.data.font} !important`;
                 }); 
             });            
-        }, 1000);
+        
 
     })
+}
+
+
+function defineActivo (){
+    // Obtener la URL actual
+    var url = window.location.href;
+
+    // Dividir la URL en partes usando el carácter "/"
+    var partesURL = url.split('/');
+
+    // Obtener el último valor
+    var ultimoValor = partesURL[partesURL.length - 1];
+    // Activas el btn
+    const busqueda = (ultimoValor!='')? ultimoValor+'-select' :'home-select'
+    var miElemento = document.getElementById(busqueda);   
+    miElemento.className = miElemento.className +' active';
+ 
+
 }

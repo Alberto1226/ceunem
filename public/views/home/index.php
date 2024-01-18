@@ -54,7 +54,7 @@
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="h-20">
-                    <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3 restPagina" id="nom_menu"></div>
+                    <div class="d-inline-block rounded-pill btn text-white py-1 px-3 mb-3 restPagina" id="nom_menu"></div>
                 </div>
                 <h1 class="display-6 mb-5" id="titProg"></h1>
                 <p class="mb-5" id="descripcion"></p>
@@ -74,7 +74,7 @@
 <div class="container-xxl bg-light my-5 py-5">
     <div class="container py-5">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3" id="enBlog"></div>
+            <div class="d-inline-block rounded-pill bg restPagina text-white py-1 px-3 mb-3" id="enBlog"></div>
             <h1 class="display-6 mb-5" id="descBlog"></h1>
         </div>
         <div class="row g-4">
@@ -125,7 +125,7 @@
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3" id="enOferta"></div>
+            <div class="d-inline-block rounded-pill bg restPagina text-white py-1 px-3 mb-3" id="enOferta"></div>
             <h1 class="display-6 mb-5" id="descOferta"></h1>
         </div>
         <div class="swiper mySwiper">
@@ -164,7 +164,7 @@
     <div class="container py-5">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                <div class="d-inline-block rounded-pill bg-secondary text-white px-3 mb-3">Contacto</div>
+                <div class="d-inline-block rounded-pill bg restPagina text-white px-3 mb-3">Contacto</div>
                 <h1 class="display-6 text-white mb-5">¡Comunícate con nosotros!&nbsp;</h1>
                 <p class="text-white-50 mb-0">Nos esforzamos por brindar educación de alta calidad, flexible y personalizada. Para unirse a nuestra gran comunidad, ingrese sus datos a continuación para poder recibir información sobre la carrera de su interés y comience el proceso de inscripción hoy mismo.</p>
             </div>
@@ -231,7 +231,7 @@
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3" id="enEquipo"></div>
+            <div class="d-inline-block rounded-pill bg restPagina text-white py-1 px-3 mb-3" id="enEquipo"></div>
             <h1 class="display-6 mb-5" id="descEquipo"></h1>
         </div>
         <div class="row g-4">
@@ -291,7 +291,7 @@
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3" id="enTestimonio"></div>
+            <div class="d-inline-block restPagina rounded-pill btn text-white py-1 px-3 mb-3" id="enTestimonio"></div>
             <h1 class="display-6 mb-5" id="descTestimonio"></h1>
         </div>
         <div class="swiper mySwiper2">

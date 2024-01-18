@@ -24,14 +24,14 @@ foreach ($this->secMisions as $row) {
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">                    
                     <div class="position-relative overflow-hidden h-100" style="min-height: 400px;">
                         <img class="position-absolute w-100 h-100 pt-5 pe-5" src="<?php echo constant('ARCHIVOS') . $secMision->img_body; ?>" alt="" style="object-fit: cover;">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="h-100">
-                        <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3">CEUNEM</div>
+                        <div class="d-inline-block rounded-pill restPagina text-white py-1 px-3 mb-3">CEUNEM</div>
                         <h1 class="display-6 mb-5">Misión</h1>
                         <div class="bg-light border-bottom border-5 border-primary rounded p-4 mb-4">
                             <p class="text-dark mb-2"><?php echo $secMision->frase; ?></p>
@@ -60,7 +60,7 @@ foreach ($this->secMisions as $row) {
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3"><?= $this->header->encabezado; ?></div>
+            <div class="d-inline-block rounded-pill restPagina text-white py-1 px-3 mb-3"><?= $this->header->encabezado; ?></div>
             <h1 class="display-6 mb-5"><?= $this->header->descripcion; ?></h1>
         </div>
         <div class="row g-4 justify-content-center">
@@ -119,7 +119,7 @@ foreach ($this->secMisions as $row) {
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill bg-secondary text-white py-1 px-3 mb-3"><?= $this->header1->encabezado; ?></div>
+            <div class="d-inline-block rounded-pill restPagina text-white py-1 px-3 mb-3"><?= $this->header1->encabezado; ?></div>
             <h1 class="display-6 mb-5"><?= $this->header1->descripcion; ?></h1>
         </div>
         <div class="row g-4">

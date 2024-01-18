@@ -20,10 +20,10 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="<?php echo constant('URL') ?>home" class="nav-item nav-link active">Inicio&nbsp;</a>
-                    <a href="<?php echo constant('URL') ?>nosotros" class="nav-item nav-link">Nosotros&nbsp;</a>
-                    <a href="<?php echo constant('URL') ?>blog" class="nav-item nav-link">Blog&nbsp;</a>
+                <div class="navbar-nav ms-auto p-4 p-lg-0">                    
+                    <a href="<?php echo constant('URL') ?>home" class="nav-item nav-link" id="home-select">Inicio&nbsp;</a>
+                    <a href="<?php echo constant('URL') ?>nosotros" class="nav-item nav-link" id="nosotros-select">Nosotros&nbsp;</a>
+                    <a href="<?php echo constant('URL') ?>blog" class="nav-item nav-link" id="blog-select">Blog&nbsp;</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Oferta Educativa&nbsp;</a>
                         <div class="dropdown-menu m-0">
@@ -32,7 +32,7 @@
                             <a href="<?php echo constant('URL') ?>continua" class="dropdown-item">Educación Continua</a>
                         </div>
                     </div>
-                    <a href="<?php echo constant('URL') ?>contacto" class="nav-item nav-link">Contacto</a>
+                    <a href="<?php echo constant('URL') ?>contacto" class="nav-item nav-link" id="contacto-select">Contacto</a>
                 </div>
                 <div class="d-none d-lg-flex ms-2">
                     <a class="btn btn-outline-primary py-2 px-3 btnPag" href="<?php echo constant('URL') ?>admision">
@@ -45,4 +45,7 @@
             </div>
         </nav>
     </div>
+    <script>
+
+    </script>
     <!-- Navbar End -->

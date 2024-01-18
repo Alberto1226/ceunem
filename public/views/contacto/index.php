@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                <div class="d-inline-block rounded-pill bg-secondary text-white px-3 mb-3">¡Contáctanos!</div>
+                <div class="d-inline-block rounded-pill restPagina text-white px-3 mb-3">¡Contáctanos!</div>
                 <h1 class="display-6 mb-5">Comunícate con nosotros</h1>
                 <p class="mb-4">Nos esforzamos por brindar educación de alta calidad, flexible y personalizada. Para unirse a nuestra gran comunidad, ingrese sus datos a continuación para poder recibir información sobre la carrera de su interés y comience el proceso de inscripción hoy mismo.</p>
                 <form action="<?php echo constant('URL'); ?>contacto/sendEmail" method="post">
