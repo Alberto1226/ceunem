@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider1">
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider1Nosotros">
                                 Imágen Slider 1
                             </a>
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>programaCalidad">
@@ -118,7 +118,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider1">
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider1OfEducativa">
                                 Imágen Slider 1
                             </a>
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>oferta">
@@ -147,7 +147,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider1">
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider1Blog">
                                 Imágen Slider 1
                             </a>
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>blog">
@@ -169,7 +169,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider1">
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider1Contacto">
                                 Imágen Slider 1
                             </a>
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>contacto">
