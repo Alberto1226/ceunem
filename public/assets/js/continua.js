@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function obtenerImagenBanner() {
-    var baseURL = 'http://localhost/ceunem/public/nosotros/getBanner';  
+    var baseURL = 'http://localhost/ceunem/public/continua/getBanner';  
 
     axios.post(baseURL).then((response) => {
         if(response.status == 200){            
