@@ -116,7 +116,7 @@
         </a>
         <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="<?php echo constant('URL') ?>slider1OfEdicativa" class="nav-link">
+            <a href="<?php echo constant('URL') ?>slider1OfEducativa" class="nav-link">
               <i class="fas fa-image nav-icon"></i>
               <p>Imágen Slider 1</p>
             </a>

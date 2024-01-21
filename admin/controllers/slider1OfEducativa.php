@@ -1,7 +1,7 @@
 <?php
 require_once 'libs/controller.php';
 require_once 'models/slidersModel.php';
-class slider1OfEdicativa extends Controller
+class slider1OfEducativa extends Controller
 {
     public $id;
     private $sliders;
@@ -23,7 +23,7 @@ class slider1OfEdicativa extends Controller
         $fila = $this->sliders->contarFilas($id_usu, 1,'oferta-educativa');
         $this->view->fila = $fila;
 
-        $this->view->render('slider1OfEdicativa/index');
+        $this->view->render('slider1OfEducativa/index');
     }
 
     function addImg()
@@ -67,7 +67,7 @@ class slider1OfEdicativa extends Controller
                     if (move_uploaded_file($img, $r)) {
                         $arrResponse = array(
                             'status' => true, 'msg' => 'ok',
-                            'url' => URL . 'slider1'
+                            'url' => URL . 'slider1OfEducativa'
                         );
                         echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                     } else {
@@ -144,7 +144,7 @@ class slider1OfEdicativa extends Controller
                             unlink($imgBD);
                             $arrResponse = array(
                                 'status' => true, 'msg' => 'ok',
-                                'url' => URL . 'slider1'
+                                'url' => URL . 'slider1OfEducativa'
                             );
                             echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                         } else {
@@ -180,7 +180,7 @@ class slider1OfEdicativa extends Controller
                 if ($this->sliders->update($slider)) {
                     $arrResponse = array(
                         'status' => true, 'msg' => 'ok',
-                        'url' => URL . 'slider1'
+                        'url' => URL . 'slider1OfEducativa'
                     );
                     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                 } else {

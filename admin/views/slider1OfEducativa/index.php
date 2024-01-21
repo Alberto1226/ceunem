@@ -9,7 +9,7 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-6">
-                                <h1>Slider 3 - Oferta Educativa</h1>
+                                <h1>Slider 1 - Oferta Educativa</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
@@ -23,17 +23,17 @@
             <div class="card-body">
             <?php
                 if (empty($this->fila)) {
-                    require 'views/slider1OfEdicativa/formInsertImg.php';
+                    require 'views/slider1OfEducativa/formInsertImg.php';
                 ?>
-                    <script src="<?php echo constant('URL') ?>assets/js/formInsertImg3.js"></script>
+                    <script src="<?php echo constant('URL') ?>assets/js/formInsertOfEducativa.js"></script>
                 <?php
                 } else {
-                    require 'views/slider1OfEdicativa/formEditImg.php';
+                    require 'views/slider1OfEducativa/formEditImg.php';
                 ?>
-                    <script src="<?php echo constant('URL') ?>assets/js/formEditImg3.js"></script>
+                    <script src="<?php echo constant('URL') ?>assets/js/formEditOfEducativa.js"></script>
                 <?php
                 }
-                require 'views/slider1OfEdicativa/previewImg.php';
+                require 'views/slider1OfEducativa/previewImg.php';
                 ?>
             </div>
         </div>
