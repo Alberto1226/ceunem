@@ -5,12 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function obtenerImagenBanner() {
-    var baseURL = 'http://localhost/ceunem/public/nosotros/getBanner';  
+    var baseURL = 'http://localhost/ceunem/public/blog/getBanner';  
 
     axios.post(baseURL).then((response) => {
         if(response.status == 200){            
             const ImgenAsc = response.data;
-            // if(ImgenAsc === 'undefined'){
+            // if(ImgenAsc === undefined){
                 console.log("SIn dato", ImgenAsc);
                 const bannerImgAsc = document.querySelectorAll('.bannerImgAsc');
                 bannerImgAsc.forEach(function (divAsc) {               

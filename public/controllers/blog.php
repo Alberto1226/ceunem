@@ -19,6 +19,15 @@ class Blog extends Controller{
         $this->view->render('blog/index');
     }
 
+    public function getBanner()
+    {        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $banner = $this->model->getBanner();
+            $imagenBanner = constant('ARCHIVOS').$banner[0]->img;            
+            echo json_encode($imagenBanner);
+        }     
+    }
+
 }
 
 ?>
