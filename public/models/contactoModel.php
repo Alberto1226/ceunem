@@ -2,6 +2,7 @@
 include_once 'models/clases/formulario.php';
 include_once 'models/clases/smtp.php';
 include_once 'models/clases/mapas.php';
+include_once 'models/clases/imagen.php';
 
 class ContactoModel extends Model
 {
@@ -74,6 +75,33 @@ class ContactoModel extends Model
                 return false;
             }
         } catch (PDOException $th) {
+            return [];
+        }
+    }
+
+    public function getBanner()
+    {
+        $items = [];
+        try {
+            $query = $this->db->connect()->query(
+                "SELECT * FROM sliders WHERE id_usu=1 AND seccion='contacto' ORDER BY posicion ASC"
+            );
+            
+            while ($row = $query->fetch()) {
+                $item = new Imagen();
+                $item->id_slider = $row['id_slider'];
+                $item->img = $row['img'];
+                $item->tit = $row['tit'];
+                $item->descripcion = $row['descripcion'];
+                $item->btn_name = $row['btn_name'];
+                $item->link = $row['link'];
+                $item->tUrl = $row['tUrl'];
+                $item->posicion = $row['posicion'];
+                $item->id_usu = $row['id_usu'];
+                array_push($items, $item);
+            }
+            return $items;
+        } catch (PDOException $e) {
             return [];
         }
     }

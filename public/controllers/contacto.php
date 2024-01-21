@@ -24,6 +24,15 @@ class Contacto extends Controller{
         $this->view->render('contacto/index');
     }
 
+    public function getBanner()
+    {        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $banner = $this->model->getBanner();
+            $imagenBanner = constant('ARCHIVOS').$banner[0]->img;            
+            echo json_encode($imagenBanner);
+        }     
+    }
+
     function sendEmail(){
         $nCompleto = $_POST['nCompleto'];
         $nombre = $_POST['nombre'];
