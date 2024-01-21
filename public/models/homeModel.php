@@ -115,9 +115,9 @@ class HomeModel extends Model
         $items = [];
         try {
             $query = $this->db->connect()->query(
-                "SELECT * FROM sliders WHERE id_usu=1 ORDER BY posicion ASC"
+                "SELECT * FROM sliders WHERE id_usu=1 AND seccion='inicio' ORDER BY posicion ASC"
             );
-
+            
             while ($row = $query->fetch()) {
                 $item = new Imagen();
 
