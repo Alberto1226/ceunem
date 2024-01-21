@@ -13,6 +13,7 @@
             <input type="hidden" id="id_usu" name="id_usu">
             <input type="hidden" id="posicion" name="posicion">
             <input type="hidden" id="imgBD" name="imgBD">
+            <input type="hidden" id="seccion" name="seccion" value="inicio">
             <div class="form-group">
                 <label for="img">Imagen</label>
                 <div class="input-group">

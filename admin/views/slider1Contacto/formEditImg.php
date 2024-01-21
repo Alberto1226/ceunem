@@ -8,12 +8,12 @@
         </div>
     </div>
     <div class="card-body">
-        <form action="#" method="post" enctype="multipart/form-data" id="formEditImg2" class="formularioImagenes">
+        <form action="#" method="post" enctype="multipart/form-data" id="formEditImg3" class="formularioImagenes">
             <input type="hidden" id="id_slider" name="id_slider">
             <input type="hidden" id="id_usu" name="id_usu">
             <input type="hidden" id="posicion" name="posicion">
             <input type="hidden" id="imgBD" name="imgBD">
-            <input type="hidden" id="seccion" name="seccion" value="inicio">
+            <input type="hidden" id="seccion" name="seccion" value="contacto">
             <div class="form-group">
                 <label for="img">Imagen</label>
                 <div class="input-group">

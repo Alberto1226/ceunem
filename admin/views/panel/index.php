@@ -83,6 +83,9 @@
                             </div>
                         </div>
                         <div class="card-body">
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider1">
+                                Imágen Slider 1
+                            </a>
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>programaCalidad">
                                 Programa de Calidad
                             </a>
@@ -115,6 +118,9 @@
                             </div>
                         </div>
                         <div class="card-body">
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider1">
+                                Imágen Slider 1
+                            </a>
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>oferta">
                                 Descripción
                             </a>
@@ -141,6 +147,9 @@
                             </div>
                         </div>
                         <div class="card-body">
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider1">
+                                Imágen Slider 1
+                            </a>
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>blog">
                                 Agrear Artículo
                             </a>
@@ -160,6 +169,9 @@
                             </div>
                         </div>
                         <div class="card-body">
+                            <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>slider1">
+                                Imágen Slider 1
+                            </a>
                             <a class="btn btn-block btn-outline-success px-3" href="<?php echo constant('URL') ?>contacto">
                                 Formulario de contacto
                             </a>

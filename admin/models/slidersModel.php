@@ -9,10 +9,11 @@ class SlidersModel extends Model
 
     public function insert($datos)
     {
+        
         try {
             $query = $this->db->connect()->prepare(
-                'INSERT INTO sliders (img, tit, descripcion, btn_name, link, tUrl, posicion, id_usu)
-                VALUES (:img, :tit, :descripcion, :btn_name, :link, :tUrl, :posicion, :id_usu)'
+                'INSERT INTO sliders (img, tit, descripcion, btn_name, link, tUrl, posicion, id_usu, seccion)
+                VALUES (:img, :tit, :descripcion, :btn_name, :link, :tUrl, :posicion, :id_usu, :seccion)'
             );
             $query->execute([
                 'img' => $datos['img'],
@@ -22,7 +23,8 @@ class SlidersModel extends Model
                 'link' => $datos['link'],
                 'tUrl' => $datos['tUrl'],
                 'posicion' => $datos['posicion'],
-                'id_usu' => $datos['id_usu']
+                'id_usu' => $datos['id_usu'],
+                'seccion'=> $datos['seccion']
             ]);
             return true;
         } catch (PDOException $th) {
@@ -30,15 +32,20 @@ class SlidersModel extends Model
         }
     }
 
-    public function contarFilas($id, $posicion)
+    public function contarFilas($id, $posicion, $seccion)
     {
+        
         try {
-            $query = $this->db->connect()->prepare("SELECT * FROM sliders WHERE id_usu = :id_usu AND posicion = :posicion");
+            $query = $this->db->connect()->prepare("SELECT * FROM sliders WHERE id_usu = :id_usu AND posicion = :posicion AND seccion = :seccion");
+            
             $query->execute([
                 'id_usu' => $id,
-                'posicion' => $posicion
+                'posicion' => $posicion,
+                'seccion' => $seccion
             ]);
+
             $filas = $query->rowCount();
+            
             return $filas;
         } catch (PDOException $th) {
             return 0;

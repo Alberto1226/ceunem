@@ -8,12 +8,10 @@
         </div>
     </div>
     <div class="card-body">
-        <form action="#" method="post" enctype="multipart/form-data" id="formEditImg2" class="formularioImagenes">
-            <input type="hidden" id="id_slider" name="id_slider">
-            <input type="hidden" id="id_usu" name="id_usu">
-            <input type="hidden" id="posicion" name="posicion">
-            <input type="hidden" id="imgBD" name="imgBD">
-            <input type="hidden" id="seccion" name="seccion" value="inicio">
+        <form action="#" method="post" enctype="multipart/form-data" id="formInsertImg3" class="formularioImagenes">
+            <input type="hidden" id="id_usu" value="<?php echo $_SESSION['id_usu'] ?>" name="id_usu">
+            <input type="hidden" id="posicion" name="posicion" value="1">
+            <input type="hidden" id="seccion" name="seccion" value="nosotros">
             <div class="form-group">
                 <label for="img">Imagen</label>
                 <div class="input-group">
@@ -22,9 +20,6 @@
                         <label class="custom-file-label" for="img">Seleccione la imagen</label>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label id="imgTit"></label>
             </div>
             <div class="form-group">
                 <label for="tit">Título</label>
@@ -36,7 +31,7 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                    <div class="form-group">
+                <div class="form-group">
                         <label>Nombre del botón</label>
                         <select class="form-control border border-success" id="sName" name="sName">
                             <option>Seleccione una opción</option>
@@ -52,7 +47,8 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="form-group">
+                    
+                <div class="form-group">
                         <label>Link del botón</label>
                         <select class="form-control border border-success" id="sLink" name="sLink">
                             <option>Seleccione una opción</option>
@@ -69,11 +65,11 @@
                 </div>
             </div>
             <div class="form-group" id="otroLink" style="display: none;">
-                <label for="link">Link fuera del sitio</label>
+                <label for="link1Up">Link fuera del sitio</label>
                 <input type="text" class="form-control border border-success" id="link" placeholder="Ingrese el link" name="link">
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-warning btn-block" id="btnImagen_1" name="btnImagen_1">Guardar</button>
+                <button type="submit" class="btn btn-success btn-block" id="btnImagen_3" name="btnImagen_3">Guardar</button>
             </div>
         </form>
     </div>

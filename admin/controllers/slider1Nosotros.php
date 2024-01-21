@@ -1,7 +1,7 @@
 <?php
 require_once 'libs/controller.php';
 require_once 'models/slidersModel.php';
-class Slider1 extends Controller
+class slider1Nosotros extends Controller
 {
     public $id;
     private $sliders;
@@ -20,10 +20,10 @@ class Slider1 extends Controller
     function render()
     {
         $id_usu = $this->id = $_SESSION['id_usu'];
-        $fila = $this->sliders->contarFilas($id_usu, 1,'inicio');
+        $fila = $this->sliders->contarFilas($id_usu, 1,'nosotros');
+        
         $this->view->fila = $fila;
-
-        $this->view->render('slider1/index');
+        $this->view->render('slider1Nosotros/index');
     }
 
     function addImg()
@@ -42,8 +42,8 @@ class Slider1 extends Controller
             $seccion = $_POST['seccion'];
 
             $url = $sLink === 'otro' ? $url = $link : $url = $sLink;
-            $tUrl = $sLink === 'otro' ? $tUrl = 2 : $tUrl = 1;
-
+            $tUrl = $sLink === 'otro' ? $tUrl = 2 : $tUrl = 1;  
+                  
             $imgName = $_FILES['img']['name'];
             $timg = strtolower(pathinfo($imgName, PATHINFO_EXTENSION));
 
@@ -68,7 +68,7 @@ class Slider1 extends Controller
                     if (move_uploaded_file($img, $r)) {
                         $arrResponse = array(
                             'status' => true, 'msg' => 'ok',
-                            'url' => URL . 'slider1'
+                            'url' => URL . 'slider1Nosotros' // aqui se cambia
                         );
                         echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                     } else {
@@ -145,7 +145,7 @@ class Slider1 extends Controller
                             unlink($imgBD);
                             $arrResponse = array(
                                 'status' => true, 'msg' => 'ok',
-                                'url' => URL . 'slider1'
+                                'url' => URL . 'slider1Nosotros'
                             );
                             echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                         } else {
@@ -181,7 +181,7 @@ class Slider1 extends Controller
                 if ($this->sliders->update($slider)) {
                     $arrResponse = array(
                         'status' => true, 'msg' => 'ok',
-                        'url' => URL . 'slider1'
+                        'url' => URL . 'slider1Nosotros'
                     );
                     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                 } else {

@@ -11,6 +11,7 @@
         <form action="#" method="post" enctype="multipart/form-data" id="formInsertImg1" class="formularioImagenes">
             <input type="hidden" id="id_usu" value="<?php echo $_SESSION['id_usu'] ?>" name="id_usu">
             <input type="hidden" id="posicion" name="posicion" value="1">
+            <input type="hidden" id="seccion" name="seccion" value="inicio">
             <div class="form-group">
                 <label for="img">Imagen</label>
                 <div class="input-group">

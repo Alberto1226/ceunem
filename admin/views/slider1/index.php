@@ -9,7 +9,7 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-6">
-                                <h1>Slider 1</h1>
+                                <h1>Slider 1 - Inicio</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
@@ -21,6 +21,7 @@
                 </section>
             </div>
             <div class="card-body">
+                
                 <?php
                 if (empty($this->fila)) {
                     require 'views/slider1/formInsertImg.php';

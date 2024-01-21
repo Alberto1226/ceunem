@@ -20,7 +20,7 @@ class Slider3 extends Controller
     function render()
     {
         $id_usu = $this->id = $_SESSION['id_usu'];
-        $fila = $this->sliders->contarFilas($id_usu, 3);
+        $fila = $this->sliders->contarFilas($id_usu, 3,'inicio');
         $this->view->fila = $fila;
 
         $this->view->render('slider3/index');

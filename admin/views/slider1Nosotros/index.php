@@ -9,7 +9,7 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-6">
-                                <h1>Slider 3 - Inicio</h1>
+                                <h1>Slider 1 - Nosotros</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
@@ -21,19 +21,21 @@
                 </section>
             </div>
             <div class="card-body">
-            <?php
-                if (empty($this->fila)) {
-                    require 'views/slider3/formInsertImg.php';
-                ?>
-                    <script src="<?php echo constant('URL') ?>assets/js/formInsertImg3.js"></script>
                 <?php
-                } else {
-                    require 'views/slider3/formEditImg.php';
+                if (empty($this->fila)) {
+                    require 'views/slider1Nosotros/formInsertImg.php';
                 ?>
-                    <script src="<?php echo constant('URL') ?>assets/js/formEditImg3.js"></script>
+                    opcion1
+                    <script src="<?php echo constant('URL') ?>assets/js/formInsertNosotros.js"></script>
+                <?php
+                } else {                
+                    require 'views/slider1Nosotros/formEditImg.php';
+                ?>
+                    opcion2
+                    <script src="<?php echo constant('URL') ?>assets/js/formEditNosotros.js"></script>
                 <?php
                 }
-                require 'views/slider3/previewImg.php';
+                require 'views/slider1Nosotros/previewImg.php';
                 ?>
             </div>
         </div>

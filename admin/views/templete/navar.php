@@ -51,6 +51,12 @@
         </a>
         <ul class="nav nav-treeview">
         <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>slider1Nosotros" class="nav-link">
+              <i class="fas fa-image nav-icon"></i>
+              <p>Imágen Slider 1</p>
+            </a>
+          </li>
+        <li class="nav-item">
             <a href="<?php echo constant('URL') ?>programaCalidad" class="nav-link">
               <i class="fas fa-certificate nav-icon"></i>
               <p>Programa de Calidad</p>
@@ -110,6 +116,12 @@
         </a>
         <ul class="nav nav-treeview">
         <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>slider1OfEdicativa" class="nav-link">
+              <i class="fas fa-image nav-icon"></i>
+              <p>Imágen Slider 1</p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="<?php echo constant('URL') ?>oferta" class="nav-link">
               <i class="fas fa-edit nav-icon"></i>
               <p>Descripción</p>
@@ -137,10 +149,28 @@
       </li>
       <!-- Blog -->
       <li class="nav-item">
-        <a href="<?php echo constant('URL') ?>blog" class="nav-link">
+        <a href="#" class="nav-link">
           <i class="nav-icon fas fa-rss"></i>
-          <p>Blog</p>
+          <p>
+            Blog      
+            <i class="right fas fa-angle-left"></i>      
+          </p>
         </a>
+        <ul class="nav nav-treeview">
+         
+          <li class="nav-item">
+              <a href="<?php echo constant('URL') ?>slider1Blog" class="nav-link">
+                <i class="fas fa-image nav-icon"></i>
+                <p>Imágen Slider 1</p>
+              </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo constant('URL') ?>blog" class="nav-link">
+              <i class="fas fa-edit nav-icon"></i>
+              <p>Agregar Articulo</p>
+            </a>
+          </li>
+        </ul>       
       </li>
       <!-- Contacto -->
       <li class="nav-item">
@@ -152,7 +182,12 @@
           </p>
         </a>
         <ul class="nav nav-treeview">
-          
+          <li class="nav-item">
+              <a href="<?php echo constant('URL') ?>slider1Contacto" class="nav-link">
+                <i class="fas fa-image nav-icon"></i>
+                <p>Imágen Slider 1</p>
+              </a>
+          </li>
           <li class="nav-item">
             <a href="<?php echo constant('URL') ?>contacto" class="nav-link">
               <i class="fas fa-list-ul nav-icon"></i>

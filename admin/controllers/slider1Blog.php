@@ -1,7 +1,7 @@
 <?php
 require_once 'libs/controller.php';
 require_once 'models/slidersModel.php';
-class Slider1 extends Controller
+class slider1Blog extends Controller
 {
     public $id;
     private $sliders;
@@ -20,15 +20,14 @@ class Slider1 extends Controller
     function render()
     {
         $id_usu = $this->id = $_SESSION['id_usu'];
-        $fila = $this->sliders->contarFilas($id_usu, 1,'inicio');
+        $fila = $this->sliders->contarFilas($id_usu, 1,'blog');
         $this->view->fila = $fila;
 
-        $this->view->render('slider1/index');
+        $this->view->render('slider1Blog/index');
     }
 
     function addImg()
     {
-        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $id_usu = $_POST['id_usu'];
