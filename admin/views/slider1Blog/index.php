@@ -25,12 +25,12 @@
                 if (empty($this->fila)) {
                     require 'views/slider1Blog/formInsertImg.php';
                 ?>
-                    <script src="<?php echo constant('URL') ?>assets/js/formInsertImg3.js"></script>
+                    <script src="<?php echo constant('URL') ?>assets/js/formInsertBlog.js"></script>
                 <?php
                 } else {
                     require 'views/slider1Blog/formEditImg.php';
                 ?>
-                    <script src="<?php echo constant('URL') ?>assets/js/formEditImg3.js"></script>
+                    <script src="<?php echo constant('URL') ?>assets/js/formEditBlog.js"></script>
                 <?php
                 }
                 require 'views/slider1Blog/previewImg.php';

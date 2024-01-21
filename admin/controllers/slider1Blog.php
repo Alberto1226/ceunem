@@ -67,7 +67,7 @@ class slider1Blog extends Controller
                     if (move_uploaded_file($img, $r)) {
                         $arrResponse = array(
                             'status' => true, 'msg' => 'ok',
-                            'url' => URL . 'slider1'
+                            'url' => URL . 'slider1Blog'
                         );
                         echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                     } else {
@@ -144,7 +144,7 @@ class slider1Blog extends Controller
                             unlink($imgBD);
                             $arrResponse = array(
                                 'status' => true, 'msg' => 'ok',
-                                'url' => URL . 'slider1'
+                                'url' => URL . 'slider1Blog'
                             );
                             echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                         } else {
@@ -180,7 +180,7 @@ class slider1Blog extends Controller
                 if ($this->sliders->update($slider)) {
                     $arrResponse = array(
                         'status' => true, 'msg' => 'ok',
-                        'url' => URL . 'slider1'
+                        'url' => URL . 'slider1Blog'
                     );
                     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                 } else {
