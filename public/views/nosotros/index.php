@@ -33,7 +33,7 @@ foreach ($this->secMisions as $row) {
                     <div class="h-100">
                         <div class="d-inline-block rounded-pill restPagina text-white py-1 px-3 mb-3">CEUNEM</div>
                         <h1 class="display-6 mb-5">Misión</h1>
-                        <div class="bg-light border-bottom border-5 border-primary rounded p-4 mb-4">
+                        <div class="bg-light border-bottom border-5  rounded p-4 mb-4">
                             <p class="text-dark mb-2"><?php echo $secMision->frase; ?></p>
                             <span class="text-primary"><?php echo $secMision->autor; ?></span>
                         </div>

@@ -172,7 +172,19 @@
           </li>
         </ul>       
       </li>
+      <!--Cursos-->
+      <li class="nav-item">
+        <a href="<?php echo constant('URL') ?>cursos" class="nav-link">
+          <i class="nav-icon fas fa-book"></i>
+          <p>
+            Cursos      
+            <i class="right fas fa-angle-left"></i>      
+          </p>
+        </a>
+      </li>
+      
       <!-- Contacto -->
+
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-envelope"></i>

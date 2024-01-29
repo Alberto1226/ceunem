@@ -24,6 +24,7 @@
                     <a href="<?php echo constant('URL') ?>home" class="nav-item nav-link" id="home-select">Inicio&nbsp;</a>
                     <a href="<?php echo constant('URL') ?>nosotros" class="nav-item nav-link" id="nosotros-select">Nosotros&nbsp;</a>
                     <a href="<?php echo constant('URL') ?>blog" class="nav-item nav-link" id="blog-select">Blog&nbsp;</a>
+                    <a href="<?php echo constant('URL') ?>cursos" class="nav-item nav-link" id="cursos-select">Cursos&nbsp;</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Oferta Educativa&nbsp;</a>
                         <div class="dropdown-menu m-0">

@@ -43,7 +43,7 @@
 <!-- Carousel End -->
 
 <!-- Nosotros Start -->
-<div class="container-xxl py-5">
+<div class="container-xxl py-5  menuPag ">
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -56,7 +56,9 @@
                 <div class="h-20">
                     <div class="d-inline-block rounded-pill btn text-white py-1 px-3 mb-3 restPagina" id="nom_menu"></div>
                 </div>
-                <h1 class="display-6 mb-5" id="titProg"></h1>
+                <div clases="menuPag">
+                <h1 class="display-6 mb-5 " id="titProg"></h1>
+                </div>
                 <p class="mb-5" id="descripcion"></p>
                 <a class="btn btn-primary py-2 px-3 me-3 btnPag" id="linkProg">
                     <span id="btn_name"></span>
@@ -68,11 +70,13 @@
         </div>
     </div>
 </div>
+</br>
 <!-- Nosotros End -->
 
 <!-- Blog Start -->
-<div class="container-xxl bg-light my-5 py-5">
-    <div class="container py-5">
+<div class="container-xxl   menuPag ">
+            </br>
+    <div class="container   menuPag ">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
             <div class="d-inline-block rounded-pill bg restPagina text-white py-1 px-3 mb-3" id="enBlog"></div>
             <h1 class="display-6 mb-5" id="descBlog"></h1>
@@ -88,7 +92,7 @@
                     ?>
                         <div class="swiper-slide">
                             <div class="wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="causes-item d-flex flex-column bg-white border-top border-5 border-primary rounded-top overflow-hidden h-100">
+                                <div class="causes-item d-flex flex-column bg-white border-top border-5 rounded-top overflow-hidden h-100 m-3">
                                     <div class="text-center p-4 pt-0">
                                         <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
                                             <small><?php echo $articulo->categoria; ?></small>
@@ -129,15 +133,15 @@
             <h1 class="display-6 mb-5" id="descOferta"></h1>
         </div>
         <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper ">
                 <?php
                 include_once 'models/clases/ofertas.php';
                 foreach ($this->ofertas as $row) {
                     $oferta = new Ofertas();
                     $oferta = $row;
                 ?>
-                    <div class="swiper-slide wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="card service-item bg-white text-center p-4 p-xl-5">
+                    <div class="swiper-slide wow fadeInUp  " data-wow-delay="0.5s">
+                        <div class="card service-item bg-white text-center p-4 p-xl-5 ">
                             <img src="<?php echo constant('ARCHIVOS') . $oferta->img_url; ?>" class="card-img-top img-fluid mb-4" alt="Imagen de la tarjeta">
                             <div class="card-body">
                                 <h4 class="card-title"><?= $oferta->tit; ?></h4>

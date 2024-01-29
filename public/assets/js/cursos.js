@@ -5,17 +5,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function obtenerImagenBanner() {
-    var baseURL = 'http://localhost/ceunem/public/maestria/getBanner';  
+    var baseURL = 'http://localhost/ceunem/public/cursos/getBanner';  
 
     axios.post(baseURL).then((response) => {
         if(response.status == 200){            
             const ImgenAsc = response.data;
-            // if(ImgenAsc === 'undefined'){
-                console.log("SIn dato", ImgenAsc);
+            // if(ImgenAsc === undefined){
+                // console.log("SIn dato", ImgenAsc);
                 const bannerImgAsc = document.querySelectorAll('.bannerImgAsc');
                 bannerImgAsc.forEach(function (divAsc) {               
-                    console.log(divAsc.style);
-                    divAsc.style.background = "url("+ImgenAsc+") top center no-repeat";
+                    // console.log(divAsc.style);
+                    divAsc.style.background = " url("+ImgenAsc+") top center no-repeat";
                     divAsc.style.backgroundSize = 'cover';
                 });
             // }

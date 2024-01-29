@@ -15,7 +15,7 @@ function obtenerImagenBanner() {
                 const bannerImgAsc = document.querySelectorAll('.bannerImgAsc');
                 bannerImgAsc.forEach(function (divAsc) {               
                     // console.log(divAsc.style);
-                    divAsc.style.background = "linear-gradient(rgba(2, 73, 137, .8), rgba(2, 73, 137, .8)), url("+ImgenAsc+") top center no-repeat";
+                    divAsc.style.background = "url("+ImgenAsc+") top center no-repeat";
                     divAsc.style.backgroundSize = 'cover';
                 });
             // }
