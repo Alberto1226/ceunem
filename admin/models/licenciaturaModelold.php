@@ -33,6 +33,7 @@ class LicenciaturaModel extends Model{
         }
     }
 
+
     public function getAllCards(){
         $items =[];
         try {
@@ -66,24 +67,8 @@ class LicenciaturaModel extends Model{
                 'revoe' =>$datos['revoe'],
                 'img_url' =>$datos['img_url'], 
                 'pdf_url' =>$datos['pdf_url'],
-                'estado' => $datos['estado']
-            ]);
-            return true;
-        } catch (PDOException $th) {
-           return false;
-        }
-    }
-
-    public function insertCard($datos){
-        try {
-            $query = $this->db->connect()->prepare(
-                'INSERT INTO lic_datos (id_lic, titulo, descripcion, img_url)
-                VALUES(:id_lic, :titulo, :descripcion, :img_url)');
-            $query->execute([
-                'id_lic' =>$datos['id_lic'], 
-                'titulo' =>$datos['titulo'],
-                'descripcion' =>$datos['descripcion'], 
-                'img_url' =>$datos['img_url']
+                'estado' => $datos['estado'],
+                
             ]);
             return true;
         } catch (PDOException $th) {

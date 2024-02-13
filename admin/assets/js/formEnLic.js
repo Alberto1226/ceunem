@@ -91,3 +91,7 @@ function obtenerDatos() {
         }   
     })
 }
+
+function idLic(id){
+    document.getElementById('id_lic').value = id;
+}

@@ -83,6 +83,7 @@ class SlidersModel extends Model
         }
     }
 
+
     public function update($datos)
     {
         try {

@@ -1,7 +1,7 @@
 <?php require 'views/templete/header.php'; ?>
 <?php require 'views/templete/navar.php'; ?>
 <!-- Page Header Start -->
-<div class="container-fluid page-header mb-5 wow fadeIn bannerImgAsc" data-wow-delay="0.1s">
+<div class="container-fluid page-header mb-5 wow fadeIn bannerImgAscNos" data-wow-delay="0.1s">
     <div class="container text-center">
         <h1 class="display-4 text-white animated slideInDown mb-4">Nosotros</h1>
         <nav aria-label="breadcrumb animated slideInDown">
@@ -34,10 +34,10 @@ foreach ($this->secMisions as $row) {
                         <div class="d-inline-block rounded-pill restPagina text-white py-1 px-3 mb-3">CEUNEM</div>
                         <h1 class="display-6 mb-5">Misión</h1>
                         <div class="bg-light border-bottom border-5  rounded p-4 mb-4">
-                            <p class="text-dark mb-2"><?php echo $secMision->frase; ?></p>
+                            <p class="text-dark mb-2 text-light"><?php echo $secMision->frase; ?></p>
                             <span class="text-primary"><?php echo $secMision->autor; ?></span>
                         </div>
-                        <p class="mb-5"><?php echo $secMision->mision; ?></p>
+                        <p class="mb-5 text-light"><?php echo $secMision->mision; ?></p>
                         <a class="btn btn-outline-primary py-2 px-3 btnPag" href="<?php constant('ARCHIVOS') ?>contacto">
                             Contáctanos
                             <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
@@ -61,7 +61,7 @@ foreach ($this->secMisions as $row) {
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
             <div class="d-inline-block rounded-pill restPagina text-white py-1 px-3 mb-3"><?= $this->header->encabezado; ?></div>
-            <h1 class="display-6 mb-5"><?= $this->header->descripcion; ?></h1>
+            <h1 class="display-6 mb-5 text-light"><?= $this->header->descripcion; ?></h1>
         </div>
         <div class="row g-4 justify-content-center">
             <?php
@@ -73,8 +73,8 @@ foreach ($this->secMisions as $row) {
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
                         <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $secVision->img_sec;  ?>" alt="">
-                        <h4 class="mb-3"><?= $secVision->nom_sec; ?></h4>
-                        <p class="mb-4"><?= $secVision->desc_sec; ?></p>
+                        <h4 class="mb-3" style="color:#A5042D;"><?= $secVision->nom_sec; ?></h4>
+                        <p class="mb-4 "><?= $secVision->desc_sec; ?></p>
                     </div>
                 </div>
             <?php
@@ -88,7 +88,7 @@ foreach ($this->secMisions as $row) {
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
                         <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $secObj->img_sec;  ?>" alt="">
-                        <h4 class="mb-3"><?= $secObj->nom_sec; ?></h4>
+                        <h4 class="mb-3" style="color:#A5042D;"><?= $secObj->nom_sec; ?></h4>
                         <p class="mb-4"><?= $secObj->desc_sec; ?></p>
                     </div>
                 </div>
@@ -103,7 +103,7 @@ foreach ($this->secMisions as $row) {
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
                         <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $secVal->img_sec;  ?>" alt="">
-                        <h4 class="mb-3"><?= $secVal->nom_sec; ?></h4>
+                        <h4 class="mb-3" style="color:#A5042D;"><?= $secVal->nom_sec; ?></h4>
                         <p class="mb-4"><?= nl2br($secVal->desc_sec); ?></p>
                     </div>
                 </div>
@@ -139,7 +139,7 @@ foreach ($this->secMisions as $row) {
                                         <img class="img-fluid" src="<?php echo constant('ARCHIVOS') . $secEq->img_url; ?>" alt="">
                                     </div>
                                     <div class="team-text bg-light text-center p-4">
-                                        <h5><?php echo $secEq->nombre; ?></h5>
+                                        <h5 style="color:#A5042D;"><?php echo $secEq->nombre; ?></h5>
                                         <p class="text-primary"><?php echo $secEq->puesto; ?></p>
                                         <div class="team-social text-center">
                                             <?php

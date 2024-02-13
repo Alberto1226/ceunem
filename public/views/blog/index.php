@@ -13,8 +13,8 @@
     </div>
 </div>
 <!-- Page Header End -->
-<div class="container-xxl bg-light my-5 py-5">
-    <div class="container py-5">
+<div class="container-xxl  my-5 py-5 menuPag">
+    <div class="container py-5 menuPag">
         <?php 
         $tit = $this->header->encabezado == 'Blog' ? $tit = 'Artículos' : $tit ='Blog';?>
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
@@ -28,7 +28,7 @@
             ?>
                 <div class="col-lg-6">
                     <h1 class="display-1">Proximamente</h1>
-                    <p class="mb-4">Todavía estamos trabajando arduamente para que la magia suceda (no puedes apurar la perfección), así que deberás esperar un poco más. Asegúrate de suscribirte a las últimas actualizaciones y estar al tanto de cuando tengamos nuevas carreras, maestrías y cursos para tí.</p>
+                    <p class="mb-4 text-light">Todavía estamos trabajando arduamente para que la magia suceda (no puedes apurar la perfección), así que deberás esperar un poco más. Asegúrate de suscribirte a las últimas actualizaciones y estar al tanto de cuando tengamos nuevas carreras, maestrías y cursos para tí.</p>
                     <a class="btn btn-outline-primary py-2 px-3 btnPag" href="<?php echo constant('URL') ?>contacto">
                         Suscríbete
                         <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
@@ -48,7 +48,7 @@
                                 <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
                                     <small><?php echo $articulo->categoria; ?></small>
                                 </div>
-                                <h5 class="mb-3"><?php echo $articulo->titulo; ?></h5>
+                                <h5 class="mb-3" style="color:#A5042D;"><?php echo $articulo->titulo; ?></h5>
                                 <p><?php echo $articulo->descripcion; ?></p>
                             </div>
                             <div class="position-relative mt-auto">

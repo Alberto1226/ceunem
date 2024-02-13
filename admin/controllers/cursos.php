@@ -4,7 +4,9 @@ class Cursos extends Controller
 {
     function __construct()
     {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         parent::__construct();
 
         if(empty($_SESSION['login'])){

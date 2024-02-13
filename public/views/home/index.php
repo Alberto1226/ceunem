@@ -59,7 +59,9 @@
                 <div clases="menuPag">
                 <h1 class="display-6 mb-5 " id="titProg"></h1>
                 </div>
-                <p class="mb-5" id="descripcion"></p>
+                <div clases="menuPag">
+                <p class="mb-5 text-light" id="descripcion"></p>
+                </div>
                 <a class="btn btn-primary py-2 px-3 me-3 btnPag" id="linkProg">
                     <span id="btn_name"></span>
                     <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
@@ -97,7 +99,7 @@
                                         <div class="d-inline-block bg-primary text-white rounded-bottom fs-5 pb-1 px-3 mb-4">
                                             <small><?php echo $articulo->categoria; ?></small>
                                         </div>
-                                        <h5 class="mb-3"><?php echo $articulo->titulo; ?></h5>
+                                        <h5 class="mb-3" style="color:#A5042D;"><?php echo $articulo->titulo; ?></h5>
                                         <p><?php echo $articulo->descripcion; ?></p>
                                     </div>
                                     <div class="position-relative mt-auto">
@@ -144,7 +146,7 @@
                         <div class="card service-item bg-white text-center p-4 p-xl-5 ">
                             <img src="<?php echo constant('ARCHIVOS') . $oferta->img_url; ?>" class="card-img-top img-fluid mb-4" alt="Imagen de la tarjeta">
                             <div class="card-body">
-                                <h4 class="card-title"><?= $oferta->tit; ?></h4>
+                                <h4 class="card-title" style="color:#A5042D;"><?= $oferta->tit; ?></h4>
                                 <p class="card-text" style="height: 300px;"><?= $oferta->descripcion; ?></p>
                             </div>
                             <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') . $oferta->link; ?>">
@@ -255,7 +257,7 @@
                                         <img class="img-fluid" src="<?php echo constant('ARCHIVOS') . $secEq->img_url; ?>" alt="">
                                     </div>
                                     <div class="team-text bg-light text-center p-4">
-                                        <h5><?php echo $secEq->nombre; ?></h5>
+                                        <h5 style="color:#A5042D;"><?php echo $secEq->nombre; ?></h5>
                                         <p class="text-primary"><?php echo $secEq->puesto; ?></p>
                                         <div class="team-social text-center">
                                             <?php
@@ -314,7 +316,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body" style="text-align: left;">
-                                        <h5 class="card-title"><?= $testimonio->nombre; ?></h5>
+                                        <h5 class="card-title" style="color:#A5042D;"><?= $testimonio->nombre; ?></h5>
                                         <p class="card-text"><?= $testimonio->carrera; ?></p>
                                         <p class="card-text"><small class="text-muted"><?= $testimonio->testimonio; ?></small></p>
                                     </div>

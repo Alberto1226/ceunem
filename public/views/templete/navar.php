@@ -14,7 +14,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark py-lg-0 px-lg-5 wow fadeIn menuPag" data-wow-delay="0.1s">
             <a href="<?php echo constant('URL') ?>home" class="navbar-brand ms-4 ms-lg-0">
-                <img src="<?php echo constant('URL') ?>assets/img/LOGO CEUNEM.png" width="136" height="46" alt="" />
+                <h5>CENTRO UNIVERSITARIO DE EMPRENDEDORES</h5>
             </a>
             <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -24,7 +24,7 @@
                     <a href="<?php echo constant('URL') ?>home" class="nav-item nav-link" id="home-select">Inicio&nbsp;</a>
                     <a href="<?php echo constant('URL') ?>nosotros" class="nav-item nav-link" id="nosotros-select">Nosotros&nbsp;</a>
                     <a href="<?php echo constant('URL') ?>blog" class="nav-item nav-link" id="blog-select">Blog&nbsp;</a>
-                    <a href="<?php echo constant('URL') ?>cursos" class="nav-item nav-link" id="cursos-select">Cursos&nbsp;</a>
+                    <a href="<?php echo constant('URL') ?>cursos" class="nav-item nav-link" id="cursos-select">Capacitación Emperesarial&nbsp;</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Oferta Educativa&nbsp;</a>
                         <div class="dropdown-menu m-0">

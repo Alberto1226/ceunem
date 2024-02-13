@@ -17,95 +17,82 @@ class Licenciatura extends Controller
     {
         $licenciaturas = $this->model->getAllLicenciaturas();
         $this->view->licenciaturas = $licenciaturas;
-        $lic_datos = $this->model->getAllCards();
-        $this->view->lic_datos = $lic_datos;
         $this->view->render('licenciatura/index');
     }
 
     function addLicenciatura()
-    {
-        $nom_lic = $_POST['nom_lic'];
-        $descripcion = $_POST['descripcion'];
-        $desc_detallada = $_POST['desc_detallada'];
-        $revoe = $_POST['revoe'];
-        $estado = $_POST['estado'];
+{
+    $nom_lic = $_POST['nom_lic'];
+    $descripcion = $_POST['descripcion'];
+    $estado = $_POST['estado'];
+    $revoe = $_POST["revoe"];
+    $descgral = $_POST["descgral"];
 
-        $img_url = $_FILES['img_url']['tmp_name'];
-        $nom_img = $_FILES['img_url']['name'];
-        $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
-        $dirImg = "public/img/licenciatura/";
+    // Imagen 1
+    $img1 = $_FILES["img1"]["tmp_name"];
+    $nom_img1 = $_FILES["img1"]["name"];
+    $tImg1 = strtolower(pathinfo($nom_img1, PATHINFO_EXTENSION));
+    $rImg1 = "public/img/licenciatura/" . date('Ymd_His') . "_" . $nom_img1;
 
+    // Imagen 2
+    $img2 = $_FILES["img2"]["tmp_name"];
+    $nom_img2 = $_FILES["img2"]["name"];
+    $tImg2 = strtolower(pathinfo($nom_img2, PATHINFO_EXTENSION));
+    $rImg2 = "public/img/licenciatura/" . date('Ymd_His') . "_" . $nom_img2;
 
-        $pdf_url = $_FILES['pdf_url']['tmp_name'];
-        $nom_pdf = $_FILES['pdf_url']['name'];
-        $tPdf = strtolower(pathinfo($nom_pdf, PATHINFO_EXTENSION));
-        $dirPdf = "public/docs/licenciatura/";
+    // Imagen 3
+    $img3 = $_FILES["img3"]["tmp_name"];
+    $nom_img3 = $_FILES["img3"]["name"];
+    $tImg3 = strtolower(pathinfo($nom_img3, PATHINFO_EXTENSION));
+    $rImg3 = "public/img/licenciatura/" . date('Ymd_His') . "_" . $nom_img3;
 
-        $fecha = date('Ymd_His');
-        $rImg = $dirImg . $fecha . "_" . $nom_img;
-        $rPdf = $dirPdf . $fecha . "_" . $nom_img;  
+    // PDF
+    $pdf_url = $_FILES["pdf_url"]["tmp_name"];
+    $nom_pdf = $_FILES["pdf_url"]["name"];
+    $tPdf = strtolower(pathinfo($nom_pdf, PATHINFO_EXTENSION));
+    $rPdf = "public/docs/licenciatura/" . date('Ymd_His') . "_" . $nom_pdf;
 
-        if($tImg == "jpg" or $tImg == "jpeg" or $tImg == "png" and $tPdf == "pdf"){
-            $rImg = $dirImg . $nom_img;
-            $rPdf = $dirPdf . $nom_pdf;
-            if(move_uploaded_file($img_url, $rImg) and move_uploaded_file($pdf_url, $rPdf)){
-                if($this->model->insert([
-                    'nom_lic' =>$nom_lic,
-                    'descripcion' =>$descripcion,
-                    'desc_detallada' =>$desc_detallada,
-                    'revoe' =>$revoe,
-                    'img_url' =>$rImg,
-                    'pdf_url' =>$rPdf,
-                    'estado' =>$estado
-                ])){
-                    $this->view->mensaje = "Se agrego correctamente";
-                    
-                }
-                header('location: ' . URL . 'licenciatura');
-            }else{
-                $this->view->mensaje =  "Error al guardar en el directorio";
+    if (
+        ($tImg1 == "jpg" || $tImg1 == "jpeg" || $tImg1 == "png") &&
+        ($tImg2 == "jpg" || $tImg2 == "jpeg" || $tImg2 == "png") &&
+        ($tImg3 == "jpg" || $tImg3 == "jpeg" || $tImg3 == "png") &&
+        ($tPdf == "pdf")
+    ) {
+        if (
+            move_uploaded_file($img1, $rImg1) &&
+            move_uploaded_file($img2, $rImg2) &&
+            move_uploaded_file($img3, $rImg3) &&
+            move_uploaded_file($pdf_url, $rPdf)
+        ) {
+            if ($this->model->insert([
+                'nom_lic' => $nom_lic,
+                'descripcion' => $descripcion,
+                'img_url' => $rImg1, // Solo se guarda la ruta de la primera imagen
+                'pdf_url' => $rPdf,
+                'estado' => $estado,
+                'img1' => $rImg1,
+                'des1' => $_POST["des1"],
+                'tit1' => $_POST["tit1"],
+                'img2' => $rImg2,
+                'des2' => $_POST["des2"],
+                'tit2' => $_POST["tit2"],
+                'img3' => $rImg3,
+                'des3' => $_POST["des3"],
+                'tit3' => $_POST["tit3"],
+                'revoe' => $revoe,
+                'descgral' => $descgral
+            ])) {
+                $this->view->mensaje = "Se agregó correctamente";
             }
-        }else{
-            $this->view->mensaje =  "El formato es incorrecto";
+            header('location: ' . URL . 'licenciatura');
+        } else {
+            $this->view->mensaje = "Error al guardar en el directorio";
         }
-
+    } else {
+        $this->view->mensaje = "El formato de los archivos es incorrecto";
     }
+}
 
-    function addCard()
-    {
-        $id_lic = $_POST['id_lic'];
-        $titulo = $_POST['titulo'];
-        $descripcion = $_POST['descripcion'];
-
-        $img_url = $_FILES['img_url']['tmp_name'];
-        $nom_img = $_FILES['img_url']['name'];
-        $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
-        $dirImg = "public/img/licenciatura/";
-
-        $fecha = date('Ymd_His');
-        $rImg = $dirImg . $fecha . "_" . $nom_img;
-
-        if($tImg == "jpg" or $tImg == "jpeg" or $tImg == "png"){
-            $rImg = $dirImg . $nom_img;
-            if(move_uploaded_file($img_url, $rImg)){
-                if($this->model->insertCard([
-                    'id_lic' =>$id_lic,
-                    'titulo' =>$titulo,
-                    'descripcion' =>$descripcion,
-                    'img_url' =>$rImg
-                ])){
-                    $this->view->mensaje = "Se agrego correctamente";
-                    
-                }
-                header('location: ' . URL . 'licenciatura');
-            }else{
-                $this->view->mensaje =  "Error al guardar en el directorio";
-            }
-        }else{
-            $this->view->mensaje =  "El formato es incorrecto";
-        }
-
-    }
 
     function updateLic()
     {
@@ -115,8 +102,6 @@ class Licenciatura extends Controller
 
         $nom_lic = $_POST['nom_lic_up'];
         $descripcion = $_POST['descripcion_up'];
-        $desc_detalla = $_POST['desc_detallada_up'];
-        $revoe = $_POST['revoe_up'];
 
         $img_url = $_FILES['img_url_up']['tmp_name'];
         $nom_img = $_FILES['img_url_up']['name'];
@@ -146,8 +131,6 @@ class Licenciatura extends Controller
                         'id_lic' => $id_lic,
                         'nom_lic' => $nom_lic,
                         'descripcion' => $descripcion,
-                        'desc_detallada' => $desc_detalla,
-                        'revoe' => $revoe,
                         'img_url' => $rImg,
                         'pdf_url' => $rPdf,
                     ])) {
@@ -155,8 +138,6 @@ class Licenciatura extends Controller
                         $licenciatura->id_lic = $id_lic;
                         $licenciatura->nom_lic = $nom_lic;
                         $licenciatura->descripcion = $descripcion;
-                        $licenciatura->desc_detallada = $desc_detalla;
-                        $licenciatura->revoe = $revoe;
                         $licenciatura->img_url = $img_url;
                         $licenciatura->pdf_url = $pdf_url;
 
@@ -177,8 +158,6 @@ class Licenciatura extends Controller
                 'id_lic' => $id_lic,
                 'nom_lic' => $nom_lic,
                 'descripcion' => $descripcion,
-                'desc_detallada' => $desc_detalla,
-                'revoe' => $revoe,
                 'img_url' => $img_url_db,
                 'pdf_url' => $pdf_url_db,
             ])) {
@@ -186,8 +165,6 @@ class Licenciatura extends Controller
                 $licenciatura->id_lic = $id_lic;
                 $licenciatura->nom_lic = $nom_lic;
                 $licenciatura->descripcion = $descripcion;
-                $licenciatura->desc_detallada = $desc_detalla;
-                $licenciatura->revoe = $revoe;
                 $licenciatura->img_url = $img_url_db;
                 $licenciatura->pdf_url = $pdf_url_db;
 

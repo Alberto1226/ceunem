@@ -11,10 +11,10 @@ function obtenerImagenBanner() {
         if(response.status == 200){            
             const ImgenAsc = response.data;
             // if(ImgenAsc === 'undefined'){
-                // console.log("SIn dato", ImgenAsc);
-                const bannerImgAsc = document.querySelectorAll('.bannerImgAsc');
+                console.log("SIn dato", ImgenAsc);
+                const bannerImgAsc = document.querySelectorAll('.bannerImgAscNos');
                 bannerImgAsc.forEach(function (divAsc) {               
-                    // console.log(divAsc.style);
+                    console.log("datos img", divAsc.style);
                     divAsc.style.background = " url("+ImgenAsc+") top center no-repeat";
                     divAsc.style.backgroundSize = 'cover';
                 });

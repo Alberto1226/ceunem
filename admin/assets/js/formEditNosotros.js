@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var formulario1 = document.getElementById("formEditImg3");
+    var formulario1 = document.getElementById("formEditImgNos");
     formulario1.addEventListener('submit', editar)
 
     const imagen = document.getElementById('img');

@@ -8,8 +8,8 @@
         </div>
     </div>
     <div class="card-body">
-        <form action="#" method="post" enctype="multipart/form-data" id="formEditImg3" class="formularioImagenes">
-            <input type="hidden" id="id_slider" name="id_slider">
+        <form action="#" method="post" enctype="multipart/form-data" id="formEditImgNos" class="formularioImagenes">
+            <input type="hidden" id="id_slider" name="id_slider" >
             <input type="hidden" id="id_usu" name="id_usu">
             <input type="hidden" id="posicion" name="posicion">
             <input type="hidden" id="imgBD" name="imgBD">
