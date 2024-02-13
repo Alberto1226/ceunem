@@ -1,46 +1,32 @@
 <?php
-include_once 'models/clases/licenciaturas.php';
+include_once 'models/clases/lic_datos.php';
 include_once 'models/clases/encabezados.php';
 include_once 'models/clases/imagen.php';
 
-class LicenciaturaModel extends Model{
+class MoreinfModel extends Model{
     public function __construct()
     {
         parent::__construct();
     }
 
-    public function getAllLicenciaturas(){
+    public function getAllCards(){
         $items =[];
         try {
-            $query = $this->db->connect()->query("SELECT * FROM licenciaturas WHERE estado=1");
+            $query = $this->db->connect()->query("SELECT * FROM lic_datos");
             while ($row = $query->fetch()) {
-                $item = new Licenciaturas();
+                $item = new lic_datos();
 
+                $item->id_lic_datos = $row['id_lic_datos'];
                 $item->id_lic = $row['id_lic'];
-                $item->nom_lic = $row['nom_lic'];
+                $item->titulo = $row['titulo'];
                 $item->descripcion = $row['descripcion'];
-                $item->desc_detallada = $row['desc_detallada'];
-                $item->revoe = $row['revoe'];
                 $item->img_url = $row['img_url'];
-                $item->pdf_url = $row['pdf_url'];
 
                 array_push($items, $item);
             }
             return $items;
         } catch (PDOException $th) {
             return [];
-        }
-    }
-
-    
-
-    public function countRowsContinuas(){
-        try {
-            $query = $this->db->connect()->query("SELECT * FROM licenciaturas");
-            $filas=$query->rowCount();
-            return $filas;
-        } catch (PDOException $th) {
-           return 0;
         }
     }
 
