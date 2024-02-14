@@ -46,8 +46,8 @@
                             <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $cursos->img_url; ?>" alt="">
                             <h4 class="mb-3" style="color:#A5042D;"><?php echo $cursos->nom_curso; ?></h4>
                             <p class="mb-4"><?php echo $cursos->descripcion; ?></p>
-                            <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('ARCHIVOS') . $cursos->pdf_url; ?>" target="_blank">
-                                Plan de estudios
+                            <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') ?>moreinfCU?desc_detallada=<?php echo urlencode($cursos->desc_detallada); ?>&revoe=<?php echo urlencode($cursos->revoe); ?>&id_curso=<?php echo urlencode($cursos->id_curso); ?>&name_curso=<?php echo urlencode($cursos->nom_curso); ?>" target="_blank">
+                                Ver más
                                 <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                     <i class="fa fa-arrow-right"></i>
                                 </div>

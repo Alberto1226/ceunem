@@ -20,6 +20,8 @@ class ContinuaModel extends Model
                 $item->id_ec = $row['id_ec'];
                 $item->nom_ec = $row['nom_ec'];
                 $item->descripcion = $row['descripcion'];
+                $item->desc_detallada = $row['desc_detallada'];
+                $item->revoe = $row['revoe'];
                 $item->img_url = $row['img_url'];
                 $item->pdf_url = $row['pdf_url'];
                 $item->estado = $row['estado'];
@@ -36,12 +38,14 @@ class ContinuaModel extends Model
     {
         try {
             $query = $this->db->connect()->prepare(
-                'INSERT INTO continua (nom_ec, descripcion, img_url, pdf_url, estado)
-                VALUES(:nom_ec, :descripcion, :img_url, :pdf_url, :estado)'
+                'INSERT INTO continua (nom_ec, descripcion, desc_detallada, revoe, img_url, pdf_url, estado)
+                VALUES(:nom_ec, :descripcion, :desc_detallada, :revoe, :img_url, :pdf_url, :estado)'
             );
             $query->execute([
                 'nom_ec' => $datos['nom_ec'],
                 'descripcion' => $datos['descripcion'],
+                'desc_detallada' => $datos['desc_detallada'],
+                'revoe' => $datos['revoe'],
                 'img_url' => $datos['img_url'],
                 'pdf_url' => $datos['pdf_url'],
                 'estado' => $datos['estado']
@@ -52,9 +56,26 @@ class ContinuaModel extends Model
         }
     }
 
+    public function insertCard($datos){
+        try {
+            $query = $this->db->connect()->prepare(
+                'INSERT INTO ec_datos (id_ec, titulo, descripcion, img_url)
+                VALUES(:id_ec, :titulo, :descripcion, :img_url)');
+            $query->execute([
+                'id_ec' =>$datos['id_ec'], 
+                'titulo' =>$datos['titulo'],
+                'descripcion' =>$datos['descripcion'], 
+                'img_url' =>$datos['img_url']
+            ]);
+            return true;
+        } catch (PDOException $th) {
+           return false;
+        }
+    }
+
     public function update($item){
         $query= $this->db->connect()->prepare("UPDATE continua 
-        SET nom_ec = :nom_ec, descripcion = :descripcion, 
+        SET nom_ec = :nom_ec, descripcion = :descripcion, desc_detallada = :desc_detallada, revoe = :revoe, 
         img_url = :img_url, pdf_url = :pdf_url 
         WHERE id_ec = :id_ec");
         try {
@@ -62,6 +83,8 @@ class ContinuaModel extends Model
                 'id_ec' => $item['id_ec'],
                 'nom_ec' => $item['nom_ec'],
                 'descripcion' => $item['descripcion'],
+                'desc_detallada' => $item['desc_detallada'],
+                'revoe' => $item['revoe'],
                 'img_url' => $item['img_url'],
                 'pdf_url' => $item['pdf_url']
             ]);

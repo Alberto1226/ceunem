@@ -35,9 +35,12 @@
                         <tr>
                             <th>Nombre Cursos</th>
                             <th>Descripción</th>
+                            <th>Descripción Detallada</th>
+                                    <th>REVOE</th>
                             <th>Imagen</th>
                             <th>Plan de estudios</th>
                             <th>Status</th>
+                            <th>Cards</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -51,6 +54,8 @@
                             <tr>
                                 <td class="align-middle" width="200px"><?php echo $cursos->nom_curso; ?></td>
                                 <td class="align-middle" width="400px"><?php echo $cursos->descripcion; ?></td>
+                                <td class="align-middle" width="400px"><?php echo $cursos->desc_detallada; ?></td>
+                                <td class="align-middle" width="400px"><?php echo $cursos->revoe; ?></td>
                                 <td class="align-middle"><img src="<?php echo $cursos->img_url; ?>" alt="" width="80px" /></td>
                                 <td class="align-middle" width="150px"><a target="_blank" href="<?php echo $cursos->pdf_url; ?>"><?php echo $cursos->nom_curso; ?></a></td>
                                 <td class="align-middle">
@@ -62,6 +67,11 @@
                                     }
                                     ?>
                                 </td>
+                                <td class="align-middle">
+                                            <?php
+                                            echo "0";
+                                            ?>
+                                        </td>
                                 <td class="align-middle">
                                     <div class="col-auto" style="display: inline-block;">
                                         <a class="btn btn-outline-warning" data-toggle="modal" data-target="#updateLicModal<?= $cursos->id_curso; ?>"><i class="fa fa-pencil-alt"></i></a>
@@ -77,6 +87,8 @@
                                         <?php
                                         }
                                         ?>
+                                        <a class="btn btn-outline-success" data-toggle="modal" onclick="idCur(<?= $cursos->id_curso; ?>)" data-target="#addCardModal"><i class="fa fa-plus"></i></a>
+                                                <a class="btn btn-outline-success" hidden="true" data-toggle="modal" onclick="" data-target="#updateDatsModal<?= $cursos->id_curso; ?>"><i class="fa fa-plus"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -107,6 +119,14 @@
                                                                 <label for="descripcion_up">Descripción</label>
                                                                 <textarea class="form-control border border-warning" rows="3" id="descripcion_up" placeholder="Ingresa la Descripción" name="descripcion_up"><?= $cursos->descripcion; ?></textarea>
                                                             </div>
+                                                            <div class="form-group">
+                                                                        <label for="desc_detallada_up">Descripción Detallada</label>
+                                                                        <textarea class="form-control border border-warning" rows="3" id="desc_detallada_up" placeholder="Ingresa la Descripción Detallada" name="desc_detallada_up"><?= $cursos->desc_detallada; ?></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="revoe_up">REVOE</label>
+                                                                        <input type="text" class="form-control border border-warning" id="revoe_up" value="<?= $cursos->revoe; ?>" placeholder="Ingrese el REVOE" name="revoe_up">
+                                                                    </div>
                                                             <div class="form-group">
                                                                 <label for="img_url_up">Imagen</label>
                                                                 <div class="input-group">
@@ -256,9 +276,12 @@
                         <tr>
                             <th>Nombre Cursos</th>
                             <th>Descripción</th>
+                            <th>Descripción Detallada</th>
+                                    <th>REVOE</th>
                             <th>Imagen</th>
                             <th>Plan de estudios</th>
                             <th>Status</th>
+                            <th>Cards</th>
                             <th>Acciones</th>
                         </tr>
                     </tfoot>
@@ -272,4 +295,5 @@
 </div>
 <?php require 'views/templete/footer.php'; ?>
 <?php include 'addCurModal.php'; ?>
+<?php include 'addCardModal.php'; ?>
 <script src="<?php echo constant('URL') ?>assets/js/formEncursos.js"></script>

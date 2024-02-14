@@ -1,18 +1,20 @@
 <?php
 require_once 'libs/controller.php';
-class Maestria extends Controller{
+class Maestria extends Controller
+{
     function __construct()
     {
         session_start();
         parent::__construct();
 
-        if(empty($_SESSION['login'])){
-            header('Location: '.URL.'login');
+        if (empty($_SESSION['login'])) {
+            header('Location: ' . URL . 'login');
             die();
         }
     }
 
-    function render(){
+    function render()
+    {
         $maestrias = $this->model->getAllMaestrias();
         $this->view->maestrias = $maestrias;
         $this->view->render('maestria/index');
@@ -22,6 +24,8 @@ class Maestria extends Controller{
     {
         $nom_mas = $_POST['nom_mas'];
         $descripcion = $_POST['descripcion'];
+        $desc_detalla = $_POST['desc_detallada'];
+        $revoe = $_POST['revoe'];
         $estado = $_POST['estado'];
 
         $img_url = $_FILES['img_url']['tmp_name'];
@@ -39,25 +43,60 @@ class Maestria extends Controller{
         $rImg = $dirImg . $fecha . "_" . $nom_img;
         $rPdf = $dirPdf . $fecha . "_" . $nom_pdf;
 
-        if($tImg == "jpg" or $tImg == "jpeg" or $tImg == "png" and $tPdf == "pdf"){
-            if(move_uploaded_file($img_url, $rImg) and move_uploaded_file($pdf_url, $rPdf)){
-                if($this->model->insert([
-                    'nom_mas' =>$nom_mas,
-                    'descripcion' =>$descripcion,
-                    'img_url' =>$rImg,
-                    'pdf_url' =>$rPdf,
-                    'estado' =>$estado
-                ])){
+        if ($tImg == "jpg" or $tImg == "jpeg" or $tImg == "png" and $tPdf == "pdf") {
+            if (move_uploaded_file($img_url, $rImg) and move_uploaded_file($pdf_url, $rPdf)) {
+                if ($this->model->insert([
+                    'nom_mas' => $nom_mas,
+                    'descripcion' => $descripcion,
+                    'desc_detallada' => $desc_detalla,
+                        'revoe' => $revoe,
+                    'img_url' => $rImg,
+                    'pdf_url' => $rPdf,
+                    'estado' => $estado
+                ])) {
                     $this->view->mensaje = "Se agrego correctamente";
                 }
                 header('location: ' . URL . 'maestria');
-            }else{
+            } else {
                 $this->view->mensaje =  "Error al guardar en el directorio";
             }
-        }else{
+        } else {
             $this->view->mensaje = "El formato es incorrecto";
         }
+    }
 
+    function addCard()
+    {
+        $id_mas = $_POST['id_mas'];
+        $titulo = $_POST['titulo'];
+        $descripcion = $_POST['descripcion'];
+
+        $img_url = $_FILES['img_url']['tmp_name'];
+        $nom_img = $_FILES['img_url']['name'];
+        $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
+        $dirImg = "public/img/maestria/";
+
+        $fecha = date('Ymd_His');
+        $rImg = $dirImg . $fecha . "_" . $nom_img;
+
+        if ($tImg == "jpg" or $tImg == "jpeg" or $tImg == "png") {
+            $rImg = $dirImg . $nom_img;
+            if (move_uploaded_file($img_url, $rImg)) {
+                if ($this->model->insertCard([
+                    'id_mas' => $id_mas,
+                    'titulo' => $titulo,
+                    'descripcion' => $descripcion,
+                    'img_url' => $rImg
+                ])) {
+                    $this->view->mensaje = "Se agrego correctamente";
+                }
+                header('location: ' . URL . 'maestria');
+            } else {
+                $this->view->mensaje =  "Error al guardar en el directorio";
+            }
+        } else {
+            $this->view->mensaje =  "El formato es incorrecto";
+        }
     }
 
     function updateMaestria()
@@ -68,6 +107,8 @@ class Maestria extends Controller{
 
         $nom_mas = $_POST['nom_mas_up'];
         $descripcion = $_POST['descripcion_up'];
+        $desc_detalla = $_POST['desc_detallada_up'];
+        $revoe = $_POST['revoe_up'];
 
         $img_url = $_FILES['img_url_up']['tmp_name'];
         $nom_img = $_FILES['img_url_up']['name'];
@@ -97,6 +138,8 @@ class Maestria extends Controller{
                         'id_mas' => $id_mas,
                         'nom_mas' => $nom_mas,
                         'descripcion' => $descripcion,
+                        'desc_detallada' => $desc_detalla,
+                        'revoe' => $revoe,
                         'img_url' => $rImg,
                         'pdf_url' => $rPdf,
                     ])) {
@@ -104,6 +147,8 @@ class Maestria extends Controller{
                         $maestria->id_mas = $id_mas;
                         $maestria->nom_mas = $nom_mas;
                         $maestria->descripcion = $descripcion;
+                        $maestria->desc_detallada = $desc_detalla;
+                        $maestria->revoe = $revoe;
                         $maestria->img_url = $img_url;
                         $maestria->pdf_url = $pdf_url;
 
@@ -124,6 +169,8 @@ class Maestria extends Controller{
                 'id_mas' => $id_mas,
                 'nom_mas' => $nom_mas,
                 'descripcion' => $descripcion,
+                'desc_detallada' => $desc_detalla,
+                'revoe' => $revoe,
                 'img_url' => $img_url_db,
                 'pdf_url' => $pdf_url_db,
             ])) {
@@ -131,6 +178,8 @@ class Maestria extends Controller{
                 $maestria->id_mas = $id_mas;
                 $maestria->nom_mas = $nom_mas;
                 $maestria->descripcion = $descripcion;
+                $maestria->desc_detallada = $desc_detalla;
+                $maestria->revoe = $revoe;
                 $maestria->img_url = $img_url_db;
                 $maestria->pdf_url = $pdf_url_db;
 
@@ -189,50 +238,49 @@ class Maestria extends Controller{
         }
     }
 
-    function addEncabezado(){
+    function addEncabezado()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_usu = $_POST['id_usu'];
             $encabezado = $_POST['encabezado'];
             $descripcion = $_POST['descripcion'];
             $id_en = $_POST['id_en'];
-            
-            $ids = empty($id_en) ? $ids=false : $ids=true;
 
-            $insertar =[
-                'id_usu'=> $id_usu,
+            $ids = empty($id_en) ? $ids = false : $ids = true;
+
+            $insertar = [
+                'id_usu' => $id_usu,
                 'encabezado' => $encabezado,
                 'descripcion' => $descripcion,
             ];
 
-            $editar =[
-                'id_usu'=> $id_usu,
+            $editar = [
+                'id_usu' => $id_usu,
                 'encabezado' => $encabezado,
                 'descripcion' => $descripcion,
                 'id_en' => $id_en
             ];
 
-            if($ids==false){
-                if($this->model->insertEncabezado($insertar)){
-                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL.'maestria');
+            if ($ids == false) {
+                if ($this->model->insertEncabezado($insertar)) {
+                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL . 'maestria');
                     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                 }
-            }else{
-                if($this->model->updateEncabezado($editar)){
-                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL.'maestria');
+            } else {
+                if ($this->model->updateEncabezado($editar)) {
+                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL . 'maestria');
                     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                 }
             }
-            
         }
     }
 
-    function getEncabezado(){
+    function getEncabezado()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $encabezado =  json_decode(file_get_contents('php://input'))->encabezado;
             $tabla = $this->model->getByEncabezado($encabezado);
-            echo json_encode($tabla); 
+            echo json_encode($tabla);
         }
     }
 }
-
-?>

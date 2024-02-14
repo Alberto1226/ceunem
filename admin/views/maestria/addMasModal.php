@@ -1,7 +1,7 @@
 <div class="modal fade " id="addMasModal">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-    <div class="modal-header">
+      <div class="modal-header">
         <h4 class="modal-title">Agregar Maestría</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -57,6 +57,14 @@
                         <label for="inactivo" class="custom-control-label">Inactivo</label>
                       </div>
                     </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="desc_detallada">Descripción Detallada</label>
+                    <textarea class="form-control" rows="3" id="desc_detallada" placeholder="Ingresa la Descripción" name="desc_detallada"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="revoe">REVOE</label>
+                    <input type="text" class="form-control" id="revoe" placeholder="Ingrese el nombre de la Licenciatura" name="revoe">
                   </div>
                 </div>
               </div>

@@ -33,11 +33,14 @@
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Nombre Programa</th>
+                                <th>Nombre Maestría</th>
                                     <th>Descripción</th>
+                                    <th>Descripción Detallada</th>
+                                    <th>REVOE</th>
                                     <th>Imagen</th>
                                     <th>Plan de estudios</th>
                                     <th>Status</th>
+                                    <th>Cards</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -51,6 +54,8 @@
                                     <tr>
                                         <td class="align-middle" width="200px"><?php echo $continua->nom_ec; ?></td>
                                         <td class="align-middle" width="400px"><?php echo $continua->descripcion; ?></td>
+                                        <td class="align-middle" width="400px"><?php echo $continua->desc_detallada; ?></td>
+                                        <td class="align-middle" width="400px"><?php echo $continua->revoe; ?></td>
                                         <td class="align-middle"><img src="<?php echo $continua->img_url; ?>" alt="" width="80px" /></td>
                                         <td class="align-middle" width="150px"><a target="_blank" href="<?php echo $continua->pdf_url; ?>"><?php echo $continua->nom_ec; ?></a></td>
                                         <td class="align-middle">
@@ -60,6 +65,11 @@
                                             } else {
                                                 echo "Inactivo";
                                             }
+                                            ?>
+                                        </td>
+                                        <td class="align-middle">
+                                            <?php
+                                            echo "0";
                                             ?>
                                         </td>
                                         <td class="align-middle">
@@ -77,6 +87,8 @@
                                                 <?php
                                                 }
                                                 ?>
+                                                <a class="btn btn-outline-success" data-toggle="modal" onclick="idEC(<?= $continua->id_ec; ?>)" data-target="#addCardModal"><i class="fa fa-plus"></i></a>
+                                                <a class="btn btn-outline-success" hidden="true" data-toggle="modal" onclick="" data-target="#updateDatsModal<?= $continua->id_ec; ?>"><i class="fa fa-plus"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -106,6 +118,14 @@
                                                                     <div class="form-group">
                                                                         <label for="descripcion_up">Descripción</label>
                                                                         <textarea class="form-control border border-warning" rows="3" id="descripcion_up" placeholder="Ingresa la Descripción" name="descripcion_up"><?= $continua->descripcion; ?></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="desc_detallada_up">Descripción Detallada</label>
+                                                                        <textarea class="form-control border border-warning" rows="3" id="desc_detallada_up" placeholder="Ingresa la Descripción Detallada" name="desc_detallada_up"><?= $continua->desc_detallada; ?></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="revoe_up">REVOE</label>
+                                                                        <input type="text" class="form-control border border-warning" id="revoe_up" value="<?= $continua->revoe; ?>" placeholder="Ingrese el REVOE" name="revoe_up">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="img_url_up">Imagen</label>
@@ -254,11 +274,14 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Nombre Programa</th>
+                                <th>Nombre Maestría</th>
                                     <th>Descripción</th>
+                                    <th>Descripción Detallada</th>
+                                    <th>REVOE</th>
                                     <th>Imagen</th>
                                     <th>Plan de estudios</th>
                                     <th>Status</th>
+                                    <th>Cards</th>
                                     <th>Acciones</th>
                                 </tr>
                             </tfoot>
@@ -272,4 +295,5 @@
 </div>
 <?php require 'views/templete/footer.php'; ?>
 <?php include 'addConModal.php'; ?>
+<?php include 'addCardModal.php'; ?>
 <script src="<?php echo constant('URL') ?>assets/js/formEnContinua.js"></script>

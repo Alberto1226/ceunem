@@ -91,3 +91,7 @@ function obtenerDatos() {
         }   
     })
 }
+
+function idMas(id){
+    document.getElementById('id_mas').value = id;
+}

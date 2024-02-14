@@ -21,6 +21,8 @@ class MaestriaModel extends Model
                 $item->id_mas = $row['id_mas'];
                 $item->nom_mas = $row['nom_mas'];
                 $item->descripcion = $row['descripcion'];
+                $item->desc_detallada = $row['desc_detallada'];
+                $item->revoe = $row['revoe'];
                 $item->img_url = $row['img_url'];
                 $item->pdf_url = $row['pdf_url'];
 

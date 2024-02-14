@@ -1,5 +1,6 @@
 <?php
 include_once 'models/clases/maestrias.php';
+include_once 'models/clases/mas_datos.php';
 include_once 'models/clases/encabezados.php';
 
 class MaestriaModel extends Model
@@ -20,6 +21,8 @@ class MaestriaModel extends Model
                 $item->id_mas = $row['id_mas'];
                 $item->nom_mas = $row['nom_mas'];
                 $item->descripcion = $row['descripcion'];
+                $item->desc_detallada = $row['desc_detallada'];
+                $item->revoe = $row['revoe'];
                 $item->img_url = $row['img_url'];
                 $item->pdf_url = $row['pdf_url'];
                 $item->estado = $row['estado'];
@@ -36,12 +39,14 @@ class MaestriaModel extends Model
     {
         try {
             $query = $this->db->connect()->prepare(
-                'INSERT INTO maestrias (nom_mas, descripcion, img_url, pdf_url, estado)
-                VALUES(:nom_mas, :descripcion, :img_url, :pdf_url, :estado)'
+                'INSERT INTO maestrias (nom_mas, descripcion, desc_detallada, revoe, img_url, pdf_url, estado)
+                VALUES(:nom_mas, :descripcion, :desc_detallada, :revoe, :img_url, :pdf_url, :estado)'
             );
             $query->execute([
                 'nom_mas' => $datos['nom_mas'],
                 'descripcion' => $datos['descripcion'],
+                'desc_detallada' => $datos['desc_detallada'],
+                'revoe' => $datos['revoe'],
                 'img_url' => $datos['img_url'],
                 'pdf_url' => $datos['pdf_url'],
                 'estado' => $datos['estado']
@@ -52,9 +57,27 @@ class MaestriaModel extends Model
         }
     }
 
-    public function update($item){
-        $query= $this->db->connect()->prepare("UPDATE maestrias 
-        SET nom_mas = :nom_mas, descripcion = :descripcion, 
+    public function insertCard($datos){
+        try {
+            $query = $this->db->connect()->prepare(
+                'INSERT INTO mas_datos (id_mas, titulo, descripcion, img_url)
+                VALUES(:id_mas, :titulo, :descripcion, :img_url)');
+            $query->execute([
+                'id_mas' =>$datos['id_mas'], 
+                'titulo' =>$datos['titulo'],
+                'descripcion' =>$datos['descripcion'], 
+                'img_url' =>$datos['img_url']
+            ]);
+            return true;
+        } catch (PDOException $th) {
+           return false;
+        }
+    }
+
+    public function update($item)
+    {
+        $query = $this->db->connect()->prepare("UPDATE maestrias 
+        SET nom_mas = :nom_mas, descripcion = :descripcion, desc_detallada = :desc_detallada, revoe = :revoe, 
         img_url = :img_url, pdf_url = :pdf_url 
         WHERE id_mas = :id_mas");
         try {
@@ -62,6 +85,8 @@ class MaestriaModel extends Model
                 'id_mas' => $item['id_mas'],
                 'nom_mas' => $item['nom_mas'],
                 'descripcion' => $item['descripcion'],
+                'desc_detallada' => $item['desc_detallada'],
+                'revoe' => $item['revoe'],
                 'img_url' => $item['img_url'],
                 'pdf_url' => $item['pdf_url']
             ]);
@@ -71,9 +96,11 @@ class MaestriaModel extends Model
         }
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $query = $this->db->connect()->prepare(
-            "DELETE FROM maestrias WHERE id_mas = :id");
+            "DELETE FROM maestrias WHERE id_mas = :id"
+        );
         try {
             $query->execute(['id' => $id]);
             return true;
@@ -82,7 +109,8 @@ class MaestriaModel extends Model
         }
     }
 
-    public function estado($item){
+    public function estado($item)
+    {
         $query = $this->db->connect()->prepare("UPDATE maestrias
         SET estado = :estado
         WHERE id_mas = :id_mas");

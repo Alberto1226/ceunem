@@ -24,6 +24,8 @@ class Continua extends Controller
     {
         $nom_ec = $_POST['nom_ec'];
         $descripcion = $_POST['descripcion'];
+        $desc_detalla = $_POST['desc_detallada'];
+        $revoe = $_POST['revoe'];
         $estado = $_POST['estado'];
 
         $img_url = $_FILES['img_url']['tmp_name'];
@@ -46,6 +48,8 @@ class Continua extends Controller
                 if ($this->model->insert([
                     'nom_ec' => $nom_ec,
                     'descripcion' => $descripcion,
+                    'desc_detallada' => $desc_detalla,
+                        'revoe' => $revoe,
                     'img_url' => $rImg,
                     'pdf_url' => $rPdf,
                     'estado' => $estado,
@@ -61,6 +65,40 @@ class Continua extends Controller
         }
     }
 
+    function addCard()
+    {
+        $id_ec = $_POST['id_ec'];
+        $titulo = $_POST['titulo'];
+        $descripcion = $_POST['descripcion'];
+
+        $img_url = $_FILES['img_url']['tmp_name'];
+        $nom_img = $_FILES['img_url']['name'];
+        $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
+        $dirImg = "public/img/continua/";
+
+        $fecha = date('Ymd_His');
+        $rImg = $dirImg . $fecha . "_" . $nom_img;
+
+        if ($tImg == "jpg" or $tImg == "jpeg" or $tImg == "png") {
+            $rImg = $dirImg . $nom_img;
+            if (move_uploaded_file($img_url, $rImg)) {
+                if ($this->model->insertCard([
+                    'id_ec' => $id_ec,
+                    'titulo' => $titulo,
+                    'descripcion' => $descripcion,
+                    'img_url' => $rImg
+                ])) {
+                    $this->view->mensaje = "Se agrego correctamente";
+                }
+                header('location: ' . URL . 'continua');
+            } else {
+                $this->view->mensaje =  "Error al guardar en el directorio";
+            }
+        } else {
+            $this->view->mensaje =  "El formato es incorrecto";
+        }
+    }
+
     function updatePrograma()
     {
         $id_ec = $_POST['id_ec_up'];
@@ -69,6 +107,8 @@ class Continua extends Controller
 
         $nom_ec = $_POST['nom_ec_up'];
         $descripcion = $_POST['descripcion_up'];
+        $desc_detallada = $_POST['desc_detallada_up'];
+        $revoe = $_POST['revoe_up'];
 
         $img_url = $_FILES['img_url_up']['tmp_name'];
         $nom_img = $_FILES['img_url_up']['name'];
@@ -98,6 +138,8 @@ class Continua extends Controller
                         'id_ec' => $id_ec,
                         'nom_ec' => $nom_ec,
                         'descripcion' => $descripcion,
+                        'desc_detallada' => $desc_detallada,
+                        'revoe' => $revoe,
                         'img_url' => $rImg,
                         'pdf_url' => $rPdf,
                     ])) {
@@ -105,6 +147,8 @@ class Continua extends Controller
                         $continua->id_ec = $id_ec;
                         $continua->nom_ec = $nom_ec;
                         $continua->descripcion = $descripcion;
+                        $continua->desc_detallada = $desc_detallada;
+                        $continua->revoe = $revoe;
                         $continua->img_url = $img_url;
                         $continua->pdf_url = $pdf_url;
 
@@ -125,6 +169,8 @@ class Continua extends Controller
                 'id_ec' => $id_ec,
                 'nom_ec' => $nom_ec,
                 'descripcion' => $descripcion,
+                'desc_detallada' => $desc_detallada,
+                'revoe' => $revoe,
                 'img_url' => $img_url_db,
                 'pdf_url' => $pdf_url_db,
             ])) {
@@ -132,6 +178,8 @@ class Continua extends Controller
                 $continua->id_ec = $id_ec;
                 $continua->nom_ec = $nom_ec;
                 $continua->descripcion = $descripcion;
+                $continua->descripcion = $descripcion;
+                $continua->desc_detallada = $desc_detallada;
                 $continua->img_url = $img_url_db;
                 $continua->pdf_url = $pdf_url_db;
 

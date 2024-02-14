@@ -21,6 +21,8 @@ class ContinuaModel extends Model
                 $item->id_ec = $row['id_ec'];
                 $item->nom_ec = $row['nom_ec'];
                 $item->descripcion = $row['descripcion'];
+                $item->desc_detallada = $row['desc_detallada'];
+                $item->revoe = $row['revoe'];
                 $item->img_url = $row['img_url'];
                 $item->pdf_url = $row['pdf_url'];
 

@@ -19,6 +19,8 @@ class CursosModel extends Model{
                 $item->id_curso = $row['id_curso'];
                 $item->nom_curso = $row['nom_curso'];
                 $item->descripcion = $row['descripcion'];
+                $item->desc_detallada = $row['desc_detallada'];
+                $item->revoe = $row['revoe'];
                 $item->img_url = $row['img_url'];
                 $item->pdf_url = $row['pdf_url'];
 

@@ -58,6 +58,14 @@
                       </div>
                     </div>
                   </div>
+                  <div class="form-group">
+                    <label for="desc_detallada">Descripción Detallada</label>
+                    <textarea class="form-control" rows="3" id="desc_detallada" placeholder="Ingresa la Descripción" name="desc_detallada"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="revoe">REVOE</label>
+                    <input type="text" class="form-control" id="revoe" placeholder="Ingrese el nombre de la Licenciatura" name="revoe">
+                  </div>
                 </div>
               </div>
               <!-- /.card-body -->

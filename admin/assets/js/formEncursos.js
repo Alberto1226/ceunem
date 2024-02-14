@@ -91,3 +91,8 @@ function obtenerDatos() {
         }   
     })
 }
+
+function idCur(id){
+    document.getElementById('id_cur').value = id;
+    console.log("------",id);
+}

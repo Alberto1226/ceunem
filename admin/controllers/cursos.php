@@ -26,6 +26,8 @@ class Cursos extends Controller
     {
         $nom_curso = $_POST['nom_curso'];
         $descripcion = $_POST['descripcion'];
+        $desc_detalla = $_POST['desc_detallada'];
+        $revoe = $_POST['revoe'];
         $estado = $_POST['estado'];
 
         $img_url = $_FILES['img_url']['tmp_name'];
@@ -50,6 +52,8 @@ class Cursos extends Controller
                 if($this->model->insert([
                     'nom_curso' =>$nom_curso,
                     'descripcion' =>$descripcion,
+                    'desc_detallada' => $desc_detalla,
+                        'revoe' => $revoe,
                     'img_url' =>$rImg,
                     'pdf_url' =>$rPdf,
                     'estado' =>$estado
@@ -67,6 +71,40 @@ class Cursos extends Controller
 
     }
 
+    function addCard()
+    {
+        $id_curso = $_POST['id_cur'];
+        $titulo = $_POST['titulo'];
+        $descripcion = $_POST['descripcion'];
+
+        $img_url = $_FILES['img_url']['tmp_name'];
+        $nom_img = $_FILES['img_url']['name'];
+        $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
+        $dirImg = "public/img/cursos/";
+
+        $fecha = date('Ymd_His');
+        $rImg = $dirImg . $fecha . "_" . $nom_img;
+
+        if ($tImg == "jpg" or $tImg == "jpeg" or $tImg == "png") {
+            $rImg = $dirImg . $nom_img;
+            if (move_uploaded_file($img_url, $rImg)) {
+                if ($this->model->insertCard([
+                    'id_curso' => $id_curso,
+                    'titulo' => $titulo,
+                    'descripcion' => $descripcion,
+                    'img_url' => $rImg
+                ])) {
+                    $this->view->mensaje = "Se agrego correctamente";
+                }
+                header('location: ' . URL . 'cursos');
+            } else {
+                $this->view->mensaje =  "Error al guardar en el directorio";
+            }
+        } else {
+            $this->view->mensaje =  "El formato es incorrecto";
+        }
+    }
+
     function updateCur()
     {
         $id_curso = $_POST['id_curso_up'];
@@ -75,6 +113,8 @@ class Cursos extends Controller
 
         $nom_curso = $_POST['nom_curso_up'];
         $descripcion = $_POST['descripcion_up'];
+        $desc_detalla = $_POST['desc_detallada_up'];
+        $revoe = $_POST['revoe_up'];
 
         $img_url = $_FILES['img_url_up']['tmp_name'];
         $nom_img = $_FILES['img_url_up']['name'];
@@ -104,13 +144,17 @@ class Cursos extends Controller
                         'id_curso' => $id_curso,
                         'nom_curso' => $nom_curso,
                         'descripcion' => $descripcion,
+                        'desc_detallada' => $desc_detalla,
+                        'revoe' => $revoe,
                         'img_url' => $rImg,
                         'pdf_url' => $rPdf,
                     ])) {
-                        $cursos = new Cursos();
+                        $cursos = new CursosEC();
                         $cursos->id_curso = $id_curso;
                         $cursos->nom_curso = $nom_curso;
                         $cursos->descripcion = $descripcion;
+                        $cursos->desc_detallada = $desc_detalla;
+                        $cursos->revoe = $revoe;
                         $cursos->img_url = $img_url;
                         $cursos->pdf_url = $pdf_url;
 
@@ -131,13 +175,17 @@ class Cursos extends Controller
                 'id_curso' => $id_curso,
                 'nom_curso' => $nom_curso,
                 'descripcion' => $descripcion,
+                'desc_detallada' => $desc_detalla,
+                'revoe' => $revoe,
                 'img_url' => $img_url_db,
                 'pdf_url' => $pdf_url_db,
             ])) {
-                $cursos = new Cursos();
+                $cursos = new CursosEC();
                 $cursos->id_curso = $id_curso;
                 $cursos->nom_curso = $nom_curso;
                 $cursos->descripcion = $descripcion;
+                $cursos->desc_detallada = $desc_detalla;
+                $cursos->revoe = $revoe;
                 $cursos->img_url = $img_url_db;
                 $cursos->pdf_url = $pdf_url_db;
 

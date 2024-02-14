@@ -21,7 +21,7 @@
                 </section>
             </div>
             <div class="container-fluid">
-            <?php require 'encabezadoMaestria.php'; ?>
+                <?php require 'encabezadoMaestria.php'; ?>
                 <div class="card">
                     <div class="card-header">
                         <button type="button" class="btn  btn-outline-success" data-toggle="modal" data-target="#addMasModal">
@@ -35,9 +35,12 @@
                                 <tr>
                                     <th>Nombre Maestría</th>
                                     <th>Descripción</th>
+                                    <th>Descripción Detallada</th>
+                                    <th>REVOE</th>
                                     <th>Imagen</th>
                                     <th>Plan de estudios</th>
                                     <th>Status</th>
+                                    <th>Cards</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -51,6 +54,8 @@
                                     <tr>
                                         <td class="align-middle" width="200px"><?php echo $maestria->nom_mas; ?></td>
                                         <td class="align-middle" width="400px"><?php echo $maestria->descripcion; ?></td>
+                                        <td class="align-middle" width="400px"><?php echo $maestria->desc_detallada; ?></td>
+                                        <td class="align-middle" width="400px"><?php echo $maestria->revoe; ?></td>
                                         <td class="align-middle"><img src="<?php echo $maestria->img_url; ?>" alt="" width="80px" /></td>
                                         <td class="align-middle" width="150px"><a target="_blank" href="<?php echo $maestria->pdf_url; ?>"><?php echo $maestria->nom_mas; ?></a></td>
                                         <td class="align-middle">
@@ -60,6 +65,11 @@
                                             } else {
                                                 echo "Inactivo";
                                             }
+                                            ?>
+                                        </td>
+                                        <td class="align-middle">
+                                            <?php
+                                            echo "0";
                                             ?>
                                         </td>
                                         <td class="align-middle">
@@ -77,6 +87,8 @@
                                                 <?php
                                                 }
                                                 ?>
+                                                <a class="btn btn-outline-success" data-toggle="modal" onclick="idMas(<?= $maestria->id_mas; ?>)" data-target="#addCardModal"><i class="fa fa-plus"></i></a>
+                                                <a class="btn btn-outline-success" hidden="true" data-toggle="modal" onclick="" data-target="#updateDatsModal<?= $licenciatura->id_lic; ?>"><i class="fa fa-plus"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -106,6 +118,14 @@
                                                                     <div class="form-group">
                                                                         <label for="descripcion_up">Descripción</label>
                                                                         <textarea class="form-control border border-warning" rows="3" id="descripcion_up" placeholder="Ingresa la Descripción" name="descripcion_up"><?= $maestria->descripcion; ?></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="desc_detallada_up">Descripción Detallada</label>
+                                                                        <textarea class="form-control border border-warning" rows="3" id="desc_detallada_up" placeholder="Ingresa la Descripción Detallada" name="desc_detallada_up"><?= $maestria->desc_detallada; ?></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="revoe_up">REVOE</label>
+                                                                        <input type="text" class="form-control border border-warning" id="revoe_up" value="<?= $maestria->revoe; ?>" placeholder="Ingrese el REVOE" name="revoe_up">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="img_url_up">Imagen</label>
@@ -256,9 +276,12 @@
                                 <tr>
                                     <th>Nombre Maestría</th>
                                     <th>Descripción</th>
+                                    <th>Descripción Detallada</th>
+                                    <th>REVOE</th>
                                     <th>Imagen</th>
                                     <th>Plan de estudios</th>
                                     <th>Status</th>
+                                    <th>Cards</th>
                                     <th>Acciones</th>
                                 </tr>
                             </tfoot>
@@ -272,4 +295,5 @@
 </div>
 <?php require 'views/templete/footer.php'; ?>
 <?php include 'addMasModal.php'; ?>
+<?php include 'addCardModal.php'; ?>
 <script src="<?php echo constant('URL') ?>assets/js/formEnMas.js"></script>

@@ -91,3 +91,7 @@ function obtenerDatos() {
         }   
     })
 }
+
+function idEC(id){
+    document.getElementById('id_ec').value = id;
+}

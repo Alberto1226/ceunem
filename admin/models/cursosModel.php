@@ -1,5 +1,6 @@
 <?php
 include_once 'models/clases/cursos.php';
+include_once 'models/clases/curso_datos.php';
 include_once 'models/clases/encabezados.php';
 
 class CursosModel extends Model{
@@ -13,11 +14,13 @@ class CursosModel extends Model{
         try {
             $query = $this->db->connect()->query("SELECT * FROM cursos");
             while ($row = $query->fetch()) {
-                $item = new Cursos();
+                $item = new CursosEC();
 
                 $item->id_curso = $row['id_curso'];
                 $item->nom_curso = $row['nom_curso'];
                 $item->descripcion = $row['descripcion'];
+                $item->desc_detallada = $row['desc_detallada'];
+                $item->revoe = $row['revoe'];
                 $item->img_url = $row['img_url'];
                 $item->pdf_url = $row['pdf_url'];
                 $item->estado = $row['estado'];
@@ -33,11 +36,13 @@ class CursosModel extends Model{
     public function insert($datos){
         try {
             $query = $this->db->connect()->prepare(
-                'INSERT INTO cursos (nom_curso, descripcion, img_url, pdf_url, estado)
-                VALUES(:nom_curso, :descripcion, :img_url, :pdf_url, :estado)');
+                'INSERT INTO cursos (nom_curso, descripcion, desc_detallada, revoe, img_url, pdf_url, estado)
+                VALUES(:nom_curso, :descripcion, :desc_detallada, :revoe, :img_url, :pdf_url, :estado)');
             $query->execute([
                 'nom_curso' =>$datos['nom_curso'], 
                 'descripcion' =>$datos['descripcion'], 
+                'desc_detallada' => $datos['desc_detallada'],
+                'revoe' => $datos['revoe'],
                 'img_url' =>$datos['img_url'], 
                 'pdf_url' =>$datos['pdf_url'],
                 'estado' => $datos['estado']
@@ -48,9 +53,26 @@ class CursosModel extends Model{
         }
     }
 
+    public function insertCard($datos){
+        try {
+            $query = $this->db->connect()->prepare(
+                'INSERT INTO curso_datos (id_curso, titulo, descripcion, img_url)
+                VALUES(:id_curso, :titulo, :descripcion, :img_url)');
+            $query->execute([
+                'id_curso' =>$datos['id_curso'], 
+                'titulo' =>$datos['titulo'],
+                'descripcion' =>$datos['descripcion'], 
+                'img_url' =>$datos['img_url']
+            ]);
+            return true;
+        } catch (PDOException $th) {
+           return false;
+        }
+    }
+
     public function update($item){
         $query= $this->db->connect()->prepare("UPDATE cursos 
-        SET nom_curso = :nom_curso, descripcion = :descripcion, 
+        SET nom_curso = :nom_curso, descripcion = :descripcion, desc_detallada = :desc_detallada, revoe = :revoe, 
         img_url = :img_url, pdf_url = :pdf_url 
         WHERE id_curso = :id_curso");
         try {
@@ -58,6 +80,8 @@ class CursosModel extends Model{
                 'id_curso' => $item['id_curso'],
                 'nom_curso' => $item['nom_curso'],
                 'descripcion' => $item['descripcion'],
+                'desc_detallada' => $item['desc_detallada'],
+                'revoe' => $item['revoe'],
                 'img_url' => $item['img_url'],
                 'pdf_url' => $item['pdf_url']
             ]);
