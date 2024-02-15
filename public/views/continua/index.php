@@ -18,11 +18,13 @@
 
 <!-- Educación Continua Start -->
 <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+<div class="d-inline-block rounded-pill restPagina text-white py-1 px-3 mb-3"><?= $this->header->encabezado; ?></div>
+            <h3 class="display-8 mb-5"><?= $this->header->descripcion; ?></h3>
     <div class="container">
-    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+    <!--<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 1000px;">
             <div class="d-inline-block rounded-pill restPagina text-white py-1 px-3 mb-3"><?= $this->header->encabezado; ?></div>
             <h1 class="display-6 mb-5"><?= $this->header->descripcion; ?></h1>
-        </div>
+        </div>-->
         <div class="row g-4 justify-content-center">
             <?php
             include_once 'models/clases/continuas.php';
@@ -49,7 +51,7 @@
                             <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $continua->img_url; ?>" alt="">
                             <h4 class="mb-3" style="color:#A5042D;"><?php echo $continua->nom_ec; ?></h4>
                             <p class="mb-4"><?php echo $continua->descripcion; ?></p>
-                            <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') ?>moreinfC?desc_detallada=<?php echo urlencode($continua->desc_detallada); ?>&revoe=<?php echo urlencode($continua->revoe); ?>&id_ec=<?php echo urlencode($continua->id_ec); ?>&name_ec=<?php echo urlencode($continua->nom_ec); ?>" target="_blank">
+                            <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') ?>moreinfC?desc_detallada=<?php echo urlencode($continua->desc_detallada); ?>&revoe=<?php echo urlencode($continua->revoe); ?>&id_ec=<?php echo urlencode($continua->id_ec); ?>&name_ec=<?php echo urlencode($continua->nom_ec); ?>&pdf=<?php echo urlencode($continua->pdf_url); ?>" target="_blank">
                                 Ver más
                                 <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                     <i class="fa fa-arrow-right"></i>

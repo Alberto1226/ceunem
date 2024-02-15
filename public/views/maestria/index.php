@@ -18,10 +18,12 @@
 
 <!-- Maestrías Start -->
 <div class="container-xxl py-5">
+<div class="d-inline-block rounded-pill restPagina text-white py-1 px-3 mb-3"><?= $this->header->encabezado; ?></div>
+<h3 class="display-7 mb-5 text-justify"><?= $this->header->descripcion; ?></h3>
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <div class="d-inline-block rounded-pill restPagina text-white py-1 px-3 mb-3"><?= $this->header->encabezado; ?></div>
-            <h1 class="display-6 mb-5"><?= $this->header->descripcion; ?></h1>
+            
+            
         </div>
         <div class="row g-4 justify-content-center">
             <?php
@@ -49,7 +51,7 @@
                             <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $maestria->img_url; ?>" alt="">
                             <h4 class="mb-3" style="color:#A5042D;"><?php echo $maestria->nom_mas; ?></h4>
                             <p class="mb-4"><?php echo $maestria->descripcion; ?></p>
-                            <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') ?>moreinfM?desc_detallada=<?php echo urlencode($maestria->desc_detallada); ?>&revoe=<?php echo urlencode($maestria->revoe); ?>&id_mas=<?php echo urlencode($maestria->id_mas); ?>&name_mas=<?php echo urlencode($maestria->nom_mas); ?>" target="_blank">
+                            <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') ?>moreinfM?desc_detallada=<?php echo urlencode($maestria->desc_detallada); ?>&revoe=<?php echo urlencode($maestria->revoe); ?>&id_mas=<?php echo urlencode($maestria->id_mas); ?>&name_mas=<?php echo urlencode($maestria->nom_mas); ?>&pdf=<?php echo urlencode($maestria->pdf_url); ?>" target="_blank">
                                 Ver más
                                 <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                     <i class="fa fa-arrow-right"></i>

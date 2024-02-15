@@ -186,9 +186,9 @@
 }
 
 .page-header {
-    padding-top: 40%;
+    padding-top: 35%;
     padding-bottom: 6rem;
-    background:  url(../img/carousel-1.jpg) center center no-repeat;
+   /* background:  url(../img/carousel-1.jpg) center center no-repeat;*/
     background-size: cover;
     
 }

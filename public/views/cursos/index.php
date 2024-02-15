@@ -15,11 +15,13 @@
 <!-- Page Header End -->
 <!-- cursos Start -->
 <div class="container-xxl py-5">
+<div class="d-inline-block rounded-pill restPagina text-white py-1 px-3 mb-3">Capacitación Emperesarial</div>
+            <h3 class="display-8 mb-5"><?= $this->header->descripcion; ?></h3>
     <div class="container">
-        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+        <!--<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
             <div class="d-inline-block rounded-pill restPagina text-white py-1 px-3 mb-3">Capacitación Emperesarial</div>
             <h1 class="display-6 mb-5"><?= $this->header->descripcion; ?></h1>
-        </div>
+        </div>-->
         <div class="row g-4 justify-content-center">
             <?php
             include_once 'models/clases/cursos.php';
@@ -46,7 +48,7 @@
                             <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $cursos->img_url; ?>" alt="">
                             <h4 class="mb-3" style="color:#A5042D;"><?php echo $cursos->nom_curso; ?></h4>
                             <p class="mb-4"><?php echo $cursos->descripcion; ?></p>
-                            <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') ?>moreinfCU?desc_detallada=<?php echo urlencode($cursos->desc_detallada); ?>&revoe=<?php echo urlencode($cursos->revoe); ?>&id_curso=<?php echo urlencode($cursos->id_curso); ?>&name_curso=<?php echo urlencode($cursos->nom_curso); ?>" target="_blank">
+                            <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') ?>moreinfCU?desc_detallada=<?php echo urlencode($cursos->desc_detallada); ?>&revoe=<?php echo urlencode($cursos->revoe); ?>&id_curso=<?php echo urlencode($cursos->id_curso); ?>&name_curso=<?php echo urlencode($cursos->nom_curso); ?>&pdf=<?php echo urlencode($cursos->pdf_url); ?>" target="_blank">
                                 Ver más
                                 <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                     <i class="fa fa-arrow-right"></i>
