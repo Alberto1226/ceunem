@@ -49,7 +49,7 @@
                             <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $licenciatura->img_url; ?>" alt="">
                             <h4 class="mb-3 " style="color:#A5042D;"><?php echo $licenciatura->nom_lic; ?></h4>
                             <p class="mb-4"><?php echo $licenciatura->descripcion; ?></p>
-                            <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') ?>moreinf?desc_detallada=<?php echo urlencode($licenciatura->desc_detallada); ?>&revoe=<?php echo urlencode($licenciatura->revoe); ?>&id_lic=<?php echo urlencode($licenciatura->id_lic); ?>&name_lic=<?php echo urlencode($licenciatura->nom_lic); ?>&pdf=<?php echo urlencode($licenciatura->pdf_url); ?>" target="_blank">
+                            <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') ?>moreinf?desc_detallada=<?php echo urlencode($licenciatura->desc_detallada); ?>&revoe=<?php echo urlencode($licenciatura->revoe); ?>&id_lic=<?php echo urlencode($licenciatura->id_lic); ?>&name_lic=<?php echo urlencode($licenciatura->nom_lic); ?>&pdf=<?php echo urlencode($licenciatura->pdf_url); ?>&img=<?php echo urlencode($licenciatura->img_url); ?>" target="_blank">
                                 Ver más
                                 <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                     <i class="fa fa-arrow-right"></i>

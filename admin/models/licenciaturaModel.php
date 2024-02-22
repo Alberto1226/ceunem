@@ -112,9 +112,39 @@ class LicenciaturaModel extends Model{
         }
     }
 
+    public function updateCard($item){
+        $query= $this->db->connect()->prepare("UPDATE lic_datos 
+        SET id_lic = :id_lic, titulo = :titulo, descripcion = :descripcion,
+        img_url = :img_url 
+        WHERE id_lic_datos = :id_lic_datos");
+        try {
+            $query->execute([
+                'id_lic_datos' => $item['id_lic_datos'],
+                'id_lic' => $item['id_lic'],
+                'titulo' => $item['titulo'],
+                'descripcion' => $item['descripcion'],
+                'img_url' => $item['img_url']
+            ]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+
     public function delete($id){
         $query = $this->db->connect()->prepare(
             "DELETE FROM licenciaturas WHERE id_lic = :id");
+        try {
+            $query->execute(['id' => $id]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+
+    public function deleteCard($id){
+        $query = $this->db->connect()->prepare(
+            "DELETE FROM lic_datos WHERE id_lic_datos = :id");
         try {
             $query->execute(['id' => $id]);
             return true;
@@ -180,6 +210,7 @@ class LicenciaturaModel extends Model{
         }
     }
 
+    
     public function updateEncabezado($datos)
     {
         $query = $this->db->connect()->prepare("UPDATE encabezado

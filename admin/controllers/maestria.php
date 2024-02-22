@@ -17,6 +17,8 @@ class Maestria extends Controller
     {
         $maestrias = $this->model->getAllMaestrias();
         $this->view->maestrias = $maestrias;
+        $mas_datos = $this->model->getAllCards();
+        $this->view->mas_datos = $mas_datos;
         $this->view->render('maestria/index');
     }
 
@@ -49,7 +51,7 @@ class Maestria extends Controller
                     'nom_mas' => $nom_mas,
                     'descripcion' => $descripcion,
                     'desc_detallada' => $desc_detalla,
-                        'revoe' => $revoe,
+                    'revoe' => $revoe,
                     'img_url' => $rImg,
                     'pdf_url' => $rPdf,
                     'estado' => $estado
@@ -192,6 +194,80 @@ class Maestria extends Controller
         }
     }
 
+    function updateCardMas()
+    {
+        $id_mas_datos = $_POST['id_upCard'];
+        $id_mas = $_POST['id_up_licCard'];
+        $img_url_db = $_POST['img_url_db_card'];
+        $titulo = $_POST['titulo_upCard'];
+        $descripcion = $_POST['descripcion_upCard'];
+
+        $img_url = $_FILES['img_url_upCard']['tmp_name'];
+        $nom_img = $_FILES['img_url_upCard']['name'];
+        $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
+        $dirImg = "public/img/maestria/";
+
+        $fecha = date('Ymd_His');
+        $rImg = $dirImg . $fecha . "_" . $nom_img;
+
+        if (is_file($img_url)) {
+            if ($tImg == "jpg" or $tImg == "jpeg" or $tImg == "png") {
+                try {
+                    unlink($img_url_db);
+                } catch (\Throwable $th) {
+                    //throw $th;
+                }
+                if (move_uploaded_file($img_url, $rImg)) {
+                    if ($this->model->updateCard([
+                        'id_mas_datos' => $id_mas_datos,
+                        'id_mas' => $id_mas,
+                        'titulo' => $titulo,
+                        'descripcion' => $descripcion,
+                        'img_url' => $rImg,
+                    ])) {
+                        $mas_datos = new mas_datos();
+                        $mas_datos->id_mas_datos = $id_mas_datos;
+                        $mas_datos->id_mas = $id_mas;
+                        $mas_datos->titulo = $titulo;
+                        $mas_datos->descripcion = $descripcion;
+                        $mas_datos->img_url = $img_url;
+
+                        $this->view->maestria = $mas_datos;
+                        $this->view->mensaje = "Se modifico exitosamente";
+                        header('location: ' . URL . 'maestria');
+                    } else {
+                        $this->view->mensaje = "Error al modificar";
+                    }
+                } else {
+                    $this->view->mensaje = "Error al subir archivos";
+                }
+            } else {
+                $this->view->mensaje = "Error al actulizar";
+            }
+        } else {
+            if ($this->model->updateCard([
+                'id_mas_datos' => $id_mas_datos,
+                'id_mas' => $id_mas,
+                'titulo' => $titulo,
+                'descripcion' => $descripcion,
+                'img_url' => $img_url_db
+            ])) {
+                $mas_datos = new mas_datos();
+                $mas_datos->id_mas_datos = $id_mas_datos;
+                $mas_datos->id_mas = $id_mas;
+                $mas_datos->titulo = $titulo;
+                $mas_datos->descripcion = $descripcion;
+                $mas_datos->img_url = $img_url;
+
+                $this->view->maestria = $mas_datos;
+                $this->view->mensaje = "Se modifico exitosamente";
+                header('location: ' . URL . 'maestria');
+            } else {
+                $this->view->mensaje = "Error al modificar datos";
+            }
+        }
+    }
+
     function deleteMaestria()
     {
         $id_mas = $_POST['id_delete'];
@@ -205,6 +281,25 @@ class Maestria extends Controller
             header('location: ' . URL . 'maestria');
         } else {
             $this->view->mensaje = "Error al eliminar la Maestría";
+        }
+    }
+
+    function deleteCardMas()
+    {
+        $id_mas = $_POST['id_delete_card'];
+        $img_url = $_POST['img_delete_card'];
+
+        if (unlink($img_url)) {
+            if ($this->model->deleteCard($id_mas)) {
+                $this->view->mensaje = "Card eliminada correctamente";
+            }
+            header('location: ' . URL . 'maestria');
+        } else {
+            if ($this->model->deleteCard($id_mas)) {
+                $this->view->mensaje = "Card eliminada correctamente";
+            }
+            header('location: ' . URL . 'maestria');
+            // $this->view->mensaje = "Error al eliminar la Card";
         }
     }
 

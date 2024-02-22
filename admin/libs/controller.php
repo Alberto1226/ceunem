@@ -11,7 +11,7 @@ class Controller{
     }
 
     function loadModel($model){
-        $url = 'models/'.$model.'model.php';
+        $url = 'models/'.$model.'Model.php';
 
         if(file_exists($url)){
             require $url;

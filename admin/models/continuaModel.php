@@ -1,5 +1,6 @@
 <?php
 include_once 'models/clases/continuas.php';
+include_once 'models/clases/ec_datos.php';
 include_once 'models/clases/encabezados.php';
 
 class ContinuaModel extends Model
@@ -34,6 +35,28 @@ class ContinuaModel extends Model
         }
     }
 
+    public function getAllCards()
+    {
+        $items = [];
+        try {
+            $query = $this->db->connect()->query("SELECT * FROM ec_datos");
+            while ($row = $query->fetch()) {
+                $item = new ec_datos();
+
+                $item->id_ec_datos = $row['id_ec_datos'];
+                $item->id_ec = $row['id_ec'];
+                $item->titulo = $row['titulo'];
+                $item->descripcion = $row['descripcion'];
+                $item->img_url = $row['img_url'];
+
+                array_push($items, $item);
+            }
+            return $items;
+        } catch (PDOException $th) {
+            return [];
+        }
+    }
+
     public function insert($datos)
     {
         try {
@@ -56,25 +79,28 @@ class ContinuaModel extends Model
         }
     }
 
-    public function insertCard($datos){
+    public function insertCard($datos)
+    {
         try {
             $query = $this->db->connect()->prepare(
                 'INSERT INTO ec_datos (id_ec, titulo, descripcion, img_url)
-                VALUES(:id_ec, :titulo, :descripcion, :img_url)');
+                VALUES(:id_ec, :titulo, :descripcion, :img_url)'
+            );
             $query->execute([
-                'id_ec' =>$datos['id_ec'], 
-                'titulo' =>$datos['titulo'],
-                'descripcion' =>$datos['descripcion'], 
-                'img_url' =>$datos['img_url']
+                'id_ec' => $datos['id_ec'],
+                'titulo' => $datos['titulo'],
+                'descripcion' => $datos['descripcion'],
+                'img_url' => $datos['img_url']
             ]);
             return true;
         } catch (PDOException $th) {
-           return false;
+            return false;
         }
     }
 
-    public function update($item){
-        $query= $this->db->connect()->prepare("UPDATE continua 
+    public function update($item)
+    {
+        $query = $this->db->connect()->prepare("UPDATE continua 
         SET nom_ec = :nom_ec, descripcion = :descripcion, desc_detallada = :desc_detallada, revoe = :revoe, 
         img_url = :img_url, pdf_url = :pdf_url 
         WHERE id_ec = :id_ec");
@@ -94,9 +120,31 @@ class ContinuaModel extends Model
         }
     }
 
-    public function delete($id){
+    public function updateCard($item)
+    {
+        $query = $this->db->connect()->prepare("UPDATE ec_datos 
+        SET id_ec = :id_ec, titulo = :titulo, descripcion = :descripcion,
+        img_url = :img_url 
+        WHERE id_ec_datos = :id_ec_datos");
+        try {
+            $query->execute([
+                'id_ec_datos' => $item['id_ec_datos'],
+                'id_ec' => $item['id_ec'],
+                'titulo' => $item['titulo'],
+                'descripcion' => $item['descripcion'],
+                'img_url' => $item['img_url']
+            ]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+
+    public function delete($id)
+    {
         $query = $this->db->connect()->prepare(
-            "DELETE FROM continua WHERE id_ec = :id");
+            "DELETE FROM continua WHERE id_ec = :id"
+        );
         try {
             $query->execute(['id' => $id]);
             return true;
@@ -105,7 +153,21 @@ class ContinuaModel extends Model
         }
     }
 
-    public function estado($item){
+    public function deleteCard($id)
+    {
+        $query = $this->db->connect()->prepare(
+            "DELETE FROM ec_datos WHERE id_ec_datos = :id"
+        );
+        try {
+            $query->execute(['id' => $id]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+
+    public function estado($item)
+    {
         $query = $this->db->connect()->prepare("UPDATE continua
         SET estado = :estado
         WHERE id_ec = :id_ec");

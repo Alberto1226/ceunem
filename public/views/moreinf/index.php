@@ -7,10 +7,11 @@ $revoe = $_GET['revoe'];
 $id_lic = $_GET['id_lic'];
 $name = $_GET['name_lic'];
 $pdf = $_GET['pdf'];
+$imgp = $_GET['img'];
 
     ?>
 <!-- Page Header Start -->
-<div class="container-fluid page-header mb-5 wow fadeIn bannerImgAsc" data-wow-delay="0.1s">
+<div class="container-fluid page-header mb-5 wow fadeIn " data-wow-delay="0.1s" style="background-image: url('<?php echo constant('ARCHIVOS'). $imgp; ?>');">
     <div class="container text-center">
         <h1 class="display-4 text-white animated slideInDown mb-4"> </h1>
         <nav aria-label="breadcrumb animated slideInDown">
@@ -22,11 +23,11 @@ $pdf = $_GET['pdf'];
                 </li>
 
             </ol>
-            <div class="d-inline-block ">
+            <div class="d-inline-block display-6" >
 
-                <a href="<?php echo constant('ARCHIVOS') . $pdf; ?>" class="btn btn-primary btn-sm float-right"
-                    target="_blank">
-                    <i class="far fa-file-pdf"></i> Plan de Estudio
+                <a href="<?php echo constant('ARCHIVOS') . $pdf; ?>" class="btn btn-link btn-sm float-right btnPag"
+                    target="_blank" style="font-size:20px; ">
+                    <i class="far fa-file-pdf" ></i> Plan de Estudio
                 </a>
             </div>
         </nav>
@@ -73,7 +74,7 @@ $pdf = $_GET['pdf'];
                     if ($moreinf->id_lic == $id_lic) {
                         ?>
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
+                            <div class="service-item bg-white text-justify h-100 p-4 p-xl-5">
                                 <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $moreinf->img_url; ?>" alt="">
                                 <h4 class="mb-3 " style="color:#A5042D;">
                                     <?php echo $moreinf->titulo; ?>

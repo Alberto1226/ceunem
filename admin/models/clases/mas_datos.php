@@ -1,5 +1,5 @@
 <?php
-class lic_datos{
+class mas_datos{
     public $id_mas_datos;
     public $id_mas;
     public $titulo;

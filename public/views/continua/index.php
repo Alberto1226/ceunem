@@ -51,7 +51,7 @@
                             <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $continua->img_url; ?>" alt="">
                             <h4 class="mb-3" style="color:#A5042D;"><?php echo $continua->nom_ec; ?></h4>
                             <p class="mb-4"><?php echo $continua->descripcion; ?></p>
-                            <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') ?>moreinfC?desc_detallada=<?php echo urlencode($continua->desc_detallada); ?>&revoe=<?php echo urlencode($continua->revoe); ?>&id_ec=<?php echo urlencode($continua->id_ec); ?>&name_ec=<?php echo urlencode($continua->nom_ec); ?>&pdf=<?php echo urlencode($continua->pdf_url); ?>" target="_blank">
+                            <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') ?>moreinfC?desc_detallada=<?php echo urlencode($continua->desc_detallada); ?>&revoe=<?php echo urlencode($continua->revoe); ?>&id_ec=<?php echo urlencode($continua->id_ec); ?>&name_ec=<?php echo urlencode($continua->nom_ec); ?>&pdf=<?php echo urlencode($continua->pdf_url); ?>&img=<?php echo urlencode($continua->img_url); ?>" target="_blank">
                                 Ver más
                                 <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                     <i class="fa fa-arrow-right"></i>

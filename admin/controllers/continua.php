@@ -7,8 +7,8 @@ class Continua extends Controller
         session_start();
         parent::__construct();
 
-        if(empty($_SESSION['login'])){
-            header('Location: '.URL.'login');
+        if (empty($_SESSION['login'])) {
+            header('Location: ' . URL . 'login');
             die();
         }
     }
@@ -17,6 +17,8 @@ class Continua extends Controller
     {
         $continuas = $this->model->getAllContinuas();
         $this->view->continuas = $continuas;
+        $ec_datos = $this->model->getAllCards();
+        $this->view->ec_datos = $ec_datos;
         $this->view->render('continua/index');
     }
 
@@ -49,7 +51,7 @@ class Continua extends Controller
                     'nom_ec' => $nom_ec,
                     'descripcion' => $descripcion,
                     'desc_detallada' => $desc_detalla,
-                        'revoe' => $revoe,
+                    'revoe' => $revoe,
                     'img_url' => $rImg,
                     'pdf_url' => $rPdf,
                     'estado' => $estado,
@@ -192,6 +194,80 @@ class Continua extends Controller
         }
     }
 
+    function updateCardEc()
+    {
+        $id_ec_datos = $_POST['id_upCard'];
+        $id_ec = $_POST['id_up_licCard'];
+        $img_url_db = $_POST['img_url_db_card'];
+        $titulo = $_POST['titulo_upCard'];
+        $descripcion = $_POST['descripcion_upCard'];
+
+        $img_url = $_FILES['img_url_upCard']['tmp_name'];
+        $nom_img = $_FILES['img_url_upCard']['name'];
+        $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
+        $dirImg = "public/img/maestria/";
+
+        $fecha = date('Ymd_His');
+        $rImg = $dirImg . $fecha . "_" . $nom_img;
+
+        if (is_file($img_url)) {
+            if ($tImg == "jpg" or $tImg == "jpeg" or $tImg == "png") {
+                try {
+                    unlink($img_url_db);
+                } catch (\Throwable $th) {
+                    //throw $th;
+                }
+                if (move_uploaded_file($img_url, $rImg)) {
+                    if ($this->model->updateCard([
+                        'id_ec_datos' => $id_ec_datos,
+                        'id_ec' => $id_ec,
+                        'titulo' => $titulo,
+                        'descripcion' => $descripcion,
+                        'img_url' => $rImg,
+                    ])) {
+                        $ec_datos = new ec_datos();
+                        $ec_datos->id_ec_datos = $id_ec_datos;
+                        $ec_datos->id_ec = $id_ec;
+                        $ec_datos->titulo = $titulo;
+                        $ec_datos->descripcion = $descripcion;
+                        $ec_datos->img_url = $img_url;
+
+                        $this->view->continua = $ec_datos;
+                        $this->view->mensaje = "Se modifico exitosamente";
+                        header('location: ' . URL . 'continua');
+                    } else {
+                        $this->view->mensaje = "Error al modificar";
+                    }
+                } else {
+                    $this->view->mensaje = "Error al subir archivos";
+                }
+            } else {
+                $this->view->mensaje = "Error al actulizar";
+            }
+        } else {
+            if ($this->model->updateCard([
+                'id_ec_datos' => $id_ec_datos,
+                'id_ec' => $id_ec,
+                'titulo' => $titulo,
+                'descripcion' => $descripcion,
+                'img_url' => $img_url_db
+            ])) {
+                $ec_datos = new ec_datos();
+                $ec_datos->id_ec_datos = $id_ec_datos;
+                $ec_datos->id_ec = $id_ec;
+                $ec_datos->titulo = $titulo;
+                $ec_datos->descripcion = $descripcion;
+                $ec_datos->img_url = $img_url;
+
+                $this->view->continua = $ec_datos;
+                $this->view->mensaje = "Se modifico exitosamente";
+                header('location: ' . URL . 'continua');
+            } else {
+                $this->view->mensaje = "Error al modificar datos";
+            }
+        }
+    }
+
     function deletePrograma()
     {
         $id_ec = $_POST['id_delete'];
@@ -205,6 +281,25 @@ class Continua extends Controller
             header('location: ' . URL . 'continua');
         } else {
             $this->view->mensaje = "Error al eliminar el programa";
+        }
+    }
+
+    function deleteCardEc()
+    {
+        $id_ec = $_POST['id_delete_card'];
+        $img_url = $_POST['img_delete_card'];
+
+        if (unlink($img_url)) {
+            if ($this->model->deleteCard($id_ec)) {
+                $this->view->mensaje = "Card eliminada correctamente";
+            }
+            header('location: ' . URL . 'continua');
+        } else {
+            if ($this->model->deleteCard($id_ec)) {
+                $this->view->mensaje = "Card eliminada correctamente";
+            }
+            header('location: ' . URL . 'continua');
+            // $this->view->mensaje = "Error al eliminar la Card";
         }
     }
 
@@ -238,48 +333,49 @@ class Continua extends Controller
         }
     }
 
-    function addEncabezado(){
+    function addEncabezado()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_usu = $_POST['id_usu'];
             $encabezado = $_POST['encabezado'];
             $descripcion = $_POST['descripcion'];
             $id_en = $_POST['id_en'];
-            
-            $ids = empty($id_en) ? $ids=false : $ids=true;
 
-            $insertar =[
-                'id_usu'=> $id_usu,
+            $ids = empty($id_en) ? $ids = false : $ids = true;
+
+            $insertar = [
+                'id_usu' => $id_usu,
                 'encabezado' => $encabezado,
                 'descripcion' => $descripcion,
             ];
 
-            $editar =[
-                'id_usu'=> $id_usu,
+            $editar = [
+                'id_usu' => $id_usu,
                 'encabezado' => $encabezado,
                 'descripcion' => $descripcion,
                 'id_en' => $id_en
             ];
 
-            if($ids==false){
-                if($this->model->insertEncabezado($insertar)){
-                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL.'continua');
+            if ($ids == false) {
+                if ($this->model->insertEncabezado($insertar)) {
+                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL . 'continua');
                     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                 }
-            }else{
-                if($this->model->updateEncabezado($editar)){
-                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL.'continua');
+            } else {
+                if ($this->model->updateEncabezado($editar)) {
+                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL . 'continua');
                     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                 }
             }
-            
         }
     }
 
-    function getEncabezado(){
+    function getEncabezado()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $encabezado =  json_decode(file_get_contents('php://input'))->encabezado;
             $tabla = $this->model->getByEncabezado($encabezado);
-            echo json_encode($tabla); 
+            echo json_encode($tabla);
         }
     }
 }

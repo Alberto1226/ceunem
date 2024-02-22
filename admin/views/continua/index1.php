@@ -1,27 +1,6 @@
 <?php require 'views/templete/header.php'; ?>
 <?php require 'views/templete/navar.php'; ?>
 
-<style>
-    .grid-container {
-        display: grid;
-        grid-template-columns: auto min-content;
-        gap: 10px;
-    }
-
-    .grid-item {
-        padding: 10px;
-        border: 1px solid #007bff;
-    }
-
-    .data-column {
-        text-align: center;
-    }
-
-    .button-column {
-        min-width: 120px;
-    }
-</style>
-
 <div class="content-wrapper">
     <div class="container-fluid mt-4">
         <div class="card card-outline card-success">
@@ -42,7 +21,7 @@
                 </section>
             </div>
             <div class="container-fluid">
-                <?php require 'encabezadoContinua.php'; ?>
+            <?php require 'encabezadoContinua.php'; ?>
                 <div class="card">
                     <div class="card-header">
                         <button type="button" class="btn  btn-outline-success" data-toggle="modal" data-target="#addConModal">
@@ -54,7 +33,7 @@
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Nombre Maestría</th>
+                                <th>Nombre Maestría</th>
                                     <th>Descripción</th>
                                     <th>Descripción Detallada</th>
                                     <th>REVOE</th>
@@ -66,109 +45,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-
-                                <?php
-                                include_once 'models/clases/mas_datos.php';
-                                foreach ($this->ec_datos as $row) {
-                                    $ec_dato = new ec_datos();
-                                    $ec_dato = $row;
-
-                                ?>
-
-                                    <!-- comienza modal eliminar card -->
-                                    <div class="modal fade" id="deleteCardEcModal<?= $ec_dato->id_ec_datos; ?>" tabindex="-1" aria-labelledby="deleteMasModal" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Eliminar Card</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="card card-danger border border-danger">
-                                                        <!-- /.card-header -->
-                                                        <div class="card-body">
-                                                            <!-- form start -->
-                                                            <div class="form-group text-center">
-                                                                <label>¿Estás seguro de eliminar esta Card?</label>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Card: <?php echo $ec_dato->titulo; ?></label>
-                                                            </div>
-                                                            <form id="deleteMas" action="<?php echo constant('URL'); ?>continua/deleteCardEc" method="POST" enctype="multipart/form-data">
-                                                                <div class="card-body">
-                                                                    <input type="hidden" class="form-control" id="id_delete_card" value="<?= $ec_dato->id_ec_datos; ?>" name="id_delete_card">
-                                                                    <input type="hidden" class="form-control" id="img_delete_card" value="<?= $ec_dato->img_url; ?>" name="img_delete_card">
-                                                                    <button type="submit" class="btn btn-danger btn-block" id="btn-de">Eliminar Card</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                        <!-- /.card-body -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.modal-content -->
-                                        </div>
-                                    </div>
-                                    <!-- termina modal eliminar card -->
-
-                                    <!-- comienza modal editar -->
-                                    <div class="modal fade" id="updateCardEcModal<?= $ec_dato->id_ec_datos; ?>" tabindex="-1" aria-labelledby="updateLicModal" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Editar Card</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="card card-warning border border-warning">
-                                                        <div class="card-body">
-                                                            <!-- form start -->
-                                                            <form id="upMas" action="<?php echo constant('URL'); ?>continua/updateCardEc" method="POST" enctype="multipart/form-data">
-                                                                <div class="card-body">
-                                                                    <input type="hidden" class="form-control" id="id_upCard" value="<?= $ec_dato->id_ec_datos; ?>" name="id_upCard">
-                                                                    <input type="hidden" class="form-control" id="img_url_db_card" value="<?= $ec_dato->img_url; ?>" name="img_url_db_card">
-                                                                    <input type="hidden" class="form-control" id="id_up_licCard" value="<?= $ec_dato->id_ec; ?>" name="id_up_licCard">
-                                                                    <div class="form-group">
-                                                                        <label for="titulo_upCard">Titulo</label>
-                                                                        <input type="text" class="form-control border border-warning" id="titulo_upCard" value="<?= $ec_dato->titulo; ?>" placeholder="Ingrese el nombre del Programa" name="titulo_upCard">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="descripcion_upCard">Descripción</label>
-                                                                        <textarea class="form-control border border-warning" rows="3" id="descripcion_upCard" placeholder="Ingresa la Descripción" name="descripcion_upCard"><?= $ec_dato->descripcion; ?></textarea>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="img_url_upCard">Imagen</label>
-                                                                        <div class="input-group">
-                                                                            <div class="custom-file">
-                                                                                <input type="file" class="custom-file-input is-warning" id="img_url_upCard" value="" name="img_url_upCard">
-                                                                                <label class="custom-file-label" for="img_url_upCard">Seleccione la imagen</label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- /.card-body -->
-                                                                <div class="card-footer">
-                                                                    <button type="submit" class="btn btn-warning btn-block" id="btn-up">Actualizar Maestría</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                        <!-- /.card-body -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.modal-content -->
-                                        </div>
-                                    </div>
-                                    <!-- termina modal editar -->
-
-                                <?php
-                                }
-                                ?>
-
                                 <?php
                                 include_once 'models/clases/continuas.php';
                                 foreach ($this->continuas as $row) {
@@ -193,9 +69,8 @@
                                         </td>
                                         <td class="align-middle">
                                             <?php
+                                            echo "0";
                                             ?>
-                                            <a class="btn btn-outline-success" data-toggle="modal" onclick="idEC(<?= $continua->id_ec; ?>)" data-target="#addCardEcModal"><i class="fa fa-plus"></i></a>
-                                            <a class="btn btn-outline-primary" data-toggle="modal" onclick="" data-target="#updateEcDatsModal<?= $continua->id_ec; ?>"><i class="fa fa-clipboard"></i></a>
                                         </td>
                                         <td class="align-middle">
                                             <div class="col-auto" style="display: inline-block;">
@@ -212,6 +87,8 @@
                                                 <?php
                                                 }
                                                 ?>
+                                                <a class="btn btn-outline-success" data-toggle="modal" onclick="idEC(<?= $continua->id_ec; ?>)" data-target="#addCardModal"><i class="fa fa-plus"></i></a>
+                                                <a class="btn btn-outline-success" hidden="true" data-toggle="modal" onclick="" data-target="#updateDatsModal<?= $continua->id_ec; ?>"><i class="fa fa-plus"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -283,59 +160,6 @@
                                         </div>
                                     </div>
                                     <!-- termina modal editar -->
-
-                                    <!-- comienza modal editar cards-->
-                                    <div class="modal fade" id="updateEcDatsModal<?= $continua->id_ec; ?>" tabindex="-1" aria-labelledby="updateLicModal" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Editar Cards</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="card card-primary border border-primary">
-                                                        <div class="card-body">
-                                                            <!-- form start -->
-                                                            <div>
-                                                                <h5>Cards de <?= $continua->nom_ec; ?></h3>
-                                                                    <br>
-                                                                    <div class="grid-container">
-
-                                                                        <?php
-                                                                        include_once 'models/clases/ec_datos.php';
-                                                                        foreach ($this->ec_datos as $row) {
-                                                                            $ec_dato = new ec_datos();
-                                                                            $ec_dato = $row;
-                                                                            if ($ec_dato->id_ec == $continua->id_ec) {
-
-                                                                        ?>
-                                                                                <div class="grid-item data-column">
-                                                                                    <label><?= $ec_dato->titulo; ?></label>
-                                                                                </div>
-                                                                                <div class="grid-item button-column">
-                                                                                    <a class="btn btn-outline-warning" data-toggle="modal" data-dismiss="modal" data-target="#updateCardEcModal<?= $ec_dato->id_ec_datos; ?>"><i class="fa fa-pencil-alt"></i></a>
-                                                                                    <a class="btn btn-outline-danger" data-toggle="modal" data-dismiss="modal" data-target="#deleteCardEcModal<?= $ec_dato->id_ec_datos; ?>"><i class="fa fa-trash"></i></a>
-                                                                                </div>
-                                                                            <?php
-                                                                            }
-                                                                            ?>
-                                                                        <?php
-                                                                        }
-                                                                        ?>
-
-                                                                    </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.card-body -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.modal-content -->
-                                        </div>
-                                    </div>
-                                    <!-- termina modal editar cards-->
 
                                     <!-- comienza modal eliminar -->
                                     <div class="modal fade" id="deleteContinuaModal<?= $continua->id_ec; ?>" tabindex="-1" aria-labelledby="deleteContinuaModal" aria-hidden="true">
@@ -450,7 +274,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Nombre Maestría</th>
+                                <th>Nombre Maestría</th>
                                     <th>Descripción</th>
                                     <th>Descripción Detallada</th>
                                     <th>REVOE</th>

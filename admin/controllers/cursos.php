@@ -9,8 +9,8 @@ class Cursos extends Controller
         }
         parent::__construct();
 
-        if(empty($_SESSION['login'])){
-            header('Location: '.URL.'login');
+        if (empty($_SESSION['login'])) {
+            header('Location: ' . URL . 'login');
             die();
         }
     }
@@ -19,6 +19,8 @@ class Cursos extends Controller
     {
         $cursos = $this->model->getAllCursos();
         $this->view->cursos = $cursos;
+        $curso_datos = $this->model->getAllCards();
+        $this->view->curso_datos = $curso_datos;
         $this->view->render('cursos/index');
     }
 
@@ -43,32 +45,30 @@ class Cursos extends Controller
 
         $fecha = date('Ymd_His');
         $rImg = $dirImg . $fecha . "_" . $nom_img;
-        $rPdf = $dirPdf . $fecha . "_" . $nom_img;  
+        $rPdf = $dirPdf . $fecha . "_" . $nom_img;
 
-        if($tImg == "jpg" or $tImg == "jpeg" or $tImg == "png" and $tPdf == "pdf"){
+        if ($tImg == "jpg" or $tImg == "jpeg" or $tImg == "png" and $tPdf == "pdf") {
             $rImg = $dirImg . $nom_img;
             $rPdf = $dirPdf . $nom_pdf;
-            if(move_uploaded_file($img_url, $rImg) and move_uploaded_file($pdf_url, $rPdf)){
-                if($this->model->insert([
-                    'nom_curso' =>$nom_curso,
-                    'descripcion' =>$descripcion,
+            if (move_uploaded_file($img_url, $rImg) and move_uploaded_file($pdf_url, $rPdf)) {
+                if ($this->model->insert([
+                    'nom_curso' => $nom_curso,
+                    'descripcion' => $descripcion,
                     'desc_detallada' => $desc_detalla,
-                        'revoe' => $revoe,
-                    'img_url' =>$rImg,
-                    'pdf_url' =>$rPdf,
-                    'estado' =>$estado
-                ])){
+                    'revoe' => $revoe,
+                    'img_url' => $rImg,
+                    'pdf_url' => $rPdf,
+                    'estado' => $estado
+                ])) {
                     $this->view->mensaje = "Se agrego correctamente";
-                    
-                } 
+                }
                 header('location: ' . URL . 'cursos');
-            }else{
+            } else {
                 $this->view->mensaje =  "Error al guardar en el directorio";
             }
-        }else{
+        } else {
             $this->view->mensaje =  "El formato es incorrecto";
         }
-
     }
 
     function addCard()
@@ -198,6 +198,80 @@ class Cursos extends Controller
         }
     }
 
+    function updateCardCurso()
+    {
+        $id_cur_datos = $_POST['id_upCard'];
+        $id_cur = $_POST['id_up_licCard'];
+        $img_url_db = $_POST['img_url_db_card'];
+        $titulo = $_POST['titulo_upCard'];
+        $descripcion = $_POST['descripcion_upCard'];
+
+        $img_url = $_FILES['img_url_upCard']['tmp_name'];
+        $nom_img = $_FILES['img_url_upCard']['name'];
+        $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
+        $dirImg = "public/img/maestria/";
+
+        $fecha = date('Ymd_His');
+        $rImg = $dirImg . $fecha . "_" . $nom_img;
+
+        if (is_file($img_url)) {
+            if ($tImg == "jpg" or $tImg == "jpeg" or $tImg == "png") {
+                try {
+                    unlink($img_url_db);
+                } catch (\Throwable $th) {
+                    //throw $th;
+                }
+                if (move_uploaded_file($img_url, $rImg)) {
+                    if ($this->model->updateCard([
+                        'id_cur_datos' => $id_cur_datos,
+                        'id_cur' => $id_cur,
+                        'titulo' => $titulo,
+                        'descripcion' => $descripcion,
+                        'img_url' => $rImg,
+                    ])) {
+                        $cur_datos = new curso_datos();
+                        $cur_datos->id_curso_datos = $id_cur_datos;
+                        $cur_datos->id_curso = $id_cur;
+                        $cur_datos->titulo = $titulo;
+                        $cur_datos->descripcion = $descripcion;
+                        $cur_datos->img_url = $img_url;
+
+                        $this->view->curso = $cur_datos;
+                        $this->view->mensaje = "Se modifico exitosamente";
+                        header('location: ' . URL . 'cursos');
+                    } else {
+                        $this->view->mensaje = "Error al modificar";
+                    }
+                } else {
+                    $this->view->mensaje = "Error al subir archivos";
+                }
+            } else {
+                $this->view->mensaje = "Error al actulizar";
+            }
+        } else {
+            if ($this->model->updateCard([
+                'id_cur_datos' => $id_cur_datos,
+                'id_cur' => $id_cur,
+                'titulo' => $titulo,
+                'descripcion' => $descripcion,
+                'img_url' => $img_url_db
+            ])) {
+                $cur_datos = new curso_datos();
+                $cur_datos->id_curso_datos = $id_cur_datos;
+                $cur_datos->id_curso = $id_cur;
+                $cur_datos->titulo = $titulo;
+                $cur_datos->descripcion = $descripcion;
+                $cur_datos->img_url = $img_url;
+
+                $this->view->curso = $cur_datos;
+                $this->view->mensaje = "Se modifico exitosamente";
+                header('location: ' . URL . 'cursos');
+            } else {
+                $this->view->mensaje = "Error al modificar datos";
+            }
+        }
+    }
+
     function deleteCur()
     {
         $id_curso = $_POST['id_delete'];
@@ -211,6 +285,25 @@ class Cursos extends Controller
             header('location: ' . URL . 'cursos');
         } else {
             $this->view->mensaje = "Error al eliminar la Maestría";
+        }
+    }
+
+    function deleteCardCurso()
+    {
+        $id_cur = $_POST['id_delete_card'];
+        $img_url = $_POST['img_delete_card'];
+
+        if (unlink($img_url)) {
+            if ($this->model->deleteCard($id_cur)) {
+                $this->view->mensaje = "Card eliminada correctamente";
+            }
+            header('location: ' . URL . 'cursos');
+        } else {
+            if ($this->model->deleteCard($id_cur)) {
+                $this->view->mensaje = "Card eliminada correctamente";
+            }
+            header('location: ' . URL . 'cursos');
+            // $this->view->mensaje = "Error al eliminar la Card";
         }
     }
 
@@ -244,48 +337,49 @@ class Cursos extends Controller
         }
     }
 
-    function addEncabezado(){
+    function addEncabezado()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_usu = $_POST['id_usu'];
             $encabezado = $_POST['encabezado'];
             $descripcion = $_POST['descripcion'];
             $id_en = $_POST['id_en'];
-            
-            $ids = empty($id_en) ? $ids=false : $ids=true;
 
-            $insertar =[
-                'id_usu'=> $id_usu,
+            $ids = empty($id_en) ? $ids = false : $ids = true;
+
+            $insertar = [
+                'id_usu' => $id_usu,
                 'encabezado' => $encabezado,
                 'descripcion' => $descripcion,
             ];
 
-            $editar =[
-                'id_usu'=> $id_usu,
+            $editar = [
+                'id_usu' => $id_usu,
                 'encabezado' => $encabezado,
                 'descripcion' => $descripcion,
                 'id_en' => $id_en
             ];
 
-            if($ids==false){
-                if($this->model->insertEncabezado($insertar)){
-                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL.'cursos');
+            if ($ids == false) {
+                if ($this->model->insertEncabezado($insertar)) {
+                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL . 'cursos');
                     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                 }
-            }else{
-                if($this->model->updateEncabezado($editar)){
-                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL.'cursos');
+            } else {
+                if ($this->model->updateEncabezado($editar)) {
+                    $arrResponse = array('status' => true, 'msg' => 'ok', 'url' => URL . 'cursos');
                     echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
                 }
             }
-            
         }
     }
 
-    function getEncabezado(){
+    function getEncabezado()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $encabezado =  json_decode(file_get_contents('php://input'))->encabezado;
             $tabla = $this->model->getByEncabezado($encabezado);
-            echo json_encode($tabla); 
+            echo json_encode($tabla);
         }
     }
 }

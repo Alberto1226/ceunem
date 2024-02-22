@@ -3,14 +3,16 @@ include_once 'models/clases/cursos.php';
 include_once 'models/clases/curso_datos.php';
 include_once 'models/clases/encabezados.php';
 
-class CursosModel extends Model{
+class CursosModel extends Model
+{
     public function __construct()
     {
         parent::__construct();
     }
 
-    public function getAllCursos(){
-        $items =[];
+    public function getAllCursos()
+    {
+        $items = [];
         try {
             $query = $this->db->connect()->query("SELECT * FROM cursos");
             while ($row = $query->fetch()) {
@@ -32,46 +34,74 @@ class CursosModel extends Model{
             return [];
         }
     }
+
+    public function getAllCards()
+    {
+        $items = [];
+        try {
+            $query = $this->db->connect()->query("SELECT * FROM curso_datos");
+            while ($row = $query->fetch()) {
+                $item = new curso_datos();
+
+                $item->id_curso_datos = $row['id_curso_datos'];
+                $item->id_curso = $row['id_curso'];
+                $item->titulo = $row['titulo'];
+                $item->descripcion = $row['descripcion'];
+                $item->img_url = $row['img_url'];
+
+                array_push($items, $item);
+            }
+            return $items;
+        } catch (PDOException $th) {
+            return [];
+        }
+    }
+
     //listo
-    public function insert($datos){
+    public function insert($datos)
+    {
         try {
             $query = $this->db->connect()->prepare(
                 'INSERT INTO cursos (nom_curso, descripcion, desc_detallada, revoe, img_url, pdf_url, estado)
-                VALUES(:nom_curso, :descripcion, :desc_detallada, :revoe, :img_url, :pdf_url, :estado)');
+                VALUES(:nom_curso, :descripcion, :desc_detallada, :revoe, :img_url, :pdf_url, :estado)'
+            );
             $query->execute([
-                'nom_curso' =>$datos['nom_curso'], 
-                'descripcion' =>$datos['descripcion'], 
+                'nom_curso' => $datos['nom_curso'],
+                'descripcion' => $datos['descripcion'],
                 'desc_detallada' => $datos['desc_detallada'],
                 'revoe' => $datos['revoe'],
-                'img_url' =>$datos['img_url'], 
-                'pdf_url' =>$datos['pdf_url'],
+                'img_url' => $datos['img_url'],
+                'pdf_url' => $datos['pdf_url'],
                 'estado' => $datos['estado']
             ]);
             return true;
         } catch (PDOException $th) {
-           return false;
+            return false;
         }
     }
 
-    public function insertCard($datos){
+    public function insertCard($datos)
+    {
         try {
             $query = $this->db->connect()->prepare(
                 'INSERT INTO curso_datos (id_curso, titulo, descripcion, img_url)
-                VALUES(:id_curso, :titulo, :descripcion, :img_url)');
+                VALUES(:id_curso, :titulo, :descripcion, :img_url)'
+            );
             $query->execute([
-                'id_curso' =>$datos['id_curso'], 
-                'titulo' =>$datos['titulo'],
-                'descripcion' =>$datos['descripcion'], 
-                'img_url' =>$datos['img_url']
+                'id_curso' => $datos['id_curso'],
+                'titulo' => $datos['titulo'],
+                'descripcion' => $datos['descripcion'],
+                'img_url' => $datos['img_url']
             ]);
             return true;
         } catch (PDOException $th) {
-           return false;
+            return false;
         }
     }
 
-    public function update($item){
-        $query= $this->db->connect()->prepare("UPDATE cursos 
+    public function update($item)
+    {
+        $query = $this->db->connect()->prepare("UPDATE cursos 
         SET nom_curso = :nom_curso, descripcion = :descripcion, desc_detallada = :desc_detallada, revoe = :revoe, 
         img_url = :img_url, pdf_url = :pdf_url 
         WHERE id_curso = :id_curso");
@@ -91,9 +121,31 @@ class CursosModel extends Model{
         }
     }
 
-    public function delete($id){
+    public function updateCard($item)
+    {
+        $query = $this->db->connect()->prepare("UPDATE curso_datos 
+        SET id_curso = :id_cur, titulo = :titulo, descripcion = :descripcion,
+        img_url = :img_url 
+        WHERE id_curso_datos = :id_cur_datos");
+        try {
+            $query->execute([
+                'id_cur_datos' => $item['id_cur_datos'],
+                'id_cur' => $item['id_cur'],
+                'titulo' => $item['titulo'],
+                'descripcion' => $item['descripcion'],
+                'img_url' => $item['img_url']
+            ]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+
+    public function delete($id)
+    {
         $query = $this->db->connect()->prepare(
-            "DELETE FROM cursos WHERE id_curso = :id");
+            "DELETE FROM cursos WHERE id_curso = :id"
+        );
         try {
             $query->execute(['id' => $id]);
             return true;
@@ -102,7 +154,21 @@ class CursosModel extends Model{
         }
     }
 
-    public function estado($item){
+    public function deleteCard($id)
+    {
+        $query = $this->db->connect()->prepare(
+            "DELETE FROM curso_datos WHERE id_curso_datos = :id"
+        );
+        try {
+            $query->execute(['id' => $id]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+
+    public function estado($item)
+    {
         $query = $this->db->connect()->prepare("UPDATE cursos
         SET estado = :estado
         WHERE id_curso = :id_curso");
@@ -178,4 +244,3 @@ class CursosModel extends Model{
         }
     }
 }
-?>

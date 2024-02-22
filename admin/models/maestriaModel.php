@@ -35,6 +35,28 @@ class MaestriaModel extends Model
         }
     }
 
+    public function getAllCards()
+    {
+        $items = [];
+        try {
+            $query = $this->db->connect()->query("SELECT * FROM mas_datos");
+            while ($row = $query->fetch()) {
+                $item = new mas_datos();
+
+                $item->id_mas_datos = $row['id_mas_datos'];
+                $item->id_mas = $row['id_mas'];
+                $item->titulo = $row['titulo'];
+                $item->descripcion = $row['descripcion'];
+                $item->img_url = $row['img_url'];
+
+                array_push($items, $item);
+            }
+            return $items;
+        } catch (PDOException $th) {
+            return [];
+        }
+    }
+
     public function insert($datos)
     {
         try {
@@ -57,20 +79,22 @@ class MaestriaModel extends Model
         }
     }
 
-    public function insertCard($datos){
+    public function insertCard($datos)
+    {
         try {
             $query = $this->db->connect()->prepare(
                 'INSERT INTO mas_datos (id_mas, titulo, descripcion, img_url)
-                VALUES(:id_mas, :titulo, :descripcion, :img_url)');
+                VALUES(:id_mas, :titulo, :descripcion, :img_url)'
+            );
             $query->execute([
-                'id_mas' =>$datos['id_mas'], 
-                'titulo' =>$datos['titulo'],
-                'descripcion' =>$datos['descripcion'], 
-                'img_url' =>$datos['img_url']
+                'id_mas' => $datos['id_mas'],
+                'titulo' => $datos['titulo'],
+                'descripcion' => $datos['descripcion'],
+                'img_url' => $datos['img_url']
             ]);
             return true;
         } catch (PDOException $th) {
-           return false;
+            return false;
         }
     }
 
@@ -96,10 +120,43 @@ class MaestriaModel extends Model
         }
     }
 
+    public function updateCard($item)
+    {
+        $query = $this->db->connect()->prepare("UPDATE mas_datos 
+        SET id_mas = :id_mas, titulo = :titulo, descripcion = :descripcion,
+        img_url = :img_url 
+        WHERE id_mas_datos = :id_mas_datos");
+        try {
+            $query->execute([
+                'id_mas_datos' => $item['id_mas_datos'],
+                'id_mas' => $item['id_mas'],
+                'titulo' => $item['titulo'],
+                'descripcion' => $item['descripcion'],
+                'img_url' => $item['img_url']
+            ]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+
     public function delete($id)
     {
         $query = $this->db->connect()->prepare(
             "DELETE FROM maestrias WHERE id_mas = :id"
+        );
+        try {
+            $query->execute(['id' => $id]);
+            return true;
+        } catch (PDOException $th) {
+            return false;
+        }
+    }
+
+    public function deleteCard($id)
+    {
+        $query = $this->db->connect()->prepare(
+            "DELETE FROM mas_datos WHERE id_mas_datos = :id"
         );
         try {
             $query->execute(['id' => $id]);

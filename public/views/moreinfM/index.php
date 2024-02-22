@@ -7,9 +7,11 @@ $revoe = $_GET['revoe'];
 $id_mas = $_GET['id_mas'];
 $name = $_GET['name_mas'];
 $pdf = $_GET['pdf'];
+$imgp = $_GET['img'];
+
 ?>
 <!-- Page Header Start -->
-<div class="container-fluid page-header mb-5 wow fadeIn bannerImgAsc" data-wow-delay="0.1s">
+<div class="container-fluid page-header mb-5 wow fadeIn " data-wow-delay="0.1s" style="background-image: url('<?php echo constant('ARCHIVOS'). $imgp; ?>');">
     <div class="container text-center">
         <h1 class="display-4 text-white animated slideInDown mb-4"> </h1>
         <nav aria-label="breadcrumb animated slideInDown">
@@ -20,14 +22,14 @@ $pdf = $_GET['pdf'];
                     </h1>
                 </li>
             </ol>
-        </nav>
-        <div class="d-inline-block ">
+            <div class="d-inline-block ">
 
-            <a href="<?php echo constant('ARCHIVOS') . $pdf; ?>" class="btn btn-primary btn-sm float-right"
-                target="_blank">
-                <i class="far fa-file-pdf"></i> Plan de Estudio
-            </a>
-        </div>
+                <a href="<?php echo constant('ARCHIVOS') . $pdf; ?>" class="btn btn-primary btn-sm float-right btnPag"
+                    target="_blank" style="font-size:20px;">
+                    <i class="far fa-file-pdf"></i> Plan de Estudio
+                </a>
+            </div>
+        </nav>
     </div>
 </div>
 <!-- Page Header End -->

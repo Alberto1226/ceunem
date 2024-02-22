@@ -1,4 +1,4 @@
-<div class="modal fade " id="addCardModal">
+<div class="modal fade " id="addCardEcModal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
