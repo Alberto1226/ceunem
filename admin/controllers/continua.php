@@ -22,7 +22,7 @@ class Continua extends Controller
         $this->view->render('continua/index');
     }
 
-    function addPrograma()
+    /*function addPrograma()
     {
         $nom_ec = $_POST['nom_ec'];
         $descripcion = $_POST['descripcion'];
@@ -65,8 +65,77 @@ class Continua extends Controller
         } else {
             $this->view->mensaje = "El formato es incorrecto";
         }
+    }*/
+    function addPrograma()
+{
+    $nom_ec = isset($_POST['nom_ec']) ? $_POST['nom_ec'] : '';
+    $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
+    $desc_detallada = isset($_POST['desc_detallada']) ? $_POST['desc_detallada'] : '';
+    $revoe = isset($_POST['revoe']) ? $_POST['revoe'] : '';
+    $estado = isset($_POST['estado']) ? $_POST['estado'] : '';
+
+    $img_url = '';
+    $pdf_url = '';
+
+    if (!empty($_FILES['img_url']['tmp_name'])) {
+        $img_url = $_FILES['img_url']['tmp_name'];
+        $nom_img = $_FILES['img_url']['name'];
+        $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
+        $dirImg = "public/img/continua/";
+
+        if (in_array($tImg, ["jpg", "jpeg", "png"])) {
+            $fecha = date('Ymd_His');
+            $rImg = $dirImg . $fecha . "_" . $nom_img;
+
+            if (move_uploaded_file($img_url, $rImg)) {
+                $img_url = $rImg;
+            } else {
+                $this->view->mensaje = "Error al guardar la imagen en el directorio";
+                return;
+            }
+        } else {
+            $this->view->mensaje = "El formato de la imagen es incorrecto";
+            return;
+        }
+        header('location: ' . URL . 'continua');
     }
 
+    if (!empty($_FILES['pdf_url']['tmp_name'])) {
+        $pdf_url = $_FILES['pdf_url']['tmp_name'];
+        $nom_pdf = $_FILES['pdf_url']['name'];
+        $tPdf = strtolower(pathinfo($nom_pdf, PATHINFO_EXTENSION));
+        $dirPdf = "public/docs/continua/";
+
+        if ($tPdf == "pdf") {
+            $fecha = date('Ymd_His');
+            $rPdf = $dirPdf . $fecha . "_" . $nom_pdf;
+
+            if (move_uploaded_file($pdf_url, $rPdf)) {
+                $pdf_url = $rPdf;
+            } else {
+                $this->view->mensaje = "Error al guardar el PDF en el directorio";
+                return;
+            }
+        } else {
+            $this->view->mensaje = "El formato del PDF es incorrecto";
+            return;
+        }
+    }
+
+    if ($this->model->insert([
+        'nom_ec' => $nom_ec,
+        'descripcion' => $descripcion,
+        'desc_detallada' => $desc_detallada,
+        'revoe' => $revoe,
+        'img_url' => $img_url,
+        'pdf_url' => $pdf_url,
+        'estado' => $estado
+    ])) {
+        $this->view->mensaje = "Se agregó correctamente";
+    } else {
+        $this->view->mensaje = "Error al agregar la continua";
+    }
+}
     function addCard()
     {
         $id_ec = $_POST['id_ec'];
@@ -101,7 +170,7 @@ class Continua extends Controller
         }
     }
 
-    function updatePrograma()
+    /*function updatePrograma()
     {
         $id_ec = $_POST['id_ec_up'];
         $img_url_db = $_POST['img_url_db'];
@@ -192,12 +261,96 @@ class Continua extends Controller
                 $this->view->mensaje = "Error al modificar datos";
             }
         }
+    }*/
+    public function updatePrograma()
+{
+    $id_ec = $_POST['id_ec_up'];
+    $img_url_db = $_POST['img_url_db'];
+    $pdf_url_db = $_POST['pdf_url_db'];
+
+    $nom_ec = $_POST['nom_ec_up'];
+    $descripcion = $_POST['descripcion_up'];
+    $desc_detallada = $_POST['desc_detallada_up'];
+    $revoe = $_POST['revoe_up'];
+
+    // Si se subió un archivo de imagen
+    if ($_FILES['img_url_up']['size'] > 0) {
+        $img_url = $_FILES['img_url_up']['tmp_name'];
+        $nom_img = $_FILES['img_url_up']['name'];
+        $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
+        $dirImg = "public/img/continua/";
+
+        if (in_array($tImg, ["jpg", "jpeg", "png"])) {
+            $rImg = $dirImg . date('Ymd_His') . "_" . $nom_img;
+
+            // Mover la imagen y actualizar la URL si se sube correctamente
+            if (move_uploaded_file($img_url, $rImg)) {
+                $img_url_db = $rImg;
+            } else {
+                $this->view->mensaje = "Error al subir imagen";
+                return;
+            }
+        } else {
+            $this->view->mensaje = "Error al actualizar: formato de imagen incorrecto";
+            return;
+        }
     }
 
+    // Si se subió un archivo PDF
+    if ($_FILES['pdf_url_up']['size'] > 0) {
+        $pdf_url = $_FILES['pdf_url_up']['tmp_name'];
+        $nom_pdf = $_FILES['pdf_url_up']['name'];
+        $tPdf = strtolower(pathinfo($nom_pdf, PATHINFO_EXTENSION));
+        $dirPdf = "public/docs/continua/";
+
+        if ($tPdf == "pdf") {
+            $rPdf = $dirPdf . date('Ymd_His') . "_" . $nom_pdf;
+
+            // Mover el PDF y actualizar la URL si se sube correctamente
+            if (move_uploaded_file($pdf_url, $rPdf)) {
+                $pdf_url_db = $rPdf;
+            } else {
+                $this->view->mensaje = "Error al subir PDF";
+                return;
+            }
+        } else {
+            $this->view->mensaje = "Error al actualizar: formato de PDF incorrecto";
+            return;
+        }
+    }
+
+    // Intenta actualizar los datos en la base de datos
+    if ($this->model->update([
+        'id_ec' => $id_ec,
+        'nom_ec' => $nom_ec,
+        'descripcion' => $descripcion,
+        'desc_detallada' => $desc_detallada,
+        'revoe' => $revoe,
+        'img_url' => $img_url_db,
+        'pdf_url' => $pdf_url_db,
+    ])) {
+        // Construye un objeto continuas con los nuevos datos
+        $continua = new Continuas();
+        $continua->id_ec = $id_ec;
+        $continua->nom_ec = $nom_ec;
+        $continua->descripcion = $descripcion;
+        $continua->desc_detallada = $desc_detallada;
+        $continua->revoe = $revoe;
+        $continua->img_url = $img_url_db;
+        $continua->pdf_url = $pdf_url_db;
+
+        // Establece los mensajes y datos para la vista
+        $this->view->continua = $continua;
+        $this->view->mensaje = "Se modificó exitosamente";
+        header('location: ' . URL . 'continua');
+    } else {
+        $this->view->mensaje = "Error al modificar datos";
+    }
+}
     function updateCardEc()
     {
         $id_ec_datos = $_POST['id_upCard'];
-        $id_ec = $_POST['id_up_licCard'];
+        $id_ec = $_POST['id_up_ecCard'];
         $img_url_db = $_POST['img_url_db_card'];
         $titulo = $_POST['titulo_upCard'];
         $descripcion = $_POST['descripcion_upCard'];
@@ -205,7 +358,7 @@ class Continua extends Controller
         $img_url = $_FILES['img_url_upCard']['tmp_name'];
         $nom_img = $_FILES['img_url_upCard']['name'];
         $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
-        $dirImg = "public/img/maestria/";
+        $dirImg = "public/img/continua/";
 
         $fecha = date('Ymd_His');
         $rImg = $dirImg . $fecha . "_" . $nom_img;
@@ -274,14 +427,23 @@ class Continua extends Controller
         $img_url = $_POST['img_delete'];
         $pdf_url = $_POST['pdf_delete'];
 
-        if (unlink($img_url) && unlink($pdf_url)) {
-            if ($this->model->delete($id_ec)) {
-                $this->view->mensaje = "Programa eliminado correctamente";
-            }
-            header('location: ' . URL . 'continua');
-        } else {
-            $this->view->mensaje = "Error al eliminar el programa";
-        }
+        // Verifica si la imagen está cargada y si existe antes de intentar eliminarla
+    if (!empty($img_url) && file_exists($img_url)) {
+        unlink($img_url);
+    }
+
+    // Verifica si el PDF está cargado y si existe antes de intentar eliminarlo
+    if (!empty($pdf_url) && file_exists($pdf_url)) {
+        unlink($pdf_url);
+    }
+
+    // Elimina el curso de la base de datos
+    if ($this->model->delete($id_ec)) {
+        $this->view->mensaje = "Eliminado correctamente";
+        header('location: ' . URL . 'continua');
+    } else {
+        $this->view->mensaje = "Error al eliminar";
+    }
     }
 
     function deleteCardEc()

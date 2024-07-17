@@ -26,6 +26,10 @@
                   <textarea class="form-control border border-success" rows="3" id="descripcion" placeholder="Ingresa la Descripción" name="descripcion"></textarea>
                 </div>
                 <div class="form-group">
+                  <label for="descripcion">Blog Completo</label>
+                  <textarea class="form-control border border-success" rows="3" id="blogCompleto" placeholder="Máximo 10000 caracteres" name="blogCompleto"></textarea>
+                </div>
+                <div class="form-group">
                   <label for="img_url">Imagen</label>
                   <div class="input-group">
                     <div class="custom-file">

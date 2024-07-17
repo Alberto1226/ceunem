@@ -21,6 +21,7 @@ class BlogModel extends Model{
                 $item->categoria = $row['categoria'];
                 $item->titulo = $row['titulo'];
                 $item->descripcion = $row['descripcion'];
+                $item->blogCompleto = $row['blogCompleto'];
                 $item->img_url = $row['img_url'];
                 $item->link_url = $row['link_url'];
 

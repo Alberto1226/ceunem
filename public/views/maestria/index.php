@@ -48,7 +48,7 @@
                 ?>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
-                            <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $maestria->img_url; ?>" alt="">
+                            <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $maestria->img_url; ?>" alt="<?php echo $maestria->nom_mas; ?>">
                             <h4 class="mb-3" style="color:#A5042D;"><?php echo $maestria->nom_mas; ?></h4>
                             <p class="mb-4"><?php echo $maestria->descripcion; ?></p>
                             <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') ?>moreinfM?desc_detallada=<?php echo urlencode($maestria->desc_detallada); ?>&revoe=<?php echo urlencode($maestria->revoe); ?>&id_mas=<?php echo urlencode($maestria->id_mas); ?>&name_mas=<?php echo urlencode($maestria->nom_mas); ?>&pdf=<?php echo urlencode($maestria->pdf_url); ?>&img=<?php echo urlencode($maestria->img_url); ?>" target="_blank">

@@ -152,7 +152,7 @@
                                                                 </div>
                                                                 <!-- /.card-body -->
                                                                 <div class="card-footer">
-                                                                    <button type="submit" class="btn btn-warning btn-block" id="btn-up">Actualizar Maestría</button>
+                                                                    <button type="submit" class="btn btn-warning btn-block" id="btn-up">Actualizar Licenciatura</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -220,7 +220,7 @@
                                         <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Editar Maestría</h4>
+                                                    <h4 class="modal-title">Editar Licenciatura</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -229,7 +229,7 @@
                                                     <div class="card card-warning border border-warning">
                                                         <div class="card-body">
                                                             <!-- form start -->
-                                                            <form id="upMas" action="<?php echo constant('URL'); ?>licenciatura/" method="POST" enctype="multipart/form-data">
+                                                            <form id="upMas" action="<?php echo constant('URL'); ?>licenciatura/updateLic" method="POST" enctype="multipart/form-data">
                                                                 <div class="card-body">
                                                                     <input type="hidden" class="form-control" id="id_lic_up" value="<?= $licenciatura->id_lic; ?>" name="id_lic_up">
                                                                     <input type="hidden" class="form-control" id="img_url_db" value="<?= $licenciatura->img_url; ?>" name="img_url_db">

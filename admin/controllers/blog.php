@@ -25,6 +25,7 @@ class Blog extends Controller
         $categoria = $_POST['categoria'];
         $titulo = $_POST['titulo'];
         $descripcion = $_POST['descripcion'];
+        $blogCompleto = $_POST['blogCompleto'];
         $link_url = $_POST['link_url'];
         $estado = $_POST['estado'];
         $img_url = $_FILES["img_url"]["tmp_name"];
@@ -40,6 +41,7 @@ class Blog extends Controller
                     'categoria' => $categoria,
                     'titulo' => $titulo,
                     'descripcion' => $descripcion,
+                    'blogCompleto' => $blogCompleto,
                     'img_url' => $ruta,
                     'link_url' => $link_url,
                     'estado' => $estado,
@@ -63,6 +65,7 @@ class Blog extends Controller
         $categoria = $_POST['categoria_up'];
         $titulo = $_POST['titulo_up'];
         $descripcion = $_POST['descripcion_up'];
+        $blogCompleto = $_POST['blogCompleto'];
         $link_url = $_POST['link_url_up'];
         $img_url = $_FILES["img_url_up"]["tmp_name"];
         $nom_img = $_FILES["img_url_up"]["name"];
@@ -83,6 +86,7 @@ class Blog extends Controller
                         'categoria' => $categoria,
                         'titulo' => $titulo,
                         'descripcion' => $descripcion,
+                        'blogCompleto' => $blogCompleto,
                         'img_url' => $ruta,
                         'link_url' => $link_url,
                     ])) {
@@ -91,6 +95,7 @@ class Blog extends Controller
                         $articulo->categoria = $categoria;
                         $articulo->titulo = $titulo;
                         $articulo->descripcion = $descripcion;
+                        $articulo->blogCompleto = $blogCompleto;
                         $articulo->img_url = $ruta;
                         $articulo->link_url = $link_url;
 
@@ -112,6 +117,7 @@ class Blog extends Controller
                 'categoria' => $categoria,
                 'titulo' => $titulo,
                 'descripcion' => $descripcion,
+                'blogCompleto' => $blogCompleto,
                 'img_url' => $img_url_db,
                 'link_url' => $link_url,
             ])) {
@@ -120,6 +126,7 @@ class Blog extends Controller
                 $articulo->categoria = $categoria;
                 $articulo->titulo = $titulo;
                 $articulo->descripcion = $descripcion;
+                $articulo->blogCompleto = $blogCompleto;
                 $articulo->img_url = $img_url_db;
                 $articulo->link_url = $link_url;
 

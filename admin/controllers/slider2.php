@@ -93,7 +93,7 @@ class Slider2 extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_usu = $this->id = $_SESSION['id_usu'];
-            $tabla = $this->sliders->getImg($id_usu, 2);
+            $tabla = $this->sliders->getImg($id_usu, 2,"inicio");
             echo json_encode($tabla);
         }
     }

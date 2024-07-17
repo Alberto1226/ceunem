@@ -46,7 +46,7 @@
                 ?>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
-                            <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $licenciatura->img_url; ?>" alt="">
+                            <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $licenciatura->img_url; ?>" alt="<?php echo $licenciatura->nom_lic; ?>">
                             <h4 class="mb-3 " style="color:#A5042D;"><?php echo $licenciatura->nom_lic; ?></h4>
                             <p class="mb-4"><?php echo $licenciatura->descripcion; ?></p>
                             <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') ?>moreinf?desc_detallada=<?php echo urlencode($licenciatura->desc_detallada); ?>&revoe=<?php echo urlencode($licenciatura->revoe); ?>&id_lic=<?php echo urlencode($licenciatura->id_lic); ?>&name_lic=<?php echo urlencode($licenciatura->nom_lic); ?>&pdf=<?php echo urlencode($licenciatura->pdf_url); ?>&img=<?php echo urlencode($licenciatura->img_url); ?>" target="_blank">

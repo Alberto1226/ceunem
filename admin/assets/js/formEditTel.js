@@ -17,20 +17,32 @@ document.addEventListener("DOMContentLoaded", function () {
 const validInsert = (e) => {
     switch (e.target.name) {
         case "numero":
-            validarNum(e.target, e.target.name)
+            validarNum(e.target, e.target.name);
             break;
         case "mensaje":
-            validarMensaje(e.target, e.target.name)
+            validarMensaje(e.target, e.target.name);
+            break;
+        case "link_facebook":
+        case "link_instagram":
+        case "domicilio1":
+        case "domicilio2":
+        case "leyenda":
+            campos[e.target.name] = true; // Permitimos que estos campos estén vacíos
             break;
         default:
             break;
     }
-}
+};
 
 const campos = {
     numero: false,
     mensaje: false,
-}
+    link_facebook: true, // Permitimos que estos campos estén vacíos
+    link_instagram: true,
+    domicilio1: true,
+    domicilio2: true,
+    leyenda: true
+};
 
 const validarNum = (input, campo) => {
     var nameCampo = campo;
@@ -102,6 +114,7 @@ function showSwal2(icono, titulo, mensaje) {
 function obtenerTel() {
     var baseURL = 'http://localhost/ceunem/admin/telefono/getWhats';
     axios.post(baseURL).then((response) => {
+        console.log("respuesta",response);
         for (const key in response.data) {
             campos[key] = response.data[key];
             const input = document.getElementById(key + "2");

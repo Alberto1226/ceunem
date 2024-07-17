@@ -45,7 +45,7 @@
                 ?>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="service-item bg-white text-center h-100 p-4 p-xl-5">
-                            <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $cursos->img_url; ?>" alt="">
+                            <img class="img-fluid mb-4" src="<?php echo constant('ARCHIVOS') . $cursos->img_url; ?>" alt="<?php echo $cursos->nom_curso; ?>">
                             <h4 class="mb-3" style="color:#A5042D;"><?php echo $cursos->nom_curso; ?></h4>
                             <p class="mb-4"><?php echo $cursos->descripcion; ?></p>
                             <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') ?>moreinfCU?desc_detallada=<?php echo urlencode($cursos->desc_detallada); ?>&revoe=<?php echo urlencode($cursos->revoe); ?>&id_curso=<?php echo urlencode($cursos->id_curso); ?>&name_curso=<?php echo urlencode($cursos->nom_curso); ?>&pdf=<?php echo urlencode($cursos->pdf_url); ?>&img=<?php echo urlencode($cursos->img_url); ?>" target="_blank">

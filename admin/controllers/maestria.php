@@ -22,7 +22,7 @@ class Maestria extends Controller
         $this->view->render('maestria/index');
     }
 
-    function addMaestria()
+    /*function addMaestria()
     {
         $nom_mas = $_POST['nom_mas'];
         $descripcion = $_POST['descripcion'];
@@ -65,6 +65,78 @@ class Maestria extends Controller
         } else {
             $this->view->mensaje = "El formato es incorrecto";
         }
+    }*/
+    function addMaestria()
+    {
+        $nom_mas = isset($_POST['nom_mas']) ? $_POST['nom_mas'] : '';
+        $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
+        $desc_detallada = isset($_POST['desc_detallada']) ? $_POST['desc_detallada'] : '';
+        $revoe = isset($_POST['revoe']) ? $_POST['revoe'] : '';
+        $estado = isset($_POST['estado']) ? $_POST['estado'] : '';
+
+        $img_url = '';
+        $pdf_url = '';
+
+        if (!empty($_FILES['img_url']['tmp_name'])) {
+            $img_url = $_FILES['img_url']['tmp_name'];
+            $nom_img = $_FILES['img_url']['name'];
+            $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
+            $dirImg = "public/img/maestria/";
+
+            if (in_array($tImg, ["jpg", "jpeg", "png"])) {
+                $fecha = date('Ymd_His');
+                $rImg = $dirImg . $fecha . "_" . $nom_img;
+
+                if (move_uploaded_file($img_url, $rImg)) {
+                    $img_url = $rImg;
+                } else {
+                    $this->view->mensaje = "Error al guardar la imagen en el directorio";
+                    return;
+                }
+            } else {
+                $this->view->mensaje = "El formato de la imagen es incorrecto";
+                return;
+            }
+            header('location: ' . URL . 'maestria');
+        }
+
+        if (!empty($_FILES['pdf_url']['tmp_name'])) {
+            $pdf_url = $_FILES['pdf_url']['tmp_name'];
+            $nom_pdf = $_FILES['pdf_url']['name'];
+            $tPdf = strtolower(pathinfo($nom_pdf, PATHINFO_EXTENSION));
+            $dirPdf = "public/docs/maestria/";
+
+            if ($tPdf == "pdf") {
+                $fecha = date('Ymd_His');
+                $rPdf = $dirPdf . $fecha . "_" . $nom_pdf;
+
+                if (move_uploaded_file($pdf_url, $rPdf)) {
+                    $pdf_url = $rPdf;
+                } else {
+                    $this->view->mensaje = "Error al guardar el PDF en el directorio";
+                    return;
+                }
+            } else {
+                $this->view->mensaje = "El formato del PDF es incorrecto";
+                return;
+            }
+        }
+
+        if (
+            $this->model->insert([
+                'nom_mas' => $nom_mas,
+                'descripcion' => $descripcion,
+                'desc_detallada' => $desc_detallada,
+                'revoe' => $revoe,
+                'img_url' => $img_url,
+                'pdf_url' => $pdf_url,
+                'estado' => $estado
+            ])
+        ) {
+            $this->view->mensaje = "Se agregó correctamente";
+        } else {
+            $this->view->mensaje = "Error al agregar la maestria";
+        }
     }
 
     function addCard()
@@ -84,24 +156,26 @@ class Maestria extends Controller
         if ($tImg == "jpg" or $tImg == "jpeg" or $tImg == "png") {
             $rImg = $dirImg . $nom_img;
             if (move_uploaded_file($img_url, $rImg)) {
-                if ($this->model->insertCard([
-                    'id_mas' => $id_mas,
-                    'titulo' => $titulo,
-                    'descripcion' => $descripcion,
-                    'img_url' => $rImg
-                ])) {
+                if (
+                    $this->model->insertCard([
+                        'id_mas' => $id_mas,
+                        'titulo' => $titulo,
+                        'descripcion' => $descripcion,
+                        'img_url' => $rImg
+                    ])
+                ) {
                     $this->view->mensaje = "Se agrego correctamente";
                 }
                 header('location: ' . URL . 'maestria');
             } else {
-                $this->view->mensaje =  "Error al guardar en el directorio";
+                $this->view->mensaje = "Error al guardar en el directorio";
             }
         } else {
-            $this->view->mensaje =  "El formato es incorrecto";
+            $this->view->mensaje = "El formato es incorrecto";
         }
     }
 
-    function updateMaestria()
+    /*function updateMaestria()
     {
         $id_mas = $_POST['id_mas_up'];
         $img_url_db = $_POST['img_url_db'];
@@ -192,12 +266,99 @@ class Maestria extends Controller
                 $this->view->mensaje = "Error al modificar datos";
             }
         }
+    }*/
+    public function updateMaestria()
+    {
+        $id_mas = $_POST['id_mas_up'];
+        $img_url_db = $_POST['img_url_db'];
+        $pdf_url_db = $_POST['pdf_url_db'];
+
+        $nom_mas = $_POST['nom_mas_up'];
+        $descripcion = $_POST['descripcion_up'];
+        $desc_detallada = $_POST['desc_detallada_up'];
+        $revoe = $_POST['revoe_up'];
+
+        // Si se subió un archivo de imagen
+        if ($_FILES['img_url_up']['size'] > 0) {
+            $img_url = $_FILES['img_url_up']['tmp_name'];
+            $nom_img = $_FILES['img_url_up']['name'];
+            $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
+            $dirImg = "public/img/maestria/";
+
+            if (in_array($tImg, ["jpg", "jpeg", "png"])) {
+                $rImg = $dirImg . date('Ymd_His') . "_" . $nom_img;
+
+                // Mover la imagen y actualizar la URL si se sube correctamente
+                if (move_uploaded_file($img_url, $rImg)) {
+                    $img_url_db = $rImg;
+                } else {
+                    $this->view->mensaje = "Error al subir imagen";
+                    return;
+                }
+            } else {
+                $this->view->mensaje = "Error al actualizar: formato de imagen incorrecto";
+                return;
+            }
+        }
+
+        // Si se subió un archivo PDF
+        if ($_FILES['pdf_url_up']['size'] > 0) {
+            $pdf_url = $_FILES['pdf_url_up']['tmp_name'];
+            $nom_pdf = $_FILES['pdf_url_up']['name'];
+            $tPdf = strtolower(pathinfo($nom_pdf, PATHINFO_EXTENSION));
+            $dirPdf = "public/docs/maestria/";
+
+            if ($tPdf == "pdf") {
+                $rPdf = $dirPdf . date('Ymd_His') . "_" . $nom_pdf;
+
+                // Mover el PDF y actualizar la URL si se sube correctamente
+                if (move_uploaded_file($pdf_url, $rPdf)) {
+                    $pdf_url_db = $rPdf;
+                } else {
+                    $this->view->mensaje = "Error al subir PDF";
+                    return;
+                }
+            } else {
+                $this->view->mensaje = "Error al actualizar: formato de PDF incorrecto";
+                return;
+            }
+        }
+
+        // Intenta actualizar los datos en la base de datos
+        if (
+            $this->model->update([
+                'id_mas' => $id_mas,
+                'nom_mas' => $nom_mas,
+                'descripcion' => $descripcion,
+                'desc_detallada' => $desc_detallada,
+                'revoe' => $revoe,
+                'img_url' => $img_url_db,
+                'pdf_url' => $pdf_url_db,
+            ])
+        ) {
+            // Construye un objeto maestrias con los nuevos datos
+            $maestria = new Maestrias();
+            $maestria->id_mas = $id_mas;
+            $maestria->nom_mas = $nom_mas;
+            $maestria->descripcion = $descripcion;
+            $maestria->desc_detallada = $desc_detallada;
+            $maestria->revoe = $revoe;
+            $maestria->img_url = $img_url_db;
+            $maestria->pdf_url = $pdf_url_db;
+
+            // Establece los mensajes y datos para la vista
+            $this->view->maestria = $maestria;
+            $this->view->mensaje = "Se modificó exitosamente";
+            header('location: ' . URL . 'maestria');
+        } else {
+            $this->view->mensaje = "Error al modificar datos";
+        }
     }
 
     function updateCardMas()
     {
         $id_mas_datos = $_POST['id_upCard'];
-        $id_mas = $_POST['id_up_licCard'];
+        $id_mas = $_POST['id_up_masCard'];
         $img_url_db = $_POST['img_url_db_card'];
         $titulo = $_POST['titulo_upCard'];
         $descripcion = $_POST['descripcion_upCard'];
@@ -218,13 +379,15 @@ class Maestria extends Controller
                     //throw $th;
                 }
                 if (move_uploaded_file($img_url, $rImg)) {
-                    if ($this->model->updateCard([
-                        'id_mas_datos' => $id_mas_datos,
-                        'id_mas' => $id_mas,
-                        'titulo' => $titulo,
-                        'descripcion' => $descripcion,
-                        'img_url' => $rImg,
-                    ])) {
+                    if (
+                        $this->model->updateCard([
+                            'id_mas_datos' => $id_mas_datos,
+                            'id_mas' => $id_mas,
+                            'titulo' => $titulo,
+                            'descripcion' => $descripcion,
+                            'img_url' => $rImg,
+                        ])
+                    ) {
                         $mas_datos = new mas_datos();
                         $mas_datos->id_mas_datos = $id_mas_datos;
                         $mas_datos->id_mas = $id_mas;
@@ -245,13 +408,15 @@ class Maestria extends Controller
                 $this->view->mensaje = "Error al actulizar";
             }
         } else {
-            if ($this->model->updateCard([
-                'id_mas_datos' => $id_mas_datos,
-                'id_mas' => $id_mas,
-                'titulo' => $titulo,
-                'descripcion' => $descripcion,
-                'img_url' => $img_url_db
-            ])) {
+            if (
+                $this->model->updateCard([
+                    'id_mas_datos' => $id_mas_datos,
+                    'id_mas' => $id_mas,
+                    'titulo' => $titulo,
+                    'descripcion' => $descripcion,
+                    'img_url' => $img_url_db
+                ])
+            ) {
                 $mas_datos = new mas_datos();
                 $mas_datos->id_mas_datos = $id_mas_datos;
                 $mas_datos->id_mas = $id_mas;
@@ -274,13 +439,24 @@ class Maestria extends Controller
         $img_url = $_POST['img_delete'];
         $pdf_url = $_POST['pdf_delete'];
 
-        if (unlink($img_url) && unlink($pdf_url)) {
-            if ($this->model->delete($id_mas)) {
-                $this->view->mensaje = "Maestría eliminada correctamente";
-            }
+
+
+        // Verifica si la imagen está cargada y si existe antes de intentar eliminarla
+        if (!empty($img_url) && file_exists($img_url)) {
+            unlink($img_url);
+        }
+
+        // Verifica si el PDF está cargado y si existe antes de intentar eliminarlo
+        if (!empty($pdf_url) && file_exists($pdf_url)) {
+            unlink($pdf_url);
+        }
+
+        // Elimina el curso de la base de datos
+        if ($this->model->delete($id_mas)) {
+            $this->view->mensaje = "Maestría eliminado correctamente";
             header('location: ' . URL . 'maestria');
         } else {
-            $this->view->mensaje = "Error al eliminar la Maestría";
+            $this->view->mensaje = "Error al eliminar el Maestría";
         }
     }
 
@@ -310,10 +486,12 @@ class Maestria extends Controller
 
         if ($estado == 1) {
             $new = 0;
-            if ($this->model->estado([
-                'id_mas' => $id_mas,
-                'estado' => $new,
-            ])) {
+            if (
+                $this->model->estado([
+                    'id_mas' => $id_mas,
+                    'estado' => $new,
+                ])
+            ) {
                 header('location: ' . URL . 'maestria');
             } else {
                 $this->view->mensaje = "Error al cambiar Status";
@@ -321,10 +499,12 @@ class Maestria extends Controller
             }
         } else {
             $new = 1;
-            if ($this->model->estado([
-                'id_mas' => $id_mas,
-                'estado' => $new,
-            ])) {
+            if (
+                $this->model->estado([
+                    'id_mas' => $id_mas,
+                    'estado' => $new,
+                ])
+            ) {
                 header('location: ' . URL . 'maestria');
             } else {
                 $this->view->mensaje = "Error al cambiar Status";
@@ -373,7 +553,7 @@ class Maestria extends Controller
     function getEncabezado()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $encabezado =  json_decode(file_get_contents('php://input'))->encabezado;
+            $encabezado = json_decode(file_get_contents('php://input'))->encabezado;
             $tabla = $this->model->getByEncabezado($encabezado);
             echo json_encode($tabla);
         }

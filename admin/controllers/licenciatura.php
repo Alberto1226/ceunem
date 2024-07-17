@@ -22,7 +22,7 @@ class Licenciatura extends Controller
         $this->view->render('licenciatura/index');
     }
 
-    function addLicenciatura()
+    /*function addLicenciatura()
     {
         $nom_lic = $_POST['nom_lic'];
         $descripcion = $_POST['descripcion'];
@@ -60,14 +60,85 @@ class Licenciatura extends Controller
                 ])) {
                     $this->view->mensaje = "Se agrego correctamente";
                 }
-                header('location: ' . URL . 'licenciatura');
+               // header('location: ' . URL . 'licenciatura');
             } else {
                 $this->view->mensaje =  "Error al guardar en el directorio";
             }
         } else {
             $this->view->mensaje =  "El formato es incorrecto";
         }
+    }*/
+    function addLicenciatura()
+{
+    $nom_lic = isset($_POST['nom_lic']) ? $_POST['nom_lic'] : '';
+    $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
+    $desc_detallada = isset($_POST['desc_detallada']) ? $_POST['desc_detallada'] : '';
+    $revoe = isset($_POST['revoe']) ? $_POST['revoe'] : '';
+    $estado = isset($_POST['estado']) ? $_POST['estado'] : '';
+
+    $img_url = '';
+    $pdf_url = '';
+
+    if (!empty($_FILES['img_url']['tmp_name'])) {
+        $img_url = $_FILES['img_url']['tmp_name'];
+        $nom_img = $_FILES['img_url']['name'];
+        $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
+        $dirImg = "public/img/licenciatura/";
+
+        if (in_array($tImg, ["jpg", "jpeg", "png"])) {
+            $fecha = date('Ymd_His');
+            $rImg = $dirImg . $fecha . "_" . $nom_img;
+
+            if (move_uploaded_file($img_url, $rImg)) {
+                $img_url = $rImg;
+            } else {
+                $this->view->mensaje = "Error al guardar la imagen en el directorio";
+                return;
+            }
+        } else {
+            $this->view->mensaje = "El formato de la imagen es incorrecto";
+            return;
+        }
+        header('location: ' . URL . 'licenciatura');
     }
+
+    if (!empty($_FILES['pdf_url']['tmp_name'])) {
+        $pdf_url = $_FILES['pdf_url']['tmp_name'];
+        $nom_pdf = $_FILES['pdf_url']['name'];
+        $tPdf = strtolower(pathinfo($nom_pdf, PATHINFO_EXTENSION));
+        $dirPdf = "public/docs/licenciatura/";
+
+        if ($tPdf == "pdf") {
+            $fecha = date('Ymd_His');
+            $rPdf = $dirPdf . $fecha . "_" . $nom_pdf;
+
+            if (move_uploaded_file($pdf_url, $rPdf)) {
+                $pdf_url = $rPdf;
+            } else {
+                $this->view->mensaje = "Error al guardar el PDF en el directorio";
+                return;
+            }
+        } else {
+            $this->view->mensaje = "El formato del PDF es incorrecto";
+            return;
+        }
+    }
+
+    if ($this->model->insert([
+        'nom_lic' => $nom_lic,
+        'descripcion' => $descripcion,
+        'desc_detallada' => $desc_detallada,
+        'revoe' => $revoe,
+        'img_url' => $img_url,
+        'pdf_url' => $pdf_url,
+        'estado' => $estado
+    ])) {
+        $this->view->mensaje = "Se agregó correctamente";
+    } else {
+        $this->view->mensaje = "Error al agregar la licenciatura";
+    }
+}
+
 
     function addCard()
     {
@@ -103,7 +174,7 @@ class Licenciatura extends Controller
         }
     }
 
-    function updateLic()
+    /*function updateLic()
     {
         $id_lic = $_POST['id_lic_up'];
         $img_url_db = $_POST['img_url_db'];
@@ -189,12 +260,99 @@ class Licenciatura extends Controller
 
                 $this->view->maestria = $licenciatura;
                 $this->view->mensaje = "Se modifico exitosamente";
-                header('location: ' . URL . 'licenciatura');
+                //header('location: ' . URL . 'licenciatura');
             } else {
                 $this->view->mensaje = "Error al modificar datos";
             }
         }
+    }*/
+    public function updateLic()
+{
+    $id_lic = $_POST['id_lic_up'];
+    $img_url_db = $_POST['img_url_db'];
+    $pdf_url_db = $_POST['pdf_url_db'];
+
+    $nom_lic = $_POST['nom_lic_up'];
+    $descripcion = $_POST['descripcion_up'];
+    $desc_detallada = $_POST['desc_detallada_up'];
+    $revoe = $_POST['revoe_up'];
+
+    // Si se subió un archivo de imagen
+    if ($_FILES['img_url_up']['size'] > 0) {
+        $img_url = $_FILES['img_url_up']['tmp_name'];
+        $nom_img = $_FILES['img_url_up']['name'];
+        $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
+        $dirImg = "public/img/maestria/";
+
+        if (in_array($tImg, ["jpg", "jpeg", "png"])) {
+            $rImg = $dirImg . date('Ymd_His') . "_" . $nom_img;
+
+            // Mover la imagen y actualizar la URL si se sube correctamente
+            if (move_uploaded_file($img_url, $rImg)) {
+                $img_url_db = $rImg;
+            } else {
+                $this->view->mensaje = "Error al subir imagen";
+                return;
+            }
+        } else {
+            $this->view->mensaje = "Error al actualizar: formato de imagen incorrecto";
+            return;
+        }
     }
+
+    // Si se subió un archivo PDF
+    if ($_FILES['pdf_url_up']['size'] > 0) {
+        $pdf_url = $_FILES['pdf_url_up']['tmp_name'];
+        $nom_pdf = $_FILES['pdf_url_up']['name'];
+        $tPdf = strtolower(pathinfo($nom_pdf, PATHINFO_EXTENSION));
+        $dirPdf = "public/docs/maestria/";
+
+        if ($tPdf == "pdf") {
+            $rPdf = $dirPdf . date('Ymd_His') . "_" . $nom_pdf;
+
+            // Mover el PDF y actualizar la URL si se sube correctamente
+            if (move_uploaded_file($pdf_url, $rPdf)) {
+                $pdf_url_db = $rPdf;
+            } else {
+                $this->view->mensaje = "Error al subir PDF";
+                return;
+            }
+        } else {
+            $this->view->mensaje = "Error al actualizar: formato de PDF incorrecto";
+            return;
+        }
+    }
+
+    // Intenta actualizar los datos en la base de datos
+    if ($this->model->update([
+        'id_lic' => $id_lic,
+        'nom_lic' => $nom_lic,
+        'descripcion' => $descripcion,
+        'desc_detallada' => $desc_detallada,
+        'revoe' => $revoe,
+        'img_url' => $img_url_db,
+        'pdf_url' => $pdf_url_db,
+    ])) {
+        // Construye un objeto Licenciaturas con los nuevos datos
+        $licenciatura = new Licenciaturas();
+        $licenciatura->id_lic = $id_lic;
+        $licenciatura->nom_lic = $nom_lic;
+        $licenciatura->descripcion = $descripcion;
+        $licenciatura->desc_detallada = $desc_detallada;
+        $licenciatura->revoe = $revoe;
+        $licenciatura->img_url = $img_url_db;
+        $licenciatura->pdf_url = $pdf_url_db;
+
+        // Establece los mensajes y datos para la vista
+        $this->view->maestria = $licenciatura;
+        $this->view->mensaje = "Se modificó exitosamente";
+        header('location: ' . URL . 'licenciatura');
+    } else {
+        $this->view->mensaje = "Error al modificar datos";
+    }
+}
+
+
 
     function updateCardLic()
     {

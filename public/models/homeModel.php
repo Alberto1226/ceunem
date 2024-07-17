@@ -29,6 +29,11 @@ class HomeModel extends Model
                 $item->numero = $row['numero'];
                 $item->mensaje = $row['mensaje'];
                 $item->id_usu = $row['id_usu'];
+                $item->link_facebook = $row['link_facebook']; // Agregar el nuevo campo
+                $item->link_instagram = $row['link_instagram']; // Agregar el nuevo campo
+                $item->domicilio1 = $row['domicilio1']; // Agregar el nuevo campo
+                $item->domicilio2 = $row['domicilio2']; // Agregar el nuevo campo
+                $item->leyenda = $row['leyenda']; // Agregar el nuevo campo
             }
             return $item;
         } catch (PDOException $th) {
@@ -117,7 +122,7 @@ class HomeModel extends Model
             $query = $this->db->connect()->query(
                 "SELECT * FROM sliders WHERE id_usu=1 AND seccion='inicio' ORDER BY posicion ASC"
             );
-            
+
             while ($row = $query->fetch()) {
                 $item = new Imagen();
 

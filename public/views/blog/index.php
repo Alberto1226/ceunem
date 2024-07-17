@@ -52,14 +52,20 @@
                                 <p><?php echo $articulo->descripcion; ?></p>
                             </div>
                             <div class="position-relative mt-auto">
-                                <img class="img-fluid" src="<?php echo constant('ARCHIVOS') . $articulo->img_url; ?>" alt="">
+                                <img class="img-fluid" src="<?php echo constant('ARCHIVOS') . $articulo->img_url; ?>" alt="<?php echo $articulo->titulo; ?>">
                                 <div class="causes-overlay">
-                                    <a class="btn btn-outline-primary btnPag" href="<?php echo $articulo->link_url; ?>" target="_blank">
+                                    <a class="btn btn-outline-primary btnPag" href="<?php echo constant('URL') ?>moreinfB?desc_detallada=<?php echo urlencode($articulo->blogCompleto); ?>&name_lic=<?php echo urlencode($articulo->titulo); ?>&cat=<?php echo urlencode($articulo->categoria); ?>&img=<?php echo urlencode($articulo->img_url); ?>" target="_blank">
                                         Leer más
                                         <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
                                             <i class="fa fa-arrow-right"></i>
                                         </div>
                                     </a>
+                                    <a class="btn btn-outline-primary px-3 btnPag" href="<?php echo constant('URL') ?>moreinfB?desc_detallada=<?php echo urlencode($articulo->blogCompleto); ?>&name_lic=<?php echo urlencode($articulo->titulo); ?>&cat=<?php echo urlencode($articulo->categoria); ?>&img=<?php echo urlencode($articulo->img_url); ?>" target="_blank">
+                                Ver más
+                                <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
+                                    <i class="fa fa-arrow-right"></i>
+                                </div>
+                            </a>
                                 </div>
                             </div>
                         </div>

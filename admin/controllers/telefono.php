@@ -63,12 +63,22 @@ class Telefono extends Controller
             $mensaje = $_POST['mensaje'];
             $id_usu = $_POST['id_usu'];
             $id_tel = $_POST['id_tel'];
-
+            $link_facebook = $_POST['link_facebook'];
+            $link_instagram = $_POST['link_instagram'];
+            $domicilio1 = $_POST['domicilio1'];
+            $domicilio2 = $_POST['domicilio2'];
+            $leyenda = $_POST['leyenda'];
+    
             if ($this->model->update([
                 'numero' => $numero,
                 'mensaje' => $mensaje,
                 'id_usu' => $id_usu,
-                'id_tel' => $id_tel
+                'id_tel' => $id_tel,
+                'link_facebook' => $link_facebook, // Agregar el nuevo campo
+                'link_instagram' => $link_instagram, // Agregar el nuevo campo
+                'domicilio1' => $domicilio1, // Agregar el nuevo campo
+                'domicilio2' => $domicilio2, // Agregar el nuevo campo
+                'leyenda' => $leyenda // Agregar el nuevo campo
             ])) {
                 $arrResponse = array(
                     'status' => true, 'msg' => 'ok',
@@ -83,4 +93,5 @@ class Telefono extends Controller
             }
         }
     }
+    
 }

@@ -18,13 +18,13 @@ class Cursos extends Controller
     function render()
     {
         $cursos = $this->model->getAllCursos();
-        $this->view->cursos = $cursos;
         $curso_datos = $this->model->getAllCards();
         $this->view->curso_datos = $curso_datos;
+        $this->view->cursos = $cursos;
         $this->view->render('cursos/index');
     }
 
-    function addCursos()
+    /*function addCursos()
     {
         $nom_curso = $_POST['nom_curso'];
         $descripcion = $_POST['descripcion'];
@@ -69,7 +69,78 @@ class Cursos extends Controller
         } else {
             $this->view->mensaje =  "El formato es incorrecto";
         }
+    }*/
+    function addCursos()
+{
+    $nom_curso = isset($_POST['nom_curso']) ? $_POST['nom_curso'] : '';
+    $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
+    $desc_detallada = isset($_POST['desc_detallada']) ? $_POST['desc_detallada'] : '';
+    $revoe = isset($_POST['revoe']) ? $_POST['revoe'] : '';
+    $estado = isset($_POST['estado']) ? $_POST['estado'] : '';
+
+    $img_url = '';
+    $pdf_url = '';
+
+    if (!empty($_FILES['img_url']['tmp_name'])) {
+        $img_url = $_FILES['img_url']['tmp_name'];
+        $nom_img = $_FILES['img_url']['name'];
+        $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
+        $dirImg = "public/img/cursos/";
+
+        if (in_array($tImg, ["jpg", "jpeg", "png"])) {
+            $fecha = date('Ymd_His');
+            $rImg = $dirImg . $fecha . "_" . $nom_img;
+
+            if (move_uploaded_file($img_url, $rImg)) {
+                $img_url = $rImg;
+            } else {
+                $this->view->mensaje = "Error al guardar la imagen en el directorio";
+                return;
+            }
+        } else {
+            $this->view->mensaje = "El formato de la imagen es incorrecto";
+            return;
+        }
+        header('location: ' . URL . 'cursos');
     }
+
+    if (!empty($_FILES['pdf_url']['tmp_name'])) {
+        $pdf_url = $_FILES['pdf_url']['tmp_name'];
+        $nom_pdf = $_FILES['pdf_url']['name'];
+        $tPdf = strtolower(pathinfo($nom_pdf, PATHINFO_EXTENSION));
+        $dirPdf = "public/docs/cursos/";
+
+        if ($tPdf == "pdf") {
+            $fecha = date('Ymd_His');
+            $rPdf = $dirPdf . $fecha . "_" . $nom_pdf;
+
+            if (move_uploaded_file($pdf_url, $rPdf)) {
+                $pdf_url = $rPdf;
+            } else {
+                $this->view->mensaje = "Error al guardar el PDF en el directorio";
+                return;
+            }
+        } else {
+            $this->view->mensaje = "El formato del PDF es incorrecto";
+            return;
+        }
+    }
+
+    if ($this->model->insert([
+        'nom_curso' => $nom_curso,
+        'descripcion' => $descripcion,
+        'desc_detallada' => $desc_detallada,
+        'revoe' => $revoe,
+        'img_url' => $img_url,
+        'pdf_url' => $pdf_url,
+        'estado' => $estado
+    ])) {
+        $this->view->mensaje = "Se agregó correctamente";
+    } else {
+        $this->view->mensaje = "Error al agregar la cursos";
+    }
+}
+
 
     function addCard()
     {
@@ -105,7 +176,7 @@ class Cursos extends Controller
         }
     }
 
-    function updateCur()
+    /*function updateCur()
     {
         $id_curso = $_POST['id_curso_up'];
         $img_url_db = $_POST['img_url_db'];
@@ -119,13 +190,13 @@ class Cursos extends Controller
         $img_url = $_FILES['img_url_up']['tmp_name'];
         $nom_img = $_FILES['img_url_up']['name'];
         $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
-        $dirImg = "public/img/maestria/";
+        $dirImg = "public/img/cursos/";
 
 
         $pdf_url = $_FILES['pdf_url_up']['tmp_name'];
         $nom_pdf = $_FILES['pdf_url_up']['name'];
         $tPdf = strtolower(pathinfo($nom_pdf, PATHINFO_EXTENSION));
-        $dirPdf = "public/docs/maestria/";
+        $dirPdf = "public/docs/cursos/";
 
         $fecha = date('Ymd_His');
         $rImg = $dirImg . $fecha . "_" . $nom_img;
@@ -158,7 +229,7 @@ class Cursos extends Controller
                         $cursos->img_url = $img_url;
                         $cursos->pdf_url = $pdf_url;
 
-                        $this->view->maestria = $cursos;
+                        $this->view->cursos = $cursos;
                         $this->view->mensaje = "Se modifico exitosamente";
                         header('location: ' . URL . 'cursos');
                     } else {
@@ -189,19 +260,19 @@ class Cursos extends Controller
                 $cursos->img_url = $img_url_db;
                 $cursos->pdf_url = $pdf_url_db;
 
-                $this->view->maestria = $cursos;
+                $this->view->cursos = $cursos;
                 $this->view->mensaje = "Se modifico exitosamente";
                 header('location: ' . URL . 'cursos');
             } else {
                 $this->view->mensaje = "Error al modificar datos";
             }
         }
-    }
+    }*/
 
     function updateCardCurso()
     {
         $id_cur_datos = $_POST['id_upCard'];
-        $id_cur = $_POST['id_up_licCard'];
+        $id_cur = $_POST['id_up_cursoCard'];
         $img_url_db = $_POST['img_url_db_card'];
         $titulo = $_POST['titulo_upCard'];
         $descripcion = $_POST['descripcion_upCard'];
@@ -209,7 +280,7 @@ class Cursos extends Controller
         $img_url = $_FILES['img_url_upCard']['tmp_name'];
         $nom_img = $_FILES['img_url_upCard']['name'];
         $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
-        $dirImg = "public/img/maestria/";
+        $dirImg = "public/img/cursos/";
 
         $fecha = date('Ymd_His');
         $rImg = $dirImg . $fecha . "_" . $nom_img;
@@ -271,22 +342,117 @@ class Cursos extends Controller
             }
         }
     }
+    public function updateCur()
+{
+    $id_curso = $_POST['id_curso_up'];
+    $img_url_db = $_POST['img_url_db'];
+    $pdf_url_db = $_POST['pdf_url_db'];
 
-    function deleteCur()
-    {
-        $id_curso = $_POST['id_delete'];
-        $img_url = $_POST['img_delete'];
-        $pdf_url = $_POST['pdf_delete'];
+    $nom_curso = $_POST['nom_curso_up'];
+    $descripcion = $_POST['descripcion_up'];
+    $desc_detallada = $_POST['desc_detallada_up'];
+    $revoe = $_POST['revoe_up'];
 
-        if (unlink($img_url) && unlink($pdf_url)) {
-            if ($this->model->delete($id_curso)) {
-                $this->view->mensaje = "Maestría eliminada correctamente";
+    // Si se subió un archivo de imagen
+    if ($_FILES['img_url_up']['size'] > 0) {
+        $img_url = $_FILES['img_url_up']['tmp_name'];
+        $nom_img = $_FILES['img_url_up']['name'];
+        $tImg = strtolower(pathinfo($nom_img, PATHINFO_EXTENSION));
+        $dirImg = "public/img/cursos/";
+
+        if (in_array($tImg, ["jpg", "jpeg", "png"])) {
+            $rImg = $dirImg . date('Ymd_His') . "_" . $nom_img;
+
+            // Mover la imagen y actualizar la URL si se sube correctamente
+            if (move_uploaded_file($img_url, $rImg)) {
+                $img_url_db = $rImg;
+            } else {
+                $this->view->mensaje = "Error al subir imagen";
+                return;
             }
-            header('location: ' . URL . 'cursos');
         } else {
-            $this->view->mensaje = "Error al eliminar la Maestría";
+            $this->view->mensaje = "Error al actualizar: formato de imagen incorrecto";
+            return;
         }
     }
+
+    // Si se subió un archivo PDF
+    if ($_FILES['pdf_url_up']['size'] > 0) {
+        $pdf_url = $_FILES['pdf_url_up']['tmp_name'];
+        $nom_pdf = $_FILES['pdf_url_up']['name'];
+        $tPdf = strtolower(pathinfo($nom_pdf, PATHINFO_EXTENSION));
+        $dirPdf = "public/docs/cursos/";
+
+        if ($tPdf == "pdf") {
+            $rPdf = $dirPdf . date('Ymd_His') . "_" . $nom_pdf;
+
+            // Mover el PDF y actualizar la URL si se sube correctamente
+            if (move_uploaded_file($pdf_url, $rPdf)) {
+                $pdf_url_db = $rPdf;
+            } else {
+                $this->view->mensaje = "Error al subir PDF";
+                return;
+            }
+        } else {
+            $this->view->mensaje = "Error al actualizar: formato de PDF incorrecto";
+            return;
+        }
+    }
+
+    // Intenta actualizar los datos en la base de datos
+    if ($this->model->update([
+        'id_curso' => $id_curso,
+        'nom_curso' => $nom_curso,
+        'descripcion' => $descripcion,
+        'desc_detallada' => $desc_detallada,
+        'revoe' => $revoe,
+        'img_url' => $img_url_db,
+        'pdf_url' => $pdf_url_db,
+    ])) {
+        // Construye un objeto cursoss con los nuevos datos
+        $cursos = new Cursos();
+        $cursos->id_curso = $id_curso;
+        $cursos->nom_curso = $nom_curso;
+        $cursos->descripcion = $descripcion;
+        $cursos->desc_detallada = $desc_detallada;
+        $cursos->revoe = $revoe;
+        $cursos->img_url = $img_url_db;
+        $cursos->pdf_url = $pdf_url_db;
+
+        // Establece los mensajes y datos para la vista
+       // $this->view->cursos = $cursos;
+       // $this->view->mensaje = "Se modifico exitosamente";
+        header('location: ' . URL . 'cursos');
+    } else {
+        $this->view->mensaje = "Error al modificar datos";
+    }
+}
+
+public function deleteCur()
+{
+    $id_curso = $_POST['id_delete'];
+    $img_url = $_POST['img_delete'];
+    $pdf_url = $_POST['pdf_delete'];
+
+    // Verifica si la imagen está cargada y si existe antes de intentar eliminarla
+    if (!empty($img_url) && file_exists($img_url)) {
+        unlink($img_url);
+    }
+
+    // Verifica si el PDF está cargado y si existe antes de intentar eliminarlo
+    if (!empty($pdf_url) && file_exists($pdf_url)) {
+        unlink($pdf_url);
+    }
+
+    // Elimina el curso de la base de datos
+    if ($this->model->delete($id_curso)) {
+        $this->view->mensaje = "Curso eliminado correctamente";
+        header('location: ' . URL . 'cursos');
+    } else {
+        $this->view->mensaje = "Error al eliminar el curso";
+    }
+}
+
 
     function deleteCardCurso()
     {

@@ -22,6 +22,7 @@ class BlogModel extends Model
                 $item->categoria = $row['categoria'];
                 $item->titulo = $row['titulo'];
                 $item->descripcion = $row['descripcion'];
+                $item->blogCompleto = $row['blogCompleto'];
                 $item->img_url = $row['img_url'];
                 $item->link_url = $row['link_url'];
                 $item->estado = $row['estado'];
@@ -38,13 +39,14 @@ class BlogModel extends Model
     {
         try {
             $query = $this->db->connect()->prepare(
-                'INSERT INTO blog (categoria, titulo, descripcion, img_url, link_url, estado)
-                VALUES (:categoria, :titulo, :descripcion, :img_url, :link_url, :estado)'
+                'INSERT INTO blog (categoria, titulo, descripcion, blogCompleto, img_url, link_url, estado)
+                VALUES (:categoria, :titulo, :descripcion, :blogCompleto, :img_url, :link_url, :estado)'
             );
             $query->execute([
                 'categoria' => $datos['categoria'],
                 'titulo' => $datos['titulo'],
                 'descripcion' => $datos['descripcion'],
+                'blogCompleto' => $datos['blogCompleto'],
                 'img_url' => $datos['img_url'],
                 'link_url' => $datos['link_url'],
                 'estado' => 1
@@ -58,7 +60,7 @@ class BlogModel extends Model
     public function update($item)
     {
         $query = $this->db->connect()->prepare("UPDATE blog
-            SET categoria = :categoria, titulo = :titulo, descripcion = :descripcion, 
+            SET categoria = :categoria, titulo = :titulo, descripcion = :descripcion, blogCompleto = :blogCompleto,
             img_url = :img_url, link_url = :link_url
             WHERE id_blog = :id_blog");
         try {
@@ -67,6 +69,7 @@ class BlogModel extends Model
                 'categoria' => $item['categoria'],
                 'titulo' => $item['titulo'],
                 'descripcion' => $item['descripcion'],
+                'blogCompleto' => $item['blogCompleto'],
                 'img_url' => $item['img_url'],
                 'link_url' => $item['link_url']
             ]);

@@ -9,7 +9,7 @@
     </div>
     <div class="card-body">
         <form action="#" method="post" enctype="multipart/form-data" id="formEditImg3" class="formularioImagenes">
-            <input type="hidden" id="id_slider" name="id_slider">
+            <input type="hidden" id="id_slider" name="id_slider" value="3">
             <input type="hidden" id="id_usu" name="id_usu">
             <input type="hidden" id="posicion" name="posicion">
             <input type="hidden" id="imgBD" name="imgBD">
@@ -18,7 +18,8 @@
                 <label for="img">Imagen</label>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input is-valid inform" id="img" name="img" onchange="imgSlider(event, '#sliderImg')">
+                        <input type="file" class="custom-file-input is-valid inform" id="img" name="img"
+                            onchange="imgSlider(event, '#sliderImg')">
                         <label class="custom-file-label" for="img">Seleccione la imagen</label>
                     </div>
                 </div>
@@ -28,11 +29,13 @@
             </div>
             <div class="form-group">
                 <label for="tit">Título</label>
-                <input type="text" class="form-control border border-success" id="tit" placeholder="Ingrese el título" name="tit">
+                <input type="text" class="form-control border border-success" id="tit" placeholder="Ingrese el título"
+                    name="tit">
             </div>
             <div class="form-group">
                 <label for="descripcion">Descripción</label>
-                <textarea class="form-control border border-success" rows="4" id="descripcion" placeholder="Ingresa la Descripción" name="descripcion"></textarea>
+                <textarea class="form-control border border-success" rows="4" id="descripcion"
+                    placeholder="Ingresa la Descripción" name="descripcion"></textarea>
             </div>
             <div class="row">
                 <div class="col-6">
@@ -70,10 +73,12 @@
             </div>
             <div class="form-group" id="otroLink" style="display: none;">
                 <label for="link">Link fuera del sitio</label>
-                <input type="text" class="form-control border border-success" id="link" placeholder="Ingrese el link" name="link">
+                <input type="text" class="form-control border border-success" id="link" placeholder="Ingrese el link"
+                    name="link">
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-warning btn-block" id="btnImagen_1" name="btnImagen_1">Guardar</button>
+                <button type="submit" class="btn btn-warning btn-block" id="btnImagen_1"
+                    name="btnImagen_1">Guardar</button>
             </div>
         </form>
     </div>

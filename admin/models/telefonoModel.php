@@ -19,7 +19,8 @@ class TelefonoModel extends Model
         }
     }
 
-    public function insert($datos){
+    public function insert($datos)
+    {
         try {
             $query = $this->db->connect()->prepare(
                 "INSERT INTO telefono (numero, mensaje, id_usu)
@@ -37,7 +38,8 @@ class TelefonoModel extends Model
         }
     }
 
-    public function getWhatsaap($id){
+    public function getWhatsaap($id)
+    {
         $item = new Whats();
         try {
             $query = $this->db->connect()->prepare(
@@ -49,6 +51,11 @@ class TelefonoModel extends Model
                 $item->numero = $row['numero'];
                 $item->mensaje = $row['mensaje'];
                 $item->id_usu = $row['id_usu'];
+                $item->link_facebook = $row['link_facebook']; // Agregar el nuevo campo
+                $item->link_instagram = $row['link_instagram']; // Agregar el nuevo campo
+                $item->domicilio1 = $row['domicilio1']; // Agregar el nuevo campo
+                $item->domicilio2 = $row['domicilio2']; // Agregar el nuevo campo
+                $item->leyenda = $row['leyenda']; // Agregar el nuevo campo
             }
             return $item;
         } catch (PDOException $th) {
@@ -56,18 +63,31 @@ class TelefonoModel extends Model
         }
     }
 
-    public function update($datos){
+
+    public function update($datos)
+    {
         try {
             $query = $this->db->connect()->prepare(
                 "UPDATE telefono
-                SET numero = :numero, mensaje = :mensaje
-                WHERE id_usu = :id_usu AND id_tel = :id_tel"
+                 SET numero = :numero,
+                mensaje = :mensaje,
+                link_facebook = :link_facebook,
+                link_instagram = :link_instagram,
+                domicilio1 = :domicilio1,
+                domicilio2 = :domicilio2,
+                leyenda = :leyenda
+            WHERE id_usu = :id_usu AND id_tel = :id_tel"
             );
 
             $query->execute([
                 'id_tel' => $datos['id_tel'],
                 'numero' => $datos['numero'],
                 'mensaje' => $datos['mensaje'],
+                'link_facebook' => $datos['link_facebook'],
+                'link_instagram' => $datos['link_instagram'],
+                'domicilio1' => $datos['domicilio1'],
+                'domicilio2' => $datos['domicilio2'],
+                'leyenda' => $datos['leyenda'],
                 'id_usu' => $datos['id_usu']
             ]);
             return true;

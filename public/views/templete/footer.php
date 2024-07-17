@@ -5,17 +5,22 @@
             <div class="col-lg-3 col-md-6">
                 <img src="<?php echo constant('URL') ?>assets/img/LOGO CEUNEM.png" width="136" height="46" alt="" />
                 <h1 class="fw-bold text-primary mb-4"><span class="text-white">&nbsp;</span></h1>
-                <p>#Puedo y hago que suceda&nbsp;</p>
+                <!--<p>#Puedo y hago que suceda&nbsp;</p>-->
                 <div class="d-flex pt-2">
-                    <a class="btn btn-square me-1" href="https://www.facebook.com/ceunem"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-square me-1" href="https://www.instagram.com/ceunemsjr/"><i class="fab fa-instagram"></i></a>
-                    <a class="btn btn-square me-1" href="https://api.whatsapp.com/send?phone=4272053537&text=Informes"><i class="fab fa-whatsapp"></i></a>
+
+                <a class="btn btn-square me-1" id="facebook-link" ><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-square me-1" id="instagram-link" ><i class="fab fa-instagram"></i></a>
+                
+                <div ></div>
+                <div ></div>
+                    
+                    
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-light mb-4">Domicilio:</h5>
-                <p><i class="fa fa-map-marker-alt me-3"></i>Ignacio M. de las Casas #47 Int 4 Col. Cimatario Querétaro, Qro. CP 76030  Tel: 442 282 7415</p>
-                <p><i class="fa fa-map-marker-alt me-3"></i>Nezahualcóyotl #37-1 Zona Centro, San Juan del Río, Qro. 76800  Tel: 427 244 1682</p>
+                <div id="domicilio1"></div>
+                <div id="domicilio2"></div>
                 
             </div>
             <div class="col-lg-3 col-md-6">
@@ -38,13 +43,10 @@
     <div class="container-fluid copyright">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a href="https://www.ceunem.edu.mx/">CEUNEM&nbsp;</a>, CENTRO UNIVERSITARIO DE EMPRENDEDORES S.C. PROPIETARIA DE CENTRO UNIVERSITARIO DE EMPRENDEDORES
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0" id="leyenda">
+                    &copy; <a href="https://www.ceunem.edu.mx/">
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    Diseñado por CEUNEM /<a> HTML Codex</a>
-                </div>
+                
             </div>
         </div>
     </div>

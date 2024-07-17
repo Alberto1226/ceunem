@@ -52,18 +52,19 @@ class SlidersModel extends Model
         }
     }
 
-    public function getImg($id, $posicion)
+    public function getImg($id, $posicion,$seccion)
     {
         $item = new Imagen();
 
         try {
             $query = $this->db->connect()->prepare(
-                "SELECT * FROM sliders WHERE id_usu = :id_usu AND posicion = :posicion"
+                "SELECT * FROM sliders WHERE id_usu = :id_usu AND posicion = :posicion AND seccion = :seccion"
             );
 
             $query->execute([
                 'id_usu' => $id,
-                'posicion' => $posicion
+                'posicion' => $posicion,
+                'seccion' => $seccion
             ]);
 
             while ($row = $query->fetch()) {
