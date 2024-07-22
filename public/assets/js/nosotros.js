@@ -1,28 +1,24 @@
+console.log(APP_URL);
+
 document.addEventListener("DOMContentLoaded", function () {
-    obtenerImagenBanner();
+  obtenerImagenBanner();
 });
 
-
-
 function obtenerImagenBanner() {
-    var baseURL = 'http://localhost/ceunem/public/nosotros/getBanner';  
+  var baseURL = APP_URL + "/public/nosotros/getBanner";
 
-    axios.post(baseURL).then((response) => {
-        if(response.status == 200){            
-            const ImgenAsc = response.data;
-            // if(ImgenAsc === 'undefined'){
-                console.log("SIn dato", ImgenAsc);
-                const bannerImgAsc = document.querySelectorAll('.bannerImgAscNos');
-                bannerImgAsc.forEach(function (divAsc) {               
-                    console.log("datos img", divAsc.style);
-                    divAsc.style.background = " url("+ImgenAsc+") top center no-repeat";
-                    divAsc.style.backgroundSize = 'cover';
-                });
-            // }
-        }
-    })
-    
-
-
-  
+  axios.post(baseURL).then((response) => {
+    if (response.status == 200) {
+      const ImgenAsc = response.data;
+      // if(ImgenAsc === 'undefined'){
+      console.log("SIn dato", ImgenAsc);
+      const bannerImgAsc = document.querySelectorAll(".bannerImgAscNos");
+      bannerImgAsc.forEach(function (divAsc) {
+        console.log("datos img", divAsc.style);
+        divAsc.style.background = " url(" + ImgenAsc + ") top center no-repeat";
+        divAsc.style.backgroundSize = "cover";
+      });
+      // }
+    }
+  });
 }

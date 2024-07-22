@@ -21,9 +21,14 @@
     <link rel="stylesheet" href="<?php echo constant('URL') ?>libs/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- Toastr -->
     <link rel="stylesheet" href="<?php echo constant('URL') ?>libs/plugins/toastr/toastr.min.css">
+    
 </head>
 
 <body class="hold-transition sidebar-mini">
+<script type="text/javascript">
+        const APP_URL = '<?php echo constant('URL'); ?>';
+        console.log(APP_URL);
+    </script>
     <!-- Site wrapper -->
     <div class="wrapper">
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">

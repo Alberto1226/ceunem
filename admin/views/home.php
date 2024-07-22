@@ -18,10 +18,13 @@
     <link rel="stylesheet" href="<?php echo constant('URL') ?>libs/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- Toastr -->
     <link rel="stylesheet" href="<?php echo constant('URL') ?>libs/plugins/toastr/toastr.min.css">
-
 </head>
 
 <body class="hold-transition register-page">
+<script type="text/javascript">
+        const APP_URL = '<?php echo constant('URL'); ?>';
+        console.log("sd", APP_URL)
+    </script>
     <div class="register-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
