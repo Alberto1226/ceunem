@@ -115,7 +115,7 @@ function vaciarPreview() {
 
 function insert(event) {
   event.preventDefault();
-  var baseURL = APP_URL + "/admin/inicio/addInicio";
+  var baseURL = APP_URL + "inicio/addInicio";
   let datos = new FormData(this);
   let encabezados = new Headers();
   if (campos.vid_url) {
@@ -140,7 +140,7 @@ function insert(event) {
 
 //obtner datos
 function obtnerDatos() {
-  var baseURL = APP_URL + "/admin/inicio/getIni";
+  var baseURL = APP_URL + "inicio/getIni";
 
   axios.post(baseURL).then((response) => {
     const vid = response.data.vid_url;
@@ -149,7 +149,7 @@ function obtnerDatos() {
     document.getElementById("id_ini").value = response.data.id_ini;
     document.getElementById("vid_bd").value = response.data.vid_url;
     document.getElementById("vidAct").textContent = "Videio Actual: " + file;
-    var url = APP_URL + "/admin/" + response.data.vid_url;
+    var url = APP_URL +  response.data.vid_url;
     showVid(url);
   });
 }
@@ -157,7 +157,7 @@ function obtnerDatos() {
 //editar-----------------
 function editar(event) {
   event.preventDefault();
-  var baseURL = APP_URL + "/admin/inicio/upIni";
+  var baseURL = APP_URL + "inicio/upIni";
   let datos = new FormData(this);
   let encabezados = new Headers();
   if (!campos.vid_url2) return (campos.vid_url2 = true);

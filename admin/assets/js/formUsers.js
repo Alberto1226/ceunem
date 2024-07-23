@@ -112,7 +112,7 @@ function vaciar() {
 
 function validar(event) {
   event.preventDefault();
-  var baseURL = APP_URL + "/admin/registrar/addUser";
+  var baseURL = APP_URL + "registrar/addUser";
   let datos = new FormData(this);
   let encabezados = new Headers();
   if (campos.nameFull && campos.email && campos.pass && campos.pass2) {

@@ -151,7 +151,7 @@ function showSwal2(icono, titulo, mensaje) {
 
 function insertar(event) {
   event.preventDefault();
-  var baseURL = APP_URL + "/admin/slider1/addImg";
+  var baseURL = APP_URL + "slider1/addImg";
   let datos = new FormData(this);
   let encabezados = new Headers();
 

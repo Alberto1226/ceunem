@@ -1,4 +1,4 @@
-console.log(APP_URL);
+console.log("---->",APP_URL);
 
 document.addEventListener("DOMContentLoaded", function () {
   console.log("App URL desde main.js:", APP_URL);

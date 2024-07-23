@@ -41,5 +41,7 @@
         </div>
     </div>
 </div>
+
 <?php require 'views/templete/footer.php'; ?>
+
 <script src="<?php echo constant('URL') ?>assets/js/previewInicio.js"></script>

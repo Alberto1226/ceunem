@@ -22,8 +22,10 @@
 
 <body class="hold-transition register-page">
 <script type="text/javascript">
-        const APP_URL = '<?php echo constant('URL'); ?>';
-        console.log("sd", APP_URL)
+        var APP_URL = '<?php echo constant('URL'); ?>';
+        APP_URL = APP_URL.replace(/\/admin\/?$/, '');
+        console.log(APP_URL);
+        console.log("--->",APP_URL);
     </script>
     <div class="register-box">
         <div class="card card-outline card-primary">

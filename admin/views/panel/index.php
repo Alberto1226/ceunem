@@ -228,6 +228,10 @@
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
     </aside>
+    <script type="text/javascript">
+        var APP_URL = '<?php echo constant('URL'); ?>';
+        console.log("--->",APP_URL);
+    </script>
     <!-- libreria de axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- jQuery -->

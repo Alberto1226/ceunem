@@ -6,12 +6,12 @@ class App
 {
     function __construct()
     {
-        //echo "<p>Nueva App</p>";
+        
 
         $url = isset($_GET['url']) ? $_GET['url'] : null;
         $url = rtrim($url, '/');
         $url = explode('/', $url);
-
+        
         //cuando se ingresa sin definir un controlador
         if (empty($url[0])) {
             $archivoController = 'controllers/login.php';

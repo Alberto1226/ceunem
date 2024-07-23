@@ -11,6 +11,12 @@
 </aside>
 <!-- /.control-sidebar -->
 </div>
+<script type="text/javascript">
+        var APP_URL = '<?php echo constant('URL'); ?>';
+        APP_URL = APP_URL.replace(/\/admin\/?$/, '');
+        console.log(APP_URL);
+        console.log("--->",APP_URL);
+    </script>
 <!-- ./wrapper -->
 <!-- libreria de axios -->
 <script src="<?php echo constant('URL') ?>assets/js/axios.min.js"></script>

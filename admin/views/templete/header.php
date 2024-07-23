@@ -25,10 +25,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
-<script type="text/javascript">
-        const APP_URL = '<?php echo constant('URL'); ?>';
-        console.log(APP_URL);
-    </script>
+
     <!-- Site wrapper -->
     <div class="wrapper">
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
